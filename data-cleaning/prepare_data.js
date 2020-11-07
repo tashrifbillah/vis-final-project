@@ -35,4 +35,15 @@ $('table tbody tr').each(function() {
   rows.push(row)
 })
 
+/**
+ * Extracts data from csv
+ */
+const csvResults = await d3.csv("sept-2020-visits.csv", (row) => {
+  // convert to numeric
+  row.height_px = Number(row.height_px)
+
+  return row
+})
+
+
 console.log(rows)
