@@ -194,7 +194,7 @@ async function getFinalResults() {
     ...parksById[row.id]
   }))
 
-  console.log(finalResults)
+  console.log(JSON.stringify(finalResults))
 }
 
 getFinalResults()
