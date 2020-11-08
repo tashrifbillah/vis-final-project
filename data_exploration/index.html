@@ -1,0 +1,34 @@
+<html>
+<head>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+
+    <div id="app" class="app">
+        <header class="header">
+            <ul class="header__list">
+                <li v-for="row in rows" v-bind:class="{ selected: selectedId === row.parkCode }">
+                    <a @click="setSelected(row)">{{ row.fullName }}</a>
+                </li>
+            </ul>
+
+            <div class="header__code">
+                <ul class="data-select" v-if="selectedId">
+                    <li v-for="opt in dataTypes"  v-bind:class="{ selected: dataType === opt.value }">
+                        <a @click="dataType = opt.value">{{ opt.name }}</a>
+                    </li>
+                </ul>
+                <p v-else>Select a park</p>
+
+                <pre v-html="displayedData" />
+            </div>
+        </header>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="script/loadData.js"></script>
+    <script src="script/api.js"></script>
+</body>
+</html>
