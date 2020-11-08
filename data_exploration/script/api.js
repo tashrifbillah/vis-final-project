@@ -35,8 +35,9 @@ Vue.createApp({
   },
   methods: {
     setSelected({ parkCode }) {
-      this.selectedId = parkCode
-      this.apiResults = null
+      this.selectedId = parkCode;
+      this.apiResults = null;
+      this.dataType = null;
     },
     async fetchApi() {
       const { data } = await axios.get(`https://developer.nps.gov/api/v1/${this.dataType}?parkCode=${this.selectedId}&api_key=nzigokIG0cHxCIgLSutFP9OjLEMnWj27BLaSxfa2`)
