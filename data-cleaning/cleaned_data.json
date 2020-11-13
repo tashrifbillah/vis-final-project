@@ -470,20 +470,283 @@
     "designation":"National Park"
   },
   {
-    "name":"American Samoa",
+    "name":"National Park of American Samoa",
     "image":"https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Ofu_Beach_NPS.jpg/200px-Ofu_Beach_NPS.jpg",
     "location":"American Samoa",
     "date_established":"October 31, 1988",
     "area":"8,256.67 acres (33.4 km2)",
     "visitors":"60,006",
-    "description":"The southernmost national park is on three Samoan islands and protects coral reefs, rainforests, volcanic mountains, and white beaches. The area is also home to flying foxes, brown boobies, sea turtles, and 900 species of fish.\n      ",
-    "park":"Yukon-Charley Rivers NPRES",
-    "previous_month":157,
-    "current_month":88,
-    "month_diff":-69,
-    "previous_ytd":1114,
-    "current_ytd":549,
-    "ytd_diff":-565
+    "description":"The National Park of American Samoa welcomes you into the heart of the South Pacific, to a world of sights, sounds, and experiences that you will find in no other national park in the United States. Enjoy this unique national park and the welcoming people of American Samoa. We are here to protect its rich culture and natural resources. Come explore them with us!",
+    "id":"6E71B72E-4F2F-495D-9225-A6634E6C2EB1",
+    "park":"National Park of American Samoa",
+    "previous_month":3933,
+    "current_month":100,
+    "month_diff":-3833,
+    "previous_ytd":43046,
+    "current_ytd":3860,
+    "ytd_diff":-39186,
+    "url":"https://www.nps.gov/npsa/index.htm",
+    "fullName":"National Park of American Samoa",
+    "parkCode":"npsa",
+    "latitude":"-14.22865935",
+    "longitude":"-169.8503777",
+    "latLong":"lat:-14.22865935, long:-169.8503777",
+    "activities":[
+      {
+        "id":"09DF0950-D319-4557-A57E-04CD2F63FF42",
+        "name":"Arts and Culture"
+      },
+      {
+        "id":"C0FFC3D5-0E74-4B6F-B69D-6F95B78906CE",
+        "name":"Live Music"
+      },
+      {
+        "id":"42FD78B9-2B90-4AA9-BC43-F10E9FEA8B5A",
+        "name":"Hands-On"
+      },
+      {
+        "id":"9456A40A-AF75-4AD3-8BE1-79C4A7DBEDFC",
+        "name":"Volunteer Vacation"
+      },
+      {
+        "id":"BFF8C027-7C8F-480B-A5F8-CD8CE490BFBA",
+        "name":"Hiking"
+      },
+      {
+        "id":"7C37B79B-D02D-49EB-9020-3DB8299B748A",
+        "name":"Backcountry Hiking"
+      },
+      {
+        "id":"45261C0A-00D8-4C27-A1F8-029F933A0D34",
+        "name":"Front-Country Hiking"
+      },
+      {
+        "id":"EADFAEEB-4D57-49DB-9C58-BF8DC241C24F",
+        "name":"Off-Trail Permitted Hiking"
+      },
+      {
+        "id":"B204DE60-5A24-43DD-8902-C81625A09A74",
+        "name":"Living History"
+      },
+      {
+        "id":"237A1662-6018-4115-ABD1-B8CCF827E703",
+        "name":"Historic Weapons Demonstration"
+      },
+      {
+        "id":"28880A5B-3D29-41AC-BD8B-24743E7A070F",
+        "name":"First Person Interpretation"
+      },
+      {
+        "id":"42CF4021-8524-428E-866A-D33097A4A764",
+        "name":"SCUBA Diving"
+      },
+      {
+        "id":"3EBF7EAC-68FC-4754-B6A4-0C38A1583D45",
+        "name":"Snorkeling"
+      },
+      {
+        "id":"587BB2D3-EC35-41B2-B3F7-A39E2B088AEE",
+        "name":"Swimming"
+      },
+      {
+        "id":"C2801992-F34D-4974-A0F2-80FF04309EE4",
+        "name":"Saltwater Swimming"
+      },
+      {
+        "id":"0B685688-3405-4E2A-ABBA-E3069492EC50",
+        "name":"Wildlife Watching"
+      },
+      {
+        "id":"5A2C91D1-50EC-4B24-8BED-A2E11A1892DF",
+        "name":"Birdwatching"
+      },
+      {
+        "id":"C8F98B28-3C10-41AE-AA99-092B3B398C43",
+        "name":"Museum Exhibits"
+      },
+      {
+        "id":"24380E3F-AD9D-4E38-BF13-C8EEB21893E7",
+        "name":"Shopping"
+      },
+      {
+        "id":"467DC8B8-0B7D-436D-A026-80A22358F615",
+        "name":"Bookstore and Park Store"
+      },
+      {
+        "id":"43800AD1-D439-40F3-AAB3-9FB651FE45BB",
+        "name":"Gift Shop and Souvenirs"
+      }
+    ],
+    "topics":[
+      {
+        "id":"7F81A0CB-B91F-4896-B9A5-41BE9A54A27B",
+        "name":"Archeology"
+      },
+      {
+        "id":"272549CF-EAA4-4603-8E20-FBE1AAB391B7",
+        "name":"Pacific Islander Heritage"
+      },
+      {
+        "id":"FB3641FE-67A3-4EC7-B9C4-0A0867776798",
+        "name":"Ancient Seas"
+      },
+      {
+        "id":"0D00073E-18C3-46E5-8727-2F87B112DDC6",
+        "name":"Animals"
+      },
+      {
+        "id":"957EF2BD-AC6C-4B7B-BD9A-87593ADC6691",
+        "name":"Birds"
+      },
+      {
+        "id":"1608649A-E7D7-4529-BD83-074C90F9FB68",
+        "name":"Fish"
+      },
+      {
+        "id":"393F60FB-80D6-46F7-B0FB-BBF3C90F59FD",
+        "name":"Tortoises and Turtles"
+      },
+      {
+        "id":"0E6D8503-CB65-467F-BCD6-C6D9E28A4E0B",
+        "name":"Oceans"
+      },
+      {
+        "id":"C7FAA779-9AF2-4B50-915E-8E2AF2E7337A",
+        "name":"Coral Reefs"
+      },
+      {
+        "id":"CA07BC05-8FE3-4830-8041-14BC9B609A5F",
+        "name":"The Tropics"
+      },
+      {
+        "id":"78E4F4AC-AF97-435A-8C2C-7FB8D67516ED",
+        "name":"Unique Species"
+      },
+      {
+        "id":"996BEDAE-CB23-4003-B008-3A1F46A72263",
+        "name":"Rare"
+      },
+      {
+        "id":"489D6333-FD72-44DF-83B0-3D4412DD0A75",
+        "name":"Endangered"
+      },
+      {
+        "id":"90F8744F-CD10-4925-955C-064CB1A17EB0",
+        "name":"Volcanoes"
+      }
+    ],
+    "states":"AS",
+    "contacts":{
+      "phoneNumbers":[
+        {
+          "phoneNumber":"6846337082",
+          "description":"",
+          "extension":"22",
+          "type":"Voice"
+        },
+        {
+          "phoneNumber":"6846337083",
+          "description":"",
+          "extension":"",
+          "type":"Fax"
+        }
+      ],
+      "emailAddresses":[
+        {
+          "description":"",
+          "emailAddress":"npsa_info@nps.gov"
+        }
+      ]
+    },
+    "entranceFees":[
+      {
+        "cost":"0.00",
+        "description":"No fees or reservations are required to visit the national park.",
+        "title":"Fees or reservations"
+      }
+    ],
+    "entrancePasses":[
+      {
+        "cost":"0.00",
+        "description":"Since there are no fees or reservations required, entrance passes are all waived.",
+        "title":"Entrance Pass"
+      }
+    ],
+    "fees":[
+
+    ],
+    "directionsInfo":"The visitor center is located in the village of Pago Pago, across from the Pago Way Service Station. The national park is located in the villages of Vatia, Pago Pago, Fagasa, Afono (on Tutuila Island), Fitiuta, Faleasao (on Ta'u Island), and Ofu Island",
+    "directionsUrl":"http://www.nps.gov/npsa/planyourvisit/upload/NPSA-Visitor-Guide_web-January-2015.pdf",
+    "operatingHours":[
+      {
+        "exceptions":[
+
+        ],
+        "description":"* The National Park of American Samoa is open 24-hours per day, year round, including holidays. However, some areas of the park maybe temporarily closed due to trail maintenance and/or safety measures.\n\n* No fees or reservations are required to visit the national park.\n\n* The visitor center and park store is open during weekdays from 8:00 am to 4:30 pm. closed on weekends and federal holidays.",
+        "standardHours":{
+          "wednesday":"8:00AM - 4:30PM",
+          "monday":"8:00AM - 4:30PM",
+          "thursday":"8:00AM - 4:30PM",
+          "sunday":"Closed",
+          "tuesday":"8:00AM - 4:30PM",
+          "friday":"8:00AM - 4:30PM",
+          "saturday":"Closed"
+        },
+        "name":"National Park of American Samoa"
+      }
+    ],
+    "addresses":[
+      {
+        "postalCode":"96799",
+        "city":"Pago Pago",
+        "stateCode":"AS",
+        "line1":"National Park of American Samoa",
+        "type":"Physical",
+        "line3":"",
+        "line2":"MHJ Building, 2nd Floor"
+      },
+      {
+        "postalCode":"96799",
+        "city":"Pago Pago",
+        "stateCode":"AS",
+        "line1":"National Park of American Samoa",
+        "type":"Mailing",
+        "line3":"",
+        "line2":"MHJ Building, 2nd Floor"
+      }
+    ],
+    "images":[
+      {
+        "credit":"NPS Photo / Michael Larson",
+        "title":"Back side of Pola Island from Tuafanua Trail",
+        "altText":"Tuafanua Trail",
+        "caption":"Pola Island rises over 400 feet straight out of the ocean off Tutuila. A short walk from Vatia village, Pola is an ideal nesting site for many species of seabirds.",
+        "url":"https://www.nps.gov/common/uploads/structured_data/3C84F643-1DD8-B71B-0BC6F3EA2E1F58AB.jpg"
+      },
+      {
+        "credit":"NPS Photo / Michael Larson",
+        "title":"Ta'u Island",
+        "altText":"Ta'u Island",
+        "caption":"Si'u Point is a good place to view the south coast of Ta'u. some of the tallest sea cliffs in the world stairstep over 3,000 feet to the summit of Lata Mountain.",
+        "url":"https://www.nps.gov/common/uploads/structured_data/3C84F785-1DD8-B71B-0B93723B92528909.jpg"
+      },
+      {
+        "credit":"NPS Photo / Eymard Bangcoro",
+        "title":"Ofu Island",
+        "altText":"Ofu Island",
+        "caption":"With a secluded sandy beach and fringing reef, Ofu unit of the park is an ideal place to snorkel or simply enjoy the solitude. The island of Olosega rises in the distance.",
+        "url":"https://www.nps.gov/common/uploads/structured_data/3C84F8DB-1DD8-B71B-0BD434E17818331B.jpg"
+      },
+      {
+        "credit":"NPS Photo / Eymard Bangcoro",
+        "title":"King Fisher bird",
+        "altText":"King Fisher bird",
+        "caption":"Birds are the most abundant and diverse animals in American Samoa, as they are on most oceanic islands.",
+        "url":"https://www.nps.gov/common/uploads/structured_data/3C84FA18-1DD8-B71B-0BD1AEF488A50F9F.jpg"
+      }
+    ],
+    "weatherInfo":"American Samoa is in the South Pacific Ocean, between the Equator and the Tropic of Capricorn. A tropical climate prevails with warm or hot temperatures year-round and high humidity. Rain showers are frequent and can last only for a few minutes or all-day. The average annual rainfall is 125-inches in the dryer areas to as much as 300-inches in the highest mountains. Tropical storms are more prevalent during the long, wet summer season (October -May) and a slightly cooler and drier season (June-September)",
+    "designation":""
   },
   {
     "name":"Arches",
@@ -11260,36 +11523,576 @@
     "designation":"National Park"
   },
   {
-    "name":"HaleakalÄ",
+    "name":"Haleakal&#257;",
     "image":"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Haleakala_Crater.jpg/200px-Haleakala_Crater.jpg",
     "location":"Hawaii",
     "date_established":"July 1, 1961",
     "area":"33,264.62 acres (134.6 km2)",
     "visitors":"994,394",
-    "description":"The HaleakalÄ volcano on Maui features a very large crater with numerous cinder cones, Hosmer's Grove of alien trees, the Kipahulu section's scenic pools of freshwater fish, and the native Hawaiian goose. The park protects the greatest number of endangered species within a U.S. National Park. (BR)\n      ",
-    "park":"Yukon-Charley Rivers NPRES",
-    "previous_month":157,
-    "current_month":88,
-    "month_diff":-69,
-    "previous_ytd":1114,
-    "current_ytd":549,
-    "ytd_diff":-565
+    "description":"This special place vibrates with stories of ancient and modern Hawaiian culture and protects the bond between the land and its people. The park also cares for endangered species, some of which exist nowhere else. Come visit this special place - renew your spirit amid stark volcanic landscapes and sub-tropical rain forest with an unforgettable hike through the backcountry.",
+    "id":"4930BAEB-A3BF-4825-9796-DCD0FD1C3BD5",
+    "park":"Haleakala NP",
+    "previous_month":98856,
+    "current_month":9608,
+    "month_diff":-89248,
+    "previous_ytd":758264,
+    "current_ytd":206448,
+    "ytd_diff":-551816,
+    "url":"https://www.nps.gov/hale/index.htm",
+    "fullName":"Haleakal&#257; National Park",
+    "parkCode":"hale",
+    "latitude":"20.70693015",
+    "longitude":"-156.1591775",
+    "latLong":"lat:20.70693015, long:-156.1591775",
+    "activities":[
+      {
+        "id":"A59947B7-3376-49B4-AD02-C0423E08C5F7",
+        "name":"Camping"
+      },
+      {
+        "id":"4A58AF13-E8FB-4530-B41A-97DF0B0C77B7",
+        "name":"Backcountry Camping"
+      },
+      {
+        "id":"B33DC9B6-0B7D-4322-BAD7-A13A34C584A3",
+        "name":"Guided Tours"
+      },
+      {
+        "id":"3DE599E2-22ED-40BF-B383-EDA073563C1E",
+        "name":"Bus/Shuttle Guided Tour"
+      },
+      {
+        "id":"BFF8C027-7C8F-480B-A5F8-CD8CE490BFBA",
+        "name":"Hiking"
+      },
+      {
+        "id":"DF4A35E0-7983-4A3E-BC47-F37B872B0F25",
+        "name":"Junior Ranger Program"
+      },
+      {
+        "id":"587BB2D3-EC35-41B2-B3F7-A39E2B088AEE",
+        "name":"Swimming"
+      },
+      {
+        "id":"24380E3F-AD9D-4E38-BF13-C8EEB21893E7",
+        "name":"Shopping"
+      }
+    ],
+    "topics":[
+      {
+        "id":"3B0D607D-9933-425A-BFA0-21529AC4734C",
+        "name":"Military"
+      },
+      {
+        "id":"3CDB67A9-1EAC-408D-88EC-F26FA35E90AF",
+        "name":"Schools and Education"
+      },
+      {
+        "id":"0D00073E-18C3-46E5-8727-2F87B112DDC6",
+        "name":"Animals"
+      },
+      {
+        "id":"41B1A0A3-11FF-4F55-9CB9-034A7E28B087",
+        "name":"Forests and Woodlands"
+      },
+      {
+        "id":"0D1FC024-52CA-4851-BEF0-8811732650DD",
+        "name":"Rainforest"
+      },
+      {
+        "id":"78E4F4AC-AF97-435A-8C2C-7FB8D67516ED",
+        "name":"Unique Species"
+      },
+      {
+        "id":"B85866E2-0897-4000-9040-605CA335804F",
+        "name":"Wilderness"
+      }
+    ],
+    "states":"HI",
+    "contacts":{
+      "phoneNumbers":[
+        {
+          "phoneNumber":"8085724400",
+          "description":"",
+          "extension":"",
+          "type":"Voice"
+        }
+      ],
+      "emailAddresses":[
+        {
+          "description":"",
+          "emailAddress":"hale_interpretation@nps.gov"
+        }
+      ]
+    },
+    "entranceFees":[
+      {
+        "cost":"30.00",
+        "description":"Entry Fee is valid for 3 days starting from the day of purchase. Please use credit cards for payment of entry fees at the Summit and Kipahulu entrance stations. All park visitors are required to purchase a recreational use pass upon entering Haleakalā National Park. Passes are non-transferable.",
+        "title":"Haleakalā National Park Private Vehicle (14 pax capacity or less) Entry Fee"
+      },
+      {
+        "cost":"25.00",
+        "description":"Entry Fee is valid for 3 days starting from the day of purchase. Please use credit cards for payment of entry fees at the Summit and Kipahulu entrance stations. All park visitors are required to purchase a recreational use pass upon entering Haleakalā National Park. Passes are non-transferable.",
+        "title":"Haleakalā National Park Private Motorcycle Entry Fee"
+      },
+      {
+        "cost":"15.00",
+        "description":"This fee is for visitors entering the park on a bicycle or on foot. Entry Fee is valid for 3 days starting from the day of purchase. Please use credit cards for payment of entry fees at the Summit and Kipahulu entrance stations. All park visitors are required to purchase a recreational use pass upon entering Haleakalā National Park. Passes are non-transferable.",
+        "title":"Haleakalā National Park Per Person Entry Fee; includes bicyclists, walk-ins, hikers"
+      },
+      {
+        "cost":"30.00",
+        "description":"Organized groups that do not qualify for Educational Fee Waivers are charged as follows: $25.00 Non-commercial vehicles with a vehicle capacity of 14 or less. $12.00 per person Non-commercial vehicles with a capacity of 15 or greater. Youth 15 and under are free. Individuals or families with any valid Annual or Lifetime pass may use their pass for entry at the per person rate. Pass and photo ID must be present upon entry.",
+        "title":"Haleakalā Natonal Park Non-Commercial Organized Groups Fee; Scouts, Rotary, Clubs, Youth Groups, Churches, Reunions"
+      }
+    ],
+    "entrancePasses":[
+      {
+        "cost":"55.00",
+        "description":"Valid for 12 months from purchase date. Admits the pass holder/s and passengers in a non-commercial vehicle (14 pax capacity or less) to Haleakala National Park, Hawai‘i Volcanoes National Park and Pu`uhonua O Hōnaunau National Historical Park. All other National Parks in Hawai‘i are free entry.",
+        "title":"Hawai‘i Tri-Park Annual Pass"
+      }
+    ],
+    "fees":[
+
+    ],
+    "directionsInfo":"Located on the island of Maui, Haleakalā National Park extends from the 10,023 foot (3055m) summit of Haleakalā down the southeast flank of the mountain to the Kīpahulu coast near Hana. These two sections of the park are not directly connected by road, but both can be reached from Kahului. There are no gas stations within the park. The last place to get gas in route to the Summit Area is in the town of Pukalani, and along the Hana Highway before Hana is in the town of is in the town of Paia.",
+    "directionsUrl":"https://www.nps.gov/hale/planyourvisit/directions.htm",
+    "operatingHours":[
+      {
+        "exceptions":[
+
+        ],
+        "description":"Crater trails are open for day use in the Summit District. Sunrise reservations are needed from 3:00 am - 7:00 am. The Kipahulu District is open 9:00 am-5:00 pm Monday-Friday.",
+        "standardHours":{
+          "wednesday":"All Day",
+          "monday":"All Day",
+          "thursday":"All Day",
+          "sunday":"All Day",
+          "tuesday":"All Day",
+          "friday":"All Day",
+          "saturday":"All Day"
+        },
+        "name":"Phased in Access due to COVID-19"
+      },
+      {
+        "exceptions":[
+
+        ],
+        "description":"Kipahulu District is open from 9:00A - 5:00P Monday through Friday.",
+        "standardHours":{
+          "wednesday":"9:00AM - 5:00PM",
+          "monday":"9:00AM - 5:00PM",
+          "thursday":"9:00AM - 5:00PM",
+          "sunday":"Closed",
+          "tuesday":"9:00AM - 5:00PM",
+          "friday":"9:00AM - 5:00PM",
+          "saturday":"Closed"
+        },
+        "name":"Kīpahulu District"
+      }
+    ],
+    "addresses":[
+      {
+        "postalCode":"96790",
+        "city":"Kula",
+        "stateCode":"HI",
+        "line1":"Haleakalā National Park",
+        "type":"Physical",
+        "line3":"",
+        "line2":"Route 378"
+      },
+      {
+        "postalCode":"96768",
+        "city":"Makawao",
+        "stateCode":"HI",
+        "line1":"Haleakalā National Park",
+        "type":"Mailing",
+        "line3":"",
+        "line2":"PO Box 369"
+      }
+    ],
+    "images":[
+      {
+        "credit":"NPS",
+        "title":"'Ahinahina blooms in Haleakala crater",
+        "altText":"'Ahinahina blooms in Haleakala crater",
+        "caption":"'Ahinahina silversword blooms in Haleakala crater",
+        "url":"https://www.nps.gov/common/uploads/structured_data/3D05E583-1DD8-B71B-0BBFF82F7F78AF6A.jpg"
+      },
+      {
+        "credit":"NPS",
+        "title":"Waimoku Waterfall",
+        "altText":"Waimoku waterfall in the park's Kipahulu District",
+        "caption":"Waimoku waterfall in the park's Kipahulu District",
+        "url":"https://www.nps.gov/common/uploads/structured_data/3D3323B6-1DD8-B71B-0B78ACA534C1D05E.jpg"
+      },
+      {
+        "credit":"NPS",
+        "title":"The Pools of ?Ohe?o in the park's Kipahulu District",
+        "altText":"The Pools of ?Ohe?o in the park's Kipahulu District",
+        "caption":"The Pools of ?Ohe?o in the park's Kipahulu District",
+        "url":"https://www.nps.gov/common/uploads/structured_data/3D771172-1DD8-B71B-0B981DA08B1FE163.jpg"
+      },
+      {
+        "credit":"NPS Photo",
+        "title":"Sunset Over the Crater",
+        "altText":"Sun setting over the volcano crater and horizon",
+        "caption":"The sun is setting over the volcano crater and horizon at Haleakela.",
+        "url":"https://www.nps.gov/common/uploads/structured_data/3C87A368-1DD8-B71B-0BD44B189D0D9368.jpg"
+      }
+    ],
+    "weatherInfo":"On any given day, the temperatures in the park can range from a high of 80°F (27°C) in Kīpahulu to a low of 30°F (-1°C) at the summit. In either area clouds and rain can quickly replace warm sunshine. Weather in the high-elevation summit and wilderness areas of the park is highly unpredictable and changes often. Cool temperatures, intense solar radiation, and rapidly moving clouds are characteristic. On average, the temperature drops about 3°F for every 1,000 foot rise in elevation.",
+    "designation":"National Park"
   },
   {
-    "name":"HawaiÊ»i Volcanoes",
+    "name":"Hawai'i Volcanoes",
     "image":"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Puu_Oo_cropped.jpg/200px-Puu_Oo_cropped.jpg",
     "location":"Hawaii",
     "date_established":"August 1, 1916",
     "area":"325,605.28 acres (1,317.7 km2)",
     "visitors":"1,368,376",
-    "description":"This park on the Big Island protects the KÄ«lauea and Mauna Loa volcanoes, two of the world's most active geological features. Diverse ecosystems range from tropical forests at sea level to barren lava beds at more than 13,000 feet (4,000 m). (WHS) (BR)\n      ",
-    "park":"Yukon-Charley Rivers NPRES",
-    "previous_month":157,
-    "current_month":88,
-    "month_diff":-69,
-    "previous_ytd":1114,
-    "current_ytd":549,
-    "ytd_diff":-565
+    "description":"Hawai‘i Volcanoes National Park protects some of the most unique geological, biological, and cultural landscapes in the world. Extending from sea level to 13,677 feet, the park encompasses the summits of two of the world's most active volcanoes - Kīlauea and Mauna Loa.",
+    "id":"D9BF4288-9AC3-4526-9598-BE8920839ACC",
+    "park":"Hawaii Volcanoes NP",
+    "previous_month":92720,
+    "current_month":25270,
+    "month_diff":-67450,
+    "previous_ytd":1033599,
+    "current_ytd":425821,
+    "ytd_diff":-607778,
+    "url":"https://www.nps.gov/havo/index.htm",
+    "fullName":"Hawai'i Volcanoes National Park",
+    "parkCode":"havo",
+    "latitude":"19.3355036",
+    "longitude":"-155.4700257",
+    "latLong":"lat:19.3355036, long:-155.4700257",
+    "activities":[
+      {
+        "id":"09DF0950-D319-4557-A57E-04CD2F63FF42",
+        "name":"Arts and Culture"
+      },
+      {
+        "id":"7CE6E935-F839-4FEC-A63E-052B1DEF39D2",
+        "name":"Biking"
+      },
+      {
+        "id":"A59947B7-3376-49B4-AD02-C0423E08C5F7",
+        "name":"Camping"
+      },
+      {
+        "id":"4A58AF13-E8FB-4530-B41A-97DF0B0C77B7",
+        "name":"Backcountry Camping"
+      },
+      {
+        "id":"9159DF0F-951D-4AAE-9987-CEB3CE2A9ADA",
+        "name":"Car or Front Country Camping"
+      },
+      {
+        "id":"B33DC9B6-0B7D-4322-BAD7-A13A34C584A3",
+        "name":"Guided Tours"
+      },
+      {
+        "id":"BFF8C027-7C8F-480B-A5F8-CD8CE490BFBA",
+        "name":"Hiking"
+      },
+      {
+        "id":"7C37B79B-D02D-49EB-9020-3DB8299B748A",
+        "name":"Backcountry Hiking"
+      },
+      {
+        "id":"45261C0A-00D8-4C27-A1F8-029F933A0D34",
+        "name":"Front-Country Hiking"
+      },
+      {
+        "id":"DF4A35E0-7983-4A3E-BC47-F37B872B0F25",
+        "name":"Junior Ranger Program"
+      },
+      {
+        "id":"0B685688-3405-4E2A-ABBA-E3069492EC50",
+        "name":"Wildlife Watching"
+      },
+      {
+        "id":"5A2C91D1-50EC-4B24-8BED-A2E11A1892DF",
+        "name":"Birdwatching"
+      },
+      {
+        "id":"0C0D142F-06B5-4BE1-8B44-491B90F93DEB",
+        "name":"Park Film"
+      },
+      {
+        "id":"C8F98B28-3C10-41AE-AA99-092B3B398C43",
+        "name":"Museum Exhibits"
+      },
+      {
+        "id":"24380E3F-AD9D-4E38-BF13-C8EEB21893E7",
+        "name":"Shopping"
+      },
+      {
+        "id":"467DC8B8-0B7D-436D-A026-80A22358F615",
+        "name":"Bookstore and Park Store"
+      },
+      {
+        "id":"43800AD1-D439-40F3-AAB3-9FB651FE45BB",
+        "name":"Gift Shop and Souvenirs"
+      }
+    ],
+    "topics":[
+      {
+        "id":"7F81A0CB-B91F-4896-B9A5-41BE9A54A27B",
+        "name":"Archeology"
+      },
+      {
+        "id":"00F3C3F9-2D67-4802-81AE-CCEA5D3BA370",
+        "name":"Arts"
+      },
+      {
+        "id":"571E1597-4C6A-4814-A7E9-FC4EF8293CE8",
+        "name":"Music"
+      },
+      {
+        "id":"3CDB67A9-1EAC-408D-88EC-F26FA35E90AF",
+        "name":"Schools and Education"
+      },
+      {
+        "id":"0D00073E-18C3-46E5-8727-2F87B112DDC6",
+        "name":"Animals"
+      },
+      {
+        "id":"957EF2BD-AC6C-4B7B-BD9A-87593ADC6691",
+        "name":"Birds"
+      },
+      {
+        "id":"5BE55D7F-BDB6-4E3D-AC35-2D8EBB974417",
+        "name":"Trails"
+      },
+      {
+        "id":"78E4F4AC-AF97-435A-8C2C-7FB8D67516ED",
+        "name":"Unique Species"
+      },
+      {
+        "id":"489D6333-FD72-44DF-83B0-3D4412DD0A75",
+        "name":"Endangered"
+      }
+    ],
+    "states":"HI",
+    "contacts":{
+      "phoneNumbers":[
+        {
+          "phoneNumber":"8089856000",
+          "description":"",
+          "extension":"",
+          "type":"Voice"
+        },
+        {
+          "phoneNumber":"8089856004",
+          "description":"",
+          "extension":"",
+          "type":"Fax"
+        }
+      ],
+      "emailAddresses":[
+        {
+          "description":"",
+          "emailAddress":"havo_information@nps.gov"
+        }
+      ]
+    },
+    "entranceFees":[
+      {
+        "cost":"30.00",
+        "description":"Admits one private non-commercial vehicle (capacity 15 or less) and all of its passengers. Valid for 7 days. Organized non-profit groups, (service organizations, scouts, church groups, college/school clubs) are not eligible.",
+        "title":"Hawai‘i Volcanoes National Park - Private Vehicle"
+      },
+      {
+        "cost":"25.00",
+        "description":"Per motorcycle - Valid for 7 days",
+        "title":"Hawai‘i Volcanoes National Park - Motorcycle"
+      },
+      {
+        "cost":"15.00",
+        "description":"Per bicycle - Valid for 7 days",
+        "title":"Hawai‘i Volcanoes National Park - Bicycle"
+      },
+      {
+        "cost":"15.00",
+        "description":"Per walk-in pedestrian - valid for 7 days",
+        "title":"Hawai‘i Volcanoes National Park - Individual"
+      },
+      {
+        "cost":"15.00",
+        "description":"Non-commercial groups entering the park in a bus or vehicle with a capacity of 16 persons or more will be charged $15.00 for each person on board. Exceptions: Anyone who is 15 or younger is exempt from paying an entrance fee. Passes may be used for entry as defined on the back of the pass. In many cases the driver will have been hired for transportation only and is exempt from paying the entrance fee. The total fee charged will not exceed the equivalent commercial fee for that type of vehicle.",
+        "title":"Hawai‘i Volcanoes National Park - Groups"
+      }
+    ],
+    "entrancePasses":[
+      {
+        "cost":"55.00",
+        "description":"An annual tri-park pass allows access for 1 full year from date of first use at Hawai‘i Volcanoes National Park, Haleakalā National Park, and Pu‘uhonua o Hōnaunau National Historical Park.",
+        "title":"Hawai‘i Tri-Park Pass"
+      }
+    ],
+    "fees":[
+
+    ],
+    "directionsInfo":"Hawai‘i Volcanoes National Park is located on the island of Hawai‘i. From Hilo: 30 miles southwest on Highway 11 (a 45 minute drive); from Kailua-Kona: 96 miles southeast on Highway 11 (2 to 2 1/2 hour drive), or 125 miles through Waimea and Hilo via highways 19 and 11 (2 1/2 to 3 hours).",
+    "directionsUrl":"http://www.nps.gov/havo/planyourvisit/directions.htm",
+    "operatingHours":[
+      {
+        "exceptions":[
+
+        ],
+        "description":"Hawai‘i Volcanoes National Park is open 7 days a week, 24 hours a day including holidays.",
+        "standardHours":{
+          "wednesday":"All Day",
+          "monday":"All Day",
+          "thursday":"All Day",
+          "sunday":"All Day",
+          "tuesday":"All Day",
+          "friday":"All Day",
+          "saturday":"All Day"
+        },
+        "name":"Hawai‘i Volcanoes National Park"
+      },
+      {
+        "exceptions":[
+          {
+            "exceptionHours":{
+              "wednesday":"Closed",
+              "monday":"Closed",
+              "thursday":"9:00AM - 4:00PM",
+              "sunday":"9:00AM - 4:00AM",
+              "tuesday":"Closed",
+              "friday":"9:00AM - 4:00PM",
+              "saturday":"9:00AM - 4:00PM"
+            },
+            "startDate":"2020-10-01",
+            "name":"Phased Reopening – Some Areas Remain Closed Due to COVID-19",
+            "endDate":"2020-10-31"
+          }
+        ],
+        "description":"The Kahuku Unit is open on Wednesdays, Thursdays, Fridays, Saturdays and Sundays from 9 a.m. to 4 p.m. and is closed on Mondays and Tuesdays.",
+        "standardHours":{
+          "wednesday":"9:00AM - 4:00PM",
+          "monday":"Closed",
+          "thursday":"9:00AM - 4:00PM",
+          "sunday":"9:00AM - 4:00PM",
+          "tuesday":"Closed",
+          "friday":"9:00AM - 4:00PM",
+          "saturday":"9:00AM - 4:00PM"
+        },
+        "name":"Kahuku Unit"
+      }
+    ],
+    "addresses":[
+      {
+        "postalCode":"96718",
+        "city":"Hawaii National Park",
+        "stateCode":"HI",
+        "line1":"1 Crater Rim Drive",
+        "type":"Physical",
+        "line3":"",
+        "line2":""
+      },
+      {
+        "postalCode":"96718",
+        "city":"Hawaii National Park",
+        "stateCode":"HI",
+        "line1":"P.O. Box 52",
+        "type":"Mailing",
+        "line3":"",
+        "line2":""
+      }
+    ],
+    "images":[
+      {
+        "credit":"Courtesy of J. Frank",
+        "title":"Halapē",
+        "altText":"Rocky coastline with palm trees and a cliff beyon",
+        "caption":"Coastline of Hawaiʻi Volcanoes National Park",
+        "url":"https://www.nps.gov/common/uploads/structured_data/C4E8415A-08E5-5976-833F494FFCA3FFE6.jpg"
+      },
+      {
+        "credit":"NPS Photo/J. Wei",
+        "title":"Kīlauea Iki",
+        "altText":"A cloud-filled volcanic crater at sunrise with a mountain rising behind",
+        "caption":"Sunrise at Kīlauea Iki",
+        "url":"https://www.nps.gov/common/uploads/structured_data/C5AEDF53-AE4A-F6DB-2FBA7BE158386C0E.jpg"
+      },
+      {
+        "credit":"NPS Photo/A. LaValle",
+        "title":"Hōlei Pali",
+        "altText":"Lava flows and ferns in front of a cliff at sunset",
+        "caption":"Lava flows from the Mauna Ulu eruption drape the Hōlei Pali",
+        "url":"https://www.nps.gov/common/uploads/structured_data/C5D3655B-BF42-2E22-8068376035581BB2.jpg"
+      },
+      {
+        "credit":"NPS Photo/A. LaValle",
+        "title":"Steam Vents",
+        "altText":"Trees and tall grass through steam at sunrise",
+        "caption":"Wahinekapu (Steaming Bluff)",
+        "url":"https://www.nps.gov/common/uploads/structured_data/C69391EE-FBFA-BC85-885A49C4BD5CEC8D.jpg"
+      },
+      {
+        "credit":"NPS Photo/A. LaValle",
+        "title":"The Kahuku Unit",
+        "altText":"Grassy hill dotted with trees underneath a blue sky with white clouds",
+        "caption":"The Kahuku Unit of Hawaiʻi Volcanoes National Park",
+        "url":"https://www.nps.gov/common/uploads/structured_data/C8E997AB-E2A8-0AE2-346A65CEE6B0FD30.jpg"
+      },
+      {
+        "credit":"NPS Photo/A. LaValle",
+        "title":"Tide Pools",
+        "altText":"Green vegetation in tide pools on a rocky ocean coastline",
+        "caption":"Tide pools along the Puna Coast",
+        "url":"https://www.nps.gov/common/uploads/structured_data/C4C64AE6-092B-A593-7727CAE9487AC462.jpg"
+      },
+      {
+        "credit":"NPS Photo/D. Boyle",
+        "title":"Nāhuku",
+        "altText":"A lava tube lit by warm electric light",
+        "caption":"Nāhuku (Thurston Lava Tube)",
+        "url":"https://www.nps.gov/common/uploads/structured_data/C44A654D-DEFB-02B3-2EECDD47FA6BF2D8.jpg"
+      },
+      {
+        "credit":"NPS Photo/A. LaValle",
+        "title":"Lava Trees",
+        "altText":"A lava tree in a black lava field with small living trees and a rainbow behind",
+        "caption":"Lava trees stand frozen in time where molten lava flowed",
+        "url":"https://www.nps.gov/common/uploads/structured_data/C524CE8E-BE01-B3D1-E9ED35AC2B79F2ED.jpg"
+      },
+      {
+        "credit":"NPS Photo/A. LaValle",
+        "title":"Mauna Loa Summit",
+        "altText":"A cinder cone at sunrise from the edge of a volcanic caldera",
+        "caption":"Mauna Loa is the largest active volcano on earth",
+        "url":"https://www.nps.gov/common/uploads/structured_data/C5E6F2CA-079C-5C06-22971CC751CCDE9F.jpeg"
+      },
+      {
+        "credit":"NPS Photo",
+        "title":"ʻAe Fern",
+        "altText":"Ferns rising from a lava field",
+        "caption":"About 200 species of ferns can be found across the Hawaiian Islands. Sixty-five percent of these species are considered endemic, found nowhere else in the world.",
+        "url":"https://www.nps.gov/common/uploads/structured_data/C6149CE4-DFB9-DECE-57311912C897C228.jpg"
+      },
+      {
+        "credit":"NPS Photo/J. Wei",
+        "title":"ʻŌhiʻa",
+        "altText":"Red ʻōhiʻa blossom",
+        "caption":"The red blossoms of the ʻōhiʻa are a Hawaiian cultural icon",
+        "url":"https://www.nps.gov/common/uploads/structured_data/C6730400-9060-5187-6DA91D10ADF30A99.jpg"
+      },
+      {
+        "credit":"NPS Photo/J. Wei",
+        "title":"Nēnē",
+        "altText":"Nēnē spreading winds on edge of a crater",
+        "caption":"The threatened nēnē is the official state bird of Hawaiʻi",
+        "url":"https://www.nps.gov/common/uploads/structured_data/C63A45B4-9A0C-F1E4-39696608B85665D0.jpg"
+      }
+    ],
+    "weatherInfo":"The weather at Kīlauea's summit (4000' elevation) varies daily and may be rainy and chilly any time of the year. Temperature varies by elevation. At the summit of the volcano, temperatures may be 12 to 15 degrees cooler than at sea level. The coastal plain at the end of Chain of Craters Road, where lava crossed the road in 2003, is often hot, dry, and windy with the possibility of passing showers.",
+    "designation":"National Park"
   },
   {
     "name":"Hot Springs",
@@ -23066,20 +23869,516 @@
     "designation":"National Park"
   },
   {
-    "name":"Wrangellâ€“St. Elias *",
+    "name":"Wrangell - St Elias",
     "image":"https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/MountJarvis.jpg/200px-MountJarvis.jpg",
     "location":"Alaska",
     "date_established":"December 2, 1980",
     "area":"8,323,146.48 acres (33,682.6 km2)",
     "visitors":"74,518",
-    "description":"An over 8 million acres (32,375 km) plot of mountainous countryâ€”the largest national park in the systemâ€”protects the convergence of the Alaska, Chugach, and Wrangell-Saint Elias Ranges, which include many of the continent's tallest mountains and volcanoes, including the 18,008-foot Mount Saint Elias. More than a quarter of the park is covered with glaciers, including the tidewater Hubbard Glacier, piedmont Malaspina Glacier, and valley Nabesna Glacier. (WHS)\n      ",
-    "park":"Yukon-Charley Rivers NPRES",
-    "previous_month":157,
-    "current_month":88,
-    "month_diff":-69,
-    "previous_ytd":1114,
-    "current_ytd":549,
-    "ytd_diff":-565
+    "description":"Wrangell-St. Elias is a vast national park that rises from the ocean all the way up to 18,008 ft. At 13.2 million acres, the park is the same size as Yellowstone National Park, Yosemite National Park, and Switzerland combined! Within this wild landscape, people continue to live off the land as they have done for centuries. This rugged, beautiful land is filled with opportunities for adventure.",
+    "id":"B7944940-3FE5-4F9B-80AB-2FD78A4CDD48",
+    "park":"Wrangell-St. Elias NP & PRES",
+    "previous_month":7855,
+    "current_month":3320,
+    "month_diff":-4535,
+    "previous_ytd":73893,
+    "current_ytd":16030,
+    "ytd_diff":-57863,
+    "url":"https://www.nps.gov/wrst/index.htm",
+    "fullName":"Wrangell - St Elias National Park & Preserve",
+    "parkCode":"wrst",
+    "latitude":"61.4182147",
+    "longitude":"-142.6028439",
+    "latLong":"lat:61.4182147, long:-142.6028439",
+    "activities":[
+      {
+        "id":"09DF0950-D319-4557-A57E-04CD2F63FF42",
+        "name":"Arts and Culture"
+      },
+      {
+        "id":"5F723BAD-7359-48FC-98FA-631592256E35",
+        "name":"Auto and ATV"
+      },
+      {
+        "id":"BBC79C28-EBA7-4CE9-8614-02D00AA21558",
+        "name":"ATV Off-Roading"
+      },
+      {
+        "id":"DC668D29-297C-4D16-B6F8-89A67D9E19E3",
+        "name":"Auto Off-Roading"
+      },
+      {
+        "id":"0B4A5320-216D-451A-9990-626E1D5ACE28",
+        "name":"Scenic Driving"
+      },
+      {
+        "id":"7CE6E935-F839-4FEC-A63E-052B1DEF39D2",
+        "name":"Biking"
+      },
+      {
+        "id":"299CB934-88DC-474F-A33D-E43E29A149C2",
+        "name":"Mountain Biking"
+      },
+      {
+        "id":"071BA73C-1D3C-46D4-A53C-00D5602F7F0E",
+        "name":"Boating"
+      },
+      {
+        "id":"A59947B7-3376-49B4-AD02-C0423E08C5F7",
+        "name":"Camping"
+      },
+      {
+        "id":"4A58AF13-E8FB-4530-B41A-97DF0B0C77B7",
+        "name":"Backcountry Camping"
+      },
+      {
+        "id":"907E8125-15E4-483C-8EAD-B9FA1E85C6F8",
+        "name":"Canoe or Kayak Camping"
+      },
+      {
+        "id":"9159DF0F-951D-4AAE-9987-CEB3CE2A9ADA",
+        "name":"Car or Front Country Camping"
+      },
+      {
+        "id":"7CFF5F03-5ECC-4F5A-8572-75D1F0976C0C",
+        "name":"Group Camping"
+      },
+      {
+        "id":"C5C5971C-E325-4CEB-8C81-EE49A881DF17",
+        "name":"RV Camping"
+      },
+      {
+        "id":"07CBCA6A-46B8-413F-8B6C-ABEDEBF9853E",
+        "name":"Canyoneering"
+      },
+      {
+        "id":"B12FAAB9-713F-4B38-83E4-A273F5A43C77",
+        "name":"Climbing"
+      },
+      {
+        "id":"977B3209-68A2-4BCE-97A9-EA0CAC320664",
+        "name":"Mountain Climbing"
+      },
+      {
+        "id":"AE42B46C-E4B7-4889-A122-08FE180371AE",
+        "name":"Fishing"
+      },
+      {
+        "id":"25FB188F-5AAD-459A-9092-28A9801709FF",
+        "name":"Freshwater Fishing"
+      },
+      {
+        "id":"9BC03FAF-28F1-4609-BF6F-643F58071AED",
+        "name":"Fly Fishing"
+      },
+      {
+        "id":"17411C8D-5769-4D0F-ABD1-52ED03840C18",
+        "name":"Saltwater Fishing"
+      },
+      {
+        "id":"1DFACD97-1B9C-4F5A-80F2-05593604799E",
+        "name":"Food"
+      },
+      {
+        "id":"E53E1320-9B17-41DC-86A5-37EB7D622572",
+        "name":"Dining"
+      },
+      {
+        "id":"C6D3230A-2CEA-4AFE-BFF3-DC1E2C2C4BB4",
+        "name":"Picnicking"
+      },
+      {
+        "id":"D72206E4-6CD1-4441-A355-F8F1827466B1",
+        "name":"Flying"
+      },
+      {
+        "id":"C06FE528-9671-4EC1-909F-B7D3720A1D89",
+        "name":"Fixed Wing Flying"
+      },
+      {
+        "id":"B33DC9B6-0B7D-4322-BAD7-A13A34C584A3",
+        "name":"Guided Tours"
+      },
+      {
+        "id":"C7D5A145-F8EB-4C37-9E92-2F6C6206B196",
+        "name":"Self-Guided Tours - Auto"
+      },
+      {
+        "id":"BFF8C027-7C8F-480B-A5F8-CD8CE490BFBA",
+        "name":"Hiking"
+      },
+      {
+        "id":"7C37B79B-D02D-49EB-9020-3DB8299B748A",
+        "name":"Backcountry Hiking"
+      },
+      {
+        "id":"45261C0A-00D8-4C27-A1F8-029F933A0D34",
+        "name":"Front-Country Hiking"
+      },
+      {
+        "id":"8386EEAF-985F-4DE8-9037-CCF91975AC94",
+        "name":"Hunting and Gathering"
+      },
+      {
+        "id":"8286295F-0932-4491-9350-280C9848E6AB",
+        "name":"Gathering and Foraging"
+      },
+      {
+        "id":"25559F45-F162-4B8B-BEC2-B341034A2AF4",
+        "name":"Hunting"
+      },
+      {
+        "id":"4D224BCA-C127-408B-AC75-A51563C42411",
+        "name":"Paddling"
+      },
+      {
+        "id":"75B92BEB-A36D-4064-88B7-92EEC6D17611",
+        "name":"Whitewater Rafting"
+      },
+      {
+        "id":"DF4A35E0-7983-4A3E-BC47-F37B872B0F25",
+        "name":"Junior Ranger Program"
+      },
+      {
+        "id":"7C912B83-1B1B-4807-9B66-97C12211E48E",
+        "name":"Snowmobiling"
+      },
+      {
+        "id":"01D717BC-18BB-4FE4-95BA-6B13AD702038",
+        "name":"Snowshoeing"
+      },
+      {
+        "id":"0B685688-3405-4E2A-ABBA-E3069492EC50",
+        "name":"Wildlife Watching"
+      },
+      {
+        "id":"5A2C91D1-50EC-4B24-8BED-A2E11A1892DF",
+        "name":"Birdwatching"
+      },
+      {
+        "id":"0C0D142F-06B5-4BE1-8B44-491B90F93DEB",
+        "name":"Park Film"
+      },
+      {
+        "id":"C8F98B28-3C10-41AE-AA99-092B3B398C43",
+        "name":"Museum Exhibits"
+      },
+      {
+        "id":"24380E3F-AD9D-4E38-BF13-C8EEB21893E7",
+        "name":"Shopping"
+      },
+      {
+        "id":"467DC8B8-0B7D-436D-A026-80A22358F615",
+        "name":"Bookstore and Park Store"
+      }
+    ],
+    "topics":[
+      {
+        "id":"7F81A0CB-B91F-4896-B9A5-41BE9A54A27B",
+        "name":"Archeology"
+      },
+      {
+        "id":"00F3C3F9-2D67-4802-81AE-CCEA5D3BA370",
+        "name":"Arts"
+      },
+      {
+        "id":"9BD60DC0-C82B-42BA-A170-456B7423429D",
+        "name":"Photography"
+      },
+      {
+        "id":"B912363F-771C-4098-BA3A-938DF38A9D7E",
+        "name":"Aviation"
+      },
+      {
+        "id":"12EA2B56-17EC-410A-A10D-BFBA87A0669B",
+        "name":"Explorers and Expeditions"
+      },
+      {
+        "id":"A1BAF33E-EA84-4608-A888-4CEE9541F027",
+        "name":"Native American Heritage"
+      },
+      {
+        "id":"0D00073E-18C3-46E5-8727-2F87B112DDC6",
+        "name":"Animals"
+      },
+      {
+        "id":"957EF2BD-AC6C-4B7B-BD9A-87593ADC6691",
+        "name":"Birds"
+      },
+      {
+        "id":"324C31EC-7D75-41C7-AA28-EF8ACB5B6BF5",
+        "name":"Bison"
+      },
+      {
+        "id":"2539614A-9646-446E-8251-34D3AAE068FA",
+        "name":"Cats (wild)"
+      },
+      {
+        "id":"1608649A-E7D7-4529-BD83-074C90F9FB68",
+        "name":"Fish"
+      },
+      {
+        "id":"9576386A-C84F-4436-9094-C5CD67A672CC",
+        "name":"Wolves"
+      },
+      {
+        "id":"77B7EFDF-1A74-409C-8BA2-324EC919DB0E",
+        "name":"Arctic"
+      },
+      {
+        "id":"C8F16A24-90B7-47D9-B2E0-5F2A9237D0F4",
+        "name":"Tundra"
+      },
+      {
+        "id":"4DC11D06-00F1-4A01-81D0-89CCCCE4FF50",
+        "name":"Climate Change"
+      },
+      {
+        "id":"46FC5CBD-9AD5-48F1-B4DA-1357031B1D2E",
+        "name":"Coasts, Islands and Atolls"
+      },
+      {
+        "id":"04A39AB8-DD02-432F-AE5F-BA1267D41A0D",
+        "name":"Fire"
+      },
+      {
+        "id":"41B1A0A3-11FF-4F55-9CB9-034A7E28B087",
+        "name":"Forests and Woodlands"
+      },
+      {
+        "id":"762170E5-0747-4836-B837-7F2547D3F733",
+        "name":"Coniferous Forests"
+      },
+      {
+        "id":"F6D3A52E-608F-47D6-96DF-1FD64122A2FC",
+        "name":"Fossils and Paleontology"
+      },
+      {
+        "id":"66FB98FF-DAFC-4AD0-89C3-E181870E03A5",
+        "name":"Dinosaur"
+      },
+      {
+        "id":"F0F97E32-2F29-41B4-AF98-9FBE8DAB36B1",
+        "name":"Geology"
+      },
+      {
+        "id":"087E5290-E130-49C1-ADFB-DAFB0644DBE4",
+        "name":"Mineral Deposits"
+      },
+      {
+        "id":"FBB14C45-1663-4714-9D28-B2B99874644D",
+        "name":"Glaciers"
+      },
+      {
+        "id":"1CF1F6BB-A037-445B-8CF2-81428E50CE52",
+        "name":"Lakes"
+      },
+      {
+        "id":"101F4D51-F99D-45A6-BBB6-CD481E5FACED",
+        "name":"Mountains"
+      },
+      {
+        "id":"A7359FC4-DAD8-45F5-AF15-7FF62F816ED3",
+        "name":"Night Sky"
+      },
+      {
+        "id":"B5E62BF4-5AE6-4100-8DE1-66652943FAEC",
+        "name":"Aurora Borealis"
+      },
+      {
+        "id":"5BE55D7F-BDB6-4E3D-AC35-2D8EBB974417",
+        "name":"Trails"
+      },
+      {
+        "id":"90F8744F-CD10-4925-955C-064CB1A17EB0",
+        "name":"Volcanoes"
+      },
+      {
+        "id":"BA12B386-49EA-46B0-9121-FCACACC47538",
+        "name":"Watersheds"
+      },
+      {
+        "id":"B85866E2-0897-4000-9040-605CA335804F",
+        "name":"Wilderness"
+      }
+    ],
+    "states":"AK",
+    "contacts":{
+      "phoneNumbers":[
+        {
+          "phoneNumber":"9078225234",
+          "description":"",
+          "extension":"",
+          "type":"Voice"
+        },
+        {
+          "phoneNumber":"9078223281",
+          "description":"",
+          "extension":"",
+          "type":"Fax"
+        }
+      ],
+      "emailAddresses":[
+        {
+          "description":"",
+          "emailAddress":"wrst_info@nps.gov"
+        }
+      ]
+    },
+    "entranceFees":[
+      {
+        "cost":"0.00",
+        "description":"Fee free park",
+        "title":"Entrance Fee"
+      }
+    ],
+    "entrancePasses":[
+
+    ],
+    "fees":[
+
+    ],
+    "directionsInfo":"The administrative building and main park visitor center are located along the Richardson Highway (Hwy 4), which is a paved state highway that runs through Copper Center, AK. The buildings are 8 miles south of the Glenn Highway and Richardson Highway intersection near Glennallen, Alaska. This is approximately 200 miles east of Anchorage, AK and 250 miles south of Fairbanks, AK.",
+    "directionsUrl":"http://www.nps.gov/wrst/planyourvisit/wrangell-st-elias-visitor-center.htm",
+    "operatingHours":[
+      {
+        "exceptions":[
+          {
+            "exceptionHours":{
+              "wednesday":"Closed",
+              "monday":"Closed",
+              "thursday":"Closed",
+              "sunday":"Closed",
+              "tuesday":"Closed",
+              "friday":"Closed",
+              "saturday":"Closed"
+            },
+            "startDate":"2020-07-01",
+            "name":"Covid-19 Limited Operations",
+            "endDate":"2020-09-20"
+          },
+          {
+            "exceptionHours":{
+              "wednesday":"Closed",
+              "monday":"Closed",
+              "thursday":"Closed",
+              "sunday":"Closed",
+              "tuesday":"Closed",
+              "friday":"Closed",
+              "saturday":"Closed"
+            },
+            "startDate":"2020-10-01",
+            "name":"Fall/Winter CLOSED October thru April",
+            "endDate":"2021-04-30"
+          }
+        ],
+        "description":"The park and public lands are always open but visitor facilities have limited hours:  \nOpen Summer. CLOSED Fall/Winter/Spring - October through April. Due to the covid-19 pandemic and the safety of visitors and staff, visitor services are available beginning July 1st, 2020. Limited operations include window service at Slana, Copper Center and Chitina. Dial-a-Ranger at Slana (907) 822-7401, Copper Center (907) 822-7250, Chitina (907) 823-2205 and Kennecott (907) 205-7106.",
+        "standardHours":{
+          "wednesday":"Closed",
+          "monday":"Closed",
+          "thursday":"Closed",
+          "sunday":"Closed",
+          "tuesday":"Closed",
+          "friday":"Closed",
+          "saturday":"Closed"
+        },
+        "name":"Wrangell-St. Elias National Park and Preserve"
+      }
+    ],
+    "addresses":[
+      {
+        "postalCode":"99573",
+        "city":"Copper Center",
+        "stateCode":"AK",
+        "line1":"Wrangell-St. Elias National Park & Preserve",
+        "type":"Physical",
+        "line3":"",
+        "line2":"Mile 106.8 Richardson Highway"
+      },
+      {
+        "postalCode":"99573",
+        "city":"Copper Center",
+        "stateCode":"AK",
+        "line1":"Wrangell-St. Elias National Park & Preserve",
+        "type":"Mailing",
+        "line3":"Mile 106.8 Richardson Highway",
+        "line2":"PO Box 439"
+      }
+    ],
+    "images":[
+      {
+        "credit":"NPS Photo/ Bryan Petrtyl",
+        "title":"Backpackers in Mentasta Mountains",
+        "altText":"Two backpackers sitting in an alpine meadow with snowy mountains in the background",
+        "caption":"Wrangell-St. Elias National Park is a backpacker's paradise.  A variety of routes take you into beautiful country, including the Mentasta Mountains.",
+        "url":"https://www.nps.gov/common/uploads/structured_data/3C7AAC04-1DD8-B71B-0B6534785C41D6B5.jpg"
+      },
+      {
+        "credit":"NPS Photo/ Neal Herbert",
+        "title":"Icy Bay with Mt. St. Elias",
+        "altText":"Glaciers loom over the ocean with large snowy mountains rising into blue skies",
+        "caption":"Wrangell-St. Elias National Park contains a diversity of natural features.  Landscapes unique to the North American continent are common here.",
+        "url":"https://www.nps.gov/common/uploads/structured_data/3C7AAD63-1DD8-B71B-0BCE10FFD741A687.jpg"
+      },
+      {
+        "credit":"NPS Photo/ Matthew Yarbrough",
+        "title":"Kennecott Mill Town",
+        "altText":"Historic, large, red buildings with mountains in the background",
+        "caption":"Kennecott Mines National Historic Landmark is found within Wrangell-St. Elias National Park.  This early 1900's copper mining operation overcame numerous challenges and found success in the heart of the Alaskan wilderness.",
+        "url":"https://www.nps.gov/common/uploads/structured_data/3C7AB124-1DD8-B71B-0B224A3B96A7304E.jpg"
+      },
+      {
+        "credit":"NPS Photo/ Bryan Petrtyl",
+        "title":"Logan Glacier",
+        "altText":"A large glacier with stripes of different colored rock nestled in between barren mountain slopes.",
+        "caption":"Wrangell-St. Elias National Park contains the greatest concentration of glaciers in North America.  More than 3000 glaciers covering over three million acres of land are found in the park.",
+        "url":"https://www.nps.gov/common/uploads/structured_data/3C7AB2FD-1DD8-B71B-0BC380F8D220B0BA.jpg"
+      },
+      {
+        "credit":"NPS Photo/ Bryan Petrtyl",
+        "title":"Wrangell Mountains",
+        "altText":"Four large snow covered mountains rise above dense forest into blue skies.",
+        "caption":"The Wrangell Mountains dominate the view of the northern half of the park.   This range lies entirely within the park and reaches 16,390 ft (4,996 m) in height.",
+        "url":"https://www.nps.gov/common/uploads/structured_data/3C7AB5F0-1DD8-B71B-0B0A0B409DEAB3ED.jpg"
+      },
+      {
+        "credit":"National Park Service",
+        "title":"Copper Center Visitor Center",
+        "altText":"Copper Center Visitor Center",
+        "caption":"Copper Center Visitor Center",
+        "url":"https://www.nps.gov/common/uploads/structured_data/9DC3E3D5-D69E-D0CC-CB5DDBE505175B32.jpg"
+      },
+      {
+        "credit":"National Park Service",
+        "title":"Slana Ranger Station",
+        "altText":"Slana Ranger Station",
+        "caption":"Slana Ranger Station",
+        "url":"https://www.nps.gov/common/uploads/structured_data/9DCBE069-A954-BD79-5281A59DC8A04EDE.jpg"
+      },
+      {
+        "credit":"National Park Service",
+        "title":"Chitina Ranger Station",
+        "altText":"Chitina Ranger Station",
+        "caption":"Chitina Ranger Station",
+        "url":"https://www.nps.gov/common/uploads/structured_data/9DD39775-F416-41FB-469ABEA4388BD8F2.jpg"
+      },
+      {
+        "credit":"National Park Service",
+        "title":"Kennecott Visitor Center",
+        "altText":"Kennecott Visitor Center in the historic Blackburn School",
+        "caption":"Kennecott Visitor Center in the historic Blackburn School",
+        "url":"https://www.nps.gov/common/uploads/structured_data/9DE230BE-C2B2-38C5-DF6FF368C1AB8F0B.jpg"
+      },
+      {
+        "credit":"National Park Service",
+        "title":"Yakutat coastal area",
+        "altText":"Yakutat coastal area",
+        "caption":"Yakutat coastal area",
+        "url":"https://www.nps.gov/common/uploads/structured_data/9DED0407-CD98-60E5-7965642A3CD2DA0D.jpg"
+      }
+    ],
+    "weatherInfo":"Varies widely depending on location in park and time of year. Visit https://www.nps.gov/wrst/planyourvisit/weather.htm for detailed information.",
+    "designation":"National Park & Preserve"
   },
   {
     "name":"Yellowstone",
