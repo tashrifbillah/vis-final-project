@@ -3,6 +3,7 @@
  */
 
 const TABLE_IDS = {
+  "American Samoa": "6E71B72E-4F2F-495D-9225-A6634E6C2EB1",
   "Black Canyon of the Gunnison":"BDBD573F-97EF-44E7-A579-471679F2C42A",
   "Bryce Canyon":"6B1D053D-714F-46D1-B410-04BE868F14C1",
   "Canyonlands":"319E07D8-E176-41F8-98A9-1E3F8099D0AB",
@@ -17,8 +18,8 @@ const TABLE_IDS = {
   "Grand Canyon *":"B7FF43E5-3A95-4C8E-8DBE-72D8608D6588",
   "Great Basin":"4C1A549B-080F-4522-9CA7-67BB5A0845CA",
   "Great Smoky Mountains":"D9819727-18DF-4A84-BDDE-D4F2696DE340",
-  "HaleakalÄ":"4930BAEB-A3BF-4825-9796-DCD0FD1C3BD5",
-  "HawaiÊ»i Volcanoes":"D9BF4288-9AC3-4526-9598-BE8920839ACC",
+  "Haleakal":"4930BAEB-A3BF-4825-9796-DCD0FD1C3BD5",
+  "Hawaii Volcanoes":"D9BF4288-9AC3-4526-9598-BE8920839ACC",
   "Hot Springs":"ED9C0322-68FB-4DE1-A884-61C623281C9D",
   "Indiana Dunes":"473EFACE-EE15-4A4F-AA6C-666810A9E27D",
   "Isle Royale":"0F6893CF-FC15-4AC5-8C95-E70FC9C21B1A",
@@ -60,7 +61,7 @@ const TABLE_IDS = {
   "Theodore Roosevelt":"B5FE5682-7981-47DD-AC96-13F4B33A466E",
   "Virgin Islands":"C65070FE-942C-4E00-8C2B-64CA33C85B4A",
   "White Sands":"32D2B528-193E-43FA-BF38-32493D9E317D",
-  "Wrangellâ€“St. Elias *":"B7944940-3FE5-4F9B-80AB-2FD78A4CDD48",
+  "WrangellSt.Elias *":"B7944940-3FE5-4F9B-80AB-2FD78A4CDD48",
   "Yellowstone":"F58C6D24-8D10-4573-9826-65D42B8B83AD",
   "Yosemite *":"4324B2B4-D1A3-497F-8E6B-27171FAE4DB2",
   "Zion":"41BAB8ED-C95F-447D-9DA1-FCC4E4D808B2"
@@ -73,7 +74,7 @@ const defaultExtract = el => $(el).text().split("\n")[0]
 
 // Functions to get each piece of data
 const extractors = {
-  name: el => $(el).text().replace(/\s+$/, ''),
+  name: el => $(el).text().replace(/\s+$/, '').replace(/[^\x00-\x7F]/g, ""),
   image: el => 'https:' + $('img', el).attr('src'),
   location: el => $(el).text().split(/\d/)[0],
   date_established: defaultExtract,
@@ -106,6 +107,7 @@ console.log(tableRows)
  */
 
 const CSV_TO_WIKI_NAMES = {
+  "National Park of American Samoa": "American Samoa",
   "Black Canyon of the Gunnison NP": "Black Canyon of the Gunnison",
   "Bryce Canyon NP": "Bryce Canyon",
   "Canyonlands NP": "Canyonlands",
@@ -120,8 +122,8 @@ const CSV_TO_WIKI_NAMES = {
   "Grand Canyon NP": "Grand Canyon *",
   "Great Basin NP": "Great Basin",
   "Great Smoky Mountains NP": "Great Smoky Mountains",
-  "Haleakala NP": "HaleakalÃ„",
-  "Hawaii Volcanoes NP": "HawaiÃŠÂ»i Volcanoes",
+  "Haleakala NP": "Haleakal",
+  "Hawaii Volcanoes NP": "Hawaii Volcanoes",
   "Hot Springs NP": "Hot Springs",
   "Indiana Dunes NP": "Indiana Dunes",
   "Isle Royale NP": "Isle Royale",
@@ -163,7 +165,7 @@ const CSV_TO_WIKI_NAMES = {
   "Theodore Roosevelt NP": "Theodore Roosevelt",
   "Virgin Islands NP": "Virgin Islands",
   "White Sands NP": "White Sands",
-  "Wrangell-St. Elias NP & PRES": "WrangellÃ¢â‚¬â€œSt.Â Elias *",
+  "Wrangell-St. Elias NP & PRES": "WrangellSt.Elias *",
   "Yellowstone NP": "Yellowstone",
   "Yosemite NP": "Yosemite *",
   "Zion NP":"Zion"
