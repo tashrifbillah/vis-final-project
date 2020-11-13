@@ -1,4 +1,22 @@
 #timeline {
+    margin-top: 20px;
+    border-top: 1px solid grey;
     width: 100%;
     height: 200px;
+}
+
+.carousel-item__year {
+    text-align: right;
+    padding-bottom: 5px;
+    border-bottom: 2px solid currentColor;
+}
+
+.carousel-item__title {
+
+}
+
+.carousel-item__content {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: 10%;
 }

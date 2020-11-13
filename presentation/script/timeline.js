@@ -1,8 +1,10 @@
 const buildCarouselItem = d => `
     <div class="carousel-item">
-        <h2>${d.year}</h2>
-        <h3>${d.title}</h3>
-        <p>${d.body}</p>
+        <div class="carousel-item__content">
+            <h2 class="carousel-item__year">${d.year}</h2>
+            <h3 class="carousel-item__title">${d.title}</h3>
+            <p class="carousel-item__description">${d.description}</p>
+        </div>
     </div>
 `
 
@@ -64,6 +66,10 @@ class Timeline {
             .attr("class", "x-axis axis")
             .attr("transform", "translate(0," + vis.height + ")")
             .call(vis.xAxis);
+
+        document.getElementById('carousel').innerHTML = vis._displayData.map(buildCarouselItem).join("")
+        $('#carousel .carousel-item:first-child').addClass('active')
+        $('#carousel').carousel()
     }
 }
 
