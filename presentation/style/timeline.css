@@ -5,6 +5,18 @@
     height: 200px;
 }
 
+.timeline-item {
+    cursor: pointer;
+}
+
+.timeline-item:hover, .timeline-item.active {
+    fill: red;
+}
+
+.carousel-control-prev, .carousel-control-next {
+    background: #a2a2a2;
+}
+
 .carousel-item__year {
     text-align: right;
     padding-bottom: 5px;
@@ -18,5 +30,5 @@
 .carousel-item__content {
     max-width: 500px;
     margin-left: auto;
-    margin-right: 10%;
+    margin-right: auto;
 }

@@ -67,7 +67,7 @@ class Timeline {
             .attr("transform", "translate(0," + vis.height + ")")
             .call(vis.xAxis);
 
-        document.getElementById('carousel').innerHTML = vis._displayData.map(buildCarouselItem).join("")
+        $('#carousel .carousel-inner').html(vis._displayData.map(buildCarouselItem).join(""))
         $('#carousel .carousel-item:first-child').addClass('active')
         $('#carousel').carousel()
     }
