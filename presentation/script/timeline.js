@@ -7,6 +7,8 @@ const buildCarouselItem = d => `
         </div>
     </div>
 `
+const isActive = d => d.title === activeTitle
+let activeTitle;
 
 class Timeline {
 
@@ -50,26 +52,39 @@ class Timeline {
         vis.xAxis = d3.axisBottom()
             .scale(vis.x);
 
-        // Draw area by using the path generator
-        vis.svg.selectAll("rect.timeline-item")
-            .data(vis._displayData)
-            .enter()
-            .append("rect")
-            .attr("class", "timeline-item")
-            .attr("x", d => vis.x(d.year))
-            .attr("y", vis.height / 2)
-            .attr("height", vis.height / 2)
-            .attr("width", 5)
-
         // Append x-axis
         vis.svg.append("g")
             .attr("class", "x-axis axis")
             .attr("transform", "translate(0," + vis.height + ")")
             .call(vis.xAxis);
 
+        activeTitle = vis._displayData[0].title
+
         $('#carousel .carousel-inner').html(vis._displayData.map(buildCarouselItem).join(""))
         $('#carousel .carousel-item:first-child').addClass('active')
         $('#carousel').carousel()
+        $('#carousel').on('slide.bs.carousel', function (evt) {
+            activeTitle = $('.carousel-item__title', evt.relatedTarget).text()
+            vis.updateVis()
+        })
+
+        vis.updateVis()
+    }
+
+    updateVis() {
+        let vis = this;
+
+        vis.rects = vis.svg.selectAll("rect.timeline-item").data(vis._displayData, d => d.title)
+
+        vis.rects
+            .enter()
+            .append("rect")
+            .merge(vis.rects)
+            .attr("class", d => ["timeline-item", isActive(d) ? "active" : ""].join(' '))
+            .attr("x", d => vis.x(d.year))
+            .attr("y", d => isActive(d) ? 0 : (vis.height / 2))
+            .attr("height", d => vis.height / (isActive(d) ? 1 : 2))
+            .attr("width", 5)
     }
 }
 

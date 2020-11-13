@@ -2,7 +2,7 @@
     margin-top: 20px;
     border-top: 1px solid grey;
     width: 100%;
-    height: 200px;
+    height: 15vh;
 }
 
 .timeline-item {
@@ -11,6 +11,11 @@
 
 .timeline-item:hover, .timeline-item.active {
     fill: red;
+}
+
+#carousel {
+    margin-top: 50px;
+    height: 60vh;
 }
 
 .carousel-control-prev, .carousel-control-next {
