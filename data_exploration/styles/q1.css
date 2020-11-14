@@ -9,7 +9,7 @@ body {
 }
 
 .state {
-    fill: white;
+    fill: mediumseagreen;
     stroke: black;
 }
 
@@ -38,4 +38,11 @@ img {
     margin-bottom: 10px;
     border: thin solid black;
     border-radius: 5px;
+}
+
+.stateName {
+    font-size: 10px;
+    fill: white;
+    text-anchor: middle;
+    font-weight: bold;
 }

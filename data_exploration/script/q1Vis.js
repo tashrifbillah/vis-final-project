@@ -30,7 +30,7 @@ class MapVis {
 
         vis.projection = d3.geoAlbersUsa()
             .translate([vis.width / 2, vis.height / 2])
-            .scale(1000)
+            .scale(1200)
 
         vis.path = d3.geoPath()
             .projection(vis.projection);
@@ -45,6 +45,28 @@ class MapVis {
             .append("path")
             .attr('class', 'state')
             .attr("d", vis.path)
+
+
+        // Add state abbreviations
+        vis.svg.selectAll(".stateName")
+            .data(vis.usa)
+            .enter()
+            .append("text")
+            .attr("class", "stateName")
+            .attr("x", d => {
+                let tmp = d && vis.path.centroid(d)
+
+                if (tmp[0]) {
+                    return tmp[0]
+                }
+            })
+            .attr("y", d => {
+                let temp = d && vis.path.centroid(d)
+                if (temp[1]) {
+                    return temp[1]
+                }
+            })
+            .text(d => nameConverter.getAbbreviation(d.properties.name))
 
 
         // Append tooltip
@@ -108,6 +130,9 @@ class MapVis {
                      <h6>Area: ${d.area}</h6>
                  </div>`);
 
+                // Update table
+                tabularSummary(d)
+
             })
             .on('mouseout', function (event, d) {
                 d3.select(this)
@@ -124,8 +149,8 @@ class MapVis {
 
 
         // Update table
-        circle
-            .on("click", (event, d) => tabularSummary(d))
+        // circle
+        //     .on("click", (event, d) => tabularSummary(d))
 
     }
 
