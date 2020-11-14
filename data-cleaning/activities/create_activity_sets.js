@@ -3,7 +3,6 @@ let activityCategories;
 
 function load_activity_categories(activity_csv = "data-cleaning/activities/activity_aggregation.csv") {
   d3.csv(activity_csv).then(data => {
-    console.log("LOADED")
     activityCategories = data;
     create_activity_sets();
   });

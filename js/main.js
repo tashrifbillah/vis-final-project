@@ -3,8 +3,9 @@ let allData,
     activityMapVis;
 
 
+let palette = ["#EDC951","#CC333F","#00A0B0"]
 let color = d3.scaleOrdinal()
-  .range(["#EDC951","#CC333F","#00A0B0"]);
+  .range(palette);
 
 let radarChartOptions = {
   w: 600,
@@ -13,7 +14,8 @@ let radarChartOptions = {
   maxValue: 1,
   levels: 6,
   roundStrokes: true,
-  color: color
+  color: color,
+  strokeWidth: 2
 };
 
 
@@ -49,6 +51,9 @@ function prepareData() {
   RadarChart(".radarChart", parkActivityScores.slice(0,3), radarChartOptions);
   for (let i = 0; i <3; i++) {
     console.log(".radarChart" + (i+1))
+    let customOptions = radarChartOptions;
+    customOptions.color = d3.scaleOrdinal()
+      .range([palette[i]]);
     RadarChart(".radarChart" + (i+1),  [parkActivityScores[i]], radarChartOptions);
   }
 
@@ -65,7 +70,6 @@ function setScore(set, activities) {
   activities.forEach(d  => {
     if (set.has(d.name)) {
       score += 1;
-      // console.log("Adding one  for ", d.name);
     }
   })
 

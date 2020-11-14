@@ -195,12 +195,13 @@ function RadarChart(id, data, options) {
   //Create the outlines
   blobWrapper.append("path")
     .attr("class", "radarStroke")
-    .attr("d", function(d,i) { return radarLine(d); })
+    .attr("d", function(d,i) { return radarLine(d.activityScores); })
     .style("stroke-width", cfg.strokeWidth + "px")
     .style("stroke", function(d,i) { return cfg.color(i); })
     .style("fill", "none")
     .style("filter" , "url(#glow)");
 
+  let j = -1  // Hacky solution for missing group index
   //Append the circles
   blobWrapper.selectAll(".radarCircle")
     .data(function(d,i) { return d.activityScores; })
@@ -209,7 +210,7 @@ function RadarChart(id, data, options) {
     .attr("r", cfg.dotRadius)
     .attr("cx", function(d,i){ return rScale(d.value) * Math.cos(angleSlice*i - Math.PI/2); })
     .attr("cy", function(d,i){ return rScale(d.value) * Math.sin(angleSlice*i - Math.PI/2); })
-    .style("fill", function(d,i,j) { return cfg.color(j); })
+    .style("fill", function() { j++; return cfg.color(Math.floor(j/data[0].activityScores.length)); }) // Hacky solution for missing group index
     .style("fill-opacity", 0.8);
 
   /////////////////////////////////////////////////////////
