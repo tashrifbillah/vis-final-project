@@ -144,4 +144,7 @@ function tabularSummary(d) {
     table.rows[2].cells[1].innerHTML= d.area
     table.rows[3].cells[1].innerHTML= d.visitors
 
+
+    document.getElementById("wiki").href= "https://en.wikipedia.org/wiki/"+ d.fullName.split(" ").join("_")
+
 }
