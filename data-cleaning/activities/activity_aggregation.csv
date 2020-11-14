@@ -1,0 +1,102 @@
+Activity Name,Category
+Boating,WATER
+SCUBA Diving,WATER
+Snorkeling,WATER
+Surfing,WATER
+Paddling,WATER
+Swimming,WATER
+Tubing,WATER
+Water Skiing,WATER
+Fishing,WATER
+Boat Tour,WATER
+Canoeing,WATER
+Fly Fishing,WATER
+Freshwater Fishing,WATER
+Freshwater Swimming,WATER
+Sailing,WATER
+Saltwater Fishing,WATER
+Saltwater Swimming,WATER
+Motorized Boating,WATER
+Kayaking,WATER
+Pool Swimming,WATER
+River Tubing,WATER
+Stand Up Paddleboarding,WATER
+Whitewater Rafting,WATER
+Ice Skating,SNOW
+Dog Sledding,SNOW
+Snow Play,SNOW
+Snowmobiling,SNOW
+Snowshoeing,SNOW
+Skiing,SNOW
+Downhill Skiing,SNOW
+Cross-Country Skiing,SNOW
+Ice Climbing,SNOW
+Snow Tubing,SNOW
+Hiking,GENERAL OUTDOOR
+Camping,GENERAL OUTDOOR
+Wildlife Watching,GENERAL OUTDOOR
+Biking,GENERAL OUTDOOR
+Horse Trekking,GENERAL OUTDOOR
+Astronomy,GENERAL OUTDOOR
+Birdwatching,GENERAL OUTDOOR
+Front-Country Hiking,GENERAL OUTDOOR
+Car or Front Country Camping,GENERAL OUTDOOR
+Group Camping,GENERAL OUTDOOR
+Mountain Biking,GENERAL OUTDOOR
+Picnicking,GENERAL OUTDOOR
+RV Camping,GENERAL OUTDOOR
+Road Biking,GENERAL OUTDOOR
+Rock Climbing,GENERAL OUTDOOR
+Self-Guided Tours - Auto,GENERAL OUTDOOR
+Self-Guided Tours - Walking,GENERAL OUTDOOR
+Stargazing,GENERAL OUTDOOR
+Canyoneering,ADVENTURE EXPLORATION
+Caving,ADVENTURE EXPLORATION
+Climbing,ADVENTURE EXPLORATION
+Compass and GPS,ADVENTURE EXPLORATION
+Hunting and Gathering,ADVENTURE EXPLORATION
+Flying,ADVENTURE EXPLORATION
+Auto and ATV,ADVENTURE EXPLORATION
+Backcountry Camping,ADVENTURE EXPLORATION
+Backcountry Hiking,ADVENTURE EXPLORATION
+Auto Off-Roading,ADVENTURE EXPLORATION
+Canoe or Kayak Camping,ADVENTURE EXPLORATION
+Fixed Wing Flying,ADVENTURE EXPLORATION
+Horse Camping (see also Horse/Stock Use),ADVENTURE EXPLORATION
+Horse Camping (see also camping),ADVENTURE EXPLORATION
+Helicopter Flying,ADVENTURE EXPLORATION
+Horseback Riding,ADVENTURE EXPLORATION
+Hunting,ADVENTURE EXPLORATION
+Mountain Climbing,ADVENTURE EXPLORATION
+Gathering and Foraging,ADVENTURE EXPLORATION
+Orienteering,ADVENTURE EXPLORATION
+Off-Trail Permitted Hiking,ADVENTURE EXPLORATION
+ATV Off-Roading,ADVENTURE EXPLORATION
+Playground,MISC
+Shopping,MISC
+Team Sports,MISC
+Food,MISC
+Golfing,MISC
+Arts and Crafts,MISC
+Bookstore and Park Store,MISC
+Bus/Shuttle Guided Tour,MISC
+Dining,MISC
+Gift Shop and Souvenirs,MISC
+Live Music,MISC
+Scenic Driving,MISC
+Theater,MISC
+Volunteer Vacation,MISC
+Arts and Culture,EDUCATION
+Guided Tours,EDUCATION
+Hands-On,EDUCATION
+Living History,EDUCATION
+Museum Exhibits,EDUCATION
+Park Film,EDUCATION
+Junior Ranger Program,EDUCATION
+Citizen Science,EDUCATION
+Craft Demonstrations,EDUCATION
+Cultural Demonstrations,EDUCATION
+First Person Interpretation,EDUCATION
+Historic Weapons Demonstration,EDUCATION
+Geocaching,EDUCATION
+Reenactments,EDUCATION
