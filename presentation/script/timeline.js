@@ -50,7 +50,8 @@ class Timeline {
         //     .domain([0, d3.max(vis._displayData, function(d) { return d.Expenditures; })]);
 
         vis.xAxis = d3.axisBottom()
-            .scale(vis.x);
+            .scale(vis.x)
+            .tickFormat(d => d);
 
         // Append x-axis
         vis.svg.append("g")
@@ -82,9 +83,14 @@ class Timeline {
             .merge(vis.rects)
             .attr("class", d => ["timeline-item", isActive(d) ? "active" : ""].join(' '))
             .attr("x", d => vis.x(d.year))
+            .attr("width", 5)
+            .on("click", function(_evt, d) {
+                const i = vis._displayData.findIndex(({ title }) => title === d.title)
+                $("#carousel").carousel(i)
+            })
+            .transition()
             .attr("y", d => isActive(d) ? 0 : (vis.height / 2))
             .attr("height", d => vis.height / (isActive(d) ? 1 : 2))
-            .attr("width", 5)
     }
 }
 
