@@ -171,11 +171,10 @@ function RadarChart(id, data, options) {
 
 
       // try tooltips
-      newX =  100;
-      newY = 100;
-      tooltip
-        .attr('x', newX)
-        .attr('y', newY)
+      newX = event.clientX - cfg.w/2;
+      newY = event.clientY - cfg.h/2;
+      console.log(newX, newY)
+      tooltipParkName
         .text(d.parkName)
         .transition().duration(200)
         .style('opacity', 1);
@@ -239,6 +238,7 @@ function RadarChart(id, data, options) {
     .style("fill", "none")
     .style("pointer-events", "all")
     .on("mouseover", function(event, d) {
+      console.log(this)
       newX =  parseFloat(d3.select(this).attr('cx')) - 10;
       newY =  parseFloat(d3.select(this).attr('cy')) - 10;
       console.log(d)
@@ -258,6 +258,13 @@ function RadarChart(id, data, options) {
   var tooltip = g.append("text")
     .attr("class", "tooltip")
     .style("opacity", 0);
+
+  //Set up the small tooltip for when you hover over a circle
+  var tooltipParkName = g.append("text")
+    .attr("class", "tooltip")
+    .style("opacity", 0)
+    .attr("x", -cfg.w/2)
+    .attr("y", -cfg.h/2);
 
   /////////////////////////////////////////////////////////
   /////////////////// Helper Function /////////////////////
