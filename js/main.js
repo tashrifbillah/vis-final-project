@@ -1,4 +1,6 @@
-let allData;
+let allData,
+    activitySets,
+    activityMapVis;
 
 
 let color = d3.scaleOrdinal()
@@ -15,53 +17,43 @@ let radarChartOptions = {
 };
 
 
-
 d3.json("data-cleaning/cleaned_data.json")
   .then(data => {
     console.log(data);
     allData = data;
     prepareData();
   })
-console.log("WTF")
 
-set1 = new Set(["Boating", "SCUBA Diving", "Snorkeling", "Surfing", "Paddling", "Swimming", "Tubing", "Water Skiing", "Fishing"])
-set2 = new Set(["Ice Skating", "Dog Sledding", "Snow Play", "Snowmobiling", "Snowshoeing", "Skiing"])
-set3 = new Set(["Hiking", "Camping", "Wildlife Watching", "Biking", "Horse Trekking", "Astronomy"])
-set4 = new Set(["Canyoneering", "Caving", "Climbing", "Compass and GPS", "Hunting and Gathering", "Flying", "Auto and ATV"])
-set5 = new Set(["Playground", "Shopping", "Team Sports", "Food", "Golfing"])
-set6 = new Set(["Arts and Culture", "Guided Tours", "Hands-On", "Living History", "Museum Exhibits", "Park Film", "Junior Ranger Program"])
-
-
-
+d3.json("data-cleaning/activities/activity_sets.json")
+  .then(data => {
+    console.log(data);
+    activitySets = data;
+  })
 
 
 function prepareData() {
-  let lilData = [];
-  let parkNames = [];
+  let parkActivityScores = [];
 
   allData.forEach(d => {
-    // console.log("D: ", d);
-    let activityScores = [
-      {'axis': 'Water', 'value': setScore(set1, d.activities)},
-      {'axis': 'Snow', 'value': setScore(set2, d.activities)},
-      {'axis': 'General Outdoor', 'value': setScore(set3, d.activities)},
-      {'axis': 'Adventure', 'value': setScore(set4, d.activities)},
-      {'axis': 'Misc', 'value': setScore(set5, d.activities)},
-      {'axis': 'Education', 'value': setScore(set6, d.activities)}];
+    let activityScores = [];
+    activitySets.forEach(a => {
+      let activitySet = new Set(a.activities);
+      activityScores.push({'axis': a.name, 'value': setScore(activitySet, d.activities)});
+    })
 
-    parkData = {'parkName': d.name, 'activityScores': activityScores};
-    console.log("Parkdata: ", parkData);
-    lilData.push(parkData);
-    parkNames.push(d.name);
+    let parkData = {'parkName': d.name, 'activityScores': activityScores};
+    parkActivityScores.push(parkData);
   })
 
   //Call function to draw the Radar chart
-  RadarChart(".radarChart", lilData.slice(0,3), radarChartOptions);
-  console.log(parkNames);
+  RadarChart(".radarChart", parkActivityScores.slice(0,3), radarChartOptions);
   for (let i = 0; i <3; i++) {
     console.log(".radarChart" + (i+1))
-    RadarChart(".radarChart" + (i+1),  [lilData[i]], radarChartOptions);
+    RadarChart(".radarChart" + (i+1),  [parkActivityScores[i]], radarChartOptions);
   }
+
+  initActivityMap();
+
 }
 
 function setScore(set, activities) {
@@ -78,4 +70,9 @@ function setScore(set, activities) {
   })
 
   return score / set.size;
+}
+
+
+function initActivityMap() {
+  // activityMapVis = new ActivityMap('mapDiv', lilData);
 }

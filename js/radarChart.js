@@ -6,9 +6,9 @@
 /////////////////////////////////////////////////////////
 
 function RadarChart(id, data, options) {
-  console.log("RADAR CHART: ", data);
+  // console.log("RADAR CHART: ", data);
   let activityScores = data.map(d => d.activityScores);
-  console.log("ACTIVITYSCORES: ", activityScores);
+  // console.log("ACTIVITYSCORES: ", activityScores);
 
   var cfg = {
     w: 600,				//Width of the circle
@@ -35,8 +35,6 @@ function RadarChart(id, data, options) {
 
   //If the supplied maxValue is smaller than the actual one, replace by the max in the data
   var maxValue = Math.max(cfg.maxValue, d3.max(activityScores, function(i){return d3.max(i.map(function(o){return o.value;}))}));
-
-  console.log("DATA at 35", data);
 
   var allAxis = (activityScores[0].map(function(i, j){return i.axis})),	//Names of each axis
     total = allAxis.length,					//The number of different axes
@@ -166,20 +164,13 @@ function RadarChart(id, data, options) {
     .style("fill", function(d,i) { return cfg.color(i); })
     .style("fill-opacity", cfg.opacityArea)
     .on('mouseover', function (event, d){
-      console.log(event)
-      console.log(d.parkName)
-
-
-      // try tooltips
+      // Park name tooltip
       newX = event.clientX - cfg.w/2;
       newY = event.clientY - cfg.h/2;
-      console.log(newX, newY)
       tooltipParkName
         .text(d.parkName)
         .transition().duration(200)
         .style('opacity', 1);
-
-
 
       //Dim all blobs
       d3.selectAll(".radarArea")
@@ -191,6 +182,10 @@ function RadarChart(id, data, options) {
         .style("fill-opacity", 0.7);
     })
     .on('mouseout', function(){
+      // Hide park name tooltip
+      tooltipParkName.transition().duration(200)
+        .style("opacity", 0);
+
       //Bring back all blobs
       d3.selectAll(".radarArea")
         .transition().duration(200)
@@ -238,10 +233,8 @@ function RadarChart(id, data, options) {
     .style("fill", "none")
     .style("pointer-events", "all")
     .on("mouseover", function(event, d) {
-      console.log(this)
       newX =  parseFloat(d3.select(this).attr('cx')) - 10;
       newY =  parseFloat(d3.select(this).attr('cy')) - 10;
-      console.log(d)
       tooltip
         .attr('x', newX)
         .attr('y', newY)

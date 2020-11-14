@@ -5,12 +5,20 @@
 
 <body>
 
-<div id="app" class="app">
-</div>
+
+<!--  Activity Radar Charts  -->
 <div class="radarChart"></div>
 <div class="radarChart1"></div>
 <div class="radarChart2"></div>
 <div class="radarChart3"></div>
+
+
+
+<!--  Activity Map  -->
+<div class="mapDiv"></div>
+
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://unpkg.com/vue@next"></script>
@@ -18,9 +26,11 @@
 <!-- d3 -->
 <script src="https://d3js.org/d3.v6.min.js"></script>
 
-<script src="script/loadData.js"></script>
-<script src="script/api.js"></script>
+<script src="data-cleaning/activities/create_activity_sets.js"></script>
+
 <script src="js/main.js"></script>
 <script src="js/radarChart.js"></script>
+<script src="js/mapActivities.js"></script>
+
 </body>
 </html>
