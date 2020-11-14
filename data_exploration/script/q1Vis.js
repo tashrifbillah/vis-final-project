@@ -30,7 +30,7 @@ class MapVis {
 
         vis.projection = d3.geoAlbersUsa()
             .translate([vis.width / 2, vis.height / 2])
-            .scale(1200)
+            .scale(1150)
 
         vis.path = d3.geoPath()
             .projection(vis.projection);
@@ -162,7 +162,7 @@ function tabularSummary(d) {
     let table= document.getElementById("description")
 
     document.getElementById("picture").src= d.image
-    document.getElementById("caption").innerHTML= `<h6>${d.fullName}</h6>`
+    document.getElementById("caption").innerHTML= `<h5>${d.fullName}</h5>`
 
     table.rows[0].cells[1].innerHTML= d.location
     table.rows[1].cells[1].innerHTML= d.date_established
