@@ -3,7 +3,8 @@
 * * * * * * * * * * * * * */
 
 // init global variables & switches
-let myMapVis
+let myMapVis,
+    selectedActivities
 
 // load data using promises
 let promises = [
@@ -21,8 +22,23 @@ function initMainPage(dataArray) {
     // log data
     console.log('Check out the data', dataArray);
 
+    // $(document).ready(function() {
+    //     $("#activitySelect").multiselect()
+    // })
+
+
+    activities= [...new Set(dataArray[1].map(d=>d.activities.map(r=>r.name)).flat())]
+    selectedActivities= activities
+    activities.forEach(d=>$("#activitySelect").append(new Option(d,d)))
+
     // init map
     myMapVis = new MapVis('map', dataArray[0], dataArray[1]);
 
+
+}
+
+function categoryChange() {
+    selectedActivities= $("#activitySelect").val()
+    myMapVis.wrangleData()
 }
 
