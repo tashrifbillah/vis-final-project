@@ -3,13 +3,12 @@
 * * * * * * * * * * * * * */
 
 // init global variables & switches
-let myMapVis,
-    selectedActivities
+let myMapVis;
 
 // load data using promises
 let promises = [
     d3.json("https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json"),
-    d3.json("../data-cleaning/cleaned_data.json")
+    d3.json("data/cleaned_data.json")
 ];
 
 Promise.all(promises)

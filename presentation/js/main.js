@@ -19,7 +19,7 @@ let radarChartOptions = {
 };
 
 
-d3.json("data-cleaning/cleaned_data.json")
+d3.json("data/cleaned_data.json")
   .then(data => {
     console.log(data);
     allData = data;
