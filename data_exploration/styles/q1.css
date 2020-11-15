@@ -13,7 +13,7 @@ body {
     stroke: black;
 }
 
-h3 {
+#q1 h3 {
     margin: 10px;
     border: thin solid grey;
     padding-top: 5px;
@@ -24,14 +24,14 @@ h3 {
     background: rgba(64,64,64,0.4);
 }
 
-.col {
+#q1 .col {
     border: thin solid grey;
     margin: 5px;
     border-radius: 5px;
     background: rgba(64,64,64,0.4);
 }
 
-img {
+#q1 img {
     width: 300px;
     height: 185px;
     margin-top: 10px;
