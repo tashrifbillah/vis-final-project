@@ -1,0 +1,20 @@
+#activity-select {
+    position: fixed;
+    top: 30%;
+    right: 20px;
+    padding: 5px;
+    /*padding-left: 30px;*/
+    border: 1px solid #a2a2a2;
+    border-radius: 5px;
+    background: #fff;
+}
+
+.activity-select__checkboxes {
+    max-height: 600px;
+    overflow-y: scroll;
+}
+
+.check-row {
+    display: flex;
+    align-items: center;
+}
