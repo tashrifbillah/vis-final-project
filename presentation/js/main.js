@@ -20,16 +20,22 @@ let radarChartOptions = {
 
 
 d3.json("data/cleaned_data.json")
-  .then(data => {
+  .then(async data => {
     console.log(data);
     allData = data;
-    prepareData();
-  })
 
-d3.json("data/activity_sets.json")
-  .then(data => {
-    console.log(data);
-    activitySets = data;
+    d3.json("data/timeline_data.json").then(timelineData => {
+      const formattedParks = allData.map(p => ({
+        year: Number(p.date_established.split(', ')[1]),
+        image: p.images[0].url,
+        title: `${p.fullName} Founded`,
+        description: p.description
+      }))
+      new Timeline("timeline", _.orderBy(timelineData.concat(formattedParks), 'year'))
+    })
+
+    activitySets = await d3.json("data/activity_sets.json");
+    prepareData();
   })
 
 

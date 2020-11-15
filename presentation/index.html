@@ -8,7 +8,6 @@
 </head>
 <body>
 
-
 <div id="q1">
 
     <div class="row justify-content-center">
@@ -56,11 +55,9 @@
             </div>
         </div>
     </div>
-
-
 </div>
 
-<div class="container">
+<div class="container-fluid">
     <div id="carousel" class="carousel slide">
         <div class="carousel-inner"></div>
         <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
@@ -74,34 +71,35 @@
     </div>
 
     <div id="timeline"></div>
-
-    <div id="selected-activities"></div>
 </div>
 
-<div id="activity-select">
-    <h2>Activities</h2>
-
-    <ul>
-        <li v-for="park in topTenParks">{{ park.name }}</li>
-    </ul>
-
-    <div class="activity-select__checkboxes">
-        <div class="check-row" v-for="a in allActivities" :key="a.id">
-            <input type="checkbox" :name="a.id" :id="a.id" :value="a.id" v-model="selectedActivityIds">
-            <label :for="a.id">{{ a.name }} ({{ a.count }})</label>
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            <!--  Activity Radar Charts  -->
+            <div id="radarDiv">
+                <div class="row justify-content-center">
+                    <div class="radarChart"></div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-4 radarChart1"></div>
+                    <div class="col-4 radarChart2"></div>
+                    <div class="col-4 radarChart3"></div>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+        <div class="col-4">
+            <div id="activity-select">
+                <h2>Activities</h2>
 
-<!--  Activity Radar Charts  -->
-<div class="container-fluid" id="radarDiv">
-    <div class="row justify-content-center">
-        <div class="radarChart"></div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-4 radarChart1"></div>
-        <div class="col-4 radarChart2"></div>
-        <div class="col-4 radarChart3"></div>
+                <div class="activity-select__checkboxes">
+                    <div class="check-row" v-for="a in allActivities" :key="a.id">
+                        <input type="checkbox" :name="a.id" :id="a.id" :value="a.id" v-model="selectedActivityIds">
+                        <label :for="a.id">{{ a.name }} ({{ a.count }})</label>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

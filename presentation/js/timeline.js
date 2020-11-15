@@ -1,5 +1,5 @@
 const buildCarouselItem = d => `
-    <div class="carousel-item">
+    <div class="carousel-item" style="background-image: url('${d.image}')">
         <div class="carousel-item__content">
             <h2 class="carousel-item__year">${d.year}</h2>
             <h3 class="carousel-item__title">${d.title}</h3>
@@ -93,7 +93,3 @@ class Timeline {
             .attr("height", d => vis.height / (isActive(d) ? 1 : 2))
     }
 }
-
-d3.json("data/timeline_data.json").then(data => {
-    new Timeline("timeline", data)
-})
