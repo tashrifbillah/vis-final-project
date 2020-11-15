@@ -26,7 +26,7 @@ d3.json("data-cleaning/cleaned_data.json")
     prepareData();
   })
 
-d3.json("data-cleaning/activities/activity_sets.json")
+d3.json("data/activity_sets.json")
   .then(data => {
     console.log(data);
     activitySets = data;
