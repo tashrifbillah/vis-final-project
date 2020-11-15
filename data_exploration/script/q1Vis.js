@@ -9,6 +9,7 @@ class MapVis {
         this.parentElement = parentElement;
         this.geoData = geoData;
         this.parkData = parkData;
+        this.displayData;
 
         this.initVis()
     }
@@ -82,10 +83,33 @@ class MapVis {
     }
 
 
-    wrangleData(){
+    wrangleData() {
         let vis = this;
 
+        // Filter the selected activities
+        if (selectedActivities.length < 100) {
+            // console.log(selectedActivities)
+            vis.displayData= []
+            selectedActivities.forEach(a => {
+                // For union (or), it is vis.parkData
+                // For intersection (and), it is vis.displayData
+                vis.parkData.filter(d => {
+                    // Check if the park supports that activity
+                    if (d.activities.map(r => r.name).includes(a)) {
+                        // Return that park if that has not been returned earlier
+                        vis.displayData.map(p=>p.name).includes(d.name) || vis.displayData.push(d)
+                    }
+                })
+            })
+        }
+        else {
+            vis.displayData= vis.parkData
+        }
+
+        // console.log(vis.displayData.map(d=>d.name))
+
         vis.updateVis()
+
     }
 
 
@@ -94,16 +118,17 @@ class MapVis {
         let vis = this;
 
         // Remove parks w/o lat/long pair
-        vis.parkData= vis.parkData.filter(d=>d.latLong && d)
+        // vis.parkData= vis.parkData.filter(d=>d.latLong && d)
 
-        let circle= vis.svg.selectAll(".location")
-            .data(vis.parkData)
-            .enter()
+        let tmp= vis.svg.selectAll(".location")
+            .data(vis.displayData, d=>d.name)
+
+        let circle= tmp.enter()
             .append("circle")
             .attr("transform", d => {
-                if (d.latitude && d.longitude) {
-                    let tmp = vis.projection([d.longitude, d.latitude])
-                    return tmp && `translate(${tmp})`
+                let tmp = vis.projection([d.longitude, d.latitude])
+                if (tmp) {
+                    return `translate(${tmp})`
                 }
                 else {
                     console.log(d.name)
@@ -146,6 +171,7 @@ class MapVis {
                     .html(``);
             })
 
+        tmp.exit().remove()
 
 
         // Update table
