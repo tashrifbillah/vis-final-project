@@ -54,6 +54,8 @@ function prepareData() {
     let customOptions = radarChartOptions;
     customOptions.color = d3.scaleOrdinal()
       .range([palette[i]]);
+    customOptions.w = 200;
+    customOptions.h = 200;
     RadarChart(".radarChart" + (i+1),  [parkActivityScores[i]], radarChartOptions);
   }
 
