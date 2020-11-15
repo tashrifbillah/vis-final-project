@@ -46,3 +46,8 @@ img {
     text-anchor: middle;
     font-weight: bold;
 }
+
+
+#activitySelect {
+    width: fit-content;
+}
