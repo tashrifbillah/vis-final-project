@@ -27,6 +27,7 @@ function initMainPage(dataArray) {
 
 
     activities= [...new Set(dataArray[1].map(d=>d.activities.map(r=>r.name)).flat())]
+    activities.sort((a,b)=>a>b?1:-1)
     selectedActivities= activities
     activities.forEach(d=>$("#activitySelect").append(new Option(d,d)))
 
