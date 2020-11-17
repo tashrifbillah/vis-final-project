@@ -58,13 +58,15 @@ class MapVis {
                 let tmp = d && vis.path.centroid(d)
 
                 if (tmp[0]) {
-                    return tmp[0]
+                    // Add some offset so state label does not overlap circle
+                    return d.properties.name==='California'?tmp[0]-15:tmp[0]
                 }
             })
             .attr("y", d => {
                 let temp = d && vis.path.centroid(d)
                 if (temp[1]) {
-                    return temp[1]
+                    // Add some offset so state label does not overlap circle
+                    return d.properties.name==='South Carolina'?temp[1]-10:temp[1]
                 }
             })
             .text(d => nameConverter.getAbbreviation(d.properties.name))
