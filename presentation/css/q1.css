@@ -42,7 +42,7 @@ body {
 
 .stateName {
     font-size: 12px;
-    fill: white;
+    fill: yellow;
     text-anchor: middle;
     font-weight: bold;
 }
