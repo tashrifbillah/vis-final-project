@@ -42,8 +42,8 @@ function initMainPage(dataArray) {
 
 }
 
-function categoryChange() {
-    selectedActivities= $("#activitySelect").val()
-    myMapVis.wrangleData()
-}
+// function categoryChange() {
+//     selectedActivities= $("#activitySelect").val()
+//     myMapVis.wrangleData()
+// }
 
