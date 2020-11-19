@@ -21,11 +21,6 @@ function initMainPage(dataArray) {
     // log data
     console.log('Check out the data', dataArray);
 
-    // $(document).ready(function() {
-    //     $("#activitySelect").multiselect()
-    // })
-
-
     activities= [...new Set(dataArray[1].map(d=>d.activities.map(r=>r.name)).flat())]
     activities.sort((a,b)=>a>b?1:-1)
     selectedActivities= activities
@@ -34,6 +29,14 @@ function initMainPage(dataArray) {
     // init map
     myMapVis = new MapVis('map', dataArray[0], dataArray[1]);
 
+    $(document).ready(function() {
+        $("#activitySelect").multiselect()
+        $('#activitySelect').click(function(){
+            //  $( ":input" ) reads value as space replaced by _, revert that change
+            selectedActivities = $( ":input" ).serializeArray().map(d=>d.value.replace(/_/g, " "))
+            myMapVis.wrangleData()
+        })
+    })
 
 }
 
