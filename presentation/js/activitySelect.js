@@ -26,15 +26,8 @@ new Vue({
         },
         visibleActivities() {
             const lower = this.filter.toLowerCase()
-            if(!lower.length) {
-                return new Set(this.allActivities)
-            } else {
-                const visible = [
-                    ...this.selectedActivities,
-                    ...this.allActivities.filter(a => a.name.toLowerCase().includes(lower))
-                    ]
-                return _.uniqBy(visible, 'id')
-            }
+            const filtered = lower.length ? this.allActivities.filter(a => a.name.toLowerCase().includes(lower)) : this.allActivities
+            return _.uniqBy(this.selectedActivities.concat(filtered), 'id')
         },
         selectedActivityIds: {
             get() {
