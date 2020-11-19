@@ -3,7 +3,8 @@
 * * * * * * * * * * * * * */
 
 // init global variables & switches
-let myMapVis;
+let myMapVis,
+    parkData
 
 // load data using promises
 let promises = [
@@ -29,6 +30,11 @@ function initMainPage(dataArray) {
     // init map
     myMapVis = new MapVis('map', dataArray[0], dataArray[1]);
 
+    // populate parkSelect menu
+    parkData= dataArray[1]
+    parkData.forEach(d=>$("#parkSelect").append(new Option(d.name,d.name)))
+
+    // populate activitySelect menu
     $(document).ready(function() {
         $("#activitySelect").multiselect({
             searchBoxText:'Type here to filter parks by activities ...',
@@ -41,6 +47,16 @@ function initMainPage(dataArray) {
     })
 
 }
+
+
+function displayDetails() {
+    selectedPark= $("#parkSelect").val()
+    ind= parkData.findIndex(d=>d.name===selectedPark)
+    tabularSummary(parkData[ind])
+    // make corresponding circle blinking red
+}
+
+
 
 // function categoryChange() {
 //     selectedActivities= $("#activitySelect").val()
