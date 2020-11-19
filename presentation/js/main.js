@@ -1,15 +1,27 @@
 let allData,
     activitySets,
-    activityMapVis;
+    activityMapVis,
+    parkActivityScores;
 
 
 let palette = ["#EDC951","#CC333F","#00A0B0"]
 let color = d3.scaleOrdinal()
   .range(palette);
 
-let radarChartOptions = {
+let radarChartOptionsLarge = {
   w: 600,
   h: 600,
+  // margin: margin,
+  maxValue: 1,
+  levels: 6,
+  roundStrokes: true,
+  color: color,
+  strokeWidth: 2
+};
+
+let radarChartOptionsSmall = {
+  w: 200,
+  h: 200,
   // margin: margin,
   maxValue: 1,
   levels: 6,
@@ -38,9 +50,9 @@ d3.json("data/cleaned_data.json")
     prepareData();
   })
 
-
+// TODO: De-duplicate  Sequoia and Kings Valley
 function prepareData() {
-  let parkActivityScores = [];
+  parkActivityScores = [];
 
   allData.forEach(d => {
     let activityScores = [];
@@ -50,23 +62,38 @@ function prepareData() {
     })
 
     let parkData = {'parkName': d.name, 'activityScores': activityScores};
-    parkActivityScores.push(parkData);
+    if (parkActivityScores.map(d => d.parkName).indexOf(d.name) == -1) {
+      parkActivityScores.push(parkData);
+    }
   })
 
-  //Call function to draw the Radar chart
-  RadarChart(".radarChart", parkActivityScores.slice(0,3), radarChartOptions);
-  for (let i = 0; i <3; i++) {
-    console.log(".radarChart" + (i+1))
-    let customOptions = radarChartOptions;
-    customOptions.color = d3.scaleOrdinal()
-      .range([palette[i]]);
-    customOptions.w = 200;
-    customOptions.h = 200;
-    RadarChart(".radarChart" + (i+1),  [parkActivityScores[i]], radarChartOptions);
+  updateRadar();
+
+}
+
+function updateRadar() {
+  let displayParks;
+  // console.log(topTenParks.slice(0,3).map(d => d.name));
+  if (topTenParks.length != 0) {
+    displayParks = parkActivityScores.filter(d => {
+      return topTenParks.slice(0,3).map(d => d.name).indexOf(d.parkName) != -1;
+    });
+  } else {
+    displayParks = parkActivityScores.sort(() => Math.random() - 0.5).slice(0, 3);
+    console.log(displayParks)
   }
 
-  initActivityMap();
+  // console.log("Display Parks: ", displayParks)
 
+  //Call function to draw the Radar chart
+  RadarChart(".radarChart", displayParks, radarChartOptionsLarge);
+
+  for (let i = 0; i <3; i++) {
+    let customOptions = radarChartOptionsSmall;
+    customOptions.color = d3.scaleOrdinal()
+      .range([palette[i]]);
+    RadarChart(".radarChart" + (i+1),  [displayParks[i]], radarChartOptionsSmall);
+  }
 }
 
 function setScore(set, activities) {
@@ -82,9 +109,4 @@ function setScore(set, activities) {
   })
 
   return score / set.size;
-}
-
-
-function initActivityMap() {
-  // activityMapVis = new ActivityMap('mapDiv', lilData);
 }
