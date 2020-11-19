@@ -16,11 +16,24 @@
 
 <div id="q1">
 
-    <div class="row justify-content-center">
-        <h3>United States National Parks</h3>
+    <!-- Two column layout -->
+    <div class="row">
+        <div class="col-3">
+            <select id="activitySelect" multiple></select>
+        </div>
+        <div class="col-6">
+            <div class="row justify-content-center">
+                <h3>United States National Parks</h3>
+            </div>
+            <div class="row justify-content-center">
+                <h6>Every year around 5 million people visit 62 National Parks all over the country.
+                    Most of the parks are in the west coast of the country, mainly concentrated in Colorado, Utah,
+                    Arizona, California, and Alaska. Filter the parks by activities available (top left),
+                    hover over the map to learn more about each park, and search the details of a park by
+                    typing in the name (right).</h6>
+            </div>
+        </div>
     </div>
-
-    <select id="activitySelect" multiple></select>
 
     <!-- Two column layout -->
     <div class="row" style="height: 85vh;">
@@ -32,6 +45,7 @@
 
         <!-- Right column for summary -->
         <div class="col col-3">
+            <select id="parkSelect" onchange="displayDetails()"></select>
             <div class="align-self-center" style="width: fit-content">
                 <img id="picture" />
                 <div id="caption"></div>
