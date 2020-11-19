@@ -51,3 +51,7 @@ body {
 #activitySelect {
     width: fit-content;
 }
+
+/* Prevent checked item from staying highlighted while preserving stripes */
+div.checklist li.even { background-color: #FFFFFF; color: initial}
+div.checklist li.odd { background-color: #F7F7F7; color: initial}
