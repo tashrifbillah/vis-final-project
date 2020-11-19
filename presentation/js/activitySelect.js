@@ -10,6 +10,7 @@ let topTenParks = []
 new Vue({
     data() {
         return {
+            filter: "",
             activityCounts,
             allActivities,
             selectedActivities,
@@ -23,21 +24,32 @@ new Vue({
         parksById() {
             return _.fromPairs(this.parks.map(p => [p.id, p]))
         },
+        visibleActivities() {
+            const lower = this.filter.toLowerCase()
+            if(!lower.length) {
+                return new Set(this.allActivities)
+            } else {
+                const visible = [
+                    ...this.selectedActivities,
+                    ...this.allActivities.filter(a => a.name.toLowerCase().includes(lower))
+                    ]
+                return _.uniqBy(visible, 'id')
+            }
+        },
         selectedActivityIds: {
             get() {
                 return this.selectedActivities.map(a => a.id)
             },
             set(arr) {
-                selectedActivities = this.selectedActivities = arr.map(id => this.activitiesById[id])
+                this.selectedActivities = selectedActivities = arr.map(id => this.activitiesById[id])
+
+                // Set topTenParks
+                const allParks = _.flatten(arr.map(id => grouped[id]))
+                const counts = _.orderBy(Object.entries(_.countBy(allParks, 'park')), d => d[1], 'desc')
+                topTenParks = counts.slice(0, 10).map(([park,]) => this.parksById[park])
+
                 $(eventEmitter).trigger('activitiesChanged')
             }
-        },
-        topTenParks() {
-            const allParks = _.flatten(this.selectedActivityIds.map(id => grouped[id]))
-            const counts = _.orderBy(Object.entries(_.countBy(allParks, 'park')), d => d[1], 'desc')
-            console.log(counts)
-
-            return topTenParks = counts.slice(0, 10).map(([park,]) => this.parksById[park])
         }
     }
 }).$mount("#activity-select")

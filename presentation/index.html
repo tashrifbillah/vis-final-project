@@ -92,8 +92,10 @@
             <div id="activity-select">
                 <h2>Activities</h2>
 
+                <input type="search" v-model="filter" class="form-control" placeholder="Filter activities...">
+
                 <div class="activity-select__checkboxes">
-                    <div class="check-row" v-for="a in allActivities" :key="a.id">
+                    <div class="check-row" v-for="a in visibleActivities" :key="a.id">
                         <input type="checkbox" :name="a.id" :id="a.id" :value="a.id" v-model="selectedActivityIds">
                         <label :for="a.id">{{ a.name }} ({{ a.count }})</label>
                     </div>
