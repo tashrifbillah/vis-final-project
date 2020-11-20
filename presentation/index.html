@@ -1,20 +1,39 @@
+<!doctype html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>US National Parks</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/timeline.css">
     <link rel="stylesheet" href="css/activities.css">
+    <link rel="stylesheet" href="css/jquery.multiselect.css">
     <link rel="stylesheet" href="css/q1.css">
 </head>
 <body>
 
 <div id="q1">
 
-    <div class="row justify-content-center">
-        <h3>United States National Parks</h3>
+    <!-- Two column layout -->
+    <div class="row">
+        <div class="col-3">
+            <select id="activitySelect" multiple></select>
+        </div>
+        <div class="col-6">
+            <div class="row justify-content-center">
+                <h3>United States National Parks</h3>
+            </div>
+            <div class="row justify-content-center">
+                <h6>Every year around 5 million people visit 62 National Parks all over the country.
+                    Most of the parks are in the west coast of the country, mainly concentrated in Colorado, Utah,
+                    Arizona, California, and Alaska. Filter the parks by activities available (top left),
+                    hover over the map to learn more about each park, and search the details of a park by
+                    typing in the name (right).</h6>
+            </div>
+        </div>
     </div>
-
-    <select id="activitySelect" multiple onchange="categoryChange()"></select>
 
     <!-- Two column layout -->
     <div class="row" style="height: 85vh;">
@@ -26,7 +45,10 @@
 
         <!-- Right column for summary -->
         <div class="col col-3">
-            <div class="align-self-center" style="width: fit-content">
+             <div class="row justify-content-center">
+                <select id="parkSelect" onchange="displayDetails()">
+                    <option value="" selected>Select a park to see details ...</option>
+                </select>
                 <img id="picture" />
                 <div id="caption"></div>
                 <table class="table table-striped" id="description">
@@ -44,7 +66,7 @@
                         <td></td>
                     </tr>
                     <tr>
-                        <th scope="row">Visitors</th>
+                        <th scope="row">Visitors (2019)</th>
                         <td></td>
                     </tr>
                     </tbody>
@@ -105,10 +127,13 @@
     </div>
 </div>
 
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js" integrity="sha512-90vH1Z83AJY9DmlWa8WkjkV79yfS2n2Oxhsi2dZbIv0nC4E6m5AbH8Nh156kkM7JePmqD6tcZsfad1ueoaovww==" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="https://d3js.org/topojson.v2.min.js"></script>
+    <script src="https://unpkg.com/geo-albers-usa-territories@0.1.0/dist/geo-albers-usa-territories.js"></script>
+
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -119,6 +144,7 @@
     <script src="js/main.js"></script>
     <script src="js/radarChart.js"></script>
     <script src="js/helpers.js"></script>
+    <script src="js/jquery.multiselect.js"></script>
     <script src="js/q1Vis.js"></script>
     <script src="js/q1.js"></script>
 </body>
