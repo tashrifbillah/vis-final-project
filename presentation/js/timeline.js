@@ -17,9 +17,16 @@ class Timeline {
     // constructor method to initialize Timeline object
     constructor(parentElement, data){
         this._parentElement = parentElement;
+
+        // Add in stock photos for laws passed
         this._data = data.map(d => ({ ...d, image: d.image || _.sample(LAW_IMAGES) }));
 
-        this._displayData = this._data;
+        // Mark index for year
+        const byYear = Object.values(_.groupBy(this._data, 'year'))
+        this._displayData = _.flatten(byYear.map(y => y.map((d, i) => ({ ...d, yearIdx: i }))));
+
+        // Calculate the max number of items occurring in a single year
+        this.bands = Math.max(...byYear.map(v => v.length))
 
         this.initVis()
     }
@@ -47,9 +54,9 @@ class Timeline {
             .range([0, vis.width])
             .domain(d3.extent(vis._displayData, function(d) { return d.year; }));
 
-        // vis.y = d3.scaleLinear()
-        //     .range([vis.height, 0])
-        //     .domain([0, d3.max(vis._displayData, function(d) { return d.Expenditures; })]);
+        vis.y = d3.scaleBand()
+            .range([vis.height, 10])
+            .domain(_.times(vis.bands).map(i => i));
 
         vis.xAxis = d3.axisBottom()
             .scale(vis.x)
@@ -77,21 +84,24 @@ class Timeline {
     updateVis() {
         let vis = this;
 
-        vis.rects = vis.svg.selectAll("rect.timeline-item").data(vis._displayData, d => d.title)
+        vis.timelineItems = vis.svg.selectAll("circle.timeline-item").data(vis._displayData, d => d.title)
 
-        vis.rects
+        vis.timelineItems
+            .exit()
+            .remove()
+
+        vis.timelineItems
             .enter()
-            .append("rect")
-            .merge(vis.rects)
-            .attr("class", d => ["timeline-item", isActive(d) ? "active" : ""].join(' '))
-            .attr("x", d => vis.x(d.year))
+            .append("circle")
+            .merge(vis.timelineItems)
+            .attr("class", d => _.compact(["timeline-item", isActive(d) ? "active" : null]).join(' '))
+            .attr("cx", d => vis.x(d.year))
+            .attr("cy", d => vis.y(d.yearIdx))
+            .attr("r", vis.y.bandwidth() / 2)
             .attr("width", 5)
             .on("click", function(_evt, d) {
                 const i = vis._displayData.findIndex(({ title }) => title === d.title)
                 $("#carousel").carousel(i)
             })
-            .transition()
-            .attr("y", d => isActive(d) ? 0 : (vis.height / 2))
-            .attr("height", d => vis.height / (isActive(d) ? 1 : 2))
     }
 }
