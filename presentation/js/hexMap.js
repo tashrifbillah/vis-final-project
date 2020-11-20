@@ -16,6 +16,15 @@ let MapColumns = 22,
 let hexRadius = d3.min([width/((MapColumns + 0.5) * Math.sqrt(3)),
   height/((MapRows + 1/3) * 1.5)]);
 
+// Initialize name converter
+let myNameConverter = new NameConverter();
+
+// Region colors
+let regions = ["West", "Northeast", "South", "Midwest"]
+let regionColors = ['#28794C', '#333577', '#AA8D39', '#AA5039']
+let regionScale = d3.scaleOrdinal(regionColors)
+  .domain(regions);
+
 //Create SVG element
 let svg = d3.select("#hex-map").append("svg")
   .attr("width", width + margin.left + margin.right)
@@ -105,8 +114,9 @@ d3.json("data/hex_cartogram_data.json")
       .attr("stroke", "white")
       .attr("stroke-width", "1px")
       .style("fill", d => {
+        console.log(d.name, myNameConverter.getFullName(d.name), myNameConverter.getRegion(myNameConverter.getFullName(d.name)))
         if (d.has_parks == true) {
-          return "Blue";
+          return regionScale(myNameConverter.getRegion(myNameConverter.getFullName(d.name)));
         } else {
           return "LightGray";
         }

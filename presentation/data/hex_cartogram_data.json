@@ -126,6 +126,18 @@
     "has_parks": false
   },
   {
+    "name": "VA",
+    "region": "West",
+    "hex_locations": [[12, 10]],
+    "has_parks": true
+  },
+  {
+    "name": "WV",
+    "region": "West",
+    "hex_locations": [[12, 9]],
+    "has_parks": false
+  },
+  {
     "name": "DE",
     "region": "West",
     "hex_locations": [[14, 9]],
