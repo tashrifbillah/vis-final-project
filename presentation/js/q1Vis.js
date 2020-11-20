@@ -146,6 +146,7 @@ class MapVis {
 
         let circle= tmp.enter()
             .append("circle")
+            .attr('r', '10')
             .attr("transform", d => {
                 let tmp = vis.projection([d.longitude, d.latitude])
                 if (tmp) {
@@ -205,6 +206,9 @@ class MapVis {
 
 
 function tabularSummary(d) {
+
+    // change the parkSelect box text
+    $('#parkSelect').val(d.name)
 
     let table= document.getElementById("description")
 
