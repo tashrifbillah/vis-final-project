@@ -90,24 +90,6 @@
     "has_parks": false
   },
   {
-    "name": "NC",
-    "region": "West",
-    "hex_locations": [[14, 6]],
-    "has_parks": false
-  },
-  {
-    "name": "GA",
-    "region": "West",
-    "hex_locations": [[14, 6]],
-    "has_parks": false
-  },
-  {
-    "name": "VT",
-    "region": "West",
-    "hex_locations": [[14, 6]],
-    "has_parks": false
-  },
-  {
     "name": "NH",
     "region": "West",
     "hex_locations": [[15, 6]],
@@ -158,19 +140,19 @@
   {
     "name": "SC",
     "region": "West",
-    "hex_locations": [[14, 6]],
+    "hex_locations": [[13, 11]],
     "has_parks": true
   },
   {
     "name": "GA",
     "region": "West",
-    "hex_locations": [[14, 6]],
+    "hex_locations": [[13, 12]],
     "has_parks": false
   },
   {
     "name": "FL",
     "region": "West",
-    "hex_locations": [[14, 6]],
+    "hex_locations": [[13, 13], [14, 14], [14, 15]],
     "has_parks": true
   }
 ]
