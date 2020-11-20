@@ -7,6 +7,7 @@
 
 .timeline-item {
     cursor: pointer;
+    z-index: 9;
 }
 
 .timeline-item--park {
@@ -19,6 +20,7 @@
 
 .timeline-item:hover, .timeline-item.active {
     fill: red;
+    z-index: 10;
 }
 
 #carousel {
@@ -53,7 +55,19 @@
     padding: 30px;
     background: #fff;
     position: relative;
-    right: 200px;
     max-height: 550px;
     overflow-y: scroll;
+}
+
+@media only screen and (min-width: 800px) {
+    .carousel-item__content {
+        right: 200px;
+    }
+}
+
+#radarDiv, #q1, #activity-select {
+    display: none;
+}
+body {
+    margin: 0 !important;
 }

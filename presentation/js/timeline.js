@@ -37,7 +37,7 @@ class Timeline {
         // store keyword this which refers to the object it belongs to in variable vis
         let vis = this;
 
-        vis.margin = {top: 0, right: 40, bottom: 30, left: 40};
+        vis.margin = {top: 0, right: 10, bottom: 30, left: 10};
 
         vis.width = $('#' + vis._parentElement).width() - vis.margin.left - vis.margin.right;
         vis.height = $('#' + vis._parentElement).height() - vis.margin.top - vis.margin.bottom;
