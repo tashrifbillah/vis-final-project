@@ -32,6 +32,7 @@ function initMainPage(dataArray) {
 
     // populate parkSelect menu
     parkData= dataArray[1]
+    parkData.sort((a,b)=>a.name>b.name?1:-1)
     parkData.forEach(d=>$("#parkSelect").append(new Option(d.name,d.name)))
 
     // populate activitySelect menu
