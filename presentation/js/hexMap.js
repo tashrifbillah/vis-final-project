@@ -3,14 +3,14 @@ let margin = {
     top: 50,
     right: 20,
     bottom: 20,
-    left: 50
+    left: 500
   },
   width = 850,
   height = 350;
 
 //The number of columns and rows of the heatmap
-let MapColumns = 30,
-  MapRows = 20;
+let MapColumns = 22,
+  MapRows = 14;
 
 //The maximum radius the hexagons can have to still fit the screen
 let hexRadius = d3.min([width/((MapColumns + 0.5) * Math.sqrt(3)),
@@ -51,50 +51,74 @@ svg.append("g")
   })
   .attr("stroke", "white")
   .attr("stroke-width", "1px")
-  .style("fill", "LightGray");
+  .style("fill", "LightGray")
+  .style("opacity", 0.2);
+
+console.log("YMMY HEXIES, ", hexbin(points))
+
+let states;
+d3.json("data/hex_cartogram_data.json")
+  .then(data => {
+    states = data;
 
 
 
+    console.log(states);
+    let state_points = []
+    let state_objs = []
 
-let state_points = []
-let states = []
-let california = {
-  'name': 'CA',
-  'region': 'West',
-  'hex_locations': [[3, 10], [3, 11], [2, 11], [3, 12], [4, 12], [3, 13], [4, 13], [4, 14], [4, 13], [5, 14]]
-};
+    for (var state in states) {
+      console.log(state)
+      let hex_locations = states[state].hex_locations;
+      let state_hex_points = []
+      console.log(hex_locations);
+      for (let i = 0; i < hex_locations.length; i++) {
+        let x = hexRadius * hex_locations[i][0] * Math.sqrt(3);
+        console.log('shitting brix', hex_locations[i], hex_locations[i][0], hex_locations[i][1]);
+        //Offset each uneven row by half of a "hex-width" to the right
+        if (hex_locations[i][1] % 2 === 1) x += (hexRadius * Math.sqrt(3)) / 2;
+        let y = hexRadius * hex_locations[i][1] * 1.5;
+        state_points.push([x, y]);
+        let state_obj = Object.assign({}, states[state]);
+        state_obj.hex_point =  [x, y]
+        state_objs.push(state_obj)
+      }
+    }
 
-let washington = {
-  'name': 'WA',
-  'region': 'West',
-  'hex_locations': [[3, 4], [4, 4], [5, 4]]
-};
+    console.log(state_objs)
 
-states = [california, washington];
+    //Draw the hexagons
+    let state_hexagons = svg.append("g")
+      .selectAll(".state-hexagon")
+      // .data(hexbin(state_points))
+      .data(state_objs);
 
-for (var state in states) {
-  console.log(state)
-  let hex_locations = states[state].hex_locations;
-  console.log(hex_locations);
-  for (let i = 0; i < hex_locations.length; i++) {
-    let x = hexRadius * hex_locations[i][0] * Math.sqrt(3);
-    console.log('shitting brix', hex_locations[i], hex_locations[i][0], hex_locations[i][1]);
-    //Offset each uneven row by half of a "hex-width" to the right
-    if (hex_locations[i][1] % 2 === 1) x += (hexRadius * Math.sqrt(3)) / 2;
-    let y = hexRadius * hex_locations[i][1] * 1.5;
-    state_points.push([x, y]);
-  }
-}
+    state_hexagons
+      .enter().append("path")
+      .attr("class", "state-hexagon")
+      .attr("d", function (d) {
+        console.log(d.hex_point)
+        let hex_point_bin = hexbin([d.hex_point]);
+        console.log("HEXHAW", hex_point_bin)
+        return "M" + hex_point_bin[0].x + "," + hex_point_bin[0].y + hexbin.hexagon();
+      })
+      .attr("stroke", "white")
+      .attr("stroke-width", "1px")
+      .style("fill", d => {
+        if (d.has_parks == true) {
+          return "Blue";
+        } else {
+          return "LightGray";
+        }
+      })
+      .style("opacity", 0.5);
 
-//Draw the hexagons
-svg.append("g")
-  .selectAll(".ca-hexagon")
-  .data(hexbin(state_points))
-  .enter().append("path")
-  .attr("class", "ca-hexagon")
-  .attr("d", function (d) {
-    return "M" + d.x + "," + d.y + hexbin.hexagon();
+    state_hexagons
+      .enter()//.merge(state_hexagons)
+      .append("text")
+      .attr("x", d => d.hex_point[0])
+      .attr("y", d => d.hex_point[1])
+      .class("state-label")
+      .text(d => d.name)
+      .style("color", "black");
   })
-  .attr("stroke", "white")
-  .attr("stroke-width", "1px")
-  .style("fill", "Blue");
