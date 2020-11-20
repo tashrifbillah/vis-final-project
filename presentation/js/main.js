@@ -4,7 +4,7 @@ let allData,
     parkActivityScores;
 
 
-let palette = ["#EDC951","#CC333F","#00A0B0"]
+let palette = ["#984ea3","#CC333F","#0066ff"]
 let color = d3.scaleOrdinal()
   .range(palette);
 
