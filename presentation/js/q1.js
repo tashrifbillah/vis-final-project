@@ -50,10 +50,33 @@ function initMainPage(dataArray) {
 
 
 function displayDetails() {
+
     selectedPark= $("#parkSelect").val()
+    // bypass the place holder string
+    if (!selectedPark) {
+        return
+    }
+
+    // bring back all the circles if some were filtered out by activities earlier
+    $('#map').empty()
+    myMapVis.initVis()
+
     ind= parkData.findIndex(d=>d.name===selectedPark)
     tabularSummary(parkData[ind])
-    // make corresponding circle blinking red
+
+    // make the corresponding circle blink
+    d3.selectAll('.location').filter(d => d.name === selectedPark)
+        .transition().duration(1000).attr('fill', 'red').attr('r', '20')
+        .transition().duration(1000).attr('fill', 'lightskyblue').attr('r', '10')
+        .transition().duration(1000).attr('fill', 'red').attr('r', '20')
+        .transition().duration(1000).attr('fill', 'lightskyblue').attr('r', '10')
+        .transition().duration(1000).attr('fill', 'red').attr('r', '20')
+        .transition().duration(1000).attr('fill', 'lightskyblue').attr('r', '10')
+        .transition().duration(1000).attr('fill', 'red').attr('r', '20')
+        .transition().duration(1000).attr('fill', 'lightskyblue').attr('r', '10')
+        .transition().duration(1000).attr('fill', 'red').attr('r', '20')
+        .transition().duration(1000).attr('fill', 'lightskyblue').attr('r', '10')
+
 }
 
 
