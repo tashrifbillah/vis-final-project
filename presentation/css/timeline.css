@@ -9,6 +9,14 @@
     cursor: pointer;
 }
 
+.timeline-item--park {
+    fill: blue;
+}
+
+.timeline-item--law {
+    fill: aquamarine;
+}
+
 .timeline-item:hover, .timeline-item.active {
     fill: red;
 }

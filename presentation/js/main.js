@@ -29,7 +29,8 @@ d3.json("data/cleaned_data.json")
         year: Number(p.date_established.split(', ')[1]),
         image: p.images[0].url,
         title: `${p.fullName} Founded`,
-        description: p.description
+        description: p.description,
+        isPark: true
       }))
       new Timeline("timeline", _.orderBy(timelineData.concat(formattedParks), 'year'))
     })

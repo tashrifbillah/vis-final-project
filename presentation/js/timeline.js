@@ -94,7 +94,11 @@ class Timeline {
             .enter()
             .append("circle")
             .merge(vis.timelineItems)
-            .attr("class", d => _.compact(["timeline-item", isActive(d) ? "active" : null]).join(' '))
+            .attr("class", d => _.compact([
+                "timeline-item",
+                "timeline-item--" + (d.isPark ? "park" : "law"),
+                isActive(d) ? "active" : null,
+            ]).join(' '))
             .attr("cx", d => vis.x(d.year))
             .attr("cy", d => vis.y(d.yearIdx))
             .attr("r", vis.y.bandwidth() / 2)
