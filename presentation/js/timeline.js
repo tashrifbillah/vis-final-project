@@ -10,14 +10,16 @@ const buildCarouselItem = d => `
 const isActive = d => d.title === activeTitle
 let activeTitle;
 
+const LAW_IMAGES = [1,2,3,4,5].map(i => `images/law-${i}-min.jpg`)
+
 class Timeline {
 
     // constructor method to initialize Timeline object
     constructor(parentElement, data){
         this._parentElement = parentElement;
-        this._data = data;
+        this._data = data.map(d => ({ ...d, image: d.image || _.sample(LAW_IMAGES) }));
 
-        this._displayData = data;
+        this._displayData = this._data;
 
         this.initVis()
     }
