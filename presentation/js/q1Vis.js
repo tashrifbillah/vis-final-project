@@ -17,15 +17,16 @@ class MapVis {
     initVis() {
         let vis = this;
 
+        const width = 1150
+        const height = 600
 
         vis.margin = {top: 20, right: 20, bottom: 20, left: 20};
-        vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right;
-        vis.height = $("#" + vis.parentElement).height() - vis.margin.top - vis.margin.bottom;
+        vis.width = width - vis.margin.left - vis.margin.right;
+        vis.height = height - vis.margin.top - vis.margin.bottom;
 
         // init drawing area
         vis.svg = d3.select("#" + vis.parentElement).append("svg")
-            .attr("width", vis.width)
-            .attr("height", vis.height)
+            .attr('viewBox', [0, 0, width, height].join(' '))
             .attr('transform', `translate (${vis.margin.left}, ${vis.margin.top})`);
 
 
