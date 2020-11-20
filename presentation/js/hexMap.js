@@ -116,9 +116,9 @@ d3.json("data/hex_cartogram_data.json")
     state_hexagons
       .enter()//.merge(state_hexagons)
       .append("text")
-      .attr("x", d => d.hex_point[0])
-      .attr("y", d => d.hex_point[1])
-      .class("state-label")
+      .attr("x", d => d.hex_point[0] - hexRadius/2)
+      .attr("y", d => d.hex_point[1] + hexRadius/2)
+      .attr("class", "state-label")
       .text(d => d.name)
-      .style("color", "black");
+      .style("font-size", 10);
   })
