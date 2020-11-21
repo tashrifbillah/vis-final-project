@@ -63,27 +63,21 @@ svg.append("g")
   .style("fill", "LightGray")
   .style("opacity", 0.2);
 
-console.log("YMMY HEXIES, ", hexbin(points))
 
 let states;
 d3.json("data/hex_cartogram_data.json")
   .then(data => {
     states = data;
 
-
-
-    console.log(states);
     let state_points = []
     let state_objs = []
+    let state_labels = []
 
     for (var state in states) {
-      console.log(state)
       let hex_locations = states[state].hex_locations;
-      let state_hex_points = []
-      console.log(hex_locations);
+
       for (let i = 0; i < hex_locations.length; i++) {
         let x = hexRadius * hex_locations[i][0] * Math.sqrt(3);
-        console.log('shitting brix', hex_locations[i], hex_locations[i][0], hex_locations[i][1]);
         //Offset each uneven row by half of a "hex-width" to the right
         if (hex_locations[i][1] % 2 === 1) x += (hexRadius * Math.sqrt(3)) / 2;
         let y = hexRadius * hex_locations[i][1] * 1.5;
@@ -92,9 +86,20 @@ d3.json("data/hex_cartogram_data.json")
         state_obj.hex_point =  [x, y]
         state_objs.push(state_obj)
       }
+
+      // Do the same for the label tiles
+      let label_location = states[state].label_location;
+      let x = hexRadius * label_location[0] * Math.sqrt(3);
+      //Offset each uneven row by half of a "hex-width" to the right
+      if (label_location[1] % 2 === 1) x += (hexRadius * Math.sqrt(3)) / 2;
+      let y = hexRadius * label_location[1] * 1.5;
+      let label_obj = Object.assign({}, states[state]);
+      label_obj.label_point = [x, y];
+      state_labels.push(label_obj);
     }
 
-    console.log(state_objs)
+    // console.log(state_objs);
+    // console.log(state_labels);
 
     //Draw the hexagons
     let state_hexagons = svg.append("g")
@@ -106,15 +111,12 @@ d3.json("data/hex_cartogram_data.json")
       .enter().append("path")
       .attr("class", "state-hexagon")
       .attr("d", function (d) {
-        console.log(d.hex_point)
         let hex_point_bin = hexbin([d.hex_point]);
-        console.log("HEXHAW", hex_point_bin)
         return "M" + hex_point_bin[0].x + "," + hex_point_bin[0].y + hexbin.hexagon();
       })
       .attr("stroke", "white")
       .attr("stroke-width", "1px")
       .style("fill", d => {
-        console.log(d.name, myNameConverter.getFullName(d.name), myNameConverter.getRegion(myNameConverter.getFullName(d.name)))
         if (d.has_parks == true) {
           return regionScale(myNameConverter.getRegion(myNameConverter.getFullName(d.name)));
         } else {
@@ -129,11 +131,31 @@ d3.json("data/hex_cartogram_data.json")
         }
       });
 
-    state_hexagons
+    // state_hexagons
+    //   .enter()//.merge(state_hexagons)
+    //   .append("text")
+    //   .attr("x", d => d.hex_point[0] - hexRadius/2)
+    //   .attr("y", d => d.hex_point[1] + hexRadius/2)
+    //   .attr("class", "state-label")
+    //   .text(d => d.name)
+    //   .style("font-size", 10);
+
+    // Label the hexagons
+    let state_hexagon_labels = svg.append("g")
+      .selectAll(".state-hexagon-label")
+      // .data(hexbin(state_points))
+      .data(state_labels);
+
+    // console.log(states.map(d => hexbin(d.label_location)))
+    // console.log(hexbin([states[1].label_location]))
+    // console.log(hexbin([states[1].label_location])[0].x)
+    // console.log(hexbin([states[1].label_location])[0].y)
+
+    state_hexagon_labels
       .enter()//.merge(state_hexagons)
       .append("text")
-      .attr("x", d => d.hex_point[0] - hexRadius/2)
-      .attr("y", d => d.hex_point[1] + hexRadius/2)
+      .attr("x", d => d.label_point[0] - hexRadius/2)
+      .attr("y", d => d.label_point[1] + hexRadius/3)
       .attr("class", "state-label")
       .text(d => d.name)
       .style("font-size", 10);
