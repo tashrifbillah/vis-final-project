@@ -9,8 +9,8 @@ let margin = {
   height = 350;
 
 //The number of columns and rows of the heatmap
-let MapColumns = 22,
-  MapRows = 14;
+let MapColumns = 30,
+  MapRows = 20;
 
 //The maximum radius the hexagons can have to still fit the screen
 let hexRadius = d3.min([width/((MapColumns + 0.5) * Math.sqrt(3)),
@@ -121,7 +121,13 @@ d3.json("data/hex_cartogram_data.json")
           return "LightGray";
         }
       })
-      .style("opacity", 0.5);
+      .style("opacity", d => {
+        if (d.has_parks == true) {
+          return 0.8;
+        } else {
+          return 0.5;
+        }
+      });
 
     state_hexagons
       .enter()//.merge(state_hexagons)

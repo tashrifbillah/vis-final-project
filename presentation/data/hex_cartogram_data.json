@@ -1,170 +1,262 @@
 [
   {
+    "name": "AK",
+    "hex_locations": [[1, 0], [1, 1], [1, 2], [2, 0], [2, 1], [2, 2], [0, 3], [0, 1]],
+    "has_parks": true
+  },
+  {
+    "name": "HI",
+    "hex_locations": [[1, 17], [1, 16]],
+    "has_parks": true
+  },
+  {
+    "name": "AS",
+    "hex_locations": [[0, 19]],
+    "has_parks": true
+  },
+  {
     "name": "WA",
-    "region": "West",
-    "hex_locations": [[2, 7], [3, 7], [4, 7]],
+    "hex_locations": [[3, 5], [4, 5], [5, 5]],
     "has_parks": true
   },
   {
     "name": "OR",
-    "region": "West",
-    "hex_locations": [[3, 8]],
+    "hex_locations": [[3, 7]],
     "has_parks": true
   },
   {
     "name": "CA",
-    "region": "West",
     "hex_locations": [[3, 9], [3, 10], [4, 10], [3, 11], [4, 11], [4, 12], [5, 12], [4, 13], [5, 13]],
     "has_parks": true
   },
   {
     "name": "MT",
-    "region": "West",
-    "hex_locations": [[5, 7], [6, 7]],
+    "hex_locations": [[8, 6], [7, 5]],
     "has_parks": true
   },
   {
     "name": "ID",
-    "region": "West",
-    "hex_locations": [[4, 8]],
+    "hex_locations": [[6, 7]],
     "has_parks": true
   },
   {
     "name": "WY",
-    "region": "West",
-    "hex_locations": [[5, 8]],
+    "hex_locations": [[9, 8]],
     "has_parks": true
   },
   {
-    "name": "ND",
-    "region": "West",
-    "hex_locations": [[7, 7]],
-    "has_parks": true
-  },
-  {
-    "name": "SD",
-    "region": "West",
-    "hex_locations": [[7, 8]],
-    "has_parks": true
-  },
-  {
-    "name": "MN",
-    "region": "West",
-    "hex_locations": [[8, 7]],
-    "has_parks": true
-  },
-  {
-    "name": "WI",
-    "region": "West",
-    "hex_locations": [[9, 7]],
-    "has_parks": false
-  },
-  {
-    "name": "MI",
-    "region": "West",
-    "hex_locations": [[11, 7]],
-    "has_parks": true
-  },
-  {
-    "name": "NY",
-    "region": "West",
-    "hex_locations": [[13, 7]],
-    "has_parks": false
-  },
-  {
-    "name": "MA",
-    "region": "West",
-    "hex_locations": [[14, 7]],
-    "has_parks": false
-  },
-  {
-    "name": "RI",
-    "region": "West",
-    "hex_locations": [[15, 7]],
-    "has_parks": false
-  },
-  {
-    "name": "VT",
-    "region": "West",
-    "hex_locations": [[14, 6]],
-    "has_parks": false
-  },
-  {
-    "name": "NH",
-    "region": "West",
-    "hex_locations": [[15, 6]],
-    "has_parks": false
-  },
-  {
-    "name": "ME",
-    "region": "West",
-    "hex_locations": [[15, 5]],
-    "has_parks": true
-  },
-  {
-    "name": "PA",
-    "region": "West",
+    "name": "NE",
     "hex_locations": [[13, 8]],
     "has_parks": false
   },
   {
+    "name": "NV",
+    "hex_locations": [[5, 9], [6, 10]],
+    "has_parks": true
+  },
+  {
+    "name": "UT",
+    "hex_locations": [[7, 9], [8, 10], [9, 10], [8, 11], [7, 11]],
+    "has_parks": true
+  },
+  {
+    "name": "AZ",
+    "hex_locations": [[7, 13], [8, 13], [8, 14]],
+    "has_parks": true
+  },
+  {
+    "name": "NM",
+    "hex_locations": [[10, 13], [10, 14]],
+    "has_parks": true
+  },
+  {
+    "name": "TX",
+    "hex_locations": [[12, 13], [13, 14]],
+    "has_parks": true
+  },
+  {
+    "name": "LA",
+    "hex_locations": [[15, 14]],
+    "has_parks": false
+  },
+  {
+    "name": "MS",
+    "hex_locations": [[17, 14]],
+    "has_parks": false
+  },
+  {
+    "name": "AL",
+    "hex_locations": [[19, 14]],
+    "has_parks": false
+  },
+  {
+    "name": "TN",
+    "hex_locations": [[19, 12]],
+    "has_parks": true
+  },
+  {
+    "name": "KY",
+    "hex_locations": [[19, 10]],
+    "has_parks": true
+  },
+  {
+    "name": "IN",
+    "hex_locations": [[19, 8]],
+    "has_parks": true
+  },
+  {
+    "name": "AR",
+    "hex_locations": [[16, 12]],
+    "has_parks": true
+  },
+  {
+    "name": "OK",
+    "hex_locations": [[14, 12]],
+    "has_parks": false
+  },
+  {
+    "name": "KS",
+    "hex_locations": [[14, 10]],
+    "has_parks": false
+  },
+  {
+    "name": "MO",
+    "hex_locations": [[15, 9]],
+    "has_parks": true
+  },
+  {
+    "name": "IA",
+    "hex_locations": [[15, 7]],
+    "has_parks": false
+  },
+  {
+    "name": "MN",
+    "hex_locations": [[15, 5]],
+    "has_parks": true
+  },
+  {
+    "name": "CO",
+    "hex_locations": [[11, 10], [12, 10], [11, 11], [10, 11]],
+    "has_parks": true
+  },
+  {
+    "name": "ND",
+    "hex_locations": [[13, 4]],
+    "has_parks": true
+  },
+  {
+    "name": "SD",
+    "hex_locations": [[13, 6], [14, 6]],
+    "has_parks": true
+  },
+  {
+    "name": "WI",
+    "hex_locations": [[17, 6]],
+    "has_parks": false
+  },
+  {
+    "name": "IL",
+    "hex_locations": [[17, 8]],
+    "has_parks": true
+  },
+  {
+    "name": "MI",
+    "hex_locations": [[19, 6]],
+    "has_parks": true
+  },
+  {
+    "name": "OH",
+    "hex_locations": [[20, 7]],
+    "has_parks": true
+  },
+  {
+    "name": "NY",
+    "hex_locations": [[23, 3]],
+    "has_parks": false
+  },
+  {
+    "name": "MA",
+    "hex_locations": [[25, 4]],
+    "has_parks": false
+  },
+  {
+    "name": "RI",
+    "hex_locations": [[27, 4]],
+    "has_parks": false
+  },
+  {
+    "name": "VT",
+    "hex_locations": [[25, 2]],
+    "has_parks": false
+  },
+  {
+    "name": "NH",
+    "hex_locations": [[27, 2]],
+    "has_parks": false
+  },
+  {
+    "name": "ME",
+    "hex_locations": [[27, 0]],
+    "has_parks": true
+  },
+  {
+    "name": "PA",
+    "hex_locations": [[22, 6]],
+    "has_parks": false
+  },
+  {
     "name": "NJ",
-    "region": "West",
-    "hex_locations": [[14, 8]],
+    "hex_locations": [[25, 6]],
     "has_parks": false
   },
   {
     "name": "CT",
-    "region": "West",
-    "hex_locations": [[15, 8]],
+    "hex_locations": [[23, 5]],
     "has_parks": false
   },
   {
     "name": "MD",
-    "region": "West",
-    "hex_locations": [[13, 9]],
+    "hex_locations": [[23, 7]],
     "has_parks": false
   },
   {
     "name": "VA",
-    "region": "West",
-    "hex_locations": [[12, 10]],
+    "hex_locations": [[22, 9]],
     "has_parks": true
   },
   {
     "name": "WV",
-    "region": "West",
-    "hex_locations": [[12, 9]],
+    "hex_locations": [[20, 9]],
     "has_parks": false
   },
   {
     "name": "DE",
-    "region": "West",
-    "hex_locations": [[14, 9]],
+    "hex_locations": [[25, 8]],
     "has_parks": false
   },
   {
     "name": "NC",
-    "region": "West",
-    "hex_locations": [[14, 10]],
+    "hex_locations": [[22, 11]],
     "has_parks": true
   },
   {
     "name": "SC",
-    "region": "West",
-    "hex_locations": [[13, 11]],
+    "hex_locations": [[22, 13]],
     "has_parks": true
   },
   {
     "name": "GA",
-    "region": "West",
-    "hex_locations": [[13, 12]],
+    "hex_locations": [[21, 14]],
     "has_parks": false
   },
   {
     "name": "FL",
-    "region": "West",
-    "hex_locations": [[13, 13], [14, 14], [14, 15]],
+    "hex_locations": [[22, 16], [22, 17], [23, 18]],
+    "has_parks": true
+  },
+  {
+    "name": "VI",
+    "hex_locations": [[26, 19]],
     "has_parks": true
   }
 ]
