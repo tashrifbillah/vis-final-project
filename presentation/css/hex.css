@@ -10,7 +10,7 @@
 }
 
 .d3-tip {
-    /*line-height: 1;*/
+    line-height: 0;
     padding: 12px;
     background: rgba(0, 0, 0, 0.8);
     color: #fff;
@@ -36,16 +36,6 @@
     margin: -1px 0 0 0;
     top: 100%;
     left: 0;
-}
-
-
-
-.tooltip {
-    color: #1C9A3D;
-    fill-opacity: 100%;
-    fill: black;
-    stroke: black;
-    font-weight: bold;
 }
 
 .d3-tip h1 {

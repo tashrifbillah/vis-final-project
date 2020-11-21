@@ -68,7 +68,7 @@
   {
     "name": "UT",
     "hex_locations": [[7, 9], [8, 10], [9, 10], [8, 11], [7, 11]],
-    "label_location": [9, 10],
+    "label_location": [8, 10],
     "has_parks": true
   },
   {
@@ -164,7 +164,7 @@
   {
     "name": "CO",
     "hex_locations": [[11, 10], [12, 10], [11, 11], [10, 11]],
-    "label_location": [11, 11],
+    "label_location": [11, 10],
     "has_parks": true
   },
   {

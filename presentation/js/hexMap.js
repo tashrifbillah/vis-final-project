@@ -148,9 +148,6 @@ d3.json("data/hex_cartogram_data.json")
         }
       })
       .on("mouseover", function(event, d) {
-        console.log(event, d, this)
-        console.log(nameConverter.getFullName(d.name));
-        console.log("Has " + d.hex_locations.length + " national parks");
         toolTip.show(d, this);
     })
       .on("mouseout", toolTip.hide);
@@ -168,5 +165,9 @@ d3.json("data/hex_cartogram_data.json")
       .attr("y", d => d.label_point[1] + hexRadius/3)
       .attr("class", "state-label")
       .text(d => d.name)
-      .style("font-size", 10);
+      .style("font-size", 10)
+      .on("mouseover", function(event, d) {
+        toolTip.show(d, this);
+      })
+      .on("mouseout", toolTip.hide);;
   })
