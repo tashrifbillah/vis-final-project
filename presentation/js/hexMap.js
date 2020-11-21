@@ -175,7 +175,7 @@ d3.json("data/hex_cartogram_data.json")
 // add legend
 let legend = svg.append('g')
   .attr('class', 'legend')
-  .attr("transform", "translate(30, 30)")
+  .attr("transform", `translate(0, ${height})`)
   // .attr('transform', `translate(${margin.left}, ${-margin.top * 2/3})`)
   .attr('text-anchor', 'start')
 
@@ -186,6 +186,15 @@ legend.selectAll(".legend-square")
   .attr("class", "legend-square")
   .attr("height", 20)
   .attr("width", 20)
-  .attr("x", (d, i) => i * 30)
-  .attr("y", 320)
+  .attr("x", (d, i) => i * 100)
+  .attr("y", 0)
   .attr("fill", d => d);
+
+legend.selectAll(".legend-label")
+  .data(regions)
+  .enter()
+  .append('text')
+  .attr("class", "legend-label")
+  .attr("x", (d, i) => i * 100 + 25)
+  .attr("y", 20)
+  .text(d => d);
