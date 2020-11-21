@@ -169,5 +169,23 @@ d3.json("data/hex_cartogram_data.json")
       .on("mouseover", function(event, d) {
         toolTip.show(d, this);
       })
-      .on("mouseout", toolTip.hide);;
+      .on("mouseout", toolTip.hide);
   })
+
+// add legend
+let legend = svg.append('g')
+  .attr('class', 'legend')
+  .attr("transform", "translate(30, 30)")
+  // .attr('transform', `translate(${margin.left}, ${-margin.top * 2/3})`)
+  .attr('text-anchor', 'start')
+
+legend.selectAll(".legend-square")
+  .data(regionColors)
+  .enter()
+  .append('rect')
+  .attr("class", "legend-square")
+  .attr("height", 20)
+  .attr("width", 20)
+  .attr("x", (d, i) => i * 30)
+  .attr("y", 320)
+  .attr("fill", d => d);
