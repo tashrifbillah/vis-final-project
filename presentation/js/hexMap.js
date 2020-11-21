@@ -32,6 +32,23 @@ let svg = d3.select("#hex-map").append("svg")
   .append("g")
   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+// Tooltip
+var toolTip = d3.tip()
+  .attr("class", "d3-tip")
+  .offset([-10, 0])
+  .html(function(d) {
+    let message;
+    let header = '<h1>' + nameConverter.getFullName(d.name) + '</h1>'
+    if (d.has_parks) {
+      message = 'Has ' + d.hex_locations.length + ' national parks.';
+    } else {
+      message = 'Does not have any national parks.'
+    }
+
+    return header + message;
+  });
+svg.call(toolTip);
+
 //Set the hexagon radius
 let hexbin = d3.hexbin().radius(hexRadius);
 
@@ -129,27 +146,20 @@ d3.json("data/hex_cartogram_data.json")
         } else {
           return 0.5;
         }
-      });
-
-    // state_hexagons
-    //   .enter()//.merge(state_hexagons)
-    //   .append("text")
-    //   .attr("x", d => d.hex_point[0] - hexRadius/2)
-    //   .attr("y", d => d.hex_point[1] + hexRadius/2)
-    //   .attr("class", "state-label")
-    //   .text(d => d.name)
-    //   .style("font-size", 10);
+      })
+      .on("mouseover", function(event, d) {
+        console.log(event, d, this)
+        console.log(nameConverter.getFullName(d.name));
+        console.log("Has " + d.hex_locations.length + " national parks");
+        toolTip.show(d, this);
+    })
+      .on("mouseout", toolTip.hide);
 
     // Label the hexagons
     let state_hexagon_labels = svg.append("g")
       .selectAll(".state-hexagon-label")
       // .data(hexbin(state_points))
       .data(state_labels);
-
-    // console.log(states.map(d => hexbin(d.label_location)))
-    // console.log(hexbin([states[1].label_location]))
-    // console.log(hexbin([states[1].label_location])[0].x)
-    // console.log(hexbin([states[1].label_location])[0].y)
 
     state_hexagon_labels
       .enter()//.merge(state_hexagons)
