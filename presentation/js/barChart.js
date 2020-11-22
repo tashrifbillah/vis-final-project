@@ -89,7 +89,6 @@ class BarChart {
         vis.y.domain(vis.displayData.map(d => d.fullName));
         vis.x.domain([0, d3.max(vis.displayData, d => d[selectedBarMetric])])
 
-        console.log('bar data', vis.displayData)
         // Draw the layers
         const rectangles = vis.svg.selectAll(".bar").data(vis.displayData, d => d.id)
 

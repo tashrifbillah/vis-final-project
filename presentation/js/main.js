@@ -19,11 +19,38 @@ let radarChartOptions = {
   strokeWidth: 2
 };
 
-
+const MONTHS_SHORT = ['', 'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep']
+const SEASONS = {
+  Spring: [3, 4, 5],
+  Summer: [6, 7, 8],
+  Fall: [9, 10, 11],
+  Winter: [12, 1, 2]
+}
 d3.json("data/cleaned_data.json")
   .then(async data => {
-    console.log(data);
-    allData = data;
+    allData = data.map(function(d) {
+      const monthlyVisits = _.fromPairs(Object.entries(d['monthly visit']).map(([k, v]) => [
+        k,
+        {prev: v[`${k} 2019`], current: v[`${k} 2020`], monthIdx: MONTHS_SHORT.indexOf(k)}
+      ]))
+
+      const ytdVisits = _.fromPairs(Object.entries(d['monthly visit']).map(([k, v]) => [
+        MONTHS_SHORT.findIndex[k],
+        {prev: v[`YTD ${k}`], current: v[`YTD ${k}`], monthIdx: MONTHS_SHORT.indexOf(k)}
+      ]))
+      const seasonalVisits = _.fromPairs(Object.entries(SEASONS).map(([k, v]) => [
+        k,
+        _.sumBy(_.compact(v.map(i => monthlyVisits[MONTHS_SHORT[i]])), 'current')
+      ]))
+
+      return {
+        ...d,
+        monthlyVisits,
+        ytdVisits,
+        seasonalVisits
+      }
+    });
+    console.log(allData[0]);
 
     d3.json("data/timeline_data.json").then(timelineData => {
       const formattedParks = allData.map(p => ({
