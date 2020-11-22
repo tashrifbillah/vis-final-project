@@ -245,7 +245,7 @@ function RadarChart(id, data, options) {
 
       if (t == "PARK") {
         sortedActivities = activityMatch(d.activities);
-        message = 'You might enjoy some of these activities at ' + d.parkName + " are: " + sortedActivities.slice(0, 3);
+        message = 'You might enjoy some of these activities at ' + d.parkName + ": " + sortedActivities.slice(0, 3);
       } else if (t == "CIRCLE") {
         // Not all parks have 3 activities in each category
         if (d.numberMatching == 0) {
