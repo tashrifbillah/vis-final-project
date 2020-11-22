@@ -13,80 +13,32 @@
     <link rel="stylesheet" href="css/q1.css">
     <link rel="stylesheet" href="css/hex.css">
     <link rel="stylesheet" href="css/q5.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 
-<div id="q1">
+<header class="container intro">
+    <h1>United States National Parks</h1>
 
-    <!-- Two column layout -->
-    <div class="row">
-        <div class="col-md-3">
-            <select id="activitySelect" multiple></select>
-        </div>
-        <div class="col-md-6">
-            <div class="row justify-content-center">
-                <h3>United States National Parks</h3>
-            </div>
-            <div class="row justify-content-center">
-                <h6>Every year around 5 million people visit 62 National Parks all over the country.
-                    Most of the parks are in the west coast of the country, mainly concentrated in Colorado, Utah,
-                    Arizona, California, and Alaska. Filter the parks by activities available (top left),
-                    hover over the map to learn more about each park, and search the details of a park by
-                    typing in the name (right).</h6>
-            </div>
-        </div>
-    </div>
+    <p>
+        Every year around 5 million people visit 62 National Parks all over the country.
+        Most of the parks are in the west coast of the country, mainly concentrated in Colorado, Utah,
+        Arizona, California, and Alaska.
+    </p>
+</header>
 
-    <!-- Two column layout -->
-    <div class="row map-row">
+<div class="instruction">
+    <h4>First, let's familiarize ourselves with some of the history of national parks.</h4>
+    <dl class="timeline-key">
+        <dt class="current"></dt>
+        <dd>Current</dd>
 
-        <!-- Left column for map -->
-        <div class="col-md-8">
-            <div id="map" style="height: 100%; width:100%;"></div>
-        </div>
+        <dt class="law"></dt>
+        <dd>Law Passed</dd>
 
-        <!-- Right column for summary -->
-        <div class="col-md-3">
-             <div class="row justify-content-center">
-                <select id="parkSelect" onchange="displayDetails()">
-                    <option value="" selected>Select a park to see details ...</option>
-                </select>
-                <img id="picture" />
-                <div id="caption"></div>
-                <table class="table table-striped" id="description">
-                    <tbody>
-                    <tr>
-                        <th scope="row">Location</th>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Established</th>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Area</th>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Visitors (2019)</th>
-                        <td></td>
-                    </tr>
-                    </tbody>
-                </table>
-
-                <!-- bonus task -->
-                <a id="wiki" target="_blank"><b>>> Read more on Wikipedia</b></a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container-fluid">
-    <div class="row justify-content-center" style="height: 85vh;">
-        <div class="col">
-            <div class="hex-map" id="hex-map" style="height: 100%; width:100%;"></div>
-        </div>
-    </div>
+        <dt class="park"></dt>
+        <dd>Park Founding</dd>
+    </dl>
 </div>
 
 <div class="container-fluid">
@@ -105,6 +57,71 @@
     <div id="timeline"></div>
 </div>
 
+<div class="instruction">
+    <h4>Next, we'll explore the various regions.</h4>
+    <p>Please select one to help guide your decision</p>
+</div>
+
+<div class="container-fluid main">
+    <main class="main__visualizations">
+        <div class="vis" id="q1">
+            <h6 class="vis__title">Map</h6>
+            <p class="vis__description">Filter the parks by activities available (top left),
+                hover over the map to learn more about each park, and search the details of a park by
+                typing in the name (right).</p>
+
+            <div class="vis__wrapper">
+                <div class="row map-row">
+
+                    <!-- Left column for map -->
+                    <div class="col-md-8">
+                        <div id="map" style="height: 100%; width:100%;"></div>
+                    </div>
+
+                    <!-- Right column for summary -->
+                    <div class="col-md-3">
+                        <div class="row justify-content-center">
+                            <select id="parkSelect" onchange="displayDetails()">
+                                <option value="" selected>Select a park to see details ...</option>
+                            </select>
+                            <img id="picture" />
+                            <div id="caption"></div>
+                            <table class="table table-striped" id="description">
+                                <tbody>
+                                <tr>
+                                    <th scope="row">Location</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Established</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Area</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Visitors (2019)</th>
+                                    <td></td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <!-- bonus task -->
+                            <a id="wiki" target="_blank"><b>>> Read more on Wikipedia</b></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vis">
+            <div class="vis__wrapper">
+                <div class="hex-map" id="hex-map" style="height: 100%; width:100%;"></div>
+            </div>
+        </div>
+    </main>
+</div>
 
 <div id="q5">
     <hr>

@@ -1,0 +1,10 @@
+.instruction {
+    text-align: center;
+    position: sticky;
+    top: 0;
+    margin: 50vh auto;
+    z-index: 10;
+    background: #fff;
+    height: 80px;
+    padding: 10px;
+}
