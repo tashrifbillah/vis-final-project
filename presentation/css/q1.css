@@ -2,6 +2,10 @@ body {
     margin: 20px;
 }
 
+#map {
+    width: 100%;
+}
+
 .location {
     stroke: black;
     stroke-width: 2px;
@@ -23,7 +27,7 @@ body {
     background: rgba(64,64,64,0.4);
 }
 
-#q1 .col {
+#q1 .map-row > * {
     border: thin solid grey;
     margin: 5px;
     border-radius: 5px;

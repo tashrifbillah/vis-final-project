@@ -19,10 +19,10 @@
 
     <!-- Two column layout -->
     <div class="row">
-        <div class="col-3">
+        <div class="col-md-3">
             <select id="activitySelect" multiple></select>
         </div>
-        <div class="col-6">
+        <div class="col-md-6">
             <div class="row justify-content-center">
                 <h3>United States National Parks</h3>
             </div>
@@ -37,15 +37,15 @@
     </div>
 
     <!-- Two column layout -->
-    <div class="row" style="height: 85vh;">
+    <div class="row map-row">
 
         <!-- Left column for map -->
-        <div class="col col-8">
+        <div class="col-md-8">
             <div id="map" style="height: 100%; width:100%;"></div>
         </div>
 
         <!-- Right column for summary -->
-        <div class="col col-3">
+        <div class="col-md-3">
              <div class="row justify-content-center">
                 <select id="parkSelect" onchange="displayDetails()">
                     <option value="" selected>Select a park to see details ...</option>
@@ -159,13 +159,17 @@
                     <div class="col-4 radarChart3"></div>
                 </div>
             </div>
+
+            <div id="bar"></div>
         </div>
         <div class="col-4">
             <div id="activity-select">
                 <h2>Activities</h2>
 
+                <input type="search" v-model="filter" class="form-control" placeholder="Filter activities...">
+
                 <div class="activity-select__checkboxes">
-                    <div class="check-row" v-for="a in allActivities" :key="a.id">
+                    <div class="check-row" v-for="a in visibleActivities" :key="a.id">
                         <input type="checkbox" :name="a.id" :id="a.id" :value="a.id" v-model="selectedActivityIds">
                         <label :for="a.id">{{ a.name }} ({{ a.count }})</label>
                     </div>
@@ -189,6 +193,7 @@
     <script src="js/activitySelect.js"></script>
     <script src="js/eventHandler.js"></script>
     <script src="js/timeline.js"></script>
+    <script src="js/barChart.js"></script>
     <script src="js/main.js"></script>
     <script src="js/radarChart.js"></script>
     <script src="js/helpers.js"></script>
