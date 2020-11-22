@@ -28,7 +28,7 @@
 </header>
 
 <div class="instruction">
-    <h4>First, let's familiarize ourselves with some of the history of national parks.</h4>
+    <h4>1. First, let's familiarize ourselves with some of the history of national parks.</h4>
     <dl class="timeline-key">
         <dt class="current"></dt>
         <dd>Current</dd>
@@ -58,7 +58,7 @@
 </div>
 
 <div class="instruction">
-    <h4>Next, we'll explore the various regions.</h4>
+    <h4>2. Next, we'll explore the various regions.</h4>
     <p>Please select one to help guide your decision</p>
 </div>
 
@@ -139,7 +139,7 @@
 </section>
 
 <div class="instruction">
-    <h4>Explore park activities.</h4>
+    <h4>3. Explore park activities.</h4>
     <p>We'll identify the top 3 parks matching your preferences</p>
 </div>
 
@@ -181,9 +181,14 @@
     </aside>
 </section>
 
+<div class="instruction">
+    <h4>4. Track visits over year</h4>
+    <p>Pick the ideal season for you to visit.</p>
+</div>
+
 <section class="container-fluid section">
     <main class="section__visualizations">
-        <div class="vis">
+        <div class="vis" id="q5">
             <select id="group-by" class="vis__filter" onchange="_groupBy()">
                 <option value="months">By month</option>
                 <option value="ytd" selected>Year to date</option>
@@ -207,30 +212,31 @@
                 <div class="align-self-center" id="line-graph" style="width: 70%; height: 100%"></div>
             </div>
         </div>
-    </main>
-</section>
 
-<div class="container">
-    <div class="row">
-        <div class="col-8">
-            <div id="bar"></div>
-        </div>
+        <div class="vis">
+            <h3 class="vis__title">Top parks by visits</h3>
+            <p class="vis__description">Showing average visits by season</p>
 
-        <div class="col-4">
-            <div class="season-filter">
-                <h2>Preferred Season</h2>
-
-                <select name="season-select" id="season-select" class="season-filter__select" onchange="$(eventEmitter).trigger('seasonChanged')">
-                    <option value="All">All</option>
-                    <option value="Spring">Spring</option>
-                    <option value="Summer">Summer</option>
-                    <option value="Fall">Fall</option>
-                    <option value="Winter">Winter</option>
-                </select>
+            <div class="vis__wrapper">
+                <div id="bar"></div>
             </div>
         </div>
-    </div>
-</div>
+    </main>
+
+    <aside class="section__filter">
+        <div class="season-filter">
+            <h2>Preferred Season</h2>
+
+            <select name="season-select" id="season-select" class="season-filter__select" onchange="$(eventEmitter).trigger('seasonChanged')">
+                <option value="All">All</option>
+                <option value="Spring">Spring</option>
+                <option value="Summer">Summer</option>
+                <option value="Fall">Fall</option>
+                <option value="Winter">Winter</option>
+            </select>
+        </div>
+    </aside>
+</section>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js" integrity="sha512-90vH1Z83AJY9DmlWa8WkjkV79yfS2n2Oxhsi2dZbIv0nC4E6m5AbH8Nh156kkM7JePmqD6tcZsfad1ueoaovww==" crossorigin="anonymous"></script>

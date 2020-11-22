@@ -20,6 +20,10 @@
     margin-right: 20px;
 }
 
+.vis__legend {
+    text-align: right;
+}
+
 .section {
     display: grid;
     grid-template-columns: 9fr 3fr;
