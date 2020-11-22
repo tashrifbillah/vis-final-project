@@ -9,7 +9,7 @@
 }
 
 .activity-select__checkboxes {
-    max-height: 600px;
+    max-height: 300px;
     overflow-y: scroll;
 }
 
