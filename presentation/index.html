@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/activities.css">
     <link rel="stylesheet" href="css/jquery.multiselect.css">
     <link rel="stylesheet" href="css/q1.css">
+    <link rel="stylesheet" href="css/q5.css">
 </head>
 <body>
 
@@ -95,6 +96,55 @@
     <div id="timeline"></div>
 </div>
 
+
+<div id="q5">
+    <hr>
+    <br>
+
+    <div class="row">
+        <div class="col">
+            <!-- header row -->
+            <div class="row justify-content-center">
+                <h3>Monthly Summary of Park Visit</h3>
+            </div>
+
+            <!-- group by select menu -->
+            <div class="row">
+                <div class="col-sm-5" style="margin-left: 100px">
+                    <select id="group-by" onchange="_groupBy()">
+                        <option value="months">By month</option>
+                        <option value="ytd" selected>Year to date</option>
+                        <option value="seasons">By season</option>
+                    </select>
+                </div>
+
+                <div class="col-sm-5">
+                    <!-- Only two circles with definite color, so adding in HTML directly -->
+                    <div style="margin-left: 20px; margin-top: 20px" id="legend">
+                        <svg>
+                            <circle fill="lightskyblue"></circle>
+                            <text x="20" y="15">2019</text>
+                        </svg>
+                        <svg>
+                            <circle fill="magenta"></circle>
+                            <text x="20" y="15">2020</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- svg container for line graph -->
+            <div class="row" style="height: 40vh">
+                <div class="align-self-center" id="line-graph" style="width: 70%; height: 100%"></div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <hr>
+</div>
+
+
 <div class="container">
     <div class="row">
         <div class="col-8">
@@ -150,6 +200,7 @@
     <script src="js/jquery.multiselect.js"></script>
     <script src="js/q1Vis.js"></script>
     <script src="js/q1.js"></script>
+    <script src="js/q5Vis.js"></script>
 </body>
 </html>
 
