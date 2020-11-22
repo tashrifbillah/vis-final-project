@@ -4,7 +4,10 @@
 
 // init global variables & switches
 let myMapVis,
-    parkData
+    myLineVis,
+    parkData,
+    groupBy,
+    months=['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep']
 
 // load data using promises
 let promises = [
@@ -47,6 +50,11 @@ function initMainPage(dataArray) {
         })
     })
 
+
+    // init line-graph
+    myLineVis = new LineVis('line-graph', dataArray[1]);
+
+
 }
 
 
@@ -80,10 +88,20 @@ function displayDetails() {
 
 }
 
+window.addEventListener("resize", function(){
+    // Delete previous svg layout
+    $("#map").empty();
+    $("#line-graph").empty();
+
+    // Render new svg layout
+    myMapVis.initVis();
+    myLineVis.initVis();
+});
 
 
-// function categoryChange() {
-//     selectedActivities= $("#activitySelect").val()
-//     myMapVis.wrangleData()
-// }
+groupBy= $("#group-by").val()
+function _groupBy() {
+    groupBy= $("#group-by").val()
+    myLineVis.wrangleData()
+}
 
