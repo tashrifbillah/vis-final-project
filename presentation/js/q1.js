@@ -80,6 +80,13 @@ function displayDetails() {
 
 }
 
+window.addEventListener("resize", function(){
+    // Delete previous svg layout
+    $("#map").empty();
+
+    // Render new svg layout
+    myMapVis.initVis();
+});
 
 
 // function categoryChange() {
