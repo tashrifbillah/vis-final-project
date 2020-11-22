@@ -1,4 +1,4 @@
-let selectedBarMetric = "visitors"
+let selectedSeason = "All"
 
 class BarChart {
     constructor(parentElement, data) {
@@ -71,9 +71,9 @@ class BarChart {
     wrangleData() {
         let vis = this;
 
-        vis.data = topTenParks.length ? [...topTenParks] : vis.data.slice(0, 10);
-        vis.displayData = vis.data.map(d => ({ ...d, visitors: Number(d.visitors.replaceAll(',', '')) }))
-        vis.displayData.sort((a, b) => a[selectedBarMetric] - b[selectedBarMetric])
+        vis.displayData = topTenParks.length ? [...topTenParks] : vis.data;
+        vis.displayData.sort((a, b) => a.seasonalVisits[selectedSeason] - b.seasonalVisits[selectedSeason])
+        vis.displayData = vis.displayData.slice(0, 10)
 
         // Update the visualization
         vis.updateVis();
@@ -87,7 +87,7 @@ class BarChart {
         let vis = this;
 
         vis.y.domain(vis.displayData.map(d => d.fullName));
-        vis.x.domain([0, d3.max(vis.displayData, d => d[selectedBarMetric])])
+        vis.x.domain([0, d3.max(vis.displayData, d => d.seasonalVisits[selectedSeason])])
 
         // Draw the layers
         const rectangles = vis.svg.selectAll(".bar").data(vis.displayData, d => d.id)
@@ -101,12 +101,12 @@ class BarChart {
             .attr("height", vis.y.bandwidth())
             .transition()
             .attr("y", d => vis.y(d.fullName))
-            .attr("width", d => vis.x(d[selectedBarMetric]))
+            .attr("width", d => vis.x(d.seasonalVisits[selectedSeason]))
             .duration(500)
 
         rectangles.exit().remove()
 
-        // const labels = vis.svg.selectAll(".bar-label").data(vis.displayData, d => d[selectedBarMetric])
+        // const labels = vis.svg.selectAll(".bar-label").data(vis.displayData, d => d.seasonalVisits[selectedSeason])
         // labels.exit().remove();
         //
         // labels
@@ -115,9 +115,9 @@ class BarChart {
         //     .attr("class", "bar-label")
         //     .attr("y", d => vis.y(d.fullName) + vis.y.bandwidth() / 2)
         //     .attr("x", d => (vis.lastValue[d.fullName] || 0) + 10)
-        //     .text(d => d[selectedBarMetric])
+        //     .text(d => d.seasonalVisits[selectedSeason])
         //     .transition()
-        //     .attr("x", d => (vis.lastValue[d.fullName] = vis.x(d[selectedBarMetric])) + 10)
+        //     .attr("x", d => (vis.lastValue[d.fullName] = vis.x(d.seasonalVisits[selectedSeason])) + 10)
         //     .duration(500)
 
         // Call axis functions with the new domain

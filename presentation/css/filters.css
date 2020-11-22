@@ -1,4 +1,4 @@
-#activity-select {
+#activity-select, .season-filter {
     position: sticky;
     top: 20px;
     padding: 5px;
@@ -9,7 +9,7 @@
 }
 
 .activity-select__checkboxes {
-    max-height: 600px;
+    max-height: 300px;
     overflow-y: scroll;
 }
 
