@@ -123,10 +123,7 @@ function updateRadar() {
     });
   } else {
     displayParks = parkActivityScores.sort(() => Math.random() - 0.5).slice(0, 3);
-    console.log(displayParks)
   }
-
-  // console.log("Display Parks: ", displayParks)
 
   //Call function to draw the Radar chart
   RadarChart(".radarChart", displayParks, radarChartOptionsLarge);
