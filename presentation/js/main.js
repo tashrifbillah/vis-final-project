@@ -21,13 +21,16 @@ let radarChartOptions = {
 
 const MONTHS_SHORT = ['', 'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep']
 const SEASONS = {
+  All: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
   Spring: [3, 4, 5],
   Summer: [6, 7, 8],
   Fall: [9, 10, 11],
   Winter: [12, 1, 2]
 }
+
 d3.json("data/cleaned_data.json")
   .then(async data => {
+    // Normalize visit numbers data structures
     allData = data.map(function(d) {
       const monthlyVisits = _.fromPairs(Object.entries(d['monthly visit']).map(([k, v]) => [
         k,
@@ -50,7 +53,6 @@ d3.json("data/cleaned_data.json")
         seasonalVisits
       }
     });
-    console.log(allData[0]);
 
     d3.json("data/timeline_data.json").then(timelineData => {
       const formattedParks = allData.map(p => ({
