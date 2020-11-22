@@ -151,3 +151,27 @@ class MonthSeason {
 
 let monthSeason = new MonthSeason()
 
+// Given an array of available activities, this function uses the global selectedActivities
+// to sort the available activities with user matches appearing at the beginning.
+function activityMatch(activities) {
+    let selectedActivityNames = selectedActivities.map(d => d.name);
+    let availableActivityNames = activities.map(d => d.name);
+    // Randomize the array before starting to avoid alphabetical bias
+    randomize(availableActivityNames);
+
+    availableActivityNames.sort( function(a,b) {
+        return selectedActivityNames.indexOf(b) - selectedActivityNames.indexOf(a);
+    })
+    return availableActivityNames;
+}
+
+// Array shuffling based on the Fisher-Yates Algorithm, as described by Nitin Patel
+// Source: https://medium.com/@nitinpatel_20236/how-to-shuffle-correctly-shuffle-an-array-in-javascript-15ea3f84bfb
+function randomize(array) {
+    for(let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * i)
+        const temp = array[i]
+        array[i] = array[j]
+        array[j] = temp
+    }
+}
