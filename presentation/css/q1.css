@@ -2,8 +2,11 @@ body {
     margin: 20px;
 }
 
+#map {
+    width: 100%;
+}
+
 .location {
-    r: 10px;
     stroke: black;
     stroke-width: 2px;
 }
@@ -24,7 +27,7 @@ body {
     background: rgba(64,64,64,0.4);
 }
 
-#q1 .col {
+#q1 .map-row > * {
     border: thin solid grey;
     margin: 5px;
     border-radius: 5px;
@@ -42,12 +45,31 @@ body {
 
 .stateName {
     font-size: 12px;
-    fill: white;
+    fill: yellow;
     text-anchor: middle;
     font-weight: bold;
 }
 
 
-#activitySelect {
+#q1 #activitySelect {
     width: fit-content;
+}
+
+/* Prevent checked item from staying highlighted while preserving stripes */
+#q1 div.checklist li.even { background-color: #FFFFFF; color: initial}
+#q1 div.checklist li.odd { background-color: #F7F7F7; color: initial}
+
+#q1 #parkSelect {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 5px;
+    border: thin solid black;
+    border-radius: 5px;
+}
+
+#q1 h6 {
+    background: azure;
+    border: thin solid black;
+    border-radius: 5px;
+    padding: 10px;
 }

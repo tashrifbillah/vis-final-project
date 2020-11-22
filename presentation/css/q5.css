@@ -1,0 +1,33 @@
+#q5 .axis {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+#q5 .point {
+    r: 8px;
+    stroke: black;
+    stroke-width: 2px;
+}
+
+#q5 #legend circle {
+    r: 8px;
+    cy: 8px;
+    cx: 8px;
+}
+
+#q5 .y-title {
+    fill: black;
+    text-anchor: middle;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#q5 .col-sm-5 {
+    height: 50px;
+}
+
+#q5 select {
+    padding: 5px;
+    border: thin solid black;
+    border-radius: 5px;
+}

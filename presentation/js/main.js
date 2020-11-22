@@ -3,6 +3,7 @@ let allData,
     activityMapVis,
     parkActivityScores;
 
+let barVis;
 
 let palette = ["#984ea3","#CC333F","#0066ff"]
 let color = d3.scaleOrdinal()
@@ -30,24 +31,60 @@ let radarChartOptionsSmall = {
   strokeWidth: 2
 };
 
+const MONTHS_SHORT = ['', 'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep']
+const SEASONS = {
+  All: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+  Spring: [3, 4, 5],
+  Summer: [6, 7, 8],
+  Fall: [9, 10, 11],
+  Winter: [12, 1, 2]
+}
 
 d3.json("data/cleaned_data.json")
   .then(async data => {
-    console.log(data);
-    allData = data;
+    // Normalize visit numbers data structures
+    allData = data.map(function(d) {
+      const monthlyVisits = _.fromPairs(Object.entries(d['monthly visit']).map(([k, v]) => [
+        k,
+        {prev: v[`${k} 2019`], current: v[`${k} 2020`], monthIdx: MONTHS_SHORT.indexOf(k)}
+      ]))
+
+      const ytdVisits = _.fromPairs(Object.entries(d['monthly visit']).map(([k, v]) => [
+        MONTHS_SHORT.findIndex[k],
+        {prev: v[`YTD ${k}`], current: v[`YTD ${k}`], monthIdx: MONTHS_SHORT.indexOf(k)}
+      ]))
+      const seasonalVisits = _.fromPairs(Object.entries(SEASONS).map(([k, v]) => [
+        k,
+        _.sumBy(_.compact(v.map(i => monthlyVisits[MONTHS_SHORT[i]])), 'current')
+      ]))
+
+      return {
+        ...d,
+        monthlyVisits,
+        ytdVisits,
+        seasonalVisits
+      }
+    });
 
     d3.json("data/timeline_data.json").then(timelineData => {
       const formattedParks = allData.map(p => ({
         year: Number(p.date_established.split(', ')[1]),
         image: p.images[0].url,
         title: `${p.fullName} Founded`,
-        description: p.description
+        description: p.description,
+        isPark: true
       }))
       new Timeline("timeline", _.orderBy(timelineData.concat(formattedParks), 'year'))
     })
 
     activitySets = await d3.json("data/activity_sets.json");
     prepareData();
+    barVis = new BarChart('bar', data)
+  })
+
+d3.json("data/hex_cartogram_data.json")
+  .then(data => {
+    let hexMap = new HexMap("hex-map", data);
   })
 
 // TODO: De-duplicate  Sequoia and Kings Valley

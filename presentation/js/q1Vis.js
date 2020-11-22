@@ -17,19 +17,20 @@ class MapVis {
     initVis() {
         let vis = this;
 
+        const width = 1150
+        const height = 600
 
         vis.margin = {top: 20, right: 20, bottom: 20, left: 20};
-        vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right;
-        vis.height = $("#" + vis.parentElement).height() - vis.margin.top - vis.margin.bottom;
+        vis.width = width - vis.margin.left - vis.margin.right;
+        vis.height = height - vis.margin.top - vis.margin.bottom;
 
         // init drawing area
         vis.svg = d3.select("#" + vis.parentElement).append("svg")
-            .attr("width", vis.width)
-            .attr("height", vis.height)
+            .attr('viewBox', [0, 0, width, height].join(' '))
             .attr('transform', `translate (${vis.margin.left}, ${vis.margin.top})`);
 
 
-        vis.projection = d3.geoAlbersUsa()
+        vis.projection = geoAlbersUsaTerritories.geoAlbersUsaTerritories() // d3.geoAlbersUsa()
             .translate([vis.width / 2, vis.height / 2])
             .scale(1150)
 
@@ -58,13 +59,34 @@ class MapVis {
                 let tmp = d && vis.path.centroid(d)
 
                 if (tmp[0]) {
-                    return tmp[0]
+                    // Add some offset so state label does not overlap circle
+                    // return d.properties.name==='California'?tmp[0]-15:tmp[0]
+                    switch (d.properties.name) {
+                        case 'Alaska':
+                        case 'California':
+                        case 'Hawaii':
+                        case 'United States Virgin Islands':
+                            return tmp[0]-15
+                        default:
+                            return tmp[0]
+                    }
                 }
             })
             .attr("y", d => {
-                let temp = d && vis.path.centroid(d)
-                if (temp[1]) {
-                    return temp[1]
+                let tmp = d && vis.path.centroid(d)
+                if (tmp[1]) {
+                    // Add some offset so state label does not overlap circle
+                    // return d.properties.name==='South Carolina'?tmp[1]-10:tmp[1]
+                    switch (d.properties.name) {
+                        case 'American Samoa':
+                        case 'Maryland':
+                        case 'South Carolina':
+                        case 'United States Virgin Islands':
+                            return tmp[1]-10
+                        default:
+                            return tmp[1]
+                    }
+
                 }
             })
             .text(d => nameConverter.getAbbreviation(d.properties.name))
@@ -125,6 +147,7 @@ class MapVis {
 
         let circle= tmp.enter()
             .append("circle")
+            .attr('r', '10')
             .attr("transform", d => {
                 let tmp = vis.projection([d.longitude, d.latitude])
                 if (tmp) {
@@ -184,6 +207,9 @@ class MapVis {
 
 
 function tabularSummary(d) {
+
+    // change the parkSelect box text
+    $('#parkSelect').val(d.name)
 
     let table= document.getElementById("description")
 

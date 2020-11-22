@@ -1,0 +1,314 @@
+[
+  {
+    "name": "AK",
+    "hex_locations": [[1, 0], [1, 1], [1, 2], [2, 0], [2, 1], [2, 2], [0, 3], [0, 1]],
+    "label_location": [1, 1],
+    "has_parks": true
+  },
+  {
+    "name": "HI",
+    "hex_locations": [[1, 17], [1, 16]],
+    "label_location": [1, 17],
+    "has_parks": true
+  },
+  {
+    "name": "AS",
+    "hex_locations": [[0, 19]],
+    "label_location": [0, 19],
+    "has_parks": true
+  },
+  {
+    "name": "WA",
+    "hex_locations": [[3, 5], [4, 5], [5, 5]],
+    "label_location": [4, 5],
+    "has_parks": true
+  },
+  {
+    "name": "OR",
+    "hex_locations": [[3, 7]],
+    "label_location": [3, 7],
+    "has_parks": true
+  },
+  {
+    "name": "CA",
+    "hex_locations": [[3, 9], [3, 10], [4, 10], [3, 11], [4, 11], [4, 12], [5, 12], [4, 13], [5, 13]],
+    "label_location": [3, 11],
+    "has_parks": true
+  },
+  {
+    "name": "MT",
+    "hex_locations": [[8, 6], [7, 5]],
+    "label_location": [7, 5],
+    "has_parks": true
+  },
+  {
+    "name": "ID",
+    "hex_locations": [[6, 7]],
+    "label_location": [6, 7],
+    "has_parks": true
+  },
+  {
+    "name": "WY",
+    "hex_locations": [[9, 8]],
+    "label_location": [9, 8],
+    "has_parks": true
+  },
+  {
+    "name": "NE",
+    "hex_locations": [[13, 8]],
+    "label_location": [13, 8],
+    "has_parks": false
+  },
+  {
+    "name": "NV",
+    "hex_locations": [[5, 9], [6, 10]],
+    "label_location": [5, 9],
+    "has_parks": true
+  },
+  {
+    "name": "UT",
+    "hex_locations": [[7, 9], [8, 10], [9, 10], [8, 11], [7, 11]],
+    "label_location": [8, 10],
+    "has_parks": true
+  },
+  {
+    "name": "AZ",
+    "hex_locations": [[7, 13], [8, 13], [8, 14]],
+    "label_location": [7, 13],
+    "has_parks": true
+  },
+  {
+    "name": "NM",
+    "hex_locations": [[10, 13], [10, 14]],
+    "label_location": [10, 13],
+    "has_parks": true
+  },
+  {
+    "name": "TX",
+    "hex_locations": [[12, 13], [13, 14]],
+    "label_location": [12, 13],
+    "has_parks": true
+  },
+  {
+    "name": "LA",
+    "hex_locations": [[15, 14]],
+    "label_location": [15, 14],
+    "has_parks": false
+  },
+  {
+    "name": "MS",
+    "hex_locations": [[17, 14]],
+    "label_location": [17, 14],
+    "has_parks": false
+  },
+  {
+    "name": "AL",
+    "hex_locations": [[19, 14]],
+    "label_location": [19, 14],
+    "has_parks": false
+  },
+  {
+    "name": "TN",
+    "hex_locations": [[19, 12]],
+    "label_location": [19, 12],
+    "has_parks": true
+  },
+  {
+    "name": "KY",
+    "hex_locations": [[19, 10]],
+    "label_location": [19, 10],
+    "has_parks": true
+  },
+  {
+    "name": "IN",
+    "hex_locations": [[19, 8]],
+    "label_location": [19, 8],
+    "has_parks": true
+  },
+  {
+    "name": "AR",
+    "hex_locations": [[16, 12]],
+    "label_location": [16, 12],
+    "has_parks": true
+  },
+  {
+    "name": "OK",
+    "hex_locations": [[14, 12]],
+    "label_location": [14, 12],
+    "has_parks": false
+  },
+  {
+    "name": "KS",
+    "hex_locations": [[14, 10]],
+    "label_location": [14, 10],
+    "has_parks": false
+  },
+  {
+    "name": "MO",
+    "hex_locations": [[15, 9]],
+    "label_location": [15, 9],
+    "has_parks": true
+  },
+  {
+    "name": "IA",
+    "hex_locations": [[15, 7]],
+    "label_location": [15, 7],
+    "has_parks": false
+  },
+  {
+    "name": "MN",
+    "hex_locations": [[15, 5]],
+    "label_location": [15, 5],
+    "has_parks": true
+  },
+  {
+    "name": "CO",
+    "hex_locations": [[11, 10], [12, 10], [11, 11], [10, 11]],
+    "label_location": [11, 10],
+    "has_parks": true
+  },
+  {
+    "name": "ND",
+    "hex_locations": [[13, 4]],
+    "label_location": [13, 4],
+    "has_parks": true
+  },
+  {
+    "name": "SD",
+    "hex_locations": [[13, 6], [14, 6]],
+    "label_location": [13, 6],
+    "has_parks": true
+  },
+  {
+    "name": "WI",
+    "hex_locations": [[17, 6]],
+    "label_location": [17, 6],
+    "has_parks": false
+  },
+  {
+    "name": "IL",
+    "hex_locations": [[17, 8]],
+    "label_location": [17, 8],
+    "has_parks": true
+  },
+  {
+    "name": "MI",
+    "hex_locations": [[19, 6]],
+    "label_location": [19, 6],
+    "has_parks": true
+  },
+  {
+    "name": "OH",
+    "hex_locations": [[20, 7]],
+    "label_location": [20, 7],
+    "has_parks": true
+  },
+  {
+    "name": "NY",
+    "hex_locations": [[23, 3]],
+    "label_location": [23, 3],
+    "has_parks": false
+  },
+  {
+    "name": "MA",
+    "hex_locations": [[25, 4]],
+    "label_location": [25, 4],
+    "has_parks": false
+  },
+  {
+    "name": "RI",
+    "hex_locations": [[27, 4]],
+    "label_location": [27, 4],
+    "has_parks": false
+  },
+  {
+    "name": "VT",
+    "hex_locations": [[25, 2]],
+    "label_location": [25, 2],
+    "has_parks": false
+  },
+  {
+    "name": "NH",
+    "hex_locations": [[27, 2]],
+    "label_location": [27, 2],
+    "has_parks": false
+  },
+  {
+    "name": "ME",
+    "hex_locations": [[27, 0]],
+    "label_location": [27, 0],
+    "has_parks": true
+  },
+  {
+    "name": "PA",
+    "hex_locations": [[22, 6]],
+    "label_location": [22, 6],
+    "has_parks": false
+  },
+  {
+    "name": "NJ",
+    "hex_locations": [[25, 6]],
+    "label_location": [25, 6],
+    "has_parks": false
+  },
+  {
+    "name": "CT",
+    "hex_locations": [[23, 5]],
+    "label_location": [23, 5],
+    "has_parks": false
+  },
+  {
+    "name": "MD",
+    "hex_locations": [[23, 7]],
+    "label_location": [23, 7],
+    "has_parks": false
+  },
+  {
+    "name": "VA",
+    "hex_locations": [[22, 9]],
+    "label_location": [22, 9],
+    "has_parks": true
+  },
+  {
+    "name": "WV",
+    "hex_locations": [[20, 9]],
+    "label_location": [20, 9],
+    "has_parks": false
+  },
+  {
+    "name": "DE",
+    "hex_locations": [[25, 8]],
+    "label_location": [25, 8],
+    "has_parks": false
+  },
+  {
+    "name": "NC",
+    "hex_locations": [[22, 11]],
+    "label_location": [22, 11],
+    "has_parks": true
+  },
+  {
+    "name": "SC",
+    "hex_locations": [[22, 13]],
+    "label_location": [22, 13],
+    "has_parks": true
+  },
+  {
+    "name": "GA",
+    "hex_locations": [[21, 14]],
+    "label_location": [21, 14],
+    "has_parks": false
+  },
+  {
+    "name": "FL",
+    "hex_locations": [[22, 16], [22, 17], [23, 18]],
+    "label_location": [22, 17],
+    "has_parks": true
+  },
+  {
+    "name": "VI",
+    "hex_locations": [[26, 19]],
+    "label_location": [26, 19],
+    "has_parks": true
+  }
+]
