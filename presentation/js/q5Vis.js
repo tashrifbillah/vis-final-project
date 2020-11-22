@@ -62,7 +62,7 @@ class LineVis {
         // Draw path
         vis.trend= d3.line()
             .curve(d3.curveCardinal)
-            .y(d=>vis.y(d))
+            .y(d=>vis.y(d.visit))
 
         // Append tooltip
         vis.tooltip = d3.select("body").append('div')
@@ -78,35 +78,51 @@ class LineVis {
 
         let monthly= vis.parkData.map(d=>d["monthly visit"])
 
-        if (groupBy=='months') {
-            vis.y2019 = months.map(m => monthly.map(d => d[m]?d[m][m + " 2019"]:0).reduce((a, v) => a + v, 0))
-            vis.y2020 = months.map(m => monthly.map(d => d[m]?d[m][m + " 2020"]:0).reduce((a, v) => a + v, 0))
+        vis.y2019 = []
+        vis.y2020 = []
+
+        if (groupBy==='months' || groupBy==='seasons') {
+            months.forEach(m => vis.y2019.push({
+                group: m,
+                visit: monthly.map(d => d[m]?d[m][m + " 2019"]:0).reduce((a, v) => a + v, 0)
+            }))
+
+            months.forEach(m => vis.y2020.push({
+                group: m,
+                visit: monthly.map(d => d[m]?d[m][m + " 2020"]:0).reduce((a, v) => a + v, 0)
+            }))
 
             vis.groups= months
-
             vis.svg.select(".y-title")
-                .text("Monthly visit")
+                .text("Monthly visits")
 
         } else if (groupBy=='ytd') {
-            vis.y2019 = months.map(m => monthly.map(d => d[m]?d[m]["YTD 2019"]:0).reduce((a, v) => a + v, 0))
-            vis.y2020 = months.map(m => monthly.map(d => d[m]?d[m]["YTD 2020"]:0).reduce((a, v) => a + v, 0))
+
+            months.forEach(m => vis.y2019.push({
+                group: m,
+                visit: monthly.map(d => d[m]?d[m]["YTD 2019"]:0).reduce((a, v) => a + v, 0)
+            }))
+
+            months.forEach(m => vis.y2020.push({
+                group: m,
+                visit: monthly.map(d => d[m]?d[m]["YTD 2020"]:0).reduce((a, v) => a + v, 0)
+            }))
 
             vis.groups= months
             vis.svg.select(".y-title")
-                .text("Year to date visit")
+                .text("Year to date visits")
 
-        } else if (groupBy=='seasons') {
-            vis.y2019 = months.map(m => monthly.map(d => d[m]?d[m][m + " 2019"]:0).reduce((a, v) => a + v, 0))
-            vis.y2020 = months.map(m => monthly.map(d => d[m]?d[m][m + " 2020"]:0).reduce((a, v) => a + v, 0))
+        }
+
+        if (groupBy=='seasons') {
 
             vis.y2019= seasonalAvg(vis.y2019)
             vis.y2020= seasonalAvg(vis.y2020)
 
             // Override with seasons
-            vis.groups= ["Winter", "Spring", "Summer", "Fall"]
-
+            vis.groups= seasons
             vis.svg.select(".y-title")
-                .text("Monthly average visit")
+                .text("Monthly average visits")
         }
 
         vis.updateVis()
@@ -127,7 +143,7 @@ class LineVis {
             .call(vis.xAxis)
 
 
-        vis.y.domain([0, d3.max([vis.y2019,vis.y2020].flat())])
+        vis.y.domain([0, d3.max([vis.y2019.map(d=>d.visit),vis.y2020.map(d=>d.visit)].flat())])
         vis.yAxis.scale(vis.y)
         vis.gy
             .transition()
@@ -144,17 +160,22 @@ class LineVis {
 
 
         let tmp= vis.patterng.selectAll(".numVisit")
-            .data(vis.y2019, (d,i)=>i)
+            .data(vis.y2019, d=>d.group)
 
         let circle= tmp.enter()
             .append("circle")
             .merge(tmp)
+
+        circle
             .transition()
             .duration(1000)
-            .attr('cx', (d,i)=>vis.x(vis.groups[i]))
-            .attr('cy', d=>vis.y(d))
+            .attr('cx', d=>vis.x(d.group))
+            .attr('cy', d=>vis.y(d.visit))
             .attr("class", "point numVisit")
             .attr("fill", "lightskyblue")
+
+        // Tooltip for 2019
+        vis.showTooltip(circle, "lightskyblue", 2019)
 
         vis.path
             .datum(vis.y2019)
@@ -166,17 +187,22 @@ class LineVis {
 
 
         let tmp1= vis.patterng.selectAll(".numVisit1")
-            .data(vis.y2020, (d,i)=>i)
+            .data(vis.y2020, d=>d.group)
 
         let circle1= tmp1.enter()
             .append("circle")
             .merge(tmp1)
+
+        circle1
             .transition()
             .duration(1000)
-            .attr('cx', (d,i)=>vis.x(vis.groups[i]))
-            .attr('cy', d=>vis.y(d))
+            .attr('cx', d=>vis.x(d.group))
+            .attr('cy', d=>vis.y(d.visit))
             .attr("class", "point numVisit1")
             .attr("fill", "magenta")
+
+        // Tooltip for 2020
+        vis.showTooltip(circle1, "magenta", 2020)
 
         vis.path1
             .datum(vis.y2020)
@@ -192,10 +218,50 @@ class LineVis {
 
     }
 
+
+    showTooltip(circle, color, year) {
+        let vis = this
+
+        circle
+            .on('mouseover', function (event, d) {
+
+                d3.select(this)
+                    .attr('fill', 'green')
+
+                vis.tooltip
+                    .style("opacity", 1)
+                    .style("left", event.pageX + 20 + "px")
+                    .style("top", event.pageY + "px")
+                    .html(`
+                 <div style="border: thin solid grey; border-radius: 5px; background: lightgrey; padding: 10px">
+                     <h5>${d.group} ${year}</h5>
+                     <h6>Visits: ${d3.format(',')(d.visit)}</h6>
+                 </div>`);
+
+
+                // TODO Update table
+                // Table will be in the right column
+                // top10Visits(d.group)
+
+            })
+            .on('mouseout', function (event, d) {
+                d3.select(this)
+                    .attr("fill", color)
+
+                vis.tooltip
+                    .style("opacity", 0)
+                    .style("left", 0)
+                    .style("top", 0)
+                    .html(``);
+            })
+    }
+
 }
 
 
-function seasonalAvg(monthly) {
+function seasonalAvg(data) {
+
+    let monthly= data.map(d=>d.visit)
 
     let avg=[]
 
@@ -213,5 +279,13 @@ function seasonalAvg(monthly) {
 
     avg=avg.map(d=>Math.round(d))
 
-    return avg
+    let result = []
+    seasons.forEach((d,i) =>
+        result.push({
+            group: d,
+            visit: avg[i]
+        })
+    )
+
+    return result
 }
