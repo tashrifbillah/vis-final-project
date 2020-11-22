@@ -7,7 +7,8 @@ let myMapVis,
     myLineVis,
     parkData,
     groupBy,
-    months=['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep']
+    months=['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep'],
+    seasons=["Winter", "Spring", "Summer", "Fall"]
 
 // load data using promises
 let promises = [
