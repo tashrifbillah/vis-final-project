@@ -6,9 +6,7 @@
 /////////////////////////////////////////////////////////
 
 function RadarChart(id, data, options) {
-  // console.log("RADAR CHART: ", data);
   let activityScores = data.map(d => d.activityScores);
-  // console.log("ACTIVITYSCORES: ", activityScores);
 
   var cfg = {
     w: 600,				//Width of the circle
@@ -164,13 +162,9 @@ function RadarChart(id, data, options) {
     .style("fill", function(d,i) { return cfg.color(i); })
     .style("fill-opacity", cfg.opacityArea)
     .on('mouseover', function (event, d){
-      // Park name tooltip
-      newX = event.clientX - cfg.w/2;
-      newY = event.clientY - cfg.h/2;
-      tooltipParkName
-        .text(d.parkName)
-        .transition().duration(200)
-        .style('opacity', 1);
+      // Update tooltip
+      radarToolTip.show(d, "PARK", this);
+      console.log(d)
 
       //Dim all blobs
       d3.selectAll(".radarArea")
@@ -182,9 +176,8 @@ function RadarChart(id, data, options) {
         .style("fill-opacity", 0.7);
     })
     .on('mouseout', function(){
-      // Hide park name tooltip
-      tooltipParkName.transition().duration(200)
-        .style("opacity", 0);
+      // Hide tooltip
+      radarToolTip.hide();
 
       //Bring back all blobs
       d3.selectAll(".radarArea")
@@ -234,31 +227,31 @@ function RadarChart(id, data, options) {
     .style("fill", "none")
     .style("pointer-events", "all")
     .on("mouseover", function(event, d) {
-      newX =  parseFloat(d3.select(this).attr('cx')) - 10;
-      newY =  parseFloat(d3.select(this).attr('cy')) - 10;
-      tooltip
-        .attr('x', newX)
-        .attr('y', newY)
-        .text(d.axis + ": " + Format(d.value))
-        .transition().duration(200)
-        .style('opacity', 1);
+      // Update tooltip
+      radarToolTip.show(d, "CIRCLE", this);
+      console.log(d)
     })
     .on("mouseout", function(){
-      tooltip.transition().duration(200)
-        .style("opacity", 0);
+      radarToolTip.hide();
     });
 
-  //Set up the small tooltip for when you hover over a circle
-  var tooltip = g.append("text")
-    .attr("class", "tooltip")
-    .style("opacity", 0);
+  // Radar Tooltip
+  let radarToolTip = d3.tip()
+    .attr("class", "d3-tip")
+    .offset([-10, 0])
+    .html(function(d, t) {
+      let message = '';
+      let header = '<h1>' + d.parkName + '</h1>'
+      if (t == "PARK") {
+        message = 'The most prolific activities at ' + d.parkName + " are: ";
+      } else if (t == "CIRCLE") {
+        message = d.parkName  + ' offers activities such as: ';
+      }
+      return header + message;
+    });
 
-  //Set up the small tooltip for when you hover over a circle
-  var tooltipParkName = g.append("text")
-    .attr("class", "tooltip")
-    .style("opacity", 0)
-    .attr("x", -cfg.w/2)
-    .attr("y", -cfg.h/2);
+  // Add the tooltip
+  svg.call(radarToolTip);
 
   /////////////////////////////////////////////////////////
   /////////////////// Helper Function /////////////////////

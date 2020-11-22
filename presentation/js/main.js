@@ -5,7 +5,7 @@ let allData,
 
 let barVis;
 
-let palette = ["#984ea3","#CC333F","#0066ff"]
+let palette = ["#EDC951","#CC333F","#00A0B0"]
 let color = d3.scaleOrdinal()
   .range(palette);
 
