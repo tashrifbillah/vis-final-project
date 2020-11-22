@@ -38,6 +38,11 @@ d3.json("data/cleaned_data.json")
     prepareData();
   })
 
+d3.json("data/hex_cartogram_data.json")
+  .then(data => {
+    let hexMap = new HexMap("hex-map", data);
+  })
+
 
 function prepareData() {
   let parkActivityScores = [];
