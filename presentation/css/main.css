@@ -10,8 +10,8 @@
 }
 
 .vis {
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 80px;
+    padding-bottom: 80px;
     border-bottom: 1px solid #eee;
 }
 
@@ -29,11 +29,15 @@
     grid-template-columns: 9fr 3fr;
 }
 
+select {
+    max-width: 200px;
+}
+
 .section__filter > * {
     margin-top: 200px;
     position: sticky;
     top: 30%;
-    padding: 5px;
+    padding: 15px;
     /*padding-left: 30px;*/
     border: 1px solid #a2a2a2;
     border-radius: 5px;

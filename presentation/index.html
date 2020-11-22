@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/hex.css">
     <link rel="stylesheet" href="css/q5.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/barchart.css">
 </head>
 <body>
 
@@ -81,7 +82,7 @@
                     <!-- Right column for summary -->
                     <div class="col-md-3">
                         <div class="row justify-content-center">
-                            <select id="parkSelect" onchange="displayDetails()">
+                            <select id="parkSelect" onchange="displayDetails()" class="form-control">
                                 <option value="" selected>Select a park to see details ...</option>
                             </select>
                             <img id="picture" />
@@ -127,7 +128,7 @@
     <aside class="section__filter">
         <div class="filter">
             <h5>Select a region</h5>
-            <select name="region-select" id="region-select" class="region-filter__select" onchange="$(eventEmitter).trigger('regionChanged')">
+            <select name="region-select" id="region-select" class="form-control region-filter__select" onchange="$(eventEmitter).trigger('regionChanged')">
                 <option value="All">All</option>
                 <option value="Spring">Spring</option>
                 <option value="Summer">Summer</option>
@@ -189,7 +190,7 @@
 <section class="container-fluid section">
     <main class="section__visualizations">
         <div class="vis" id="q5">
-            <select id="group-by" class="vis__filter" onchange="_groupBy()">
+            <select id="group-by" class="form-control vis__filter" onchange="_groupBy()">
                 <option value="months">By month</option>
                 <option value="ytd" selected>Year to date</option>
                 <option value="seasons">By season</option>
@@ -227,7 +228,7 @@
         <div class="season-filter">
             <h2>Preferred Season</h2>
 
-            <select name="season-select" id="season-select" class="season-filter__select" onchange="$(eventEmitter).trigger('seasonChanged')">
+            <select name="season-select" id="season-select" class="form-control season-filter__select" onchange="$(eventEmitter).trigger('seasonChanged')">
                 <option value="All">All</option>
                 <option value="Spring">Spring</option>
                 <option value="Summer">Summer</option>

@@ -6,4 +6,10 @@
 .check-row {
     display: flex;
     align-items: center;
+    margin-top: 5px;
+}
+
+.check-row label {
+    margin-bottom: 0;
+    margin-left: 10px;
 }

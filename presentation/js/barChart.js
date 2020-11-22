@@ -44,6 +44,7 @@ class BarChart {
             .range([0, vis.width]);
 
         vis.y = d3.scaleBand(d3.schemeCategory10)
+            .padding(0.1)
             .range([vis.height, 0]);
 
         vis.xAxis = d3.axisBottom()
