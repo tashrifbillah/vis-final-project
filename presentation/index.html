@@ -62,10 +62,10 @@
     <p>Please select one to help guide your decision</p>
 </div>
 
-<div class="container-fluid main">
-    <main class="main__visualizations">
+<section class="container-fluid section">
+    <main class="section__visualizations">
         <div class="vis" id="q1">
-            <h6 class="vis__title">Map</h6>
+            <h3 class="vis__title">Map</h3>
             <p class="vis__description">Filter the parks by activities available (top left),
                 hover over the map to learn more about each park, and search the details of a park by
                 typing in the name (right).</p>
@@ -116,74 +116,57 @@
         </div>
 
         <div class="vis">
+            <h3 class="vis__title">Hex Map</h3>
+            <p class="vis__description">This is a hex map.</p>
             <div class="vis__wrapper">
                 <div class="hex-map" id="hex-map" style="height: 100%; width:100%;"></div>
             </div>
         </div>
     </main>
+    
+    <aside class="section__filter">
+        <div class="filter">
+            <h5>Select a region</h5>
+            <select name="region-select" id="region-select" class="region-filter__select" onchange="$(eventEmitter).trigger('regionChanged')">
+                <option value="All">All</option>
+                <option value="Spring">Spring</option>
+                <option value="Summer">Summer</option>
+                <option value="Fall">Fall</option>
+                <option value="Winter">Winter</option>
+            </select>
+        </div>
+    </aside>
+</section>
+
+<div class="instruction">
+    <h4>Explore park activities.</h4>
+    <p>We'll identify the top 3 parks matching your preferences</p>
 </div>
 
-<div id="q5">
-    <hr>
-    <br>
-
-    <div class="row">
-        <div class="col">
-            <!-- header row -->
-            <div class="row justify-content-center">
-                <h3>Monthly Summary of Park Visit</h3>
-            </div>
-
-            <!-- group by select menu -->
-            <div class="row">
-                <div class="col-sm-5" style="margin-left: 100px">
-                    <select id="group-by" onchange="_groupBy()">
-                        <option value="months">By month</option>
-                        <option value="ytd" selected>Year to date</option>
-                        <option value="seasons">By season</option>
-                    </select>
-                </div>
-
-                <div class="col-sm-5">
-                    <!-- Only two circles with definite color, so adding in HTML directly -->
-                    <div style="margin-left: 20px; margin-top: 20px" id="legend">
-                        <svg>
-                            <circle fill="lightskyblue"></circle>
-                            <text x="20" y="15">2019</text>
-                        </svg>
-                        <svg>
-                            <circle fill="magenta"></circle>
-                            <text x="20" y="15">2020</text>
-                        </svg>
+<section class="container-fluid section">
+    <main class="section__visualizations">
+        <div class="vis">
+            <h3 class="vis__title">Activities</h3>
+            <p class="vis__description">This is a descripion.</p>
+            <div class="vis__wrapper">
+                <div id="radarDiv">
+                    <div class="row justify-content-center">
+                        <div class="radarChart"></div>
                     </div>
                 </div>
-            </div>
-
-            <!-- svg container for line graph -->
-            <div class="row" style="height: 40vh">
-                <div class="align-self-center" id="line-graph" style="width: 70%; height: 100%"></div>
-            </div>
-        </div>
-    </div>
-
-    <br>
-    <hr>
-</div>
-
-
-<div class="container">
-    <div class="row">
-        <div class="col-8">
-            <!--  Activity Radar Charts  -->
-            <div id="radarDiv">
                 <div class="row justify-content-center">
-                    <div class="radarChart"></div>
+                    <div class="col-4 radarChart1"></div>
+                    <div class="col-4 radarChart2"></div>
+                    <div class="col-4 radarChart3"></div>
                 </div>
             </div>
         </div>
-        <div class="col-4">
+    </main>
+
+    <aside class="section__filter">
+        <div class="filter">
             <div id="activity-select">
-                <h2>Activities</h2>
+                <h5>Select Activities</h5>
 
                 <input type="search" v-model="filter" class="form-control" placeholder="Filter activities...">
 
@@ -195,18 +178,37 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-4 radarChart1"></div>
-        <div class="col-4 radarChart2"></div>
-        <div class="col-4 radarChart3"></div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-8">
-            <div id="bar"></div>
+    </aside>
+</section>
+
+<section class="container-fluid section">
+    <main class="section__visualizations">
+        <div class="vis">
+            <select id="group-by" class="vis__filter" onchange="_groupBy()">
+                <option value="months">By month</option>
+                <option value="ytd" selected>Year to date</option>
+                <option value="seasons">By season</option>
+            </select>
+            <h3 class="vis__title">Line Graph</h3>
+            <p class="vis__description">Charting population over 2019-2020.</p>
+            <div class="vis__legend">
+                <div id="legend">
+                    <svg>
+                        <circle fill="lightskyblue"></circle>
+                        <text x="20" y="15">2019</text>
+                    </svg>
+                    <svg>
+                        <circle fill="magenta"></circle>
+                        <text x="20" y="15">2020</text>
+                    </svg>
+                </div>
+            </div>
+            <div class="vis__wrapper" style="height: 40vh">
+                <div class="align-self-center" id="line-graph" style="width: 70%; height: 100%"></div>
+            </div>
         </div>
-    </div>
-</div>
+    </main>
+</section>
 
 <div class="container">
     <div class="row">

@@ -16,16 +16,16 @@ body {
     stroke: black;
 }
 
-#q1 h3 {
-    margin: 10px;
-    border: thin solid grey;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-right: 10px;
-    padding-left: 10px;
-    border-radius: 5px;
-    background: rgba(64,64,64,0.4);
-}
+/*#q1 h3 {*/
+/*    margin: 10px;*/
+/*    border: thin solid grey;*/
+/*    padding-top: 5px;*/
+/*    padding-bottom: 5px;*/
+/*    padding-right: 10px;*/
+/*    padding-left: 10px;*/
+/*    border-radius: 5px;*/
+/*    background: rgba(64,64,64,0.4);*/
+/*}*/
 
 #q1 .map-row > * {
     border: thin solid grey;
@@ -36,6 +36,7 @@ body {
 
 #q1 img {
     width: 300px;
+    max-width: 100%;
     height: 185px;
     margin-top: 10px;
     margin-bottom: 10px;
