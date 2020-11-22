@@ -2,6 +2,7 @@ let allData,
     activitySets,
     activityMapVis;
 
+let barVis;
 
 let palette = ["#EDC951","#CC333F","#00A0B0"]
 let color = d3.scaleOrdinal()
@@ -37,6 +38,7 @@ d3.json("data/cleaned_data.json")
 
     activitySets = await d3.json("data/activity_sets.json");
     prepareData();
+    barVis = new BarChart('bar', data)
   })
 
 
