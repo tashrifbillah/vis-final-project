@@ -1,9 +1,8 @@
 let allData,
     activitySets,
     activityMapVis,
-    parkActivityScores;
-
-let barVis;
+    parkActivityScores,
+    barVis;
 
 let palette = ["#EDC951","#CC333F","#00A0B0"]
 let color = d3.scaleOrdinal()
@@ -95,10 +94,17 @@ function prepareData() {
     let activityScores = [];
     activitySets.forEach(a => {
       let activitySet = new Set(a.activities);
-      activityScores.push({'axis': a.name, 'value': setScore(activitySet, d.activities)});
+      let matchSummary = setScore(activitySet, d.activities);
+      activityScores.push({
+        'parkName': d.name,
+        'axis': a.name,
+        'value': matchSummary.score,
+        "matchingActivities": matchSummary.matchingActivities,
+        "numberMatching": matchSummary.numberMatching
+      });
     })
 
-    let parkData = {'parkName': d.name, 'activityScores': activityScores};
+    let parkData = {'parkName': d.name, 'activities': d.activities, 'activityScores': activityScores};
     if (parkActivityScores.map(d => d.parkName).indexOf(d.name) == -1) {
       parkActivityScores.push(parkData);
     }
@@ -134,16 +140,18 @@ function updateRadar() {
 }
 
 function setScore(set, activities) {
+  let matchingActivities = [];
+  let score = 0;
+
   if (!activities) {
     console.log("You've found the most boring place on earth, with literally NO activities");
-    return 0;
+  } else {
+    activities.forEach(d => {
+      if (set.has(d.name)) {
+        score += 1;
+        matchingActivities.push(d);
+      }
+    });
   }
-  let score = 0;
-  activities.forEach(d  => {
-    if (set.has(d.name)) {
-      score += 1;
-    }
-  })
-
-  return score / set.size;
+  return {"numberMatching": score, "score": score / set.size, "matchingActivities": matchingActivities}
 }

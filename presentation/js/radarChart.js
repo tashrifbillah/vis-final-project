@@ -164,7 +164,6 @@ function RadarChart(id, data, options) {
     .on('mouseover', function (event, d){
       // Update tooltip
       radarToolTip.show(d, "PARK", this);
-      console.log(d)
 
       //Dim all blobs
       d3.selectAll(".radarArea")
@@ -242,10 +241,19 @@ function RadarChart(id, data, options) {
     .html(function(d, t) {
       let message = '';
       let header = '<h1>' + d.parkName + '</h1>'
+      let sortedActivities;
+
       if (t == "PARK") {
-        message = 'The most prolific activities at ' + d.parkName + " are: ";
+        sortedActivities = activityMatch(d.activities);
+        message = 'You might enjoy some of these activities at ' + d.parkName + " are: " + sortedActivities.slice(0, 3);
       } else if (t == "CIRCLE") {
-        message = d.parkName  + ' offers activities such as: ';
+        // Not all parks have 3 activities in each category
+        if (d.numberMatching == 0) {
+          message = d.parkName + ' does not currently offer any activities related to ' + d.axis;
+        } else {
+          sortedActivities = activityMatch(d.matchingActivities);
+          message = d.parkName + ' offers activities such as: ' + sortedActivities.slice(0, 3);
+        }
       }
       return header + message;
     });
