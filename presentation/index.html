@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/activities.css">
     <link rel="stylesheet" href="css/jquery.multiselect.css">
     <link rel="stylesheet" href="css/q1.css">
+    <link rel="stylesheet" href="css/hex.css">
     <link rel="stylesheet" href="css/q5.css">
 </head>
 <body>
@@ -76,6 +77,14 @@
                 <!-- bonus task -->
                 <a id="wiki" target="_blank"><b>>> Read more on Wikipedia</b></a>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row justify-content-center" style="height: 85vh;">
+        <div class="col">
+            <div class="hex-map" id="hex-map" style="height: 100%; width:100%;"></div>
         </div>
     </div>
 </div>
@@ -185,10 +194,12 @@
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="https://d3js.org/topojson.v2.min.js"></script>
     <script src="https://unpkg.com/geo-albers-usa-territories@0.1.0/dist/geo-albers-usa-territories.js"></script>
+    <script src="https://d3js.org/d3-hexbin.v0.2.min.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
     <script src="js/loadData.js"></script>
     <script src="js/activitySelect.js"></script>
     <script src="js/eventHandler.js"></script>
@@ -200,6 +211,8 @@
     <script src="js/jquery.multiselect.js"></script>
     <script src="js/q1Vis.js"></script>
     <script src="js/q1.js"></script>
+    <script src="js/d3-tip.js"></script>
+    <script src="js/hexMap.js"></script>
     <script src="js/q5Vis.js"></script>
 </body>
 </html>
