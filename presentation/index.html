@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/activities.css">
     <link rel="stylesheet" href="css/jquery.multiselect.css">
     <link rel="stylesheet" href="css/q1.css">
+    <link rel="stylesheet" href="css/hex.css">
 </head>
 <body>
 
@@ -80,6 +81,12 @@
 </div>
 
 <div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="hex-map" id="hex-map"></div>
+    </div>
+</div>
+
+<div class="container-fluid">
     <div id="carousel" class="carousel slide">
         <div class="carousel-inner"></div>
         <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
@@ -133,10 +140,12 @@
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="https://d3js.org/topojson.v2.min.js"></script>
     <script src="https://unpkg.com/geo-albers-usa-territories@0.1.0/dist/geo-albers-usa-territories.js"></script>
+    <script src="https://d3js.org/d3-hexbin.v0.2.min.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
     <script src="js/loadData.js"></script>
     <script src="js/activitySelect.js"></script>
     <script src="js/eventHandler.js"></script>
@@ -148,6 +157,8 @@
     <script src="js/q1Vis.js"></script>
     <script src="js/q1.js"></script>
     <script src="js/helpers.js"></script>
+    <script src="js/d3-tip.js"></script>
+    <script src="js/hexMap.js"></script>
 </body>
 </html>
 

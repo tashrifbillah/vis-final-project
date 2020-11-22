@@ -155,7 +155,6 @@ d3.json("data/hex_cartogram_data.json")
     // Label the hexagons
     let state_hexagon_labels = svg.append("g")
       .selectAll(".state-hexagon-label")
-      // .data(hexbin(state_points))
       .data(state_labels);
 
     state_hexagon_labels
@@ -176,7 +175,6 @@ d3.json("data/hex_cartogram_data.json")
 let legend = svg.append('g')
   .attr('class', 'legend')
   .attr("transform", `translate(0, ${height})`)
-  // .attr('transform', `translate(${margin.left}, ${-margin.top * 2/3})`)
   .attr('text-anchor', 'start')
 
 legend.selectAll(".legend-square")
