@@ -6,6 +6,10 @@
     grid-gap: 20px;
 }
 
+.results__response {
+    padding: 10px;
+}
+
 .results a {
     cursor: pointer;
 }
