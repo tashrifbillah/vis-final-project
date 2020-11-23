@@ -267,13 +267,25 @@
             <template v-if="!dataType">
                 <img :src="img.url" alt="" v-for="img in displayedData.images" style="width: 100%; margin-top: 20px;">
             </template>
+
             <template v-else-if="dataType === 'alerts' && displayedData">
                 <ul>
                     <li v-for="alert in displayedData.data">
                         <h5>{{ alert.title }}</h5>
-                        <p v-html="alert.description"></p>
+                        <p v-text="alert.description"></p>
                     </li>
                 </ul>
+            </template>
+
+            <template v-else-if="dataType === 'campgrounds' && displayedData">
+                <ul v-if="displayedData.data.length">
+                    <li v-for="campground in displayedData.data">
+                        <h5><a :href="campground.directionsUrl" target="_blank">{{ campground.name }}</a></h5>
+                        <p v-text="campground.description"></p>
+                    </li>
+                </ul>
+
+                <p v-else>No campgrounds</p>
             </template>
         </div>
 
