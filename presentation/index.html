@@ -267,6 +267,14 @@
             <template v-if="!dataType">
                 <img :src="img.url" alt="" v-for="img in displayedData.images" style="width: 100%; margin-top: 20px;">
             </template>
+            <template v-else-if="dataType === 'alerts' && displayedData">
+                <ul>
+                    <li v-for="alert in displayedData.data">
+                        <h5>{{ alert.title }}</h5>
+                        <p v-html="alert.description"></p>
+                    </li>
+                </ul>
+            </template>
         </div>
 
         <p v-else>Select a park</p>

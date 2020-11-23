@@ -7,6 +7,7 @@ function initActivitySelect() {
     const grouped = _.groupBy(relations, 'activity')
     const activityCounts = _.fromPairs(Object.entries(grouped).map(([k, v]) => [k, v.length]), c => c[1], 'desc')
     const allActivities = _.orderBy(_.uniqBy(_.flatten(allData.map(r => r.activities)), 'id').map( a => ({ ...a, count: activityCounts[a.id] })), 'count', 'desc')
+    topTenParks = allData.slice(0, 10)
 
     new Vue({
         data() {

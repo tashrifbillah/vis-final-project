@@ -78,6 +78,7 @@ d3.json("data/cleaned_data.json")
 
     barVis = new BarChart('bar', allData)
     initActivitySelect()
+    initResults()
     activitySets = await d3.json("data/activity_sets.json");
     prepareData();
   })
