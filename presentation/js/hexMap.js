@@ -176,8 +176,6 @@ class HexMap {
         .attr("y", d => d.label_point[1] + vis.hexRadius/3)
         .attr("class", "state-label")
         .text(d => d.name)
-        .style("font-size", 12)
-        .style("font-weight", "bold")
         .on("mouseover", function(event, d) {
           vis.toolTip.show(d, this);
         })
