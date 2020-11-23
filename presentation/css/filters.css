@@ -1,3 +1,16 @@
+.region-filter {
+    top: 10%;
+}
+
+.activity-filter {
+    top: calc(10% + 200px);
+}
+
+.season-filter {
+    top: calc(10% + 650px);
+    height: 300px;
+}
+
 .activity-select__checkboxes {
     max-height: 300px;
     overflow-y: scroll;

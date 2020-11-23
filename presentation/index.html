@@ -126,8 +126,8 @@
             </div>
         </div>
     </main>
-    
-    <aside class="section__filter">
+
+    <aside class="section__filter region-filter">
         <div class="filter">
             <h5>Select a region</h5>
             <select name="region-select" id="region-select" class="form-control region-filter__select" onchange="$(eventEmitter).trigger('regionChanged')">
@@ -139,14 +139,12 @@
             </select>
         </div>
     </aside>
-</section>
 
-<div class="instruction">
-    <h4>3. Explore park activities.</h4>
-    <p>We'll identify the top 3 parks matching your preferences</p>
-</div>
+    <div class="instruction">
+        <h4>3. Explore park activities.</h4>
+        <p>We'll identify the top 3 parks matching your preferences</p>
+    </div>
 
-<section class="container-fluid section">
     <main class="section__visualizations">
         <div class="vis">
             <h3 class="vis__title">Activities</h3>
@@ -166,7 +164,7 @@
         </div>
     </main>
 
-    <aside class="section__filter">
+    <aside class="section__filter activity-filter">
         <div class="filter">
             <div id="activity-select">
                 <h5>Select Activities</h5>
@@ -182,14 +180,12 @@
             </div>
         </div>
     </aside>
-</section>
 
-<div class="instruction">
-    <h4>4. Track visits over year</h4>
-    <p>Pick the ideal season for you to visit.</p>
-</div>
+    <div class="instruction">
+        <h4>4. Track visits over year</h4>
+        <p>Pick the ideal season for you to visit.</p>
+    </div>
 
-<section class="container-fluid section">
     <main class="section__visualizations">
         <div class="vis" id="q5">
             <select id="group-by" class="form-control vis__filter" onchange="_groupBy()">
@@ -226,18 +222,16 @@
         </div>
     </main>
 
-    <aside class="section__filter">
-        <div class="season-filter">
-            <h2>Preferred Season</h2>
+    <aside class="section__filter season-filter">
+        <h5>Preferred Season</h5>
 
-            <select name="season-select" id="season-select" class="form-control season-filter__select" onchange="$(eventEmitter).trigger('seasonChanged')">
-                <option value="All">All</option>
-                <option value="Spring">Spring</option>
-                <option value="Summer">Summer</option>
-                <option value="Fall">Fall</option>
-                <option value="Winter">Winter</option>
-            </select>
-        </div>
+        <select name="season-select" id="season-select" class="form-control" onchange="$(eventEmitter).trigger('seasonChanged')">
+            <option value="All">All</option>
+            <option value="Spring">Spring</option>
+            <option value="Summer">Summer</option>
+            <option value="Fall">Fall</option>
+            <option value="Winter">Winter</option>
+        </select>
     </aside>
 </section>
 
