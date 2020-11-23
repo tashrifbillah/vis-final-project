@@ -23,42 +23,50 @@
     <h1>United States National Parks</h1>
 
     <p>
-        Every year around 5 million people visit 62 National Parks all over the country.
-        Most of the parks are in the west coast of the country, mainly concentrated in Colorado, Utah,
-        Arizona, California, and Alaska.
+        The United States is home to some of the most unique and stunning natural geographical features in the world. Over the course of nearly 200 years, 62 of these sites have been designated as National Parks. Every year, these parks support as many as 90 million visitors.
     </p>
+
+    <h2 style="margin-top: 200px;">What to expect</h2>
+    <p>As you progress through the course of this webpage, you will be presented with filters on the right.</p>
+    <p>Each section is intended to help you pick your preferences of region, activities, and season.</p>
+    <p>At the end of the experience, the top parks matching your preferences will be displayed, along with helpful information.</p>
 </header>
 
 <div class="instruction">
-    <h4>1. Get familiar with the history of national parks.</h4>
-    <p>Some other text</p>
+    <h4>1. Learn about the history of National Parks.</h4>
 </div>
 
 <div class="container-fluid">
-    <div id="carousel" class="carousel slide">
-        <div class="carousel-inner"></div>
-        <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
+    <div class="vis">
+        <h3 class="vis__title">How did National Parks come to be?</h3>
+        <p class="vis__description">Yellowstone was officially established as the first National Park in 1872. 34 years later, Theodore Roosevelt passed the Antiquities Act of 1906, creating presidential authority to designate national monuments from federal lands to protect significant natural, cultural, or scientific features. The national monument designation has served as a precursor to the National Park designation for many parks.</p>
+        <div class="vis__wrapper">
+            <div id="carousel" class="carousel slide">
+                <div class="carousel-inner"></div>
+                <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+
+            <dl class="timeline-key">
+                <dt class="current"></dt>
+                <dd>Current</dd>
+
+                <dt class="law"></dt>
+                <dd>Law Passed</dd>
+
+                <dt class="park"></dt>
+                <dd>Park Founded</dd>
+            </dl>
+
+            <div id="timeline"></div>
+        </div>
     </div>
-
-    <dl class="timeline-key">
-        <dt class="current"></dt>
-        <dd>Current</dd>
-
-        <dt class="law"></dt>
-        <dd>Law Passed</dd>
-
-        <dt class="park"></dt>
-        <dd>Park Founded</dd>
-    </dl>
-
-    <div id="timeline"></div>
 </div>
 
 <div class="instruction">
@@ -69,10 +77,8 @@
 <section class="container-fluid section">
     <main class="section__visualizations">
         <div class="vis" id="q1">
-            <h3 class="vis__title">Map</h3>
-            <p class="vis__description">Filter the parks by activities available (top left),
-                hover over the map to learn more about each park, and search the details of a park by
-                typing in the name (right).</p>
+            <h3 class="vis__title">Where are the National Parks located?</h3>
+            <p class="vis__description">Filter the parks by activities available (top left), hover over the map to learn more about each park, and search the details of a park by typing in the name (right)</p>
 
             <div class="vis__wrapper">
                 <div class="row map-row">
@@ -120,8 +126,8 @@
         </div>
 
         <div class="vis">
-            <h3 class="vis__title">Hex Map</h3>
-            <p class="vis__description">This is a hex map.</p>
+            <h3 class="vis__title">Not all regions are created equal. Which areas have the most access to National Parks, and how can this help guide your plans?</h3>
+            <p class="vis__description">This representation of the United States shows how each region is represented by using one hexagon for each National Park in that region. Depending on you location, this may be able to help inform your plans.</p>
             <div class="vis__wrapper" style="height: 85vh;">
                 <div class="hex-map" id="hex-map" style="height: 100%; width:100%;"></div>
             </div>
@@ -142,14 +148,14 @@
     </aside>
 
     <div class="instruction">
-        <h4>3. Explore park activities.</h4>
-        <p>We'll identify the top 3 parks matching your preferences</p>
+        <h4>3. Find the parks that will best support you in pursuing your favorite activities</h4>
+        <p>Let us know what types of activities you are most interested in. This information is used to find great parks for you to explore.</p>
     </div>
 
     <main class="section__visualizations">
         <div class="vis">
-            <h3 class="vis__title">Activities</h3>
-            <p class="vis__description">This is a descripion.</p>
+            <h3 class="vis__title">Different parks excel in different areas. Which parks are the best match for your interests?</h3>
+            <p class="vis__description">The National Parks offer over 100 different activities. Here, we can see the result of categorizing each activity and summarizing each park’s unique personality by rating it on the number of activities available in each category. Your input is used to determine your top three matches. What are the personalities of your matches?</p>
             <div class="vis__wrapper">
                 <div id="radarDiv">
                     <div class="row justify-content-center">
@@ -183,8 +189,8 @@
     </aside>
 
     <div class="instruction">
-        <h4>4. Track visits over year</h4>
-        <p>Pick the ideal season for you to visit.</p>
+        <h4>4. Make a decision based on the popularity of each park and your comfort level with crowds</h4>
+        <p>Which season will work best for your trip?</p>
     </div>
 
     <main class="section__visualizations">
@@ -194,8 +200,8 @@
                 <option value="ytd" selected>Year to date</option>
                 <option value="seasons">By season</option>
             </select>
-            <h3 class="vis__title">Line Graph</h3>
-            <p class="vis__description">Charting population over 2019-2020.</p>
+            <h3 class="vis__title">How has COVID-19 affected park utilization in 2020?</h3>
+            <p class="vis__description">Although outdoor activities are recommended as some of the safest recreational options, there has been a marked decline in visitors during 2020. This decline is most visible during March 2020, when many states first enacted precautionary legislation.</p>
             <div class="vis__legend">
                 <div id="legend">
                     <svg>
@@ -214,8 +220,8 @@
         </div>
 
         <div class="vis">
-            <h3 class="vis__title">Top parks by visits</h3>
-            <p class="vis__description">Showing average visits by season</p>
+            <h3 class="vis__title">Which of your matching parks are the most popular?</h3>
+            <p class="vis__description">Based on your tolerance for crowd size, it may be helpful to take park popularity into account when planning your trip. Visitation varies drastically between parks, and even between seasons within the same park. Some of the most beautiful and secluded experiences may be found during the “off-season”.</p>
 
             <div class="vis__wrapper">
                 <div id="bar"></div>
@@ -255,7 +261,7 @@
             </ol>
         </div>
 
-        <div class="results__code" v-if="selectedId">
+        <div v-if="selectedId">
             <div class="btn-group" role="group" aria-label="Basic example">
                 <button type="button" class="btn btn-secondary"
                         v-for="opt in dataTypes"
@@ -264,29 +270,42 @@
                 </button>
             </div>
 
-            <template v-if="!dataType">
-                <img :src="img.url" alt="" v-for="img in displayedData.images" style="width: 100%; margin-top: 20px;">
-            </template>
+            <div class="results__response">
+                <template v-if="!dataType">
+                    <img :src="img.url" alt="" v-for="img in displayedData.images.slice(0, 3)" style="width: 100%; margin-top: 20px;">
+                </template>
 
-            <template v-else-if="dataType === 'alerts' && displayedData">
-                <ul>
-                    <li v-for="alert in displayedData.data">
-                        <h5>{{ alert.title }}</h5>
-                        <p v-text="alert.description"></p>
-                    </li>
-                </ul>
-            </template>
+                <template v-else-if="dataType === 'alerts' && displayedData">
+                    <ul>
+                        <li v-for="alert in displayedData.data">
+                            <h5>{{ alert.title }}</h5>
+                            <p v-text="alert.description"></p>
+                        </li>
+                    </ul>
+                </template>
 
-            <template v-else-if="dataType === 'campgrounds' && displayedData">
-                <ul v-if="displayedData.data.length">
-                    <li v-for="campground in displayedData.data">
-                        <h5><a :href="campground.directionsUrl" target="_blank">{{ campground.name }}</a></h5>
-                        <p v-text="campground.description"></p>
-                    </li>
-                </ul>
+                <template v-else-if="dataType === 'campgrounds' && displayedData">
+                    <ul v-if="displayedData.data.length">
+                        <li v-for="campground in displayedData.data">
+                            <h5><component :is="campground.directionsUrl ? 'a' : 'span'" :href="campground.directionsUrl" target="_blank">{{ campground.name }}</component></h5>
+                            <p v-text="campground.description"></p>
+                        </li>
+                    </ul>
 
-                <p v-else>No campgrounds</p>
-            </template>
+                    <p v-else>No campgrounds available.</p>
+                </template>
+
+                <template v-else-if="dataType === 'places' && displayedData">
+                    <ul v-if="displayedData.data.length">
+                        <li v-for="place in displayedData.data" style="margin-top: 100px;">
+                            <h5><a :href="place.url" target="_blank">{{ place.title }}</a></h5>
+                            <div v-html="place.bodyText"></div>
+                        </li>
+                    </ul>
+
+                    <p v-else>No places available.</p>
+                </template>
+            </div>
         </div>
 
         <p v-else>Select a park</p>
