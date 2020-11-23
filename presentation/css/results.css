@@ -1,0 +1,39 @@
+.results {
+    max-height: 80vh;
+
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-gap: 20px;
+}
+
+.results__response {
+    padding: 10px;
+}
+
+.results a {
+    cursor: pointer;
+}
+
+.selected {
+    font-weight: bold;
+}
+
+pre {
+    background: #dbdbdb;
+    padding: 5px;
+}
+
+.data-select {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 10px;
+}
+
+.data-select li {
+    list-style: none;
+}
+
+.data-select a {
+    padding: 5px;
+    border: 1px solid black;
+}

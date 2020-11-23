@@ -1,6 +1,16 @@
+selectedRegion = ''
+
 $(eventEmitter).bind('activitiesChanged', function () {
-    /** Example Usage: **/
-    // q1.wrangleData(selectedActivities, topTenParks)
     updateRadar();
-    barVis.wrangleData(selectedActivities, topTenParks)
+    barVis.wrangleData()
+    resultsApp && resultsApp.setRows(topTenParks)
+})
+
+$(eventEmitter).bind('seasonChanged', function () {
+    selectedSeason = $("#season-select").val()
+    barVis.wrangleData()
+})
+
+$(eventEmitter).bind('regionChanged', function () {
+    selectedSeason = $("#region-select").val()
 })

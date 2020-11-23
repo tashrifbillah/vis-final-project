@@ -8,165 +8,173 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/timeline.css">
-    <link rel="stylesheet" href="css/activities.css">
+    <link rel="stylesheet" href="css/filters.css">
     <link rel="stylesheet" href="css/jquery.multiselect.css">
     <link rel="stylesheet" href="css/q1.css">
     <link rel="stylesheet" href="css/hex.css">
     <link rel="stylesheet" href="css/q5.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/results.css">
+    <link rel="stylesheet" href="css/barchart.css">
 </head>
 <body>
 
-<div id="q1">
+<header class="container intro">
+    <h1>United States National Parks</h1>
 
-    <!-- Two column layout -->
-    <div class="row">
-        <div class="col-md-3">
-            <select id="activitySelect" multiple></select>
-        </div>
-        <div class="col-md-6">
-            <div class="row justify-content-center">
-                <h3>United States National Parks</h3>
-            </div>
-            <div class="row justify-content-center">
-                <h6>Every year around 5 million people visit 62 National Parks all over the country.
-                    Most of the parks are in the west coast of the country, mainly concentrated in Colorado, Utah,
-                    Arizona, California, and Alaska. Filter the parks by activities available (top left),
-                    hover over the map to learn more about each park, and search the details of a park by
-                    typing in the name (right).</h6>
-            </div>
-        </div>
-    </div>
+    <p>
+        The United States is home to some of the most unique and stunning natural geographical features in the world. Over the course of nearly 200 years, 62 of these sites have been designated as National Parks. Every year, these parks support as many as 90 million visitors.
+    </p>
 
-    <!-- Two column layout -->
-    <div class="row map-row">
+    <h2 style="margin-top: 200px;">What to expect</h2>
+    <p>As you progress through the course of this webpage, you will be presented with filters on the right.</p>
+    <p>Each section is intended to help you pick your preferences of region, activities, and season.</p>
+    <p>At the end of the experience, the top parks matching your preferences will be displayed, along with helpful information.</p>
+</header>
 
-        <!-- Left column for map -->
-        <div class="col-md-8">
-            <div id="map" style="height: 100%; width:100%;"></div>
-        </div>
-
-        <!-- Right column for summary -->
-        <div class="col-md-3">
-             <div class="row justify-content-center">
-                <select id="parkSelect" onchange="displayDetails()">
-                    <option value="" selected>Select a park to see details ...</option>
-                </select>
-                <img id="picture" />
-                <div id="caption"></div>
-                <table class="table table-striped" id="description">
-                    <tbody>
-                    <tr>
-                        <th scope="row">Location</th>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Established</th>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Area</th>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Visitors (2019)</th>
-                        <td></td>
-                    </tr>
-                    </tbody>
-                </table>
-
-                <!-- bonus task -->
-                <a id="wiki" target="_blank"><b>>> Read more on Wikipedia</b></a>
-            </div>
-        </div>
-    </div>
+<div class="instruction">
+    <h4>1. Learn about the history of National Parks.</h4>
 </div>
 
 <div class="container-fluid">
-    <div class="row justify-content-center" style="height: 85vh;">
-        <div class="col">
-            <div class="hex-map" id="hex-map" style="height: 100%; width:100%;"></div>
+    <div class="vis">
+        <h3 class="vis__title">How did National Parks come to be?</h3>
+        <p class="vis__description">Yellowstone was officially established as the first National Park in 1872. 34 years later, Theodore Roosevelt passed the Antiquities Act of 1906, creating presidential authority to designate national monuments from federal lands to protect significant natural, cultural, or scientific features. The national monument designation has served as a precursor to the National Park designation for many parks.</p>
+        <div class="vis__wrapper">
+            <div id="carousel" class="carousel slide">
+                <div class="carousel-inner"></div>
+                <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+
+            <dl class="timeline-key">
+                <dt class="current"></dt>
+                <dd>Current</dd>
+
+                <dt class="law"></dt>
+                <dd>Law Passed</dd>
+
+                <dt class="park"></dt>
+                <dd>Park Founded</dd>
+            </dl>
+
+            <div id="timeline"></div>
         </div>
     </div>
 </div>
 
-<div class="container-fluid">
-    <div id="carousel" class="carousel slide">
-        <div class="carousel-inner"></div>
-        <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
-
-    <div id="timeline"></div>
+<div class="instruction">
+    <h4>2. Explore the various regions.</h4>
+    <p>Please select one to help guide your decision</p>
 </div>
 
+<section class="container-fluid section">
+    <main class="section__visualizations">
+        <div class="vis" id="q1">
+            <h3 class="vis__title">Where are the National Parks located?</h3>
+            <p class="vis__description">Filter the parks by activities available (top left), hover over the map to learn more about each park, and search the details of a park by typing in the name (right)</p>
 
-<div id="q5">
-    <hr>
-    <br>
+            <div class="vis__wrapper">
+                <div class="row map-row">
 
-    <div class="row">
-        <div class="col">
-            <!-- header row -->
-            <div class="row justify-content-center">
-                <h3>Monthly Summary of Park Visit</h3>
-            </div>
+                    <!-- Left column for map -->
+                    <div class="col-md-8">
+                        <div id="map" style="height: 100%; width:100%;"></div>
+                    </div>
 
-            <!-- group by select menu -->
-            <div class="row">
-                <div class="col-sm-5" style="margin-left: 100px">
-                    <select id="group-by" onchange="_groupBy()">
-                        <option value="months">By month</option>
-                        <option value="ytd" selected>Year to date</option>
-                        <option value="seasons">By season</option>
-                    </select>
-                </div>
+                    <!-- Right column for summary -->
+                    <div class="col-md-3">
+                        <div class="row justify-content-center">
+                            <select id="parkSelect" onchange="displayDetails()" class="form-control">
+                                <option value="" selected>Select a park to see details ...</option>
+                            </select>
+                            <img id="picture" />
+                            <div id="caption"></div>
+                            <table class="table table-striped" id="description">
+                                <tbody>
+                                <tr>
+                                    <th scope="row">Location</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Established</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Area</th>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Visitors (2019)</th>
+                                    <td></td>
+                                </tr>
+                                </tbody>
+                            </table>
 
-                <div class="col-sm-5">
-                    <!-- Only two circles with definite color, so adding in HTML directly -->
-                    <div style="margin-left: 20px; margin-top: 20px" id="legend">
-                        <svg>
-                            <circle fill="lightskyblue"></circle>
-                            <text x="20" y="15">2019</text>
-                        </svg>
-                        <svg>
-                            <circle fill="magenta"></circle>
-                            <text x="20" y="15">2020</text>
-                        </svg>
+                            <!-- bonus task -->
+                            <a id="wiki" target="_blank"><b>>> Read more on Wikipedia</b></a>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- svg container for line graph -->
-            <div class="row" style="height: 40vh">
-                <div class="align-self-center" id="line-graph" style="width: 70%; height: 100%"></div>
+        <div class="vis">
+            <h3 class="vis__title">Not all regions are created equal. Which areas have the most access to National Parks, and how can this help guide your plans?</h3>
+            <p class="vis__description">This representation of the United States shows how each region is represented by using one hexagon for each National Park in that region. Depending on you location, this may be able to help inform your plans.</p>
+            <div class="vis__wrapper" style="height: 85vh;">
+                <div class="hex-map" id="hex-map" style="height: 100%; width:100%;"></div>
             </div>
         </div>
+    </main>
+
+    <aside class="section__filter region-filter">
+        <div class="filter">
+            <h5>Select a region</h5>
+            <select name="region-select" id="region-select" class="form-control region-filter__select" onchange="$(eventEmitter).trigger('regionChanged')">
+                <option value="">All</option>
+                <option value="West">West</option>
+                <option value="Northeast">Northeast</option>
+                <option value="South">South</option>
+                <option value="Midwest">Midwest</option>
+            </select>
+        </div>
+    </aside>
+
+    <div class="instruction">
+        <h4>3. Find the parks that will best support you in pursuing your favorite activities</h4>
+        <p>Let us know what types of activities you are most interested in. This information is used to find great parks for you to explore.</p>
     </div>
 
-    <br>
-    <hr>
-</div>
-
-
-<div class="container">
-    <div class="row">
-        <div class="col-8">
-            <!--  Activity Radar Charts  -->
-            <div id="radarDiv">
+    <main class="section__visualizations">
+        <div class="vis">
+            <h3 class="vis__title">Different parks excel in different areas. Which parks are the best match for your interests?</h3>
+            <p class="vis__description">The National Parks offer over 100 different activities. Here, we can see the result of categorizing each activity and summarizing each park’s unique personality by rating it on the number of activities available in each category. Your input is used to determine your top three matches. What are the personalities of your matches?</p>
+            <div class="vis__wrapper">
+                <div id="radarDiv">
+                    <div class="row justify-content-center">
+                        <div class="radarChart"></div>
+                    </div>
+                </div>
                 <div class="row justify-content-center">
-                    <div class="radarChart"></div>
+                    <div class="col-4 radarChart1"></div>
+                    <div class="col-4 radarChart2"></div>
+                    <div class="col-4 radarChart3"></div>
                 </div>
             </div>
         </div>
-        <div class="col-4">
+    </main>
+
+    <aside class="section__filter activity-filter">
+        <div class="filter">
             <div id="activity-select">
-                <h2>Activities</h2>
+                <h5>Select Activities</h5>
 
                 <input type="search" v-model="filter" class="form-control" placeholder="Filter activities...">
 
@@ -178,20 +186,133 @@
                 </div>
             </div>
         </div>
+    </aside>
+
+    <div class="instruction">
+        <h4>4. Make a decision based on the popularity of each park and your comfort level with crowds</h4>
+        <p>Which season will work best for your trip?</p>
     </div>
-    <div class="row justify-content-center">
-        <div class="col-4 radarChart1"></div>
-        <div class="col-4 radarChart2"></div>
-        <div class="col-4 radarChart3"></div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-8">
-            <div id="bar"></div>
+
+    <main class="section__visualizations">
+        <div class="vis" id="q5">
+            <select id="group-by" class="form-control vis__filter" onchange="_groupBy()">
+                <option value="months">By month</option>
+                <option value="ytd" selected>Year to date</option>
+                <option value="seasons">By season</option>
+            </select>
+            <h3 class="vis__title">How has COVID-19 affected park utilization in 2020?</h3>
+            <p class="vis__description">Although outdoor activities are recommended as some of the safest recreational options, there has been a marked decline in visitors during 2020. This decline is most visible during March 2020, when many states first enacted precautionary legislation.</p>
+            <div class="vis__legend">
+                <div id="legend">
+                    <svg>
+                        <circle fill="lightskyblue"></circle>
+                        <text x="20" y="15">2019</text>
+                    </svg>
+                    <svg>
+                        <circle fill="magenta"></circle>
+                        <text x="20" y="15">2020</text>
+                    </svg>
+                </div>
+            </div>
+            <div class="vis__wrapper" style="height: 40vh">
+                <div class="align-self-center" id="line-graph" style="width: 70%; height: 100%"></div>
+            </div>
         </div>
-    </div>
+
+        <div class="vis">
+            <h3 class="vis__title">Which of your matching parks are the most popular?</h3>
+            <p class="vis__description">Based on your tolerance for crowd size, it may be helpful to take park popularity into account when planning your trip. Visitation varies drastically between parks, and even between seasons within the same park. Some of the most beautiful and secluded experiences may be found during the “off-season”.</p>
+
+            <div class="vis__wrapper">
+                <div id="bar"></div>
+            </div>
+        </div>
+    </main>
+
+    <aside class="section__filter season-filter">
+        <h5>Preferred Season</h5>
+
+        <select name="season-select" id="season-select" class="form-control" onchange="$(eventEmitter).trigger('seasonChanged')">
+            <option value="All">All</option>
+            <option value="Spring">Spring</option>
+            <option value="Summer">Summer</option>
+            <option value="Fall">Fall</option>
+            <option value="Winter">Winter</option>
+        </select>
+    </aside>
+</section>
+
+<div class="instruction">
+    <h4>6. Evaluate results</h4>
+    <p>See the best parks, calculated just for you.</p>
 </div>
 
+<footer class="container" id="results">
+    <h3>Top Parks</h3>
 
+    <p>Based on your preferences, here are the top parks we recommend</p>
+
+    <div class="results">
+        <div class="results__list">
+            <ol>
+                <li v-for="row in rows" v-bind:class="{ selected: selectedId === row.parkCode }">
+                    <a @click="setSelected(row)">{{ row.fullName }}</a>
+                </li>
+            </ol>
+        </div>
+
+        <div v-if="selectedId">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-secondary"
+                        v-for="opt in dataTypes"
+                        @click="dataType = opt.value"
+                        v-bind:class="{ selected: dataType === opt.value }">{{ opt.name }}</button>
+                </button>
+            </div>
+
+            <div class="results__response">
+                <template v-if="!dataType">
+                    <img :src="img.url" alt="" v-for="img in displayedData.images.slice(0, 3)" style="width: 100%; margin-top: 20px;">
+                </template>
+
+                <template v-else-if="dataType === 'alerts' && displayedData">
+                    <ul>
+                        <li v-for="alert in displayedData.data">
+                            <h5>{{ alert.title }}</h5>
+                            <p v-text="alert.description"></p>
+                        </li>
+                    </ul>
+                </template>
+
+                <template v-else-if="dataType === 'campgrounds' && displayedData">
+                    <ul v-if="displayedData.data.length">
+                        <li v-for="campground in displayedData.data">
+                            <h5><component :is="campground.directionsUrl ? 'a' : 'span'" :href="campground.directionsUrl" target="_blank">{{ campground.name }}</component></h5>
+                            <p v-text="campground.description"></p>
+                        </li>
+                    </ul>
+
+                    <p v-else>No campgrounds available.</p>
+                </template>
+
+                <template v-else-if="dataType === 'places' && displayedData">
+                    <ul v-if="displayedData.data.length">
+                        <li v-for="place in displayedData.data" style="margin-top: 100px;">
+                            <h5><a :href="place.url" target="_blank">{{ place.title }}</a></h5>
+                            <div v-html="place.bodyText"></div>
+                        </li>
+                    </ul>
+
+                    <p v-else>No places available.</p>
+                </template>
+            </div>
+        </div>
+
+        <p v-else>Select a park</p>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js" integrity="sha512-90vH1Z83AJY9DmlWa8WkjkV79yfS2n2Oxhsi2dZbIv0nC4E6m5AbH8Nh156kkM7JePmqD6tcZsfad1ueoaovww==" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
     <script src="https://d3js.org/d3.v6.min.js"></script>
@@ -203,7 +324,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-    <script src="js/loadData.js"></script>
     <script src="js/activitySelect.js"></script>
     <script src="js/eventHandler.js"></script>
     <script src="js/timeline.js"></script>
@@ -217,6 +337,7 @@
     <script src="js/d3-tip.js"></script>
     <script src="js/hexMap.js"></script>
     <script src="js/q5Vis.js"></script>
+    <script src="js/results.js"></script>
 </body>
 </html>
 

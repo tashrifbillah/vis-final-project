@@ -54,7 +54,7 @@ d3.json("data/cleaned_data.json")
       ]))
       const seasonalVisits = _.fromPairs(Object.entries(SEASONS).map(([k, v]) => [
         k,
-        _.sumBy(_.compact(v.map(i => monthlyVisits[MONTHS_SHORT[i]])), 'current')
+        _.meanBy(_.compact(v.map(i => monthlyVisits[MONTHS_SHORT[i]])), 'current')
       ]))
 
       return {
@@ -76,9 +76,11 @@ d3.json("data/cleaned_data.json")
       new Timeline("timeline", _.orderBy(timelineData.concat(formattedParks), 'year'))
     })
 
+    barVis = new BarChart('bar', allData)
+    initActivitySelect()
+    initResults()
     activitySets = await d3.json("data/activity_sets.json");
     prepareData();
-    barVis = new BarChart('bar', data)
   })
 
 d3.json("data/hex_cartogram_data.json")

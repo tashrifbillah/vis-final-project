@@ -22,15 +22,15 @@
     font-weight: bold;
 }
 
-#q5 .col-sm-5 {
+#q5 .vis__legend {
     height: 50px;
 }
 
-#q5 select {
-    padding: 5px;
-    border: thin solid black;
-    border-radius: 5px;
-}
+/*#q5 select {*/
+/*    padding: 5px;*/
+/*    border: thin solid black;*/
+/*    border-radius: 5px;*/
+/*}*/
 
 .tooltip {
     text-transform: capitalize
