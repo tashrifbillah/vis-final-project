@@ -1,6 +1,7 @@
 $(eventEmitter).bind('activitiesChanged', function () {
     updateRadar();
     barVis.wrangleData()
+    resultsApp.setRows(topTenParks)
 })
 
 $(eventEmitter).bind('seasonChanged', function () {

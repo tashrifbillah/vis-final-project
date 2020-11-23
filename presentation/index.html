@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/hex.css">
     <link rel="stylesheet" href="css/q5.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/results.css">
     <link rel="stylesheet" href="css/barchart.css">
 </head>
 <body>
@@ -235,7 +236,44 @@
     </aside>
 </section>
 
+<div class="instruction">
+    <h4>6. Evaluate results</h4>
+    <p>See the best parks, calculated just for you.</p>
+</div>
 
+<footer class="container" id="results">
+    <h3>Top Parks</h3>
+
+    <p>Based on your preferences, here are the top parks we recommend</p>
+
+    <div class="results">
+        <div class="results__list">
+            <ol>
+                <li v-for="row in rows" v-bind:class="{ selected: selectedId === row.parkCode }">
+                    <a @click="setSelected(row)">{{ row.fullName }}</a>
+                </li>
+            </ol>
+        </div>
+
+        <div class="results__code" v-if="selectedId">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-secondary"
+                        v-for="opt in dataTypes"
+                        @click="dataType = opt.value"
+                        v-bind:class="{ selected: dataType === opt.value }">{{ opt.name }}</button>
+                </button>
+            </div>
+
+            <template v-if="!dataType">
+                <img :src="img.url" alt="" v-for="img in displayedData.images" style="width: 100%; margin-top: 20px;">
+            </template>
+        </div>
+
+        <p v-else>Select a park</p>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js" integrity="sha512-90vH1Z83AJY9DmlWa8WkjkV79yfS2n2Oxhsi2dZbIv0nC4E6m5AbH8Nh156kkM7JePmqD6tcZsfad1ueoaovww==" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
     <script src="https://d3js.org/d3.v6.min.js"></script>
@@ -260,6 +298,7 @@
     <script src="js/d3-tip.js"></script>
     <script src="js/hexMap.js"></script>
     <script src="js/q5Vis.js"></script>
+    <script src="js/results.js"></script>
 </body>
 </html>
 
