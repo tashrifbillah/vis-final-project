@@ -41,3 +41,9 @@
 .d3-tip h1 {
     font-size: 14px;
 }
+
+.state-label {
+    font-size: 10.5pt;
+    font-weight: bold;
+    font-family: Monospace;
+}
