@@ -1,3 +1,5 @@
 rect.bar {
-    fill: blue;
+    fill: lightskyblue;
+    stroke: black;
+    stroke-width: 1px;
 }
