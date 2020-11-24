@@ -73,6 +73,11 @@ class BarChart {
         let vis = this;
 
         vis.displayData = topTenParks.length ? [...topTenParks] : vis.data;
+        vis.displayData.forEach(d=>{
+            if (isNaN(d.seasonalVisits[selectedSeason])) {
+                d.seasonalVisits[selectedSeason] = 0
+            }
+        })
         vis.displayData.sort((a, b) => a.seasonalVisits[selectedSeason] - b.seasonalVisits[selectedSeason])
         vis.displayData = vis.displayData.slice(0, 10)
 
