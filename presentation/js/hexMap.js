@@ -20,7 +20,8 @@ class HexMap {
         left: 100
       };
       vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right;
-      vis.height = $("#" + vis.parentElement).height() - vis.margin.top - vis.margin.bottom;
+      vis.height = vis.width * 0.5
+      // vis.height = $("#" + vis.parentElement).height() - vis.margin.top - vis.margin.bottom;
 
       // The number of columns and rows of the heatmap
       vis.MapColumns = 30;
