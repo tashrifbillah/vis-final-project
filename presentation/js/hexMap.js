@@ -34,8 +34,8 @@ class HexMap {
       vis.myNameConverter = new NameConverter();
 
       // Region colors
-      vis.regions = ["West", "Northeast", "South", "Midwest"]
-      vis.regionColors = ['#28794C', '#333577', '#AA8D39', '#AA5039']
+      vis.regions = ["West", "Northeast", "South", "Midwest", "No Parks"]
+      vis.regionColors = ['#28794C', '#333577', '#AA8D39', '#AA5039', "#D3D3D3"]
       vis.regionScale = d3.scaleOrdinal(vis.regionColors)
         .domain(vis.regions);
 
