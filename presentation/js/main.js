@@ -2,7 +2,9 @@ let allData,
     activitySets,
     activityMapVis,
     parkActivityScores,
-    barVis;
+    barVis,
+    r,
+    miniRadarCharts;
 
 let palette = ["#EDC951","#CC333F","#00A0B0"]
 let color = d3.scaleOrdinal()
@@ -112,13 +114,13 @@ function prepareData() {
     }
   })
 
-  updateRadar();
+  initRadar();
 
 }
 
-function updateRadar() {
+function initRadar() {
   let displayParks;
-  // console.log(topTenParks.slice(0,3).map(d => d.name));
+  // // console.log(topTenParks.slice(0,3).map(d => d.name));
   if (topTenParks.length != 0) {
     displayParks = parkActivityScores.filter(d => {
       return topTenParks.slice(0,3).map(d => d.name).indexOf(d.parkName) != -1;
@@ -126,16 +128,32 @@ function updateRadar() {
   } else {
     displayParks = parkActivityScores.sort(() => Math.random() - 0.5).slice(0, 3);
   }
+  //
+  // //Call function to draw the Radar chart
+  // RadarChart(".radarChart", displayParks, radarChartOptionsLarge);
+  //
+  // for (let i = 0; i <3; i++) {
+  //   let customOptions = radarChartOptionsSmall;
+  //   customOptions.color = d3.scaleOrdinal()
+  //     .range([palette[i]]);
+  //   RadarChart(".radarChart" + (i+1),  [displayParks[i]], radarChartOptionsSmall);
+  // }
 
-  //Call function to draw the Radar chart
-  RadarChart(".radarChart", displayParks, radarChartOptionsLarge);
+  r = new RadarChartClass(".radarChart", displayParks, radarChartOptionsLarge)
 
+  miniRadarCharts = []
   for (let i = 0; i <3; i++) {
     let customOptions = radarChartOptionsSmall;
     customOptions.color = d3.scaleOrdinal()
       .range([palette[i]]);
-    RadarChart(".radarChart" + (i+1),  [displayParks[i]], radarChartOptionsSmall);
+    console.log("SMALL? ", radarChartOptionsSmall)
+    miniRadarCharts.push(new RadarChartClass(".radarChart" + (i+1),  displayParks, customOptions, i, i + 1));
   }
+}
+
+function updateRadar() {
+  r.updateVis();
+  miniRadarCharts.forEach(d => d.updateVis());
 }
 
 function setScore(set, activities) {
