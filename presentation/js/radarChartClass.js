@@ -225,21 +225,8 @@ class RadarChartClass {
       vis.radarLine.curve(d3.curveCardinalClosed);
     }
 
-    //Create a wrapper for the blobs
-    vis.blobWrapper = vis.g.selectAll('.radarWrapper')
-      .data(vis.displayParks);
-
-    vis.blobWrapper.enter()
-      .append('g')
-      .attr('class', 'radarWrapper');
-
-    // vis.blobWrapper = vis.g.selectAll('.radarWrapper')
-    //   .data(vis.displayParks)
-    //   .exit()
-    //   .remove();
 
     //Append the backgrounds
-    // vis.blobAreas = vis.blobWrapper.selectAll(".radarArea")
     vis.blobAreas = vis.g.selectAll(".radarArea")
       .data(vis.displayParks);
 
@@ -305,13 +292,26 @@ class RadarChartClass {
 
     vis.blobOutlines.exit().remove();
 
-    let j = -1;  // Hacky solution for missing group index
-    //Append the circles
-    vis.blobCircles = vis.blobWrapper.selectAll('.radarCircle')
+
+    // Set up  a  wrapper group for the visible circles
+    vis.circleWrapper = vis.g.selectAll('.radarCircleWrapperVisible')
+      .data(vis.displayParks);
+
+    vis.circleWrapper.enter().append('g')
+      .attr('class', 'radarCircleWrapperVisible');
+
+    vis.circleWrapper = vis.g.selectAll('.radarCircleWrapperVisible')
+      .data(vis.displayParks);
+
+    //Append a set of circles for each data point
+    vis.blobCircles = vis.circleWrapper.selectAll('.radarCircle')
       .data(function(d, i) {
         return d.activityScores;
-      });
+      })
 
+
+    let j = -1;  // Hacky solution for missing group index
+    // Append the circles
     vis.blobCircles.enter()
       .append('circle')
       .attr('class', 'radarCircle')
@@ -343,6 +343,9 @@ class RadarChartClass {
 
     vis.blobCircleWrapper.enter().append('g')
       .attr('class', 'radarCircleWrapper');
+
+    vis.blobCircleWrapper = vis.g.selectAll('.radarCircleWrapper')
+      .data(vis.displayParks);
 
     //Append a set of invisible circles on top for the mouseover pop-up
     vis.invisibleCircles = vis.blobCircleWrapper.selectAll('.radarInvisibleCircle')

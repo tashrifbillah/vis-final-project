@@ -146,7 +146,6 @@ function initRadar() {
     let customOptions = radarChartOptionsSmall;
     customOptions.color = d3.scaleOrdinal()
       .range([palette[i]]);
-    console.log("SMALL? ", radarChartOptionsSmall)
     miniRadarCharts.push(new RadarChartClass(".radarChart" + (i+1),  displayParks, customOptions, i, i + 1));
   }
 }
