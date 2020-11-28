@@ -22,9 +22,14 @@ class RadarChartClass {
     let vis = this;
 
     if (topTenParks.length != 0) {
-      vis.displayParks = parkActivityScores.filter(d => {
-        return topTenParks.slice(vis.startSlice, vis.endSlice).map(d => d.name).indexOf(d.parkName) != -1;
-      });
+      // If we have determined the top ten matching parks then select from this array
+      // Sort to ensure that order is always consistent
+      let topTenParkNames = topTenParks.map(d => d.name);
+      vis.displayParks = parkActivityScores
+        .filter(d => {
+          return topTenParkNames.slice(vis.startSlice, vis.endSlice).indexOf(d.parkName) != -1;
+        })
+        .sort((a, b) => topTenParkNames.indexOf(a.parkName) - topTenParkNames.indexOf(b.parkName));
     } else {
       vis.displayParks = parkActivityScores.sort(() => Math.random() - 0.5).slice(vis.startSlice, vis.endSlice);
     }
@@ -48,7 +53,8 @@ class RadarChartClass {
       opacityCircles: 0.1, 	//The opacity of the circles of each blob
       strokeWidth: 2, 		//The width of the stroke around each blob
       roundStrokes: false,	//If true the area and stroke will follow a round path (cardinal-closed)
-      color: d3.scaleOrdinal(d3.schemeCategory10)	//Color function
+      color: d3.scaleOrdinal(d3.schemeCategory10),	//Color function
+      legend: false  // Include a legend
     };
 
     vis.updateCfg();
@@ -70,6 +76,14 @@ class RadarChartClass {
     //Append a g element
     vis.g = vis.svg.append("g")
       .attr("transform", "translate(" + (vis.cfg.w/2 + vis.cfg.margin.left) + "," + (vis.cfg.h/2 + vis.cfg.margin.top) + ")");
+
+    if (vis.cfg.legend == true) {
+      // add legend
+      vis.legend = vis.svg.append('g')
+        .attr('class', 'legend')
+        .attr('transform', `translate(0, ${vis.cfg.h + vis.cfg.margin.top})`)
+        .attr('text-anchor', 'start');
+    }
 
     /////////////////////////////////////////////////////////
     ////////// Glow filter for some extra pizzazz ///////////
@@ -374,6 +388,35 @@ class RadarChartClass {
       .on('mouseout', function() {
         vis.radarToolTip.hide();
       });
+
+
+    // Optionally add the legend
+    if (vis.cfg.legend == true) {
+      vis.legendSquares = vis.legend.selectAll('.legend-square')
+        .data(vis.cfg.color.range());
+
+      vis.legendSquares.enter()
+        .append('rect')
+        .attr('class', 'legend-square')
+        .merge(vis.legendSquares)
+        .attr('height', 20)
+        .attr('width', 20)
+        .attr('x', (d, i) => i * 250)
+        .attr('y', 0)
+        .attr('fill', d => d);
+
+      vis.legendLabels = vis.legend.selectAll('.legend-label')
+        .data(vis.displayParks);
+
+      vis.legendLabels.enter()
+        .append('text')
+        .attr('class', 'legend-label')
+        .merge(vis.legendLabels)
+        .attr('x', (d, i) => i * 250 + 25)
+        .attr('y', 20)
+        .text(d => d.parkName);
+    }
+
 
     // Radar Tooltip
     vis.radarToolTip = d3.tip()

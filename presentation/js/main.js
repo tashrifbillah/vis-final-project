@@ -18,7 +18,8 @@ let radarChartOptionsLarge = {
   levels: 6,
   roundStrokes: true,
   color: color,
-  strokeWidth: 2
+  strokeWidth: 2,
+  legend: true
 };
 
 let radarChartOptionsSmall = {
