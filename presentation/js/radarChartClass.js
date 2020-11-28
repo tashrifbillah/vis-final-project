@@ -55,7 +55,9 @@ class RadarChartClass {
       roundStrokes: false,	//If true the area and stroke will follow a round path (cardinal-closed)
       color: d3.scaleOrdinal(d3.schemeCategory10),	//Color function
       legend: false,  // Include a legend
-      legendColumns: 3 // How many columns to use in the legend
+      legendColumns: 3, // How many columns to use in the legend
+      legendSquareSize: 20,
+      title: '' // Title for the chart
     };
 
     vis.updateCfg();
@@ -78,12 +80,24 @@ class RadarChartClass {
     vis.g = vis.svg.append("g")
       .attr("transform", "translate(" + (vis.cfg.w/2 + vis.cfg.margin.left) + "," + (vis.cfg.h/2 + vis.cfg.margin.top) + ")");
 
+    // Optionally add a legend group
     if (vis.cfg.legend == true) {
       // add legend
       vis.legend = vis.svg.append('g')
         .attr('class', 'legend')
         .attr('transform', `translate(0, ${vis.cfg.h + vis.cfg.margin.top})`)
         .attr('text-anchor', 'start');
+    }
+
+    // Optionally add a title group
+    if (vis.cfg.title != '') {
+      // add legend
+      vis.title = vis.svg.append('g')
+        .attr('class', 'title')
+        .attr('transform', `translate(${vis.cfg.margin.left + vis.cfg.w/2}, ${vis.cfg.margin.top/3})`)
+        .attr('text-anchor', 'middle')
+        .append('text')
+        .text(vis.cfg.title);
     }
 
     /////////////////////////////////////////////////////////
@@ -394,17 +408,17 @@ class RadarChartClass {
     // Optionally add the legend
     if (vis.cfg.legend == true) {
       vis.legendSquares = vis.legend.selectAll('.legend-square')
-        .data(vis.cfg.color.range());
+        .data(vis.displayParks);
 
       vis.legendSquares.enter()
         .append('rect')
         .attr('class', 'legend-square')
         .merge(vis.legendSquares)
-        .attr('height', 20)
-        .attr('width', 20)
+        .attr('height', vis.cfg.legendSquareSize)
+        .attr('width', vis.cfg.legendSquareSize)
         .attr('x', (d, i) => (i % vis.cfg.legendColumns) * (vis.cfg.w + vis.cfg.margin.left + vis.cfg.margin.right) / vis.cfg.legendColumns)
-        .attr('y', vis.cfg.margin.bottom/2)
-        .attr('fill', d => d);
+        .attr('y', (d, i) => vis.cfg.margin.bottom/2 + Math.floor(i / vis.cfg.legendColumns) * vis.cfg.legendSquareSize * 1.25)
+        .attr('fill', d => vis.cfg.color(d.parkName));
 
       vis.legendLabels = vis.legend.selectAll('.legend-label')
         .data(vis.displayParks);
@@ -413,8 +427,8 @@ class RadarChartClass {
         .append('text')
         .attr('class', 'legend-label')
         .merge(vis.legendLabels)
-        .attr('x', (d, i) => (i % vis.cfg.legendColumns) * (vis.cfg.w + vis.cfg.margin.left + vis.cfg.margin.right) / vis.cfg.legendColumns + 25)
-        .attr('y', vis.cfg.margin.bottom/2 + 20)
+        .attr('x', (d, i) => (i % vis.cfg.legendColumns) * (vis.cfg.w + vis.cfg.margin.left + vis.cfg.margin.right) / vis.cfg.legendColumns + vis.cfg.legendSquareSize * 1.25)
+        .attr('y', (d, i) => vis.cfg.margin.bottom/2 + vis.cfg.legendSquareSize + Math.floor(i / vis.cfg.legendColumns) * vis.cfg.legendSquareSize * 1.25)
         .text(d => d.parkName);
     }
 
