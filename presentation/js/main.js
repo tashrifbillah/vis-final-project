@@ -128,16 +128,6 @@ function initRadar() {
   } else {
     displayParks = parkActivityScores.sort(() => Math.random() - 0.5).slice(0, 3);
   }
-  //
-  // //Call function to draw the Radar chart
-  // RadarChart(".radarChart", displayParks, radarChartOptionsLarge);
-  //
-  // for (let i = 0; i <3; i++) {
-  //   let customOptions = radarChartOptionsSmall;
-  //   customOptions.color = d3.scaleOrdinal()
-  //     .range([palette[i]]);
-  //   RadarChart(".radarChart" + (i+1),  [displayParks[i]], radarChartOptionsSmall);
-  // }
 
   r = new RadarChartClass(".radarChart", displayParks, radarChartOptionsLarge)
 
