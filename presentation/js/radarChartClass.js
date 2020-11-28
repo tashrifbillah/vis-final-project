@@ -43,10 +43,10 @@ class RadarChartClass {
     vis.cfg = {
       w: 600,				//Width of the circle
       h: 600,				//Height of the circle
-      margin: {top: 100, right: 50, bottom: 100, left: 50}, //The margins of the SVG
+      margin: {top: 100, right: 50, bottom: 200, left: 50}, //The margins of the SVG
       levels: 3,				//How many levels or inner circles should there be drawn
       maxValue: 0, 			//What is the value that the biggest circle will represent
-      labelFactor: 1.25, 	//How much farther than the radius of the outer circle should the labels be placed
+      labelFactor: 1.1, 	//How much farther than the radius of the outer circle should the labels be placed
       wrapWidth: 60, 		//The number of pixels after which a label needs to be given a new line
       opacityArea: 0.35, 	//The opacity of the area of the blob
       dotRadius: 4, 			//The size of the colored circles of each blog
@@ -54,7 +54,8 @@ class RadarChartClass {
       strokeWidth: 2, 		//The width of the stroke around each blob
       roundStrokes: false,	//If true the area and stroke will follow a round path (cardinal-closed)
       color: d3.scaleOrdinal(d3.schemeCategory10),	//Color function
-      legend: false  // Include a legend
+      legend: false,  // Include a legend
+      legendColumns: 3 // How many columns to use in the legend
     };
 
     vis.updateCfg();
@@ -401,8 +402,8 @@ class RadarChartClass {
         .merge(vis.legendSquares)
         .attr('height', 20)
         .attr('width', 20)
-        .attr('x', (d, i) => i * 250)
-        .attr('y', 0)
+        .attr('x', (d, i) => (i % vis.cfg.legendColumns) * (vis.cfg.w + vis.cfg.margin.left + vis.cfg.margin.right) / vis.cfg.legendColumns)
+        .attr('y', vis.cfg.margin.bottom/2)
         .attr('fill', d => d);
 
       vis.legendLabels = vis.legend.selectAll('.legend-label')
@@ -412,8 +413,8 @@ class RadarChartClass {
         .append('text')
         .attr('class', 'legend-label')
         .merge(vis.legendLabels)
-        .attr('x', (d, i) => i * 250 + 25)
-        .attr('y', 20)
+        .attr('x', (d, i) => (i % vis.cfg.legendColumns) * (vis.cfg.w + vis.cfg.margin.left + vis.cfg.margin.right) / vis.cfg.legendColumns + 25)
+        .attr('y', vis.cfg.margin.bottom/2 + 20)
         .text(d => d.parkName);
     }
 

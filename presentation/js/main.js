@@ -11,7 +11,7 @@ let color = d3.scaleOrdinal()
   .range(palette);
 
 let radarChartOptionsLarge = {
-  w: 600,
+  w: 800,
   h: 600,
   // margin: margin,
   maxValue: 1,
@@ -25,12 +25,13 @@ let radarChartOptionsLarge = {
 let radarChartOptionsSmall = {
   w: 200,
   h: 200,
-  // margin: margin,
+  margin: {top:50, bottom:100, left:100, right:100},
   maxValue: 1,
   levels: 6,
   roundStrokes: true,
   color: color,
-  strokeWidth: 2
+  strokeWidth: 2,
+  labelFactor: 1.4
 };
 
 const MONTHS_SHORT = ['', 'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep']
