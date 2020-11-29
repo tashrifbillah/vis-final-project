@@ -72,11 +72,26 @@ class Timeline {
 
         $('#carousel .carousel-inner').html(vis._displayData.map(buildCarouselItem).join(""))
         $('#carousel .carousel-item:first-child').addClass('active')
-        $('#carousel').carousel()
+        vis.carousel = $('#carousel')
+        vis.carousel.carousel('pause')
         $('#carousel').on('slide.bs.carousel', function (evt) {
             activeTitle = $('.carousel-item__title', evt.relatedTarget).text()
             vis.updateVis()
         })
+
+        vis._observer = new IntersectionObserver(function(entries) {
+            entries.map((entry) => {
+                console.log(entry.isIntersecting)
+                if (entry.isIntersecting) {
+                    vis.carousel.carousel('cycle')
+                } else {
+                    vis.carousel.carousel('pause')
+                }
+            });
+        })
+
+        vis._observer.observe(vis.carousel[0])
+
 
         vis.updateVis()
     }
