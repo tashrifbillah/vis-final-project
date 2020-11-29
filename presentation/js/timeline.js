@@ -81,7 +81,6 @@ class Timeline {
 
         vis._observer = new IntersectionObserver(function(entries) {
             entries.map((entry) => {
-                console.log(entry.isIntersecting)
                 if (entry.isIntersecting) {
                     vis.carousel.carousel('cycle')
                 } else {
@@ -92,6 +91,11 @@ class Timeline {
 
         vis._observer.observe(vis.carousel[0])
 
+        vis.toolTip = d3.tip()
+            .attr("class", "d3-tip")
+            .offset([-10, 0])
+            .html(d => d.title);
+        vis.svg.call(vis.toolTip);
 
         vis.updateVis()
     }
@@ -122,5 +126,9 @@ class Timeline {
                 const i = vis._displayData.findIndex(({ title }) => title === d.title)
                 $("#carousel").carousel(i)
             })
+            .on("mouseover", function(event, d) {
+                vis.toolTip.show(d, this);
+            })
+            .on("mouseout", vis.toolTip.hide);
     }
 }
