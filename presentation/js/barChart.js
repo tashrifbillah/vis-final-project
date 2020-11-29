@@ -73,11 +73,7 @@ class BarChart {
         let vis = this;
 
         vis.displayData = topTenParks.length ? [...topTenParks] : vis.data;
-        vis.displayData.forEach(d=>{
-            if (isNaN(d.seasonalVisits[selectedSeason])) {
-                d.seasonalVisits[selectedSeason] = 0
-            }
-        })
+
         vis.displayData.sort((a, b) => a.seasonalVisits[selectedSeason] - b.seasonalVisits[selectedSeason])
         vis.displayData = vis.displayData.slice(0, 10)
 
@@ -91,9 +87,13 @@ class BarChart {
 
     updateVis() {
         let vis = this;
+        let trans_time = 1500
 
-        vis.y.domain(vis.displayData.map(d => d.fullName));
-        vis.x.domain([0, d3.max(vis.displayData, d => d.seasonalVisits[selectedSeason])])
+        vis.y.domain(vis.displayData.map(d => d.fullName))
+
+        // Inner loop computes maximum over all seasons for each park
+        // Outer loop computer maximum over all parks
+        vis.x.domain([0, d3.max( vis.displayData, d => d3.max( seasons.map(s => d.seasonalVisits[s]) ) ) ])
 
         // Draw the layers
         const rectangles = vis.svg.selectAll(".bar").data(vis.displayData, d => d.id)
@@ -106,9 +106,10 @@ class BarChart {
             .attr("x", 0)
             .attr("height", vis.y.bandwidth())
             .transition()
+            .duration(trans_time)
             .attr("y", d => vis.y(d.fullName))
             .attr("width", d => vis.x(d.seasonalVisits[selectedSeason]))
-            .duration(500)
+
 
         rectangles.exit().remove()
 
@@ -127,7 +128,7 @@ class BarChart {
         //     .duration(500)
 
         // Call axis functions with the new domain
-        vis.svg.select(".x-axis").transition().call(vis.xAxis).duration(500);
-        vis.svg.select(".y-axis").transition().call(vis.yAxis).duration(500);
+        vis.svg.select(".x-axis").transition().duration(trans_time).call(vis.xAxis)
+        vis.svg.select(".y-axis").transition().duration(trans_time).call(vis.yAxis)
     }
 }
