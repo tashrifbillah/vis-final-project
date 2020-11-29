@@ -2,32 +2,37 @@ let allData,
     activitySets,
     activityMapVis,
     parkActivityScores,
-    barVis;
+    barVis,
+    r,
+    miniRadarCharts;
 
 let palette = ["#EDC951","#CC333F","#00A0B0"]
 let color = d3.scaleOrdinal()
   .range(palette);
 
 let radarChartOptionsLarge = {
-  w: 600,
+  w: 800,
   h: 600,
   // margin: margin,
   maxValue: 1,
   levels: 6,
   roundStrokes: true,
   color: color,
-  strokeWidth: 2
+  strokeWidth: 2,
+  legend: true,
+  title: "Activity Profile Comparison of Your Top Three Parks"
 };
 
 let radarChartOptionsSmall = {
   w: 200,
   h: 200,
-  // margin: margin,
+  margin: {top:50, bottom:100, left:100, right:100},
   maxValue: 1,
   levels: 6,
   roundStrokes: true,
   color: color,
-  strokeWidth: 2
+  strokeWidth: 2,
+  labelFactor: 1.4
 };
 
 const MONTHS_SHORT = ['', 'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep']
@@ -112,13 +117,13 @@ function prepareData() {
     }
   })
 
-  updateRadar();
+  initRadar();
 
 }
 
-function updateRadar() {
+function initRadar() {
   let displayParks;
-  // console.log(topTenParks.slice(0,3).map(d => d.name));
+  // // console.log(topTenParks.slice(0,3).map(d => d.name));
   if (topTenParks.length != 0) {
     displayParks = parkActivityScores.filter(d => {
       return topTenParks.slice(0,3).map(d => d.name).indexOf(d.parkName) != -1;
@@ -127,15 +132,20 @@ function updateRadar() {
     displayParks = parkActivityScores.sort(() => Math.random() - 0.5).slice(0, 3);
   }
 
-  //Call function to draw the Radar chart
-  RadarChart(".radarChart", displayParks, radarChartOptionsLarge);
+  r = new RadarChartClass(".radarChart", displayParks, radarChartOptionsLarge)
 
+  miniRadarCharts = []
   for (let i = 0; i <3; i++) {
     let customOptions = radarChartOptionsSmall;
     customOptions.color = d3.scaleOrdinal()
       .range([palette[i]]);
-    RadarChart(".radarChart" + (i+1),  [displayParks[i]], radarChartOptionsSmall);
+    miniRadarCharts.push(new RadarChartClass(".radarChart" + (i+1),  displayParks, customOptions, i, i + 1));
   }
+}
+
+function updateRadar() {
+  r.updateVis();
+  miniRadarCharts.forEach(d => d.updateVis());
 }
 
 function setScore(set, activities) {
