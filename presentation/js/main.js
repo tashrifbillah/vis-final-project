@@ -57,6 +57,15 @@ d3.json("data/cleaned_data.json")
         _.meanBy(_.compact(v.map(i => monthlyVisits[MONTHS_SHORT[i]])), 'current')
       ]))
 
+      // Get rid of NaNs--some parks do not have all monthly data, missing ones are NaNs
+      // Round the averages
+      Object.keys(seasonalVisits).forEach(s => {
+        if (isNaN(seasonalVisits[s])) {
+          seasonalVisits[s] = 0
+        }
+        seasonalVisits[s]=Math.round(seasonalVisits[s])
+      })
+
       return {
         ...d,
         monthlyVisits,
@@ -88,7 +97,6 @@ d3.json("data/hex_cartogram_data.json")
     let hexMap = new HexMap("hex-map", data);
   })
 
-// TODO: De-duplicate  Sequoia and Kings Valley
 function prepareData() {
   parkActivityScores = [];
 
