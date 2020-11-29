@@ -264,7 +264,7 @@
     <p>See the best parks, calculated just for you.</p>
 </div>
 
-<footer class="container" id="results">
+<footer class="container-fluid" id="results">
     <h3>Top Parks</h3>
 
     <p>Based on your preferences, here are the top parks we recommend</p>
@@ -288,9 +288,9 @@
             </div>
 
             <div class="results__response">
-                <template v-if="!dataType">
-                    <img :src="img.url" alt="" v-for="img in displayedData.images.slice(0, 3)" style="width: 100%; margin-top: 20px;">
-                </template>
+                <div class="results__images" v-if="!dataType">
+                    <img :src="img.url" alt="" v-for="img in displayedData.images.slice(0, 4)" style="width: 100%">
+                </div>
 
                 <template v-else-if="dataType === 'alerts' && displayedData">
                     <ul>
