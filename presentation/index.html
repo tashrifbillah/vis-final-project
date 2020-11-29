@@ -260,7 +260,7 @@
 </section>
 
 <div class="instruction">
-    <h4>6. Evaluate results</h4>
+    <h4>5. Evaluate results</h4>
     <p>See the best parks, calculated just for you.</p>
 </div>
 
@@ -279,7 +279,7 @@
         </div>
 
         <div v-if="selectedId">
-            <div class="btn-group" role="group" aria-label="Basic example">
+            <div class="results__tabs">
                 <button type="button" class="btn btn-secondary"
                         v-for="opt in dataTypes"
                         @click="dataType = opt.value"

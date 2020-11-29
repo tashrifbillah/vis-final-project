@@ -70,3 +70,7 @@ pre {
 .results button:hover {
     background: lightskyblue;
 }
+
+.results__tabs > * {
+    margin-right: 20px;
+}
