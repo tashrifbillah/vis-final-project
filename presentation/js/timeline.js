@@ -10,7 +10,7 @@ const buildCarouselItem = d => `
 const isActive = d => d.title === activeTitle
 let activeTitle;
 
-const LAW_IMAGES = [1,2,3,4,5].map(i => `images/law-${i}-min.jpg`)
+const LAW_IMAGES = [1,2,3,4,5,6,7,8,9,10,11,12,13].map(i => `images/law-${i}-min.jpg`)
 
 class Timeline {
 
