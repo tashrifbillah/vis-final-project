@@ -191,11 +191,15 @@
 
                 <input type="search" v-model="filter" class="form-control" placeholder="Filter activities...">
 
-                <div class="activity-select__checkboxes">
+                <transition-group class="activity-select__checkboxes"
+                        name="slide-top-list"
+                        tag="div"
+                >
                     <div class="check-row" v-for="a in visibleActivities" :key="a.id">
                         <input type="checkbox" :name="a.id" :id="a.id" :value="a.id" v-model="selectedActivityIds">
                         <label :for="a.id">{{ a.name }} ({{ a.count }})</label>
                     </div>
+                </transition-group>
                 </div>
             </div>
         </div>
@@ -269,7 +273,7 @@
         <div class="results__list">
             <ol>
                 <li v-for="row in rows" v-bind:class="{ selected: selectedId === row.parkCode }">
-                    <a @click="setSelected(row)">{{ row.fullName }}</a>
+                    <a @click="setSelected(row)">{{ row.fullName }} ({{ row.location }})</a>
                 </li>
             </ol>
         </div>
