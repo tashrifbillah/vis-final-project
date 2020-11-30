@@ -284,23 +284,23 @@ class HexMap {
 
       // add legend for exclusive park
       vis.legend.append('path')
-        .attr("d", 'M' + 600 + ',' + 20 + vis.hexbin.hexagon())
+        .attr("d", 'M' + 25/2 + ',' + 55 + vis.hexbin.hexagon())
         .style("fill", "black")
 
       // add label for exclusive park
       vis.legend.append('text')
-        .attr("x", 600 + vis.hexRadius * 2)
-        .attr("y", 20)
+        .attr("x", 25/2 + vis.hexRadius * 2)
+        .attr("y", 60)
         .text("Exclusive Park")
 
       // add legend for shared park
       vis.legend.append('path')
-        .attr("d", 'M' + 600 + ',' + 60 + vis.getLeftHex(vis.hexbin.hexagon()))
+        .attr("d", 'M' + (200 + 25/2) + ',' + 55 + vis.getLeftHex(vis.hexbin.hexagon()))
         .style("fill", "black")
 
       // add label for exclusive park
       vis.legend.append('text')
-        .attr("x", 600 + vis.hexRadius * 2)
+        .attr("x", (200 + 25/2) + vis.hexRadius)
         .attr("y", 60)
         .text("Shared Park")
 
