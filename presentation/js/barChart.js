@@ -1,4 +1,4 @@
-let selectedSeason = "All"
+let selectedSeason = "Summer"
 
 class BarChart {
     constructor(parentElement, data) {
@@ -30,14 +30,6 @@ class BarChart {
             .append("g")
             .attr("transform", "translate(" + vis.margin.left + "," + vis.margin.top + ")");
 
-        // Overlay with path clipping
-        // vis.svg.append("defs").append("clipPath")
-        //   .attr("id", "clip")
-        //   .append("rect")
-        //   .attr("width", vis.width)
-        //   .attr("height", vis.height);
-
-        // vis.title = vis.svg.append("text").attr("x", 0).attr("y", -20).text(vis.config.title)
 
         // Scales and axes
         vis.x = d3.scaleLinear()
@@ -146,19 +138,6 @@ class BarChart {
         vis.svg.select(".axis-title")
             .text(`Average monthly visits in ${selectedSeason}`)
 
-        // const labels = vis.svg.selectAll(".bar-label").data(vis.displayData, d => d.seasonalVisits[selectedSeason])
-        // labels.exit().remove();
-        //
-        // labels
-        //     .enter()
-        //     .append("text")
-        //     .attr("class", "bar-label")
-        //     .attr("y", d => vis.y(d.fullName) + vis.y.bandwidth() / 2)
-        //     .attr("x", d => (vis.lastValue[d.fullName] || 0) + 10)
-        //     .text(d => d.seasonalVisits[selectedSeason])
-        //     .transition()
-        //     .attr("x", d => (vis.lastValue[d.fullName] = vis.x(d.seasonalVisits[selectedSeason])) + 10)
-        //     .duration(500)
 
         // Call axis functions with the new domain
         vis.svg.select(".x-axis").transition().duration(trans_time).call(vis.xAxis)
