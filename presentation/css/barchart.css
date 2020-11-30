@@ -3,3 +3,13 @@ rect.bar {
     stroke: black;
     stroke-width: 1px;
 }
+
+#bar .count {
+    font-size: 10px;
+}
+
+#bar .axis-title {
+    font-weight: bold;
+    font-size: 10px;
+    text-anchor: middle;
+}
