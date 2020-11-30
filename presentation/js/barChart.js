@@ -48,7 +48,9 @@ class BarChart {
             .range([vis.height, 0]);
 
         vis.xAxis = d3.axisBottom()
-            .scale(vis.x);
+            .scale(vis.x)
+            .ticks(6)
+
 
         vis.yAxis = d3.axisLeft()
             .scale(vis.y);
@@ -59,6 +61,12 @@ class BarChart {
 
         vis.svg.append("g")
             .attr("class", "y-axis axis");
+
+        // y axis title
+        vis.svg.append("text")
+            .attr("x", vis.width/2)
+            .attr("y", -10)
+            .attr("class", "axis-title")
 
         // (Filter, aggregate, modify data)
         vis.wrangleData();
@@ -112,6 +120,31 @@ class BarChart {
 
 
         rectangles.exit().remove()
+
+
+
+        // labels
+        let labels= vis.svg.selectAll(".count")
+            .data(vis.displayData, d => d.id)
+
+        labels.enter()
+            .append("text")
+            .attr("class", "count")
+            .merge(labels)
+            .transition()
+            .duration(trans_time)
+            .text((d) => d3.format(',')(d.seasonalVisits[selectedSeason]))
+            .attr("y", d => vis.y(d.fullName)+vis.y.bandwidth()/2)
+            .attr("x", d => vis.x(d.seasonalVisits[selectedSeason])+5)
+
+
+        labels.exit().remove()
+
+
+
+        // Update the y-axis
+        vis.svg.select(".axis-title")
+            .text(`Average monthly visits in ${selectedSeason}`)
 
         // const labels = vis.svg.selectAll(".bar-label").data(vis.displayData, d => d.seasonalVisits[selectedSeason])
         // labels.exit().remove();
