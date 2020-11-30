@@ -16,7 +16,7 @@ class HexMap {
       vis.margin = {
         top: 50,
         right: 100,
-        bottom: 50,
+        bottom: 100,
         left: 100
       };
       vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right;
@@ -50,16 +50,31 @@ class HexMap {
       // Tooltip
       vis.toolTip = d3.tip()
         .attr("class", "d3-tip")
+        .attr("height", 500)
         .offset([-10, 0])
         .html(function(d) {
           let message;
+          let exclusive_message = '';
+          let exclusive_list = '';
+          let shared_message = '';
+          let shared_list = '';
+
+          let parks_in_state = getParksInState(allData, d.name);
+
           let header = '<h1>' + vis.myNameConverter.getFullName(d.name) + '</h1>'
           if (d.has_parks) {
-            message = 'Has ' + d.hex_locations.length + ' national parks.';
+            exclusive_message = 'Has ' + d.hex_locations.length + ' exclusive national parks';
+            exclusive_list = "</br>Exclusive Parks:</br>" + parks_in_state.exclusive.join('</br>') + "</text>";
           } else {
-            message = 'Does not have any national parks.';
+            exclusive_message = 'Does not have any national parks';
           }
-          return header + message;
+          if (d.shared_hex_locations.length != 0) {
+            shared_message = " and " + d.shared_hex_locations.length + " shared national parks";
+            shared_list = "</br>Shared Parks:</br>" + parks_in_state.shared.join('</br>');
+          }
+          message = exclusive_message + shared_message + ".";
+
+          return header + message + "</br>" + exclusive_list + shared_list;
         });
       vis.svg.call(vis.toolTip);
 
@@ -96,6 +111,7 @@ class HexMap {
         .attr("stroke", "white")
         .attr("stroke-width", "1px")
         .style("fill", "LightGray")
+        // .style("opacity", 0);
         .style("opacity", 0.2);
 
 
@@ -106,7 +122,9 @@ class HexMap {
 
       for (var state in vis.data) {
         let hex_locations = vis.data[state].hex_locations;
+        let shared_hex_locations = vis.data[state].shared_hex_locations;
 
+        // convert hex locations to hex points
         for (let i = 0; i < hex_locations.length; i++) {
           let x = vis.hexRadius * hex_locations[i][0] * Math.sqrt(3);
           //Offset each uneven row by half of a "hex-width" to the right
@@ -114,7 +132,21 @@ class HexMap {
           let y = vis.hexRadius * hex_locations[i][1] * 1.5;
           state_points.push([x, y]);
           let state_obj = Object.assign({}, vis.data[state]);
-          state_obj.hex_point =  [x, y]
+          state_obj.hex_point = [x, y];
+          state_obj.shared = false;
+          state_objs.push(state_obj)
+        }
+
+        // convert shared hex locations to shared hex points
+        for (let i = 0; i < shared_hex_locations.length; i++) {
+          let x = vis.hexRadius * shared_hex_locations[i][0] * Math.sqrt(3);
+          //Offset each uneven row by half of a "hex-width" to the right
+          if (shared_hex_locations[i][1] % 2 === 1) x += (vis.hexRadius * Math.sqrt(3)) / 2;
+          let y = vis.hexRadius * shared_hex_locations[i][1] * 1.5;
+          state_points.push([x, y]);
+          let state_obj = Object.assign({}, vis.data[state]);
+          state_obj.hex_point = [x, y];
+          state_obj.shared = true;
           state_objs.push(state_obj)
         }
 
@@ -129,7 +161,7 @@ class HexMap {
         state_labels.push(label_obj);
       }
 
-      // console.log(state_objs);
+      console.log(state_objs);
       // console.log(state_labels);
 
       //Draw the hexagons
@@ -141,8 +173,25 @@ class HexMap {
         .enter().append("path")
         .attr("class", "state-hexagon")
         .attr("d", function (d) {
+          let hex_shape;
           let hex_point_bin = vis.hexbin([d.hex_point]);
-          return "M" + hex_point_bin[0].x + "," + hex_point_bin[0].y + vis.hexbin.hexagon();
+          console.log(d.shared_hex_orientation)
+          if (d.shared == true) {
+            switch (d.shared_hex_orientation) {
+              case 'left':
+                hex_shape = vis.getLeftHex(vis.hexbin.hexagon());
+                break;
+              case 'right':
+                hex_shape = vis.getRightHex(vis.hexbin.hexagon());
+                break;
+              default:
+                hex_shape = vis.getLeftHex(vis.hexbin.hexagon());
+            }
+          } else {
+            hex_shape = vis.hexbin.hexagon();
+          }
+          return 'M' + hex_point_bin[0].x + ',' + hex_point_bin[0].y + hex_shape;
+          // return "M" + hex_point_bin[0].x + "," + hex_point_bin[0].y + vis.getRightHex(vis.hexbin.hexagon());
         })
         .attr("stroke", "white")
         .attr("stroke-width", "1px")
@@ -163,7 +212,7 @@ class HexMap {
         .on("mouseover", function(event, d) {
           vis.toolTip.show(d, this);
         })
-        .on("mouseout", vis.toolTip.hide);
+        // .on("mouseout", vis.toolTip.hide);
 
       // Label the hexagons
       vis.state_hexagon_labels = vis.svg.append("g")
@@ -180,7 +229,7 @@ class HexMap {
         .on("mouseover", function(event, d) {
           vis.toolTip.show(d, this);
         })
-        .on("mouseout", vis.toolTip.hide);
+        // .on("mouseout", vis.toolTip.hide);
 
       // add legend
       vis.legend = vis.svg.append('g')
@@ -189,24 +238,58 @@ class HexMap {
         .attr('text-anchor', 'start')
 
       vis.legend.selectAll(".legend-square")
-      .data(vis.regionColors)
-      .enter()
-      .append('rect')
-      .attr("class", "legend-square")
-      .attr("height", 20)
-      .attr("width", 20)
-      .attr("x", (d, i) => i * 100)
-      .attr("y", 0)
-      .attr("fill", d => d);
+        .data(vis.regionColors)
+        .enter()
+        .append('rect')
+        .attr("class", "legend-square")
+        .attr("height", 20)
+        .attr("width", 20)
+        .attr("x", (d, i) => i * 100)
+        .attr("y", 0)
+        .attr("fill", d => d);
 
-    vis.legend.selectAll(".legend-label")
-      .data(vis.regions)
-      .enter()
-      .append('text')
-      .attr("class", "legend-label")
-      .attr("x", (d, i) => i * 100 + 25)
-      .attr("y", 20)
-      .text(d => d);
+      vis.legend.selectAll(".legend-label")
+        .data(vis.regions)
+        .enter()
+        .append('text')
+        .attr("class", "legend-label")
+        .attr("x", (d, i) => i * 100 + 25)
+        .attr("y", 20)
+        .text(d => d);
+
+      // add legend for exclusive park
+      vis.legend.append('path')
+        .attr("d", 'M' + 600 + ',' + 20 + vis.hexbin.hexagon())
+        .style("fill", "black")
+
+      // add label for exclusive park
+      vis.legend.append('text')
+        .attr("x", 600 + vis.hexRadius * 2)
+        .attr("y", 20)
+        .text("Exclusive Park")
+
+      // add legend for shared park
+      vis.legend.append('path')
+        .attr("d", 'M' + 600 + ',' + 60 + vis.getLeftHex(vis.hexbin.hexagon()))
+        .style("fill", "black")
+
+      // add label for exclusive park
+      vis.legend.append('text')
+        .attr("x", 600 + vis.hexRadius * 2)
+        .attr("y", 60)
+        .text("Shared Park")
 
     }
+
+    // Return a right half of the hexagon component
+    getRightHex(hexagonPath) {
+      return hexagonPath.split("l").slice(0, 4).join("l")+"z";
+    }
+
+    // Return a left half of the hexagon component
+    getLeftHex(hexagonPath) {
+      let startingPoint = hexagonPath.split("l")[0]
+      let startingDrop = "l" + startingPoint.replace("m", "").split(",").map(d => d * -2).join(",")
+      return startingPoint + startingDrop + "l" + hexagonPath.split("l").slice(4).join("l") + "z";
+  }
 }
