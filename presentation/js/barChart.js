@@ -74,7 +74,7 @@ class BarChart {
 
         vis.displayData = topTenParks.length ? [...topTenParks] : vis.data;
 
-        // As default, the fist 10 most visited parks of selectedSeason are shown
+        // As default, the fist 10 least visited parks of selectedSeason are shown
         vis.displayData.sort((a, b) => a.seasonalVisits[selectedSeason] - b.seasonalVisits[selectedSeason])
         vis.displayData = vis.displayData.slice(0, 10)
 
@@ -90,7 +90,7 @@ class BarChart {
         let vis = this;
         let trans_time = 1500
 
-        vis.y.domain(vis.displayData.map(d => d.fullName))
+        vis.y.domain(vis.displayData.map(d => `${d.name}, ${nameConverter.getAbbreviation(d.location)}`))
 
         // Inner loop computes maximum over all seasons for each park
         // Outer loop computer maximum over all parks
@@ -108,7 +108,7 @@ class BarChart {
             .attr("height", vis.y.bandwidth())
             .transition()
             .duration(trans_time)
-            .attr("y", d => vis.y(d.fullName))
+            .attr("y", d => vis.y(`${d.name}, ${nameConverter.getAbbreviation(d.location)}`))
             .attr("width", d => vis.x(d.seasonalVisits[selectedSeason]))
 
 
@@ -127,7 +127,7 @@ class BarChart {
             .transition()
             .duration(trans_time)
             .text((d) => d3.format(',')(d.seasonalVisits[selectedSeason]))
-            .attr("y", d => vis.y(d.fullName)+vis.y.bandwidth()/2)
+            .attr("y", d => vis.y(`${d.name}, ${nameConverter.getAbbreviation(d.location)}`)+vis.y.bandwidth()/2)
             .attr("x", d => vis.x(d.seasonalVisits[selectedSeason])+5)
 
 
@@ -137,7 +137,7 @@ class BarChart {
 
         // Update the y-axis
         vis.svg.select(".axis-title")
-            .text(`Average monthly visits in ${selectedSeason}`)
+            .text(`Least crowded 10 matching parks' average monthly visits in ${selectedSeason}`)
 
 
         // Call axis functions with the new domain
