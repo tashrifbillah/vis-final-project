@@ -59,17 +59,42 @@ class HexMap {
           let shared_message = '';
           let shared_list = '';
 
+          let number_of_exclusive_parks = d.hex_locations.length;
+          let number_of_shared_parks = d.shared_hex_locations.length;
           let parks_in_state = getParksInState(allData, d.name);
 
+          // Header to indicate state
           let header = '<h1>' + vis.myNameConverter.getFullName(d.name) + '</h1>'
+
+          // Park message to describe the number of parks in a state
           if (d.has_parks) {
-            exclusive_message = 'Has ' + d.hex_locations.length + ' exclusive national parks';
-            exclusive_list = "</br>Exclusive Parks:</br>" + parks_in_state.exclusive.join('</br>') + "</text>";
+            let parks;
+            switch (number_of_exclusive_parks) {
+              case 1:
+                parks = "park";
+                break;
+              default:
+                parks = "parks";
+            }
+            exclusive_message = d.name + ' has ' + number_of_exclusive_parks + ' exclusive national ' + parks;
           } else {
             exclusive_message = 'Does not have any national parks';
           }
-          if (d.shared_hex_locations.length != 0) {
-            shared_message = " and " + d.shared_hex_locations.length + " shared national parks";
+
+          // List the specific parks
+          if (number_of_exclusive_parks != 0) {
+            exclusive_list = "</br>Exclusive Parks:</br>" + parks_in_state.exclusive.join('</br>') + "</br>";
+          }
+          if (number_of_shared_parks != 0) {
+            let parks;
+            switch (number_of_shared_parks) {
+              case 1:
+                parks = "park";
+                break;
+              default:
+                parks = "parks";
+            }
+            shared_message = " and " + number_of_shared_parks + " shared national " + parks;
             shared_list = "</br>Shared Parks:</br>" + parks_in_state.shared.join('</br>');
           }
           message = exclusive_message + shared_message + ".";
@@ -212,7 +237,7 @@ class HexMap {
         .on("mouseover", function(event, d) {
           vis.toolTip.show(d, this);
         })
-        // .on("mouseout", vis.toolTip.hide);
+        .on("mouseout", vis.toolTip.hide);
 
       // Label the hexagons
       vis.state_hexagon_labels = vis.svg.append("g")
@@ -229,7 +254,7 @@ class HexMap {
         .on("mouseover", function(event, d) {
           vis.toolTip.show(d, this);
         })
-        // .on("mouseout", vis.toolTip.hide);
+        .on("mouseout", vis.toolTip.hide);
 
       // add legend
       vis.legend = vis.svg.append('g')
