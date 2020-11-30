@@ -74,6 +74,7 @@ class BarChart {
 
         vis.displayData = topTenParks.length ? [...topTenParks] : vis.data;
 
+        // As default, the fist 10 most visited parks of selectedSeason are shown
         vis.displayData.sort((a, b) => a.seasonalVisits[selectedSeason] - b.seasonalVisits[selectedSeason])
         vis.displayData = vis.displayData.slice(0, 10)
 
