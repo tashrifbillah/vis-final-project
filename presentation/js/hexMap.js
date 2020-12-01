@@ -186,7 +186,7 @@ class HexMap {
         state_labels.push(label_obj);
       }
 
-      console.log(state_objs);
+      // console.log(state_objs);
       // console.log(state_labels);
 
       //Draw the hexagons
@@ -196,11 +196,10 @@ class HexMap {
 
       vis.state_hexagons
         .enter().append("path")
-        .attr("class", "state-hexagon")
+        .attr("class", d => `state-hexagon state-hexagon-${d.name}`)
         .attr("d", function (d) {
           let hex_shape;
           let hex_point_bin = vis.hexbin([d.hex_point]);
-          console.log(d.shared_hex_orientation)
           if (d.shared == true) {
             switch (d.shared_hex_orientation) {
               case 'left':
@@ -229,15 +228,27 @@ class HexMap {
         })
         .style("opacity", d => {
           if (d.has_parks == true) {
-            return 0.8;
+            return 0.75;
           } else {
             return 0.5;
           }
         })
         .on("mouseover", function(event, d) {
           vis.toolTip.show(d, this);
+          vis.svg.selectAll(`.state-hexagon-${d.name}`)
+            .style("opacity", 1);
         })
-        .on("mouseout", vis.toolTip.hide);
+        .on("mouseout", function(event, d) {
+          vis.toolTip.hide();
+          vis.svg.selectAll(`.state-hexagon-${d.name}`)
+            .style("opacity", d => {
+              if (d.has_parks == true) {
+                return 0.75;
+              } else {
+                return 0.5;
+              }
+            });
+        });
 
       // Label the hexagons
       vis.state_hexagon_labels = vis.svg.append("g")
