@@ -1,4 +1,4 @@
-let selectedSeason = "All"
+let selectedSeason = "Summer"
 
 class BarChart {
     constructor(parentElement, data) {
@@ -30,14 +30,6 @@ class BarChart {
             .append("g")
             .attr("transform", "translate(" + vis.margin.left + "," + vis.margin.top + ")");
 
-        // Overlay with path clipping
-        // vis.svg.append("defs").append("clipPath")
-        //   .attr("id", "clip")
-        //   .append("rect")
-        //   .attr("width", vis.width)
-        //   .attr("height", vis.height);
-
-        // vis.title = vis.svg.append("text").attr("x", 0).attr("y", -20).text(vis.config.title)
 
         // Scales and axes
         vis.x = d3.scaleLinear()
@@ -48,7 +40,9 @@ class BarChart {
             .range([vis.height, 0]);
 
         vis.xAxis = d3.axisBottom()
-            .scale(vis.x);
+            .scale(vis.x)
+            .ticks(6)
+
 
         vis.yAxis = d3.axisLeft()
             .scale(vis.y);
@@ -59,6 +53,12 @@ class BarChart {
 
         vis.svg.append("g")
             .attr("class", "y-axis axis");
+
+        // y axis title
+        vis.svg.append("text")
+            .attr("x", vis.width/2)
+            .attr("y", -10)
+            .attr("class", "axis-title")
 
         // (Filter, aggregate, modify data)
         vis.wrangleData();
@@ -73,11 +73,8 @@ class BarChart {
         let vis = this;
 
         vis.displayData = topTenParks.length ? [...topTenParks] : vis.data;
-        vis.displayData.forEach(d=>{
-            if (isNaN(d.seasonalVisits[selectedSeason])) {
-                d.seasonalVisits[selectedSeason] = 0
-            }
-        })
+
+        // As default, the fist 10 least visited parks of selectedSeason are shown
         vis.displayData.sort((a, b) => a.seasonalVisits[selectedSeason] - b.seasonalVisits[selectedSeason])
         vis.displayData = vis.displayData.slice(0, 10)
 
@@ -91,9 +88,13 @@ class BarChart {
 
     updateVis() {
         let vis = this;
+        let trans_time = 1500
 
-        vis.y.domain(vis.displayData.map(d => d.fullName));
-        vis.x.domain([0, d3.max(vis.displayData, d => d.seasonalVisits[selectedSeason])])
+        vis.y.domain(vis.displayData.map(d => `${d.name}, ${nameConverter.getAbbreviation(d.location)}`))
+
+        // Inner loop computes maximum over all seasons for each park
+        // Outer loop computer maximum over all parks
+        vis.x.domain([0, d3.max( vis.displayData, d => d3.max( seasons.map(s => d.seasonalVisits[s]) ) ) ])
 
         // Draw the layers
         const rectangles = vis.svg.selectAll(".bar").data(vis.displayData, d => d.id)
@@ -106,28 +107,41 @@ class BarChart {
             .attr("x", 0)
             .attr("height", vis.y.bandwidth())
             .transition()
-            .attr("y", d => vis.y(d.fullName))
+            .duration(trans_time)
+            .attr("y", d => vis.y(`${d.name}, ${nameConverter.getAbbreviation(d.location)}`))
             .attr("width", d => vis.x(d.seasonalVisits[selectedSeason]))
-            .duration(500)
+
 
         rectangles.exit().remove()
 
-        // const labels = vis.svg.selectAll(".bar-label").data(vis.displayData, d => d.seasonalVisits[selectedSeason])
-        // labels.exit().remove();
-        //
+
+
         // labels
-        //     .enter()
-        //     .append("text")
-        //     .attr("class", "bar-label")
-        //     .attr("y", d => vis.y(d.fullName) + vis.y.bandwidth() / 2)
-        //     .attr("x", d => (vis.lastValue[d.fullName] || 0) + 10)
-        //     .text(d => d.seasonalVisits[selectedSeason])
-        //     .transition()
-        //     .attr("x", d => (vis.lastValue[d.fullName] = vis.x(d.seasonalVisits[selectedSeason])) + 10)
-        //     .duration(500)
+        let labels= vis.svg.selectAll(".count")
+            .data(vis.displayData, d => d.id)
+
+        labels.enter()
+            .append("text")
+            .attr("class", "count")
+            .merge(labels)
+            .transition()
+            .duration(trans_time)
+            .text((d) => d3.format(',')(d.seasonalVisits[selectedSeason]))
+            .attr("y", d => vis.y(`${d.name}, ${nameConverter.getAbbreviation(d.location)}`)+vis.y.bandwidth()/2)
+            .attr("x", d => vis.x(d.seasonalVisits[selectedSeason])+5)
+
+
+        labels.exit().remove()
+
+
+
+        // Update the y-axis
+        vis.svg.select(".axis-title")
+            .text(`Least crowded 10 matching parks' average monthly visits in ${selectedSeason}`)
+
 
         // Call axis functions with the new domain
-        vis.svg.select(".x-axis").transition().call(vis.xAxis).duration(500);
-        vis.svg.select(".y-axis").transition().call(vis.yAxis).duration(500);
+        vis.svg.select(".x-axis").transition().duration(trans_time).call(vis.xAxis)
+        vis.svg.select(".y-axis").transition().duration(trans_time).call(vis.yAxis)
     }
 }

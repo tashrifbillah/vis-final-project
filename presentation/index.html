@@ -212,23 +212,31 @@
 
     <main class="section__visualizations">
         <div class="vis" id="q5">
-            <select id="group-by" class="form-control vis__filter" onchange="_groupBy()">
-                <option value="months" selected>By month</option>
-                <option value="ytd">Year to date</option>
-                <option value="seasons">By season</option>
-            </select>
             <h3 class="vis__title">How has COVID-19 affected park utilization in 2020?</h3>
             <p class="vis__description">Although outdoor activities are recommended as some of the safest recreational options, there has been a marked decline in visitors during 2020. This decline is most visible during March 2020, when many states first enacted precautionary legislation.</p>
-            <div class="vis__legend">
-                <div id="legend">
-                    <svg>
-                        <circle fill="lightskyblue"></circle>
-                        <text x="20" y="15">2019</text>
-                    </svg>
-                    <svg>
-                        <circle fill="magenta"></circle>
-                        <text x="20" y="15">2020</text>
-                    </svg>
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="row" style="justify-content: center">
+                        <select id="group-by" class="form-control" onchange="_groupBy()">
+                        <option value="months" selected>By month</option>
+                        <option value="ytd">Year to date</option>
+                        <option value="seasons">By season</option>
+                    </select>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="vis__legend">
+                        <div id="legend">
+                            <svg>
+                                <circle fill="lightskyblue"></circle>
+                                <text x="20" y="15">2019</text>
+                            </svg>
+                            <svg>
+                                <circle fill="magenta"></circle>
+                                <text x="20" y="15">2020</text>
+                            </svg>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="vis__wrapper" style="height: 40vh">
@@ -250,9 +258,8 @@
         <h5>Preferred Season</h5>
 
         <select name="season-select" id="season-select" class="form-control" onchange="$(eventEmitter).trigger('seasonChanged')">
-            <option value="All">All</option>
             <option value="Spring">Spring</option>
-            <option value="Summer">Summer</option>
+            <option value="Summer" selected>Summer</option>
             <option value="Fall">Fall</option>
             <option value="Winter">Winter</option>
         </select>

@@ -12,5 +12,6 @@ $(eventEmitter).bind('seasonChanged', function () {
 })
 
 $(eventEmitter).bind('regionChanged', function () {
-    selectedSeason = $("#region-select").val()
+    selectedRegion = $("#region-select").val()
+    myMapVis.wrangleData()
 })
