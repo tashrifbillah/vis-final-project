@@ -128,6 +128,10 @@ class MapVis {
             vis.displayData= vis.parkData
         }
 
+        if (selectedRegion) {
+            vis.displayData= vis.displayData.filter(d=>nameConverter.getRegion(d.location)==selectedRegion)
+        }
+        
         // console.log(vis.displayData.map(d=>d.name))
 
         vis.updateVis()
