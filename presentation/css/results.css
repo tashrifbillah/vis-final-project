@@ -10,6 +10,12 @@
     padding: 10px;
 }
 
+.results__images {
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
 .results a {
     cursor: pointer;
 }
@@ -44,6 +50,10 @@ pre {
     border-radius: 5px;
     background: lightgray;
     margin-bottom: 5px;
+}
+
+.results__list li a {
+    display: block;
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -59,4 +69,8 @@ pre {
 
 .results button:hover {
     background: lightskyblue;
+}
+
+.results__tabs > * {
+    margin-right: 20px;
 }

@@ -42,16 +42,20 @@
         <h3 class="vis__title">How did National Parks come to be?</h3>
         <p class="vis__description">Yellowstone was officially established as the first National Park in 1872. 34 years later, Theodore Roosevelt passed the Antiquities Act of 1906, creating presidential authority to designate national monuments from federal lands to protect significant natural, cultural, or scientific features. The national monument designation has served as a precursor to the National Park designation for many parks.</p>
         <div class="vis__wrapper">
-            <div id="carousel" class="carousel slide">
-                <div class="carousel-inner"></div>
-                <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <div id="carousel" class="carousel slide">
+                        <div class="carousel-inner"></div>
+                        <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
             </div>
 
             <br>
@@ -59,6 +63,8 @@
             <p>Historical events can be classified into two broad categories--<i>Park Related Law passed</i>
                 and <i>Park Founded</i>. They are shown in different colors in the timeline below.</i>
             </p>
+
+            <div id="timeline"></div>
             <dl class="timeline-key">
                 <dt class="current"></dt>
                 <dd>Event on Display</dd>
@@ -69,8 +75,6 @@
                 <dt class="park"></dt>
                 <dd>Park Founded</dd>
             </dl>
-
-            <div id="timeline"></div>
         </div>
     </div>
 </div>
@@ -187,11 +191,15 @@
 
                 <input type="search" v-model="filter" class="form-control" placeholder="Filter activities...">
 
-                <div class="activity-select__checkboxes">
+                <transition-group class="activity-select__checkboxes"
+                        name="slide-top-list"
+                        tag="div"
+                >
                     <div class="check-row" v-for="a in visibleActivities" :key="a.id">
                         <input type="checkbox" :name="a.id" :id="a.id" :value="a.id" v-model="selectedActivityIds">
                         <label :for="a.id">{{ a.name }} ({{ a.count }})</label>
                     </div>
+                </transition-group>
                 </div>
             </div>
         </div>
@@ -252,11 +260,11 @@
 </section>
 
 <div class="instruction">
-    <h4>6. Evaluate results</h4>
+    <h4>5. Evaluate results</h4>
     <p>See the best parks, calculated just for you.</p>
 </div>
 
-<footer class="container" id="results">
+<footer class="container-fluid" id="results">
     <h3>Top Parks</h3>
 
     <p>Based on your preferences, here are the top parks we recommend</p>
@@ -265,13 +273,13 @@
         <div class="results__list">
             <ol>
                 <li v-for="row in rows" v-bind:class="{ selected: selectedId === row.parkCode }">
-                    <a @click="setSelected(row)">{{ row.fullName }}</a>
+                    <a @click="setSelected(row)">{{ row.fullName }} ({{ row.location }})</a>
                 </li>
             </ol>
         </div>
 
         <div v-if="selectedId">
-            <div class="btn-group" role="group" aria-label="Basic example">
+            <div class="results__tabs">
                 <button type="button" class="btn btn-secondary"
                         v-for="opt in dataTypes"
                         @click="dataType = opt.value"
@@ -280,9 +288,9 @@
             </div>
 
             <div class="results__response">
-                <template v-if="!dataType">
-                    <img :src="img.url" alt="" v-for="img in displayedData.images.slice(0, 3)" style="width: 100%; margin-top: 20px;">
-                </template>
+                <div class="results__images" v-if="!dataType">
+                    <img :src="img.url" alt="" v-for="img in displayedData.images.slice(0, 4)" style="width: 100%">
+                </div>
 
                 <template v-else-if="dataType === 'alerts' && displayedData">
                     <ul>

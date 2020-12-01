@@ -10,7 +10,7 @@ const buildCarouselItem = d => `
 const isActive = d => d.title === activeTitle
 let activeTitle;
 
-const LAW_IMAGES = [1,2,3,4,5].map(i => `images/law-${i}-min.jpg`)
+const LAW_IMAGES = [1,2,3,4,5,6,7,8,9,10,11,12,13].map(i => `images/law-${i}-min.jpg`)
 
 class Timeline {
 
@@ -72,11 +72,30 @@ class Timeline {
 
         $('#carousel .carousel-inner').html(vis._displayData.map(buildCarouselItem).join(""))
         $('#carousel .carousel-item:first-child').addClass('active')
-        $('#carousel').carousel()
+        vis.carousel = $('#carousel')
+        vis.carousel.carousel('pause')
         $('#carousel').on('slide.bs.carousel', function (evt) {
             activeTitle = $('.carousel-item__title', evt.relatedTarget).text()
             vis.updateVis()
         })
+
+        vis._observer = new IntersectionObserver(function(entries) {
+            entries.map((entry) => {
+                if (entry.isIntersecting) {
+                    vis.carousel.carousel('cycle')
+                } else {
+                    vis.carousel.carousel('pause')
+                }
+            });
+        })
+
+        vis._observer.observe(vis.carousel[0])
+
+        vis.toolTip = d3.tip()
+            .attr("class", "d3-tip")
+            .offset([-10, 0])
+            .html(d => d.title);
+        vis.svg.call(vis.toolTip);
 
         vis.updateVis()
     }
@@ -107,5 +126,9 @@ class Timeline {
                 const i = vis._displayData.findIndex(({ title }) => title === d.title)
                 $("#carousel").carousel(i)
             })
+            .on("mouseover", function(event, d) {
+                vis.toolTip.show(d, this);
+            })
+            .on("mouseout", vis.toolTip.hide);
     }
 }
