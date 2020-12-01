@@ -16,11 +16,12 @@ class HexMap {
       vis.margin = {
         top: 50,
         right: 100,
-        bottom: 50,
+        bottom: 100,
         left: 100
       };
       vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right;
-      vis.height = $("#" + vis.parentElement).height() - vis.margin.top - vis.margin.bottom;
+      vis.height = vis.width * 0.5
+      // vis.height = $("#" + vis.parentElement).height() - vis.margin.top - vis.margin.bottom;
 
       // The number of columns and rows of the heatmap
       vis.MapColumns = 30;
@@ -34,8 +35,8 @@ class HexMap {
       vis.myNameConverter = new NameConverter();
 
       // Region colors
-      vis.regions = ["West", "Northeast", "South", "Midwest"]
-      vis.regionColors = ['#28794C', '#333577', '#AA8D39', '#AA5039']
+      vis.regions = ["West", "Northeast", "South", "Midwest", "No Parks"]
+      vis.regionColors = ['#28794C', '#333577', '#AA8D39', '#AA5039', "#D3D3D3"]
       vis.regionScale = d3.scaleOrdinal(vis.regionColors)
         .domain(vis.regions);
 
@@ -49,16 +50,56 @@ class HexMap {
       // Tooltip
       vis.toolTip = d3.tip()
         .attr("class", "d3-tip")
+        .attr("height", 500)
         .offset([-10, 0])
         .html(function(d) {
           let message;
+          let exclusive_message = '';
+          let exclusive_list = '';
+          let shared_message = '';
+          let shared_list = '';
+
+          let number_of_exclusive_parks = d.hex_locations.length;
+          let number_of_shared_parks = d.shared_hex_locations.length;
+          let parks_in_state = getParksInState(allData, d.name);
+
+          // Header to indicate state
           let header = '<h1>' + vis.myNameConverter.getFullName(d.name) + '</h1>'
+
+          // Park message to describe the number of parks in a state
           if (d.has_parks) {
-            message = 'Has ' + d.hex_locations.length + ' national parks.';
+            let parks;
+            switch (number_of_exclusive_parks) {
+              case 1:
+                parks = "park";
+                break;
+              default:
+                parks = "parks";
+            }
+            exclusive_message = d.name + ' has ' + number_of_exclusive_parks + ' exclusive national ' + parks;
           } else {
-            message = 'Does not have any national parks.';
+            exclusive_message = 'Does not have any national parks';
           }
-          return header + message;
+
+          // List the specific parks
+          if (number_of_exclusive_parks != 0) {
+            exclusive_list = "</br>Exclusive Parks:</br>" + parks_in_state.exclusive.join('</br>') + "</br>";
+          }
+          if (number_of_shared_parks != 0) {
+            let parks;
+            switch (number_of_shared_parks) {
+              case 1:
+                parks = "park";
+                break;
+              default:
+                parks = "parks";
+            }
+            shared_message = " and " + number_of_shared_parks + " shared national " + parks;
+            shared_list = "</br>Shared Parks:</br>" + parks_in_state.shared.join('</br>');
+          }
+          message = exclusive_message + shared_message + ".";
+
+          return header + message + "</br>" + exclusive_list + shared_list;
         });
       vis.svg.call(vis.toolTip);
 
@@ -95,6 +136,7 @@ class HexMap {
         .attr("stroke", "white")
         .attr("stroke-width", "1px")
         .style("fill", "LightGray")
+        // .style("opacity", 0);
         .style("opacity", 0.2);
 
 
@@ -105,7 +147,9 @@ class HexMap {
 
       for (var state in vis.data) {
         let hex_locations = vis.data[state].hex_locations;
+        let shared_hex_locations = vis.data[state].shared_hex_locations;
 
+        // convert hex locations to hex points
         for (let i = 0; i < hex_locations.length; i++) {
           let x = vis.hexRadius * hex_locations[i][0] * Math.sqrt(3);
           //Offset each uneven row by half of a "hex-width" to the right
@@ -113,7 +157,21 @@ class HexMap {
           let y = vis.hexRadius * hex_locations[i][1] * 1.5;
           state_points.push([x, y]);
           let state_obj = Object.assign({}, vis.data[state]);
-          state_obj.hex_point =  [x, y]
+          state_obj.hex_point = [x, y];
+          state_obj.shared = false;
+          state_objs.push(state_obj)
+        }
+
+        // convert shared hex locations to shared hex points
+        for (let i = 0; i < shared_hex_locations.length; i++) {
+          let x = vis.hexRadius * shared_hex_locations[i][0] * Math.sqrt(3);
+          //Offset each uneven row by half of a "hex-width" to the right
+          if (shared_hex_locations[i][1] % 2 === 1) x += (vis.hexRadius * Math.sqrt(3)) / 2;
+          let y = vis.hexRadius * shared_hex_locations[i][1] * 1.5;
+          state_points.push([x, y]);
+          let state_obj = Object.assign({}, vis.data[state]);
+          state_obj.hex_point = [x, y];
+          state_obj.shared = true;
           state_objs.push(state_obj)
         }
 
@@ -138,10 +196,26 @@ class HexMap {
 
       vis.state_hexagons
         .enter().append("path")
-        .attr("class", "state-hexagon")
+        .attr("class", d => `state-hexagon state-hexagon-${d.name}`)
         .attr("d", function (d) {
+          let hex_shape;
           let hex_point_bin = vis.hexbin([d.hex_point]);
-          return "M" + hex_point_bin[0].x + "," + hex_point_bin[0].y + vis.hexbin.hexagon();
+          if (d.shared == true) {
+            switch (d.shared_hex_orientation) {
+              case 'left':
+                hex_shape = vis.getLeftHex(vis.hexbin.hexagon());
+                break;
+              case 'right':
+                hex_shape = vis.getRightHex(vis.hexbin.hexagon());
+                break;
+              default:
+                hex_shape = vis.getLeftHex(vis.hexbin.hexagon());
+            }
+          } else {
+            hex_shape = vis.hexbin.hexagon();
+          }
+          return 'M' + hex_point_bin[0].x + ',' + hex_point_bin[0].y + hex_shape;
+          // return "M" + hex_point_bin[0].x + "," + hex_point_bin[0].y + vis.getRightHex(vis.hexbin.hexagon());
         })
         .attr("stroke", "white")
         .attr("stroke-width", "1px")
@@ -154,15 +228,27 @@ class HexMap {
         })
         .style("opacity", d => {
           if (d.has_parks == true) {
-            return 0.8;
+            return 0.75;
           } else {
             return 0.5;
           }
         })
         .on("mouseover", function(event, d) {
           vis.toolTip.show(d, this);
+          vis.svg.selectAll(`.state-hexagon-${d.name}`)
+            .style("opacity", 1);
         })
-        .on("mouseout", vis.toolTip.hide);
+        .on("mouseout", function(event, d) {
+          vis.toolTip.hide();
+          vis.svg.selectAll(`.state-hexagon-${d.name}`)
+            .style("opacity", d => {
+              if (d.has_parks == true) {
+                return 0.75;
+              } else {
+                return 0.5;
+              }
+            });
+        });
 
       // Label the hexagons
       vis.state_hexagon_labels = vis.svg.append("g")
@@ -188,24 +274,58 @@ class HexMap {
         .attr('text-anchor', 'start')
 
       vis.legend.selectAll(".legend-square")
-      .data(vis.regionColors)
-      .enter()
-      .append('rect')
-      .attr("class", "legend-square")
-      .attr("height", 20)
-      .attr("width", 20)
-      .attr("x", (d, i) => i * 100)
-      .attr("y", 0)
-      .attr("fill", d => d);
+        .data(vis.regionColors)
+        .enter()
+        .append('rect')
+        .attr("class", "legend-square")
+        .attr("height", 20)
+        .attr("width", 20)
+        .attr("x", (d, i) => i * 100)
+        .attr("y", 0)
+        .attr("fill", d => d);
 
-    vis.legend.selectAll(".legend-label")
-      .data(vis.regions)
-      .enter()
-      .append('text')
-      .attr("class", "legend-label")
-      .attr("x", (d, i) => i * 100 + 25)
-      .attr("y", 20)
-      .text(d => d);
+      vis.legend.selectAll(".legend-label")
+        .data(vis.regions)
+        .enter()
+        .append('text')
+        .attr("class", "legend-label")
+        .attr("x", (d, i) => i * 100 + 25)
+        .attr("y", 20)
+        .text(d => d);
+
+      // add legend for exclusive park
+      vis.legend.append('path')
+        .attr("d", 'M' + 25/2 + ',' + 55 + vis.hexbin.hexagon())
+        .style("fill", "black")
+
+      // add label for exclusive park
+      vis.legend.append('text')
+        .attr("x", 25/2 + vis.hexRadius * 2)
+        .attr("y", 60)
+        .text("Exclusive Park")
+
+      // add legend for shared park
+      vis.legend.append('path')
+        .attr("d", 'M' + (200 + 25/2) + ',' + 55 + vis.getLeftHex(vis.hexbin.hexagon()))
+        .style("fill", "black")
+
+      // add label for exclusive park
+      vis.legend.append('text')
+        .attr("x", (200 + 25/2) + vis.hexRadius)
+        .attr("y", 60)
+        .text("Shared Park")
 
     }
+
+    // Return a right half of the hexagon component
+    getRightHex(hexagonPath) {
+      return hexagonPath.split("l").slice(0, 4).join("l")+"z";
+    }
+
+    // Return a left half of the hexagon component
+    getLeftHex(hexagonPath) {
+      let startingPoint = hexagonPath.split("l")[0]
+      let startingDrop = "l" + startingPoint.replace("m", "").split(",").map(d => d * -2).join(",")
+      return startingPoint + startingDrop + "l" + hexagonPath.split("l").slice(4).join("l") + "z";
+  }
 }
