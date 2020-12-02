@@ -115,8 +115,6 @@ class MapVis {
             .attr('class', "tooltip")
 
 
-        // Initialize tabular summary
-        tabularSummary(vis.parkData[0])
 
         vis.wrangleData()
 
@@ -129,7 +127,16 @@ class MapVis {
         vis.displayData= selectedRegion?
             vis.parkData.filter(d=>nameConverter.getRegion(d.location)==selectedRegion):vis.parkData
 
-        // console.log(vis.displayData.map(d=>d.name))
+
+        // Empty the parkSelect menu
+        $("#parkSelect").empty()
+
+        // Populate the parkSelect menu with selectedRegion parks
+        vis.displayData.sort((a,b)=>a.name>b.name?1:-1)
+        vis.displayData.forEach(d=>$("#parkSelect").append(new Option(d.name,d.name)))
+
+        // By default, display the first selectedRegion park in tabular summary
+        tabularSummary(vis.displayData[0])
 
         vis.updateVis()
 

@@ -29,10 +29,7 @@ function initMainPage(dataArray) {
     // init map
     myMapVis = new MapVis('map', dataArray[0], dataArray[1]);
 
-    // populate parkSelect menu
     parkData= dataArray[1]
-    parkData.sort((a,b)=>a.name>b.name?1:-1)
-    parkData.forEach(d=>$("#parkSelect").append(new Option(d.name,d.name)))
 
     // init line-graph
     myLineVis = new LineVis('line-graph', dataArray[1]);
