@@ -1,3 +1,9 @@
+@value --shared-green from "./shared.css";
+@value --shared-blue from "./shared.css";
+@value --shared-yellow from "./shared.css";
+@value --shared-red from "./shared.css";
+@value --shared-grey from "./shared.css";
+
 body {
     margin: 20px;
 }
@@ -12,7 +18,7 @@ body {
 }
 
 .state {
-    fill: mediumseagreen;
+    fill: var(--shared-green);
     stroke: black;
 }
 
@@ -31,7 +37,7 @@ body {
     border: thin solid grey;
     margin: 5px;
     border-radius: 5px;
-    background: rgba(64,64,64,0.4);
+    background: var(--shared-grey);
 }
 
 #q1 img {
@@ -46,7 +52,8 @@ body {
 
 .stateName {
     font-size: 12px;
-    fill: yellow;
+    fill: var(--shared-yellow);
+    text-shadow: #000 0px 0px 1px;
     text-anchor: middle;
     font-weight: bold;
 }

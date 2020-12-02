@@ -6,9 +6,16 @@ let allData,
     r,
     miniRadarCharts;
 
-let palette = ["#EDC951","#CC333F","#00A0B0"]
+let sharedGreen = '#28794C'
+let sharedBlue = '#333577'
+let sharedYellow = '#FFC900'
+let sharedRed = '#AE0000'
+let sharedGrey = '#D3D3D3'
+let sharedLightBlue = '#6150D8'
+
+let palette = [sharedBlue, sharedYellow, sharedRed]
 let color = d3.scaleOrdinal()
-  .range(palette);
+  .range([sharedBlue,sharedYellow,sharedRed]);
 
 let radarChartOptionsLarge = {
   w: 800,
