@@ -28,6 +28,39 @@
         The United States is home to some of the most unique and stunning natural geographical features in the world. Over the course of nearly 200 years, 62 of these sites have been designated as National Parks. Every year, these parks support as many as 90 million visitors.
     </p>
 
+    <div class="vis" id="q5">
+        <h3 class="vis__title">How has COVID-19 affected park utilization in 2020?</h3>
+        <p class="vis__description">Although outdoor activities are recommended as some of the safest recreational options, there has been a marked decline in visitors during 2020. This decline is most visible during March 2020, when many states first enacted precautionary legislation.</p>
+        <div class="row">
+            <div class="col-sm-5">
+                <div class="row" style="justify-content: center">
+                    <select id="group-by" class="form-control" onchange="_groupBy()">
+                        <option value="months" selected>By month</option>
+                        <option value="ytd">Year to date</option>
+                        <option value="seasons">By season</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <div class="vis__legend">
+                    <div id="legend">
+                        <svg>
+                            <circle fill="lightskyblue"></circle>
+                            <text x="20" y="15">2019</text>
+                        </svg>
+                        <svg>
+                            <circle fill="magenta"></circle>
+                            <text x="20" y="15">2020</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="vis__wrapper" style="height: 40vh">
+            <div class="align-self-center" id="line-graph" style="width: 70%; height: 100%"></div>
+        </div>
+    </div>
+
     <h2 style="margin-top: 200px;">What to expect</h2>
     <p>As you progress through the course of this webpage, you will be presented with filters on the right.</p>
     <p>Each section is intended to help you pick your preferences of region, activities, and season.</p>
@@ -164,12 +197,14 @@
             </select>
         </div>
     </aside>
+</section>
 
-    <div class="instruction">
-        <h4>3. Find the parks that will best support you in pursuing your favorite activities</h4>
-        <p>Let us know what types of activities you are most interested in. This information is used to find great parks for you to explore.</p>
-    </div>
+<div class="instruction">
+    <h4>3. Find the parks that will best support you in pursuing your favorite activities</h4>
+    <p>Let us know what types of activities you are most interested in. This information is used to find great parks for you to explore.</p>
+</div>
 
+<section class="container-fluid section">
     <main class="section__visualizations">
         <div class="vis">
             <h3 class="vis__title">Different parks excel in different areas. Which parks are the best match for your interests?</h3>
@@ -218,46 +253,15 @@
             </div>
         </div>
     </aside>
+</section>
 
     <div class="instruction">
         <h4>4. Make a decision based on the popularity of each park and your comfort level with crowds</h4>
         <p>Which season will work best for your trip?</p>
     </div>
 
+<section class="container-fluid section">
     <main class="section__visualizations">
-        <div class="vis" id="q5">
-            <h3 class="vis__title">How has COVID-19 affected park utilization in 2020?</h3>
-            <p class="vis__description">Although outdoor activities are recommended as some of the safest recreational options, there has been a marked decline in visitors during 2020. This decline is most visible during March 2020, when many states first enacted precautionary legislation.</p>
-            <div class="row">
-                <div class="col-sm-5">
-                    <div class="row" style="justify-content: center">
-                        <select id="group-by" class="form-control" onchange="_groupBy()">
-                        <option value="months" selected>By month</option>
-                        <option value="ytd">Year to date</option>
-                        <option value="seasons">By season</option>
-                    </select>
-                    </div>
-                </div>
-                <div class="col-sm-5">
-                    <div class="vis__legend">
-                        <div id="legend">
-                            <svg>
-                                <circle fill="lightskyblue"></circle>
-                                <text x="20" y="15">2019</text>
-                            </svg>
-                            <svg>
-                                <circle fill="magenta"></circle>
-                                <text x="20" y="15">2020</text>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="vis__wrapper" style="height: 40vh">
-                <div class="align-self-center" id="line-graph" style="width: 70%; height: 100%"></div>
-            </div>
-        </div>
-
         <div class="vis">
             <h3 class="vis__title">Which of your matching parks are the most popular?</h3>
             <p class="vis__description">Based on your tolerance for crowd size, it may be helpful to take park popularity into account when planning your trip. Visitation varies drastically between parks, and even between seasons within the same park. Some of the most beautiful and secluded experiences may be found during the “off-season”.</p>
@@ -269,14 +273,16 @@
     </main>
 
     <aside class="section__filter season-filter">
-        <h5>Preferred Season</h5>
+        <div class="filter">
+            <h5>Preferred Season</h5>
 
-        <select name="season-select" id="season-select" class="form-control" onchange="$(eventEmitter).trigger('seasonChanged')">
-            <option value="Spring">Spring</option>
-            <option value="Summer" selected>Summer</option>
-            <option value="Fall">Fall</option>
-            <option value="Winter">Winter</option>
-        </select>
+            <select name="season-select" id="season-select" class="form-control" onchange="$(eventEmitter).trigger('seasonChanged')">
+                <option value="Spring">Spring</option>
+                <option value="Summer" selected>Summer</option>
+                <option value="Fall">Fall</option>
+                <option value="Winter">Winter</option>
+            </select>
+        </div>
     </aside>
 </section>
 

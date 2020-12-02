@@ -2,12 +2,12 @@
     text-align: center;
     position: sticky;
     top: 0;
-    margin: 30vh auto 50vh;
-    z-index: 10;
-    background: #fff;
-    height: 80px;
+    margin: 30vh auto;
+    width: 100vw;
     padding: 10px;
-    width: 100%;
+    z-index: 10;
+    background: #f1f1f1;
+    height: 80px;
     grid-column: 1 / -1;
 }
 
@@ -33,15 +33,4 @@
 
 select {
     max-width: 200px;
-}
-
-.section__filter {
-    margin-top: 200px;
-    position: sticky;
-    padding: 15px;
-    /*padding-left: 30px;*/
-    border: 1px solid #a2a2a2;
-    border-radius: 5px;
-    background: #fff;
-    z-index: 11;
 }
