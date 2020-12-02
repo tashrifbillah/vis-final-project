@@ -216,14 +216,16 @@ function tabularSummary(d) {
     let table= document.getElementById("description")
 
     document.getElementById("picture").src= d.image
-    document.getElementById("caption").innerHTML= `<h5>${d.fullName}</h5>`
+    document.getElementById("caption").innerHTML= `<h6>${d.fullName}</h6>`
 
     table.rows[0].cells[1].innerHTML= d.location+ ` (${nameConverter.getAbbreviation(d.location)})`
     table.rows[1].cells[1].innerHTML= d.date_established
-    table.rows[2].cells[1].innerHTML= d.area
+    let tmp= d.area.split('acres ')
+    table.rows[2].cells[1].innerHTML= `${tmp[0]} acres <br>${tmp[1]}</br>`
     table.rows[3].cells[1].innerHTML= d.visitors
 
 
-    document.getElementById("wiki").href= "https://en.wikipedia.org/wiki/"+ d.fullName.split(" ").join("_")
+    document.getElementById("wiki").href= "https://en.wikipedia.org/wiki/"+
+        d.fullName.replace("&","and").split(" ").join("_")
 
 }
