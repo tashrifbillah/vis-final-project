@@ -175,3 +175,9 @@ function randomize(array) {
         array[j] = temp
     }
 }
+
+function getParksInState(all_data, state) {
+    let exclusive = all_data.filter(d => d.states == state).map(d => d.name);
+    let shared = all_data.filter(d => d.states.includes(state) && d.states != state).map(d => d.name);
+    return {'exclusive': exclusive, 'shared': shared};
+}
