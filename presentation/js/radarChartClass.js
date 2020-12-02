@@ -423,7 +423,7 @@ class RadarChartClass {
         .attr('width', vis.cfg.legendSquareSize)
         .attr('x', (d, i) => (i % vis.cfg.legendColumns) * (vis.cfg.w + vis.cfg.margin.left + vis.cfg.margin.right) / vis.cfg.legendColumns)
         .attr('y', (d, i) => vis.cfg.margin.bottom/2 + Math.floor(i / vis.cfg.legendColumns) * vis.cfg.legendSquareSize * 1.25)
-        .attr('fill', d => vis.cfg.color(d.parkName));
+        .attr('fill', (d, i) => vis.cfg.color(i));
 
       vis.legendLabels = vis.legend.selectAll('.legend-label')
         .data(vis.displayParks);
@@ -439,7 +439,7 @@ class RadarChartClass {
 
 
     // Radar Tooltip
-    vis.radarToolTip = d3.tip()
+    vis.radarToolTip = d3.tip(vis)
       .attr('class', 'd3-tip')
       .offset([-10, 0])
       .html(function(d, t) {
@@ -449,14 +449,14 @@ class RadarChartClass {
 
         if (t == 'PARK') {
           sortedActivities = activityMatch(d.activities);
-          message = 'You might enjoy some of these activities at ' + d.parkName + ': ' + sortedActivities.slice(0, 3).join(", ");
+          message = 'You might enjoy some of these activities at ' + d.parkName + ':</br>' + sortedActivities.slice(0, 3).join(",</br>");
         } else if (t == 'CIRCLE') {
           // Not all parks have 3 activities in each category
           if (d.numberMatching == 0) {
             message = d.parkName + ' does not currently offer any activities related to ' + d.axis;
           } else {
             sortedActivities = activityMatch(d.matchingActivities);
-            message = d.parkName + ' offers activities such as: ' + sortedActivities.slice(0, 3).join(", ");
+            message = d.parkName + ' offers activities such as:</br>' + sortedActivities.slice(0, 3).join(",</br>");
           }
         }
         return header + message;
