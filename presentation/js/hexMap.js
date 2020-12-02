@@ -13,15 +13,19 @@ class HexMap {
     initVis() {
       let vis = this;
 
+      // Set up viewbox
+      const width = 1200
+      const height = 700
+
       vis.margin = {
         top: 50,
         right: 100,
         bottom: 100,
         left: 100
       };
-      vis.width = $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right;
-      vis.height = vis.width * 0.5
-      // vis.height = $("#" + vis.parentElement).height() - vis.margin.top - vis.margin.bottom;
+
+      vis.width = width - vis.margin.left - vis.margin.right;
+      vis.height = height - vis.margin.top - vis.margin.bottom;
 
       // The number of columns and rows of the heatmap
       vis.MapColumns = 30;
@@ -42,8 +46,7 @@ class HexMap {
 
       //Create SVG element
       vis.svg = d3.select("#" + vis.parentElement).append("svg")
-        .attr("width", vis.width + vis.margin.left + vis.margin.right)
-        .attr("height", vis.height + vis.margin.top + vis.margin.bottom)
+        .attr('viewBox', [0, 0, width, height].join(' '))
         .append("g")
         .attr("transform", "translate(" + vis.margin.left + "," + vis.margin.top + ")");
 
