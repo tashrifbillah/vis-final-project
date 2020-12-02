@@ -62,6 +62,8 @@ class NameConverter {
             ['West Virginia', 'WV', 'South'],
             ['Wisconsin', 'WI', 'Midwest'],
             ['Wyoming', 'WY', 'West'],
+            // VI occurs in two forms across geoData and parkData, so support both :(
+            ['U.S. Virgin Islands', 'VI', 'South'],
         ]
     }
 

@@ -61,11 +61,15 @@ body {
 #q1 div.checklist li.odd { background-color: #F7F7F7; color: initial}
 
 #q1 #parkSelect {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 5px;
+    margin-bottom: 10px;
     padding: 5px;
     border: thin solid black;
     border-radius: 5px;
+}
+
+#q1 h6 {
+    margin-top: 5px;
 }
 
 /*#q1 h6 {*/

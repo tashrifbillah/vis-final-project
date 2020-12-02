@@ -88,9 +88,17 @@
     <main class="section__visualizations">
         <div class="vis" id="q1">
             <h3 class="vis__title">Where are the National Parks located?</h3>
-            <p class="vis__description">Hover over the map to learn more about each park. Search the details of a park by typing the name in the right box.</p>
+            <p class="vis__description">
+                <b>Hover</b> over the circles in the map to learn more about each park.
+                <b>Zoom</b> in and out the map as you like.
+                <b>Select</b> a park to see details.
+                <b>Filter</b> the parks by regions.
+            </p>
 
             <div class="vis__wrapper">
+                <button id="zoom_reset">Reset Zoom</button>&nbsp;
+                <button id="zoom_in"><b>+</b></button>&nbsp;
+                <button id="zoom_out"><b>&#8212;</b></button>
                 <div class="row map-row">
 
                     <!-- Left column for map -->
@@ -101,9 +109,8 @@
                     <!-- Right column for summary -->
                     <div class="col-md-3">
                         <div class="row justify-content-center">
-                            <select id="parkSelect" onchange="displayDetails()" class="form-control">
-                                <option value="" selected>Select a park to see details ...</option>
-                            </select>
+                            <h6>Select a park to see details</h6>
+                            <select id="parkSelect" onchange="displayDetails()" class="form-control"></select>
                             <img id="picture" />
                             <div id="caption"></div>
                             <table class="table table-striped" id="description">

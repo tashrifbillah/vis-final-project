@@ -41,7 +41,10 @@ class MapVis {
             .feature(vis.geoData, vis.geoData.objects.states)
             .features
 
-        vis.states = vis.svg.selectAll(".state")
+
+        // .state path, .stateName, .location--all go under vis.gmap group
+        vis.gmap= vis.svg.append("g")
+        vis.gmap.selectAll(".state")
             .data(vis.usa)
             .enter()
             .append("path")
@@ -50,7 +53,7 @@ class MapVis {
 
 
         // Add state abbreviations
-        vis.svg.selectAll(".stateName")
+        vis.gmap.selectAll(".stateName")
             .data(vis.usa)
             .enter()
             .append("text")
@@ -79,6 +82,7 @@ class MapVis {
                     // return d.properties.name==='South Carolina'?tmp[1]-10:tmp[1]
                     switch (d.properties.name) {
                         case 'American Samoa':
+                        case 'Arkansas':
                         case 'Maryland':
                         case 'South Carolina':
                         case 'United States Virgin Islands':
@@ -92,13 +96,23 @@ class MapVis {
             .text(d => nameConverter.getAbbreviation(d.properties.name))
 
 
+        /*
+        Zoom and pan
+        Own code, not copied from anywhere
+        But studied the concept at http://bl.ocks.org/d3noob/5193723
+         */
+        vis.zoom = d3.zoom()
+            .on("zoom", event => vis.gmap.attr("transform", event.transform))
+
+        d3.select("#zoom_reset").on("click", event => vis.zoom.scaleTo(vis.svg.transition().duration(500), 1))
+        d3.select("#zoom_in").on("click", event => vis.zoom.scaleBy(vis.svg.transition().duration(500), 1.2))
+        d3.select("#zoom_out").on("click", event => vis.zoom.scaleBy(vis.svg.transition().duration(500), 0.8))
+
         // Append tooltip
         vis.tooltip = d3.select("body").append('div')
             .attr('class', "tooltip")
 
 
-        // Initialize tabular summary
-        tabularSummary(vis.parkData[0])
 
         vis.wrangleData()
 
@@ -108,31 +122,19 @@ class MapVis {
     wrangleData() {
         let vis = this;
 
-        // Filter the selected activities
-        if (selectedActivities.length < 100) {
-            // console.log(selectedActivities)
-            vis.displayData= []
-            selectedActivities.forEach(a => {
-                // For union (or), it is vis.parkData
-                // For intersection (and), it is vis.displayData
-                vis.parkData.filter(d => {
-                    // Check if the park supports that activity
-                    if (d.activities.map(r => r.name).includes(a)) {
-                        // Return that park if that has not been returned earlier
-                        vis.displayData.map(p=>p.name).includes(d.name) || vis.displayData.push(d)
-                    }
-                })
-            })
-        }
-        else {
-            vis.displayData= vis.parkData
-        }
+        vis.displayData= selectedRegion?
+            vis.parkData.filter(d=>nameConverter.getRegion(d.location)==selectedRegion):vis.parkData
 
-        if (selectedRegion) {
-            vis.displayData= vis.displayData.filter(d=>nameConverter.getRegion(d.location)==selectedRegion)
-        }
-        
-        // console.log(vis.displayData.map(d=>d.name))
+
+        // Empty the parkSelect menu
+        $("#parkSelect").empty()
+
+        // Populate the parkSelect menu with selectedRegion parks
+        vis.displayData.sort((a,b)=>a.name>b.name?1:-1)
+        vis.displayData.forEach(d=>$("#parkSelect").append(new Option(d.name,d.name)))
+
+        // By default, display the first selectedRegion park in tabular summary
+        tabularSummary(vis.displayData[0])
 
         vis.updateVis()
 
@@ -143,10 +145,7 @@ class MapVis {
     updateVis(){
         let vis = this;
 
-        // Remove parks w/o lat/long pair
-        // vis.parkData= vis.parkData.filter(d=>d.latLong && d)
-
-        let tmp= vis.svg.selectAll(".location")
+        let tmp= vis.gmap.selectAll(".location")
             .data(vis.displayData, d=>d.name)
 
         let circle= tmp.enter()
@@ -201,9 +200,8 @@ class MapVis {
         tmp.exit().remove()
 
 
-        // Update table
-        // circle
-        //     .on("click", (event, d) => tabularSummary(d))
+        vis.svg.call(vis.zoom)
+        
 
     }
 
@@ -218,14 +216,16 @@ function tabularSummary(d) {
     let table= document.getElementById("description")
 
     document.getElementById("picture").src= d.image
-    document.getElementById("caption").innerHTML= `<h5>${d.fullName}</h5>`
+    document.getElementById("caption").innerHTML= `<h6>${d.fullName}</h6>`
 
-    table.rows[0].cells[1].innerHTML= d.location
+    table.rows[0].cells[1].innerHTML= d.location+ ` (${nameConverter.getAbbreviation(d.location)})`
     table.rows[1].cells[1].innerHTML= d.date_established
-    table.rows[2].cells[1].innerHTML= d.area
+    let tmp= d.area.split('acres ')
+    table.rows[2].cells[1].innerHTML= `${tmp[0]} acres <br>${tmp[1]}</br>`
     table.rows[3].cells[1].innerHTML= d.visitors
 
 
-    document.getElementById("wiki").href= "https://en.wikipedia.org/wiki/"+ d.fullName.split(" ").join("_")
+    document.getElementById("wiki").href= "https://en.wikipedia.org/wiki/"+
+        d.fullName.replace("&","and").split(" ").join("_")
 
 }
