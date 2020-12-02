@@ -439,7 +439,7 @@ class RadarChartClass {
 
 
     // Radar Tooltip
-    vis.radarToolTip = d3.tip()
+    vis.radarToolTip = d3.tip(vis)
       .attr('class', 'd3-tip')
       .offset([-10, 0])
       .html(function(d, t) {
