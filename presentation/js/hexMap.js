@@ -61,8 +61,11 @@ class HexMap {
           let exclusive_list = '';
           let shared_message = '';
           let shared_list = '';
+          let number_of_exclusive_parks = 0;
 
-          let number_of_exclusive_parks = d.hex_locations.length;
+          if (d.has_parks) {
+            number_of_exclusive_parks = d.hex_locations.length;
+          }
           let number_of_shared_parks = d.shared_hex_locations.length;
           let parks_in_state = getParksInState(allData, d.name);
 

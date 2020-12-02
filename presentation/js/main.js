@@ -26,7 +26,7 @@ let radarChartOptionsLarge = {
 let radarChartOptionsSmall = {
   w: 200,
   h: 200,
-  margin: {top:50, bottom:100, left:100, right:100},
+  margin: {top:50, bottom:100, left:60, right:60},
   maxValue: 1,
   levels: 6,
   roundStrokes: true,

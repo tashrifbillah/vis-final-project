@@ -15,7 +15,7 @@
     background: rgba(0, 0, 0, 0.8);
     color: #fff;
     border-radius: 2px;
-    font-size: 10px;
+    font-size: 14px;
 }
 
 /* Creates a small triangle extender for the tooltip */
@@ -39,11 +39,11 @@
 }
 
 .d3-tip h1 {
-    font-size: 14px;
+    font-size: 20px;
 }
 
 .state-label {
-    font-size: 10.5pt;
+    font-size: 12pt;
     font-weight: bold;
     font-family: Monospace;
 }
