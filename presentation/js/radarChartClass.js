@@ -191,7 +191,7 @@ class RadarChartClass {
         return -d * vis.radius / vis.cfg.levels;
       })
       .attr('dy', '0.4em')
-      .style('font-size', '10px')
+      .style('font-size', '12px')
       .attr('fill', '#737373')
       .text(function(d, i) {
         return vis.Format(vis.maxValue * d / vis.cfg.levels);
