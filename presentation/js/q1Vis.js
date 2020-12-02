@@ -41,7 +41,10 @@ class MapVis {
             .feature(vis.geoData, vis.geoData.objects.states)
             .features
 
-        vis.states = vis.svg.selectAll(".state")
+
+        // .state path, .stateName, .location--all go under vis.gmap group
+        vis.gmap= vis.svg.append("g")
+        vis.gmap.selectAll(".state")
             .data(vis.usa)
             .enter()
             .append("path")
@@ -50,7 +53,7 @@ class MapVis {
 
 
         // Add state abbreviations
-        vis.svg.selectAll(".stateName")
+        vis.gmap.selectAll(".stateName")
             .data(vis.usa)
             .enter()
             .append("text")
@@ -79,6 +82,7 @@ class MapVis {
                     // return d.properties.name==='South Carolina'?tmp[1]-10:tmp[1]
                     switch (d.properties.name) {
                         case 'American Samoa':
+                        case 'Arkansas':
                         case 'Maryland':
                         case 'South Carolina':
                         case 'United States Virgin Islands':
@@ -90,6 +94,20 @@ class MapVis {
                 }
             })
             .text(d => nameConverter.getAbbreviation(d.properties.name))
+
+
+        /*
+        Zoom and pan
+        Own code, not copied from anywhere
+        But studied the concept at http://bl.ocks.org/d3noob/5193723
+         */
+        vis.zoom = d3.zoom()
+            .on("zoom",function(event) {
+
+                vis.gmap.attr("transform",
+                    `translate(${event.transform.x},${event.transform.y}),scale(${event.transform.k})`)
+
+            })
 
 
         // Append tooltip
@@ -108,30 +126,9 @@ class MapVis {
     wrangleData() {
         let vis = this;
 
-        // Filter the selected activities
-        if (selectedActivities.length < 100) {
-            // console.log(selectedActivities)
-            vis.displayData= []
-            selectedActivities.forEach(a => {
-                // For union (or), it is vis.parkData
-                // For intersection (and), it is vis.displayData
-                vis.parkData.filter(d => {
-                    // Check if the park supports that activity
-                    if (d.activities.map(r => r.name).includes(a)) {
-                        // Return that park if that has not been returned earlier
-                        vis.displayData.map(p=>p.name).includes(d.name) || vis.displayData.push(d)
-                    }
-                })
-            })
-        }
-        else {
-            vis.displayData= vis.parkData
-        }
+        vis.displayData= selectedRegion?
+            vis.parkData.filter(d=>nameConverter.getRegion(d.location)==selectedRegion):vis.parkData
 
-        if (selectedRegion) {
-            vis.displayData= vis.displayData.filter(d=>nameConverter.getRegion(d.location)==selectedRegion)
-        }
-        
         // console.log(vis.displayData.map(d=>d.name))
 
         vis.updateVis()
@@ -146,7 +143,7 @@ class MapVis {
         // Remove parks w/o lat/long pair
         // vis.parkData= vis.parkData.filter(d=>d.latLong && d)
 
-        let tmp= vis.svg.selectAll(".location")
+        let tmp= vis.gmap.selectAll(".location")
             .data(vis.displayData, d=>d.name)
 
         let circle= tmp.enter()
@@ -201,9 +198,8 @@ class MapVis {
         tmp.exit().remove()
 
 
-        // Update table
-        // circle
-        //     .on("click", (event, d) => tabularSummary(d))
+        vis.svg.call(vis.zoom)
+        
 
     }
 
