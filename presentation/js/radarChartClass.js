@@ -449,14 +449,14 @@ class RadarChartClass {
 
         if (t == 'PARK') {
           sortedActivities = activityMatch(d.activities);
-          message = 'You might enjoy some of these activities at ' + d.parkName + ': ' + sortedActivities.slice(0, 3).join(", ");
+          message = 'You might enjoy some of these activities at ' + d.parkName + ':</br>' + sortedActivities.slice(0, 3).join(",</br>");
         } else if (t == 'CIRCLE') {
           // Not all parks have 3 activities in each category
           if (d.numberMatching == 0) {
             message = d.parkName + ' does not currently offer any activities related to ' + d.axis;
           } else {
             sortedActivities = activityMatch(d.matchingActivities);
-            message = d.parkName + ' offers activities such as: ' + sortedActivities.slice(0, 3).join(", ");
+            message = d.parkName + ' offers activities such as:</br>' + sortedActivities.slice(0, 3).join(",</br>");
           }
         }
         return header + message;
