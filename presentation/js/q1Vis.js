@@ -102,13 +102,11 @@ class MapVis {
         But studied the concept at http://bl.ocks.org/d3noob/5193723
          */
         vis.zoom = d3.zoom()
-            .on("zoom",function(event) {
+            .on("zoom", event => vis.gmap.attr("transform", event.transform))
 
-                vis.gmap.attr("transform",
-                    `translate(${event.transform.x},${event.transform.y}),scale(${event.transform.k})`)
-
-            })
-
+        d3.select("#zoom_reset").on("click", event => vis.zoom.scaleTo(vis.svg.transition().duration(500), 1))
+        d3.select("#zoom_in").on("click", event => vis.zoom.scaleBy(vis.svg.transition().duration(500), 1.2))
+        d3.select("#zoom_out").on("click", event => vis.zoom.scaleBy(vis.svg.transition().duration(500), 0.8))
 
         // Append tooltip
         vis.tooltip = d3.select("body").append('div')
@@ -146,9 +144,6 @@ class MapVis {
 
     updateVis(){
         let vis = this;
-
-        // Remove parks w/o lat/long pair
-        // vis.parkData= vis.parkData.filter(d=>d.latLong && d)
 
         let tmp= vis.gmap.selectAll(".location")
             .data(vis.displayData, d=>d.name)
