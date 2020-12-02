@@ -223,7 +223,7 @@ function tabularSummary(d) {
     document.getElementById("picture").src= d.image
     document.getElementById("caption").innerHTML= `<h5>${d.fullName}</h5>`
 
-    table.rows[0].cells[1].innerHTML= d.location
+    table.rows[0].cells[1].innerHTML= d.location+ ` (${nameConverter.getAbbreviation(d.location)})`
     table.rows[1].cells[1].innerHTML= d.date_established
     table.rows[2].cells[1].innerHTML= d.area
     table.rows[3].cells[1].innerHTML= d.visitors
