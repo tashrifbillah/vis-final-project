@@ -1,3 +1,10 @@
+@value --shared-green from "./shared.css";
+@value --shared-blue from "./shared.css";
+@value --shared-yellow from "./shared.css";
+@value --shared-red from "./shared.css";
+@value --shared-grey from "./shared.css";
+@value --shared-light-blue from "./shared.css";
+
 .results {
     max-height: 80vh;
 
@@ -45,10 +52,10 @@ pre {
 }
 
 .results__list li {
-    border: solid thin lightskyblue;
+    border: solid thin var(--shared-blue);
     border-width: 3px;
     border-radius: 5px;
-    background: lightgray;
+    background: var(--shared-grey);
     margin-bottom: 5px;
 }
 
@@ -59,7 +66,7 @@ pre {
 }
 
 .results__list li:hover {
-    background: lightskyblue;
+    background: var(--shared-light-blue);
 }
 
 .results button {
@@ -68,7 +75,7 @@ pre {
 }
 
 .results button:hover {
-    background: lightskyblue;
+    background: var(--shared-light-blue);
 }
 
 .results__tabs > * {

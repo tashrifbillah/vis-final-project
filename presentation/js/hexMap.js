@@ -40,7 +40,7 @@ class HexMap {
 
       // Region colors
       vis.regions = ["West", "Northeast", "South", "Midwest", "No Parks"]
-      vis.regionColors = ['#28794C', '#333577', '#AA8D39', '#AA5039', "#D3D3D3"]
+      vis.regionColors = [sharedGreen, sharedBlue, sharedYellow, sharedRed, sharedGrey]
       vis.regionScale = d3.scaleOrdinal(vis.regionColors)
         .domain(vis.regions);
 
@@ -141,7 +141,7 @@ class HexMap {
         })
         .attr("stroke", "white")
         .attr("stroke-width", "1px")
-        .style("fill", "LightGray")
+        .style("fill", sharedGrey)
         // .style("opacity", 0);
         .style("opacity", 0.2);
 
@@ -229,7 +229,7 @@ class HexMap {
           if (d.has_parks == true) {
             return vis.regionScale(vis.myNameConverter.getRegion(vis.myNameConverter.getFullName(d.name)));
           } else {
-            return "LightGray";
+            return sharedGrey;
           }
         })
         .style("opacity", d => {
@@ -302,24 +302,26 @@ class HexMap {
       // add legend for exclusive park
       vis.legend.append('path')
         .attr("d", 'M' + 25/2 + ',' + 55 + vis.hexbin.hexagon())
-        .style("fill", "black")
+        .style("stroke", "black")
+        .style("fill", "none");
 
       // add label for exclusive park
       vis.legend.append('text')
         .attr("x", 25/2 + vis.hexRadius * 2)
         .attr("y", 60)
-        .text("Exclusive Park")
+        .text("Exclusive Park");
 
       // add legend for shared park
       vis.legend.append('path')
         .attr("d", 'M' + (200 + 25/2) + ',' + 55 + vis.getLeftHex(vis.hexbin.hexagon()))
-        .style("fill", "black")
+        .style("stroke", "black")
+        .style("fill", "none");
 
       // add label for exclusive park
       vis.legend.append('text')
         .attr("x", (200 + 25/2) + vis.hexRadius)
         .attr("y", 60)
-        .text("Shared Park")
+        .text("Shared Park");
 
     }
 

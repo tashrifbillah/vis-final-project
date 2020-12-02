@@ -172,10 +172,10 @@ class LineVis {
             .attr('cx', d=>vis.x(d.group))
             .attr('cy', d=>vis.y(d.visit))
             .attr("class", "point numVisit")
-            .attr("fill", "lightskyblue")
+            .attr("fill", sharedBlue)
 
         // Tooltip for 2019
-        vis.showTooltip(circle, "lightskyblue", 2019)
+        vis.showTooltip(circle, sharedBlue, 2019)
 
         vis.path
             .datum(vis.y2019)
@@ -199,10 +199,10 @@ class LineVis {
             .attr('cx', d=>vis.x(d.group))
             .attr('cy', d=>vis.y(d.visit))
             .attr("class", "point numVisit1")
-            .attr("fill", "magenta")
+            .attr("fill", sharedRed)
 
         // Tooltip for 2020
-        vis.showTooltip(circle1, "magenta", 2020)
+        vis.showTooltip(circle1, sharedRed, 2020)
 
         vis.path1
             .datum(vis.y2020)
@@ -226,7 +226,7 @@ class LineVis {
             .on('mouseover', function (event, d) {
 
                 d3.select(this)
-                    .attr('fill', 'green')
+                    .attr('fill', sharedYellow)
 
                 vis.tooltip
                     .style("opacity", 1)
