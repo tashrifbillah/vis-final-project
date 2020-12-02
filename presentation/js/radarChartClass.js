@@ -423,7 +423,7 @@ class RadarChartClass {
         .attr('width', vis.cfg.legendSquareSize)
         .attr('x', (d, i) => (i % vis.cfg.legendColumns) * (vis.cfg.w + vis.cfg.margin.left + vis.cfg.margin.right) / vis.cfg.legendColumns)
         .attr('y', (d, i) => vis.cfg.margin.bottom/2 + Math.floor(i / vis.cfg.legendColumns) * vis.cfg.legendSquareSize * 1.25)
-        .attr('fill', d => vis.cfg.color(d.parkName));
+        .attr('fill', (d, i) => vis.cfg.color(i));
 
       vis.legendLabels = vis.legend.selectAll('.legend-label')
         .data(vis.displayParks);
