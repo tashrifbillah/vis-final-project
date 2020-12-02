@@ -20,7 +20,7 @@ let radarChartOptionsLarge = {
   color: color,
   strokeWidth: 2,
   legend: true,
-  title: "Activity Profile Comparison of Your Top Three Parks"
+  title: "Your Top Three Parks: Activity Profile Comparison"
 };
 
 let radarChartOptionsSmall = {
