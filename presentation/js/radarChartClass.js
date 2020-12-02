@@ -71,10 +71,15 @@ class RadarChartClass {
     //Remove whatever chart with the same id/class was present before
     d3.select(vis.id).select("svg").remove();
 
+    // Set up viewbox
+    const width = vis.cfg.w + vis.cfg.margin.left + vis.cfg.margin.right
+    const height = vis.cfg.h + vis.cfg.margin.top + vis.cfg.margin.bottom
+
     //Initiate the radar chart SVG
     vis.svg = d3.select(vis.id).append("svg")
-      .attr("width",  vis.cfg.w + vis.cfg.margin.left + vis.cfg.margin.right)
-      .attr("height", vis.cfg.h + vis.cfg.margin.top + vis.cfg.margin.bottom)
+      .attr('viewBox', [0, 0, width, height].join(' '))
+      // .attr("width",  vis.cfg.w + vis.cfg.margin.left + vis.cfg.margin.right)
+      // .attr("height", vis.cfg.h + vis.cfg.margin.top + vis.cfg.margin.bottom)
       .attr("class", "radar"+vis.id);
     //Append a g element
     vis.g = vis.svg.append("g")
@@ -186,7 +191,7 @@ class RadarChartClass {
         return -d * vis.radius / vis.cfg.levels;
       })
       .attr('dy', '0.4em')
-      .style('font-size', '10px')
+      .style('font-size', '12px')
       .attr('fill', '#737373')
       .text(function(d, i) {
         return vis.Format(vis.maxValue * d / vis.cfg.levels);
@@ -221,7 +226,7 @@ class RadarChartClass {
 
     //Append the labels at each axis
     vis.axis.append('text')
-      .attr('class', 'legend')
+      .attr('class', 'legend axisName')
       .style('font-size', '11px')
       .attr('text-anchor', 'middle')
       .attr('dy', '0.35em')

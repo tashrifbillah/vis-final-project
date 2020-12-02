@@ -145,7 +145,7 @@
         <div class="vis">
             <h3 class="vis__title">Not all regions are created equal. Which areas have the most access to National Parks, and how can this help guide your plans?</h3>
             <p class="vis__description">This representation of the United States shows how each region is represented by using one hexagon for each National Park in that region. Depending on you location, this may be able to help inform your plans.</p>
-            <div class="vis__wrapper" style="height: 85vh;">
+            <div class="vis__wrapper">
                 <div class="hex-map" id="hex-map" style="height: 100%; width:100%;"></div>
             </div>
         </div>
@@ -172,20 +172,26 @@
     <main class="section__visualizations">
         <div class="vis">
             <h3 class="vis__title">Different parks excel in different areas. Which parks are the best match for your interests?</h3>
-            <p class="vis__description">The National Parks offer over 100 different activities. Here, we can see the result of categorizing each activity and summarizing each park’s unique personality by rating it on the number of activities available in each category. Your input is used to determine your top three matches. What are the personalities of your matches?</p>
+            <p class="vis__description">The National Parks offer over 100 different activities. Here, we can see the
+                result of categorizing each activity and summarizing each park’s unique offerings by rating it on the
+                number of activities available in each category. The specific parks displayed are determined by your
+                selected preferences regarding activity and region. </p>
+            <p class="vis__description">The large visualization contains an overlaid plot of the top three parks
+            matching your preferences. The smaller plots below this contain the individual data for each of these parks.</p>
+            <p class="vis__description"><strong>Metric: </strong> The metric displayed corresponds to the percentage of possible activities
+                offered by each park in each category. For example, if 10 total activities are offered in the "Snow"
+                category and a park offers 6 of these, the park will receive a score of 60% on this axis.
+            </p>
             <div class="vis__wrapper">
                 <div id="radarDiv">
                     <div class="row justify-content-center">
-                        <div class="radarChart"></div>
+                        <div class="radarChart" style="height: 100%; width:100%;"></div>
                     </div>
                 </div>
                 <div class="row justify-content-center">
-                    <div class="col-4 radarChart1"></div>
-                    <div class="col-4 radarChart2"></div>
-                    <div class="col-4 radarChart3"></div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-9 radarChart0"></div>
+                    <div class="col-4 radarChart1" style="height: 100%; width:100%;"></div>
+                    <div class="col-4 radarChart2" style="height: 100%; width:100%;"></div>
+                    <div class="col-4 radarChart3" style="height: 100%; width:100%;"></div>
                 </div>
             </div>
         </div>
