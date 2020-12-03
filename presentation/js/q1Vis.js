@@ -161,13 +161,13 @@ class MapVis {
                 }
             })
             .attr("class", "location")
-            .attr("fill", sharedBlue)
+            .attr("fill", sharedGreen)
 
         circle
             .on('mouseover', function (event, d) {
 
                 d3.select(this)
-                    .attr('fill', sharedLightBlue)
+                    .attr('fill', sharedRed)
 
                 vis.tooltip
                     .style("opacity", 1)
@@ -188,7 +188,7 @@ class MapVis {
             .on('mouseout', function (event, d) {
                 d3.select(this)
                     .attr('stroke-width', '0px')
-                    .attr("fill", sharedBlue)
+                    .attr("fill", sharedGreen)
 
                 vis.tooltip
                     .style("opacity", 0)

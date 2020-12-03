@@ -18,8 +18,8 @@ body {
 }
 
 .state {
-    fill: var(--shared-green);
-    fill-opacity: 0.75;
+    fill: var(--shared-yellow);
+    fill-opacity: 0.5;
     stroke: black;
 }
 
@@ -38,7 +38,7 @@ body {
     border: thin solid grey;
     margin: 5px;
     border-radius: 5px;
-    background: var(--shared-grey);
+    background: white;
 }
 
 #q1 img {
@@ -53,7 +53,7 @@ body {
 
 .stateName {
     font-size: 12px;
-    fill: var(--shared-yellow);
+    fill: black;
     text-shadow: #000 0px 0px 1px;
     text-anchor: middle;
     font-weight: bold;
