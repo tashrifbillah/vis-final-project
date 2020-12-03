@@ -123,7 +123,7 @@
     <aside class="section__filter region-filter">
         <div class="filter">
             <h5>Example Filter</h5>
-            <select>
+            <select class="form-control">
                 <option value="">--</option>
             </select>
         </div>
@@ -155,12 +155,12 @@
                 <div class="row map-row">
 
                     <!-- Left column for map -->
-                    <div class="col-md-8">
+                    <div class="col-lg-8">
                         <div id="map" style="height: 100%; width:100%;"></div>
                     </div>
 
                     <!-- Right column for summary -->
-                    <div class="col-md-3">
+                    <div class="col-lg-3">
                         <div class="row justify-content-center">
                             <h6>Select a park to see details</h6>
                             <select id="parkSelect" onchange="displayDetails()" class="form-control"></select>
@@ -315,58 +315,60 @@
     <p>Based on your preferences, here are the top parks we recommend</p>
 
     <div class="results">
-        <div class="results__list">
-            <ol>
-                <li v-for="row in rows" v-bind:class="{ selected: selectedId === row.parkCode }">
-                    <a @click="setSelected(row)">{{ row.fullName }} ({{ row.location }})</a>
-                </li>
-            </ol>
-        </div>
-
-        <div v-if="selectedId">
-            <div class="results__tabs">
-                <button type="button" class="btn btn-secondary"
-                        v-for="opt in dataTypes"
-                        @click="dataType = opt.value"
-                        v-bind:class="{ selected: dataType === opt.value }">{{ opt.name }}</button>
-                </button>
+        <div class="row">
+            <div class="col-lg-4 results__list">
+                <ol>
+                    <li v-for="row in rows" v-bind:class="{ selected: selectedId === row.parkCode }">
+                        <a @click="setSelected(row)">{{ row.fullName }} ({{ row.location }})</a>
+                    </li>
+                </ol>
             </div>
 
-            <div class="results__response">
-                <div class="results__images" v-if="!dataType">
-                    <img :src="img.url" alt="" v-for="img in displayedData.images.slice(0, 4)" style="width: 100%">
+            <div v-if="selectedId">
+                <div class="col-lg-8 results__tabs">
+                    <button type="button" class="btn btn-secondary"
+                            v-for="opt in dataTypes"
+                            @click="dataType = opt.value"
+                            v-bind:class="{ selected: dataType === opt.value }">{{ opt.name }}</button>
+                    </button>
                 </div>
 
-                <template v-else-if="dataType === 'alerts' && displayedData">
-                    <ul>
-                        <li v-for="alert in displayedData.data">
-                            <h5>{{ alert.title }}</h5>
-                            <p v-text="alert.description"></p>
-                        </li>
-                    </ul>
-                </template>
+                <div class="results__response">
+                    <div class="results__images" v-if="!dataType">
+                        <img :src="img.url" alt="" v-for="img in displayedData.images.slice(0, 4)" style="width: 100%">
+                    </div>
 
-                <template v-else-if="dataType === 'campgrounds' && displayedData">
-                    <ul v-if="displayedData.data.length">
-                        <li v-for="campground in displayedData.data">
-                            <h5><component :is="campground.directionsUrl ? 'a' : 'span'" :href="campground.directionsUrl" target="_blank">{{ campground.name }}</component></h5>
-                            <p v-text="campground.description"></p>
-                        </li>
-                    </ul>
+                    <template v-else-if="dataType === 'alerts' && displayedData">
+                        <ul>
+                            <li v-for="alert in displayedData.data">
+                                <h5>{{ alert.title }}</h5>
+                                <p v-text="alert.description"></p>
+                            </li>
+                        </ul>
+                    </template>
 
-                    <p v-else>No campgrounds available.</p>
-                </template>
+                    <template v-else-if="dataType === 'campgrounds' && displayedData">
+                        <ul v-if="displayedData.data.length">
+                            <li v-for="campground in displayedData.data">
+                                <h5><component :is="campground.directionsUrl ? 'a' : 'span'" :href="campground.directionsUrl" target="_blank">{{ campground.name }}</component></h5>
+                                <p v-text="campground.description"></p>
+                            </li>
+                        </ul>
 
-                <template v-else-if="dataType === 'places' && displayedData">
-                    <ul v-if="displayedData.data.length">
-                        <li v-for="place in displayedData.data" style="margin-top: 100px;">
-                            <h5><a :href="place.url" target="_blank">{{ place.title }}</a></h5>
-                            <div v-html="place.bodyText"></div>
-                        </li>
-                    </ul>
+                        <p v-else>No campgrounds available.</p>
+                    </template>
 
-                    <p v-else>No places available.</p>
-                </template>
+                    <template v-else-if="dataType === 'places' && displayedData">
+                        <ul v-if="displayedData.data.length">
+                            <li v-for="place in displayedData.data" style="margin-top: 100px;">
+                                <h5><a :href="place.url" target="_blank">{{ place.title }}</a></h5>
+                                <div v-html="place.bodyText"></div>
+                            </li>
+                        </ul>
+
+                        <p v-else>No places available.</p>
+                    </template>
+                </div>
             </div>
         </div>
 

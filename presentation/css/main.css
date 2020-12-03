@@ -63,3 +63,20 @@ select {
         top: 50%;
     }
 }
+
+@media only screen and (max-width: 800px) {
+    .section {
+        display: flex;
+        flex-direction: column;
+    }
+    .section__filter {
+        order: -1;
+        position: sticky;
+        bottom: 0;
+    }
+
+    .instruction {
+        position: static;
+        height: auto;
+    }
+}

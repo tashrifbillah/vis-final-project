@@ -5,14 +5,6 @@
 @value --shared-grey from "./shared.css";
 @value --shared-light-blue from "./shared.css";
 
-.results {
-    max-height: 80vh;
-
-    display: grid;
-    grid-template-columns: 300px 1fr;
-    grid-gap: 20px;
-}
-
 .results__response {
     padding: 10px;
 }
@@ -36,21 +28,6 @@ pre {
     padding: 5px;
 }
 
-.data-select {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: 10px;
-}
-
-.data-select li {
-    list-style: none;
-}
-
-.data-select a {
-    padding: 5px;
-    border: 1px solid black;
-}
-
 .results__list li {
     border: solid thin var(--shared-blue);
     border-width: 3px;
@@ -65,10 +42,6 @@ pre {
     padding-right: 10px;
 }
 
-.results__list li:hover {
-    background: var(--shared-light-blue);
-}
-
 .results button {
     margin-right: 10px;
     border-radius: 5px;
@@ -80,4 +53,8 @@ pre {
 
 .results__tabs > * {
     margin-right: 20px;
+}
+
+@media only screen and (max-width: 800px) {
+
 }
