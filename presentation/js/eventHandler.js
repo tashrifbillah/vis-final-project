@@ -1,27 +1,36 @@
 let selectedRegion = ''
 let popularFirst = 1
 
+function filterRegions() {
+    filteredParks = selectedRegion ?
+        allData.filter(d=>nameConverter.getRegion(d.location) ==selectedRegion ) :
+        allData
+}
+
+function setTopTen() {
+    filterRegions()
+    activityFilter.setParks()
+    barVis.wrangleData()
+    setTimeout(() => resultsApp.setRows(topTenParks), 500)
+}
+
 $(eventEmitter).bind('activitiesChanged', function () {
     updateRadar();
-    barVis.wrangleData()
-    resultsApp && resultsApp.setRows(topTenParks)
+    setTopTen()
 })
 
 $(eventEmitter).bind('seasonChanged', function () {
     selectedSeason = $("#season-select").val()
-    barVis.wrangleData()
-    resultsApp.setRows(topTenParks)
+    setTopTen()
 })
 
 $(eventEmitter).bind('seasonSortChanged', function () {
     popularFirst = Number($("#season-sort").val())
-    barVis.wrangleData()
-
-    // IMPORTANT: this must come after bar vis wrangling to apply sort
-    resultsApp.setRows(topTenParks)
+    setTopTen()
 })
 
 $(eventEmitter).bind('regionChanged', function () {
     selectedRegion = $("#region-select").val()
     myMapVis.wrangleData()
+    setTopTen()
 })
