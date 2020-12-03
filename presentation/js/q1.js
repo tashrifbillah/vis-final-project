@@ -55,11 +55,11 @@ function displayDetails() {
 
     // make the corresponding circle blink
     d3.selectAll('.location').filter(d => d.name === selectedPark)
-        .transition().duration(1000).attr('fill', sharedBlue).attr('r', '20')
+        .transition().duration(1000).attr('fill', sharedRed).attr('r', '20')
         .transition().duration(1000).attr('fill', sharedGreen).attr('r', '10')
-        .transition().duration(1000).attr('fill', sharedBlue).attr('r', '20')
+        .transition().duration(1000).attr('fill', sharedRed).attr('r', '20')
         .transition().duration(1000).attr('fill', sharedGreen).attr('r', '10')
-        .transition().duration(1000).attr('fill', sharedBlue).attr('r', '20')
+        .transition().duration(1000).attr('fill', sharedRed).attr('r', '20')
         .transition().duration(1000).attr('fill', sharedGreen).attr('r', '10')
 
 }
