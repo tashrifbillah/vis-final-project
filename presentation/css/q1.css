@@ -5,7 +5,7 @@
 @value --shared-grey from "./shared.css";
 
 body {
-    /*margin: 20px;*/
+    margin-bottom: 20px;
 }
 
 #map {

@@ -21,13 +21,17 @@
 </head>
 <body>
 
-<header class="container intro">
-    <h1>United States National Parks</h1>
+<header class="intro">
+    <div class="intro__content">
+        <h1>United States National Parks</h1>
 
-    <p>
-        The United States is home to some of the most unique and stunning natural geographical features in the world. Over the course of nearly 200 years, 62 of these sites have been designated as National Parks. Every year, these parks support as many as 90 million visitors.
-    </p>
+        <p>
+            The United States is home to some of the most unique and stunning natural geographical features in the world. Over the course of nearly 200 years, 62 of these sites have been designated as National Parks. Every year, these parks support as many as 90 million visitors.
+        </p>
+    </div>
+</header>
 
+<div class="container">
     <div class="vis" id="q5">
         <h3 class="vis__title">How has COVID-19 affected park utilization in 2020?</h3>
         <p class="vis__description">Although outdoor activities are recommended as some of the safest recreational options, there has been a marked decline in visitors during 2020. This decline is most visible during March 2020, when many states first enacted precautionary legislation.</p>
@@ -65,7 +69,11 @@
     <p>As you progress through the course of this webpage, you will be presented with filters on the right.</p>
     <p>Each section is intended to help you pick your preferences of region, activities, and season.</p>
     <p>At the end of the experience, the top parks matching your preferences will be displayed, along with helpful information.</p>
-</header>
+
+    <button id="read-instructions" class="btn btn-primary btn-lg btn-block">Get Started</button>
+</div>
+
+<div class="all-content">
 
 <div class="instruction">
     <h4>1. Learn about the history of National Parks.</h4>
@@ -235,21 +243,20 @@
 
     <aside class="section__filter activity-filter">
         <div class="filter">
-            <div id="activity-select">
-                <h5>Select Activities</h5>
+        <div id="activity-select">
+            <h5>Select Activities</h5>
 
-                <input type="search" v-model="filter" class="form-control" placeholder="Filter activities...">
+            <input type="search" v-model="filter" class="form-control" placeholder="Filter activities...">
 
-                <transition-group class="activity-select__checkboxes"
-                        name="slide-top-list"
-                        tag="div"
-                >
-                    <div class="check-row" v-for="a in visibleActivities" :key="a.id">
-                        <input type="checkbox" :name="a.id" :id="a.id" :value="a.id" v-model="selectedActivityIds">
-                        <label :for="a.id">{{ a.name }} ({{ a.count }})</label>
-                    </div>
-                </transition-group>
+            <transition-group class="activity-select__checkboxes"
+                    name="slide-top-list"
+                    tag="div"
+            >
+                <div class="check-row" v-for="a in visibleActivities" :key="a.id">
+                    <input type="checkbox" :name="a.id" :id="a.id" :value="a.id" v-model="selectedActivityIds">
+                    <label :for="a.id">{{ a.name }} ({{ a.count }})</label>
                 </div>
+            </transition-group>
             </div>
         </div>
     </aside>
