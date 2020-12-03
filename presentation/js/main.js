@@ -179,3 +179,14 @@ function setScore(set, activities) {
   }
   return {"numberMatching": score, "score": score / set.size, "matchingActivities": matchingActivities}
 }
+
+$(document).ready(function() {
+  setTimeout(function() {
+    $('#read-instructions').show()
+    $('.all-content').hide()
+  }, 2000)
+  $('#read-instructions').click(function() {
+    $(this).hide()
+    $('.all-content').show()
+  })
+})

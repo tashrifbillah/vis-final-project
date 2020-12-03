@@ -1,25 +1,16 @@
 let resultsApp;
 function initResults() {
-    new Vue({
+    resultsApp = new Vue({
         data() {
             return {
-                rows: topTenParks,
+                rows: topTenParks.slice(0, 5),
                 selectedId: null,
                 apiResults: null,
                 dataTypes: [
                     {name: 'Photos', value: null},
-                    // {name: 'Parksplaces', value: 'amenities/parksplaces'},
-                    // {name: 'Visitor centers', value: 'amenities/parksvisitorcenters'},
-                    // {name: 'Articles', value: 'articles'},
-                    // {name: 'Passport Stamps', value: 'passportstamplocations'},
-                    // {name: 'People', value: 'people'},
                     {name: 'Alerts', value: 'alerts'},
                     {name: 'Campgrounds', value: 'campgrounds'},
-                    // {name: 'Events', value: 'events'},
-                    {name: 'Places of Interest', value: 'places'},
-                    // {name: 'Tours', value: 'tours'},
-                    // {name: 'Visitor Centers', value: 'visitorcenters'},
-                    // {name: 'Webcams', value: 'webcams'},
+                    {name: 'Places of Interest', value: 'places'}
                 ],
                 dataType: null
             }
@@ -37,7 +28,7 @@ function initResults() {
         },
         methods: {
             setRows(value) {
-                this.rows = value
+                this.rows = value.slice(0, 5)
                 this.selectedId = value[0].parkCode
             },
             setSelected({ parkCode }) {

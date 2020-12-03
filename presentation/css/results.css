@@ -5,16 +5,9 @@
 @value --shared-grey from "./shared.css";
 @value --shared-light-blue from "./shared.css";
 
-.results {
-    max-height: 80vh;
-
-    display: grid;
-    grid-template-columns: 300px 1fr;
-    grid-gap: 20px;
-}
-
 .results__response {
     padding: 10px;
+    min-height: 500px;
 }
 
 .results__images {
@@ -23,59 +16,28 @@
     grid-template-columns: repeat(2, 1fr);
 }
 
-.results a {
-    cursor: pointer;
+.selected .btn {
+    font-weight: bold !important;
+    border: 3px var(--shared-yellow) solid !important;
 }
 
-.selected {
-    font-weight: bold;
-}
-
-pre {
-    background: #dbdbdb;
-    padding: 5px;
-}
-
-.data-select {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: 10px;
-}
-
-.data-select li {
-    list-style: none;
-}
-
-.data-select a {
-    padding: 5px;
-    border: 1px solid black;
+.results__list {
+    position: sticky;
+    top: 100px;
 }
 
 .results__list li {
-    border: solid thin var(--shared-blue);
-    border-width: 3px;
-    border-radius: 5px;
-    background: var(--shared-grey);
-    margin-bottom: 5px;
+    margin-top: 10px;
 }
 
-.results__list li a {
+.results__list * {
+    outline: none !important;
+}
+
+.results__list button {
+    width: 100%;
     display: block;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-.results__list li:hover {
-    background: var(--shared-light-blue);
-}
-
-.results button {
-    margin-right: 10px;
-    border-radius: 5px;
-}
-
-.results button:hover {
-    background: var(--shared-light-blue);
+    white-space: unset;
 }
 
 .results__tabs > * {

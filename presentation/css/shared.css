@@ -1,8 +1,17 @@
 :root {
     --shared-green: #28794C;
-    --shared-blue: #333577;
+    --shared-blue: #2c2d67;
     --shared-yellow: #FFC900;
     --shared-red: #AE0000;
     --shared-grey: #D3D3D3;
     --shared-light-blue: #6150D8;
+}
+
+body .btn.btn-primary {
+    background: var(--shared-blue);
+    border-color: #2C2D67;
+}
+
+body .btn.btn-primary:hover {
+    background: #2C2D67;
 }
