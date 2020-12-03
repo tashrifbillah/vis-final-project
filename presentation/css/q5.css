@@ -1,6 +1,12 @@
+@value --shared-green from "./shared.css";
+@value --shared-blue from "./shared.css";
+@value --shared-yellow from "./shared.css";
+@value --shared-red from "./shared.css";
+@value --shared-grey from "./shared.css";
+
 #q5 .axis {
     font-weight: bold;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 #q5 .point {
@@ -34,4 +40,17 @@
 
 .tooltip {
     text-transform: capitalize
+}
+
+#q5 #legend svg {
+    width: 100px;
+    height: 50px;
+}
+
+#y2019 {
+    fill: var(--shared-blue);
+}
+
+#y2020 {
+    fill: var(--shared-red);
 }

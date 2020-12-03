@@ -35,6 +35,7 @@ class LineVis {
         vis.y = d3.scaleLinear()
             .range([vis.height, vis.margin.top])
         vis.yAxis= d3.axisLeft()
+            .ticks(8)
 
         vis.gx= vis.svg.append("g")
             .attr("class", "axis x-axis")
