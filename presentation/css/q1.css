@@ -19,6 +19,7 @@ body {
 
 .state {
     fill: var(--shared-green);
+    fill-opacity: 0.75;
     stroke: black;
 }
 
