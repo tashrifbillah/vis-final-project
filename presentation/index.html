@@ -316,7 +316,7 @@
 
     <div class="results">
         <div class="row">
-            <div class="col-lg-4 results__list">
+            <div class="col-lg-3 results__list">
                 <ol>
                     <li v-for="row in rows" v-bind:class="{ selected: selectedId === row.parkCode }">
                         <a @click="setSelected(row)">{{ row.fullName }} ({{ row.location }})</a>
@@ -324,8 +324,8 @@
                 </ol>
             </div>
 
-            <div v-if="selectedId">
-                <div class="col-lg-8 results__tabs">
+            <div v-if="selectedId" class="col-lg-9">
+                <div class="results__tabs">
                     <button type="button" class="btn btn-secondary"
                             v-for="opt in dataTypes"
                             @click="dataType = opt.value"

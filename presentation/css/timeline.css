@@ -115,6 +115,11 @@ dt.law {
     margin-right: 50px;
 }
 
+#radarDiv {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
 /*#radarDiv, #q1, #activity-select {*/
 /*    display: none;*/
 /*}*/
