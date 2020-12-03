@@ -54,3 +54,12 @@ select {
     max-height: 550px;
     overflow-y: scroll;
 }
+
+.webpage-instructions {
+    padding-top: 20vw;
+    padding-bottom: 20vw;
+
+    .filter {
+        top: 50%;
+    }
+}
