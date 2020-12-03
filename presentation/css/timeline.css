@@ -12,17 +12,26 @@
 .timeline-item {
     cursor: pointer;
     z-index: 9;
+    transition: all 0.3s;
 }
 
 .timeline-item--park {
     fill: var(--shared-blue);
 }
 
+.timeline-item--park:hover {
+    fill: var(--shared-blue-hover)
+}
+
 .timeline-item--law {
     fill: var(--shared-yellow);
 }
 
-.timeline-item:hover, .timeline-item.active {
+.timeline-item--law:hover {
+    fill: var(--shared-yellow-hover)
+}
+
+.timeline-item.active {
     fill: var(--shared-red);
     z-index: 10;
 }
