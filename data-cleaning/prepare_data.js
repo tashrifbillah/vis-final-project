@@ -187,6 +187,7 @@ async function getFinalResults() {
 
 
   allParks = await d3.json("all_parks.json", row => row)
+  filteredParks = [...allParks]
   const parksById = allParks.data.reduce((obj, r) => ({ ...obj, [r.id]: r }), {})
 
   const csvResultsById = csvResults.reduce((obj, r) => ({ ...obj, [r.id]: r }), {})

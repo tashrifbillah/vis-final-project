@@ -86,6 +86,8 @@ d3.json("data/cleaned_data.json")
       }
     });
 
+    filteredParks = [...allData]
+
     d3.json("data/timeline_data.json").then(timelineData => {
       const formattedParks = allData.map(p => ({
         year: Number(p.date_established.split(', ')[1]),

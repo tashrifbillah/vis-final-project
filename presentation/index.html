@@ -342,7 +342,7 @@
                 </div>
 
                 <div class="results__response">
-                    <div class="results__images" v-if="!dataType">
+                    <div class="results__images" v-if="!dataType && displayedData">
                         <img :src="img.url" alt="" v-for="img in displayedData.images.slice(0, 4)" style="width: 100%">
                     </div>
 
