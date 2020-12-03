@@ -1,4 +1,5 @@
-selectedRegion = ''
+let selectedRegion = ''
+let popularFirst = 1
 
 $(eventEmitter).bind('activitiesChanged', function () {
     updateRadar();
@@ -8,6 +9,11 @@ $(eventEmitter).bind('activitiesChanged', function () {
 
 $(eventEmitter).bind('seasonChanged', function () {
     selectedSeason = $("#season-select").val()
+    barVis.wrangleData()
+})
+
+$(eventEmitter).bind('seasonSortChanged', function () {
+    popularFirst = Number($("#season-sort").val())
     barVis.wrangleData()
 })
 

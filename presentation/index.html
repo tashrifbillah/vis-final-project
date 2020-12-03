@@ -292,13 +292,18 @@
 
     <aside class="section__filter season-filter">
         <div class="filter">
-            <h5>Preferred Season</h5>
-
+            <h5>Season Preference</h5>
             <select name="season-select" id="season-select" class="form-control" onchange="$(eventEmitter).trigger('seasonChanged')">
                 <option value="Spring">Spring</option>
                 <option value="Summer" selected>Summer</option>
                 <option value="Fall">Fall</option>
                 <option value="Winter">Winter</option>
+            </select>
+
+            <h5 style="margin-top: 50px;">Park Density Preference</h5>
+            <select name="season-sort" id="season-sort" class="form-control" onchange="$(eventEmitter).trigger('seasonSortChanged')">
+                <option value="1" selected>Most popular</option>
+                <option value="-1">Least crowded</option>
             </select>
         </div>
     </aside>

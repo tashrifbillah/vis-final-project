@@ -75,7 +75,7 @@ class BarChart {
         vis.displayData = topTenParks.length ? [...topTenParks] : vis.data;
 
         // As default, the fist 10 least visited parks of selectedSeason are shown
-        vis.displayData.sort((a, b) => a.seasonalVisits[selectedSeason] - b.seasonalVisits[selectedSeason])
+        vis.displayData.sort((a, b) => (a.seasonalVisits[selectedSeason] - b.seasonalVisits[selectedSeason]) * popularFirst)
         vis.displayData = vis.displayData.slice(0, 10)
 
         // Update the visualization
@@ -134,10 +134,11 @@ class BarChart {
         labels.exit().remove()
 
 
+        const sortLabel = popularFirst > 0 ? "Most popular" : "Least crowded"
 
         // Update the y-axis
         vis.svg.select(".axis-title")
-            .text(`Least crowded 10 matching parks' average monthly visits in ${selectedSeason}`)
+            .text(`${sortLabel} 10 matching parks' average monthly visits in ${selectedSeason}`)
 
 
         // Call axis functions with the new domain
