@@ -36,7 +36,7 @@
         <h3 class="vis__title">How has COVID-19 affected park utilization in 2020?</h3>
         <p class="vis__description">Although outdoor activities are recommended as some of the safest recreational options, there has been a marked decline in visitors during 2020. This decline is most visible during March 2020, when many states first enacted precautionary legislation.</p>
         <div class="row">
-            <div class="col-sm-5">
+            <div class="col-sm-3">
                 <div class="row" style="justify-content: center">
                     <select id="group-by" class="form-control" onchange="_groupBy()">
                         <option value="months" selected>By month</option>
@@ -45,15 +45,15 @@
                     </select>
                 </div>
             </div>
-            <div class="col-sm-5">
+            <div class="col-sm-3">
                 <div class="vis__legend">
                     <div id="legend">
                         <svg>
-                            <circle fill="lightskyblue"></circle>
+                            <circle id="y2019"></circle>
                             <text x="20" y="15">2019</text>
                         </svg>
                         <svg>
-                            <circle fill="magenta"></circle>
+                            <circle id="y2020"></circle>
                             <text x="20" y="15">2020</text>
                         </svg>
                     </div>
@@ -61,7 +61,7 @@
             </div>
         </div>
         <div class="vis__wrapper" style="height: 40vh">
-            <div class="align-self-center" id="line-graph" style="width: 70%; height: 100%"></div>
+            <div class="align-self-center" id="line-graph" style="width: 90%; height: 100%"></div>
         </div>
     </div>
 </div>
@@ -153,6 +153,7 @@
             <p class="vis__description">
                 <b>Hover</b> over the circles in the map to learn more about each park.
                 <b>Zoom</b> in and out the map as you like.
+                <b>Pan</b> different regions.
                 <b>Select</b> a park to see details.
                 <b>Filter</b> the parks by regions.
             </p>
