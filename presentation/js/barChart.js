@@ -72,7 +72,7 @@ class BarChart {
     wrangleData() {
         let vis = this;
 
-        vis.displayData = topTenParks.length ? [...topTenParks] : vis.data;
+        vis.displayData = topTenParks.length ? topTenParks : vis.data;
 
         // As default, the fist 10 least visited parks of selectedSeason are shown
         vis.displayData.sort((a, b) => (a.seasonalVisits[selectedSeason] - b.seasonalVisits[selectedSeason]) * popularFirst)

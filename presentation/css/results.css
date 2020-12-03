@@ -7,6 +7,7 @@
 
 .results__response {
     padding: 10px;
+    min-height: 500px;
 }
 
 .results__images {
@@ -15,13 +16,19 @@
     grid-template-columns: repeat(2, 1fr);
 }
 
-.selected {
-    font-weight: bold;
+.selected .btn {
+    font-weight: bold !important;
+    border-color: var(--shared-yellow) !important;
 }
 
 .results__list li {
     margin-top: 10px;
 }
+
+.results__list * {
+    outline: none !important;
+}
+
 .results__list button {
     width: 100%;
     display: block;
