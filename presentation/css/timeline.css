@@ -33,10 +33,6 @@
     margin: 50px auto 5px;
 }
 
-.carousel-control-prev:hover, .carousel-control-next:hover {
-    background: rgba(128, 128, 128, 0.5);
-}
-
 .carousel-item {
     background-repeat: no-repeat;
     background-size: cover;
@@ -118,6 +114,21 @@ dt.law {
 #radarDiv {
     max-width: 800px;
     margin: 0 auto;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    z-index: 3;
+    position: relative;
+    border-radius: 100%;
+    overflow: hidden;
+    background-color: black;
+    background-image: unset !important;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
 }
 
 /*#radarDiv, #q1, #activity-select {*/
