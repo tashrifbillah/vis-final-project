@@ -15,46 +15,19 @@
     grid-template-columns: repeat(2, 1fr);
 }
 
-.results a {
-    cursor: pointer;
-}
-
 .selected {
     font-weight: bold;
 }
 
-pre {
-    background: #dbdbdb;
-    padding: 5px;
-}
-
 .results__list li {
-    border: solid thin var(--shared-blue);
-    border-width: 3px;
-    border-radius: 5px;
-    background: var(--shared-grey);
-    margin-bottom: 5px;
+    margin-top: 10px;
 }
-
-.results__list li a {
+.results__list button {
+    width: 100%;
     display: block;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-.results button {
-    margin-right: 10px;
-    border-radius: 5px;
-}
-
-.results button:hover {
-    background: var(--shared-light-blue);
+    white-space: unset;
 }
 
 .results__tabs > * {
     margin-right: 20px;
-}
-
-@media only screen and (max-width: 800px) {
-
 }

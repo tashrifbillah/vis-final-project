@@ -117,7 +117,7 @@
             <strong>For the best experience, please select at least one value for each prompt.</strong>
         </p>
 
-        <button id="read-instructions" class="btn btn-primary btn-lg btn-block">I understand</button>
+        <button id="read-instructions" class="btn btn-primary btn-lg btn-block" style="display: none;">I understand</button>
     </main>
 
     <aside class="section__filter region-filter">
@@ -321,10 +321,10 @@
 
     <div class="results">
         <div class="row">
-            <div class="col-lg-3 results__list">
-                <ol>
+            <div class="col-lg-3">
+                <ol class="results__list">
                     <li v-for="row in rows" v-bind:class="{ selected: selectedId === row.parkCode }">
-                        <a @click="setSelected(row)">{{ row.fullName }} ({{ row.location }})</a>
+                        <button @click="setSelected(row)" class="btn btn-primary">{{ row.fullName }} ({{ row.location }})</button>
                     </li>
                 </ol>
             </div>
