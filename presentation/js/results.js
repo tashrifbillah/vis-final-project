@@ -28,8 +28,8 @@ function initResults() {
         },
         methods: {
             setRows(value) {
-                this.rows = value.slice(5, 10).reverse()
-                this.selectedId = this.rows[0].parkCode
+                this.rows = [...value].reverse().slice(0, 5)
+                if(this.rows.length) this.selectedId = this.rows[0].parkCode
             },
             setSelected({ parkCode }) {
                 this.selectedId = parkCode;

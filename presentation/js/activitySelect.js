@@ -17,6 +17,7 @@ function initActivitySelect() {
         methods: {
           setParks() {
               this.parks = filteredParks
+              this.selectedActivities = this.selectedActivities.filter(({ id }) => this.activitiesById[id])
           }
         },
         computed: {
