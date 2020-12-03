@@ -1,3 +1,9 @@
+@value --shared-green from "./shared.css";
+@value --shared-blue from "./shared.css";
+@value --shared-yellow from "./shared.css";
+@value --shared-red from "./shared.css";
+@value --shared-grey from "./shared.css";
+
 #timeline {
     border-top: 1px solid grey;
     width: 100%;
@@ -10,15 +16,15 @@
 }
 
 .timeline-item--park {
-    fill: blue;
+    fill: var(--shared-blue);
 }
 
 .timeline-item--law {
-    fill: aquamarine;
+    fill: var(--shared-yellow);
 }
 
 .timeline-item:hover, .timeline-item.active {
-    fill: red;
+    fill: var(--shared-red);
     z-index: 10;
 }
 
@@ -84,15 +90,15 @@
 }
 
 dt.current {
-    background: red;
+    background: var(--shared-red);
 }
 
 dt.park {
-    background: blue;
+    background: var(--shared-blue);
 }
 
 dt.law {
-    background: aquamarine;
+    background: var(--shared-yellow);
 }
 
 .timeline-key dd:not(:last-child) {

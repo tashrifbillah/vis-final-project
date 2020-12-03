@@ -1,5 +1,11 @@
+@value --shared-green from "./shared.css";
+@value --shared-blue from "./shared.css";
+@value --shared-yellow from "./shared.css";
+@value --shared-red from "./shared.css";
+@value --shared-grey from "./shared.css";
+
 rect.bar {
-    fill: lightskyblue;
+    fill: var(--shared-blue);
     stroke: black;
     stroke-width: 1px;
 }
