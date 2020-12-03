@@ -81,7 +81,6 @@
     align-items: center;
     margin: 10px auto;
     max-width: 800px;
-    padding-bottom: 5px;
 }
 
 .timeline-key dd {
@@ -132,6 +131,7 @@ dt.law {
 }
 
 .vis__wrapper--carousel {
+    padding: 10px;
     background: #efefef;
 }
 
