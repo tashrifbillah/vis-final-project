@@ -80,3 +80,7 @@ select {
         height: auto;
     }
 }
+
+.container-fluid {
+    max-width: 1400px;
+}

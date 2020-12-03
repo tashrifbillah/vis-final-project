@@ -18,7 +18,12 @@
 
 .selected .btn {
     font-weight: bold !important;
-    border-color: var(--shared-yellow) !important;
+    border: 3px var(--shared-yellow) solid !important;
+}
+
+.results__list {
+    position: sticky;
+    top: 100px;
 }
 
 .results__list li {
