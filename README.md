@@ -9,4 +9,5 @@ https://tashrifbillah.github.io/vis-final-project/presentation/
 By Gordon Wade, Nate Mortensen, and Tashrif Billah
 
 Harvard University
+
 Department of Computer Science
