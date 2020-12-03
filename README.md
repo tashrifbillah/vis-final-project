@@ -1,8 +1,12 @@
-# vis-final-project
-Final project for CS171 fall 2020
+### US National Parks
 
-* Leader: Gordon Wade (00738641, gow208@g.harvard.edu)
-* Group Member 1: Nate Mortensen (51391381, nmortensen2@gmail.com)
-* Group Member 2: Tashrif Billah (71426300, tbillah@bwh.harvard.edu)
+Visualization Fall 2020 Course Project
 
+---
 
+https://tashrifbillah.github.io/vis-final-project/presentation/
+
+By Gordon Wade, Nate Mortensen, and Tashrif Billah
+
+Harvard University
+Department of Computer Science
