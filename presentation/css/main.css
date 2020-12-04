@@ -58,10 +58,10 @@ select {
 .webpage-instructions {
     padding-top: 20vw;
     padding-bottom: 20vw;
+}
 
-    .filter {
-        top: 50%;
-    }
+.webpage-instructions .filter {
+    top: 50%;
 }
 
 @media only screen and (max-width: 800px) {

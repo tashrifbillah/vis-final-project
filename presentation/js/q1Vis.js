@@ -20,7 +20,7 @@ class MapVis {
         const width = 1150
         const height = 600
 
-        vis.margin = {top: 20, right: 20, bottom: 20, left: 20};
+        vis.margin = {top: 0, right: 0, bottom: 0, left: 0};
         vis.width = width - vis.margin.left - vis.margin.right;
         vis.height = height - vis.margin.top - vis.margin.bottom;
 
@@ -69,7 +69,13 @@ class MapVis {
                         case 'California':
                         case 'Hawaii':
                         case 'United States Virgin Islands':
+                        case 'Commonwealth of the Northern Mariana Islands':
+                        case 'Guam':
+                        case 'American Samoa':
+                        case 'Louisiana':
                             return tmp[0]-15
+                        case 'Florida':
+                            return tmp[0]+15
                         default:
                             return tmp[0]
                     }
@@ -86,7 +92,10 @@ class MapVis {
                         case 'Maryland':
                         case 'South Carolina':
                         case 'United States Virgin Islands':
+                        case 'Puerto Rico':
                             return tmp[1]-10
+                        case 'Hawaii':
+                            return tmp[1]+10
                         default:
                             return tmp[1]
                     }
@@ -174,11 +183,11 @@ class MapVis {
                     .style("left", event.pageX + 20 + "px")
                     .style("top", event.pageY + "px")
                     .html(`
-                 <div style="border: thin solid grey; border-radius: 5px; background: lightgrey; padding: 20px">
-                     <h5>${d.name}</h5>                
-                     <h6>Location: ${d.location}</h6>
-                     <h6>Established: ${d.date_established}</h6>
-                     <h6>Area: ${d.area}</h6>
+                 <div style="background: rgba(0, 0, 0, 0.8); color: #fff; border-radius: 2px; padding: 12px">
+                     <h6>${d.name}</h6>
+                     Location: ${d.location}<br>
+                     Established: ${d.date_established}<br>
+                     Area: ${d.area}<br>
                  </div>`);
 
                 // Update table
