@@ -402,6 +402,7 @@ class RadarChartClass {
       .style('pointer-events', 'all')
       .on('mouseover', function(event, d) {
         // Update tooltip
+        console.log(d)
         vis.radarToolTip.show(d, 'CIRCLE', this);
         console.log(d);
       })
@@ -434,7 +435,7 @@ class RadarChartClass {
         .merge(vis.legendLabels)
         .attr('x', (d, i) => (i % vis.cfg.legendColumns) * (vis.cfg.w + vis.cfg.margin.left + vis.cfg.margin.right) / vis.cfg.legendColumns + vis.cfg.legendSquareSize * 1.25)
         .attr('y', (d, i) => vis.cfg.margin.bottom/2 + vis.cfg.legendSquareSize + Math.floor(i / vis.cfg.legendColumns) * vis.cfg.legendSquareSize * 1.25)
-        .text(d => d.parkName);
+        .text(d => `${d.parkName}, ${getStateFromPark(allData, d.parkName)}`);
     }
 
 
@@ -443,8 +444,9 @@ class RadarChartClass {
       .attr('class', 'd3-tip')
       .offset([-10, 0])
       .html(function(d, t) {
+        let parkLocation = getStateFromPark(allData, d.parkName);
         let message = '';
-        let header = '<h1>' + d.parkName + '</h1>';
+        let header = '<h1>' + d.parkName + ', ' + parkLocation + '</h1>';
         let sortedActivities;
 
         if (t == 'PARK') {
