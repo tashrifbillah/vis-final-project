@@ -72,6 +72,7 @@ class MapVis {
                         case 'Commonwealth of the Northern Mariana Islands':
                         case 'Guam':
                         case 'American Samoa':
+                        case 'Louisiana':
                             return tmp[0]-15
                         case 'Florida':
                             return tmp[0]+15
