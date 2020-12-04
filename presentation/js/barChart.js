@@ -62,6 +62,42 @@ class BarChart {
 
         // (Filter, aggregate, modify data)
         vis.wrangleData();
+
+
+        vis.toolTip = d3.tip()
+          .attr("class", "d3-tip")
+          .attr("height", 500)
+          .offset(function(d) {
+              if (vis.x(d.seasonalVisits[selectedSeason]) > vis.width - 100) {
+                  if (vis.y(`${d.name}, ${nameConverter.getAbbreviation(d.location)}`) < vis.height / 2) {
+                      return [10, 0];
+                  } else {
+                      return [-10, 0];
+                  }
+              } else {
+                  return [0, 50];
+              }
+          })
+          .direction(function(d) {
+              if (vis.x(d.seasonalVisits[selectedSeason]) > vis.width - 100) {
+                  if (vis.y(`${d.name}, ${nameConverter.getAbbreviation(d.location)}`) < vis.height / 2) {
+                      return 's';
+                  } else {
+                      return 'n';
+                  }
+              } else {
+                  return 'e';
+              }
+          })
+          .html(function(d) {
+              let header = `<h1>${d.name}</h1>`
+              let message = ''
+              for (var key in d.seasonalVisits) {
+                  message +=  `</br>${key}: ${d.seasonalVisits[key].toLocaleString()}`
+              }
+              return header  + message;
+          });
+        vis.svg.call(vis.toolTip);
     }
 
 
@@ -104,6 +140,18 @@ class BarChart {
             .append("rect")
             .merge(rectangles)
             .attr("class", "bar")
+            .on("mouseover", function(event, d) {
+                vis.toolTip.show(d, this);
+                d3.select(this)
+                  .style("stroke", sharedYellow)
+                  .style("stroke-width", 3);
+            })
+            .on("mouseout", function() {
+                vis.toolTip.hide()
+                d3.select(this)
+                  .style("stroke", "black")
+                  .style("stroke-width", 1);
+            })
             .attr("x", 0)
             .attr("height", vis.y.bandwidth())
             .transition()

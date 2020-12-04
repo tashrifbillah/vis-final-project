@@ -183,3 +183,7 @@ function getParksInState(all_data, state) {
     let shared = all_data.filter(d => d.states.includes(state) && d.states != state).map(d => d.name);
     return {'exclusive': exclusive, 'shared': shared};
 }
+
+function getStateFromPark(all_data, parkName) {
+    return all_data.filter(d => d.name == parkName).map(d => d.states);
+}

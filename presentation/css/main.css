@@ -53,6 +53,7 @@ select {
     position: relative;
     max-height: 550px;
     overflow-y: scroll;
+    background: rgba(250, 250, 250, 0.6);
 }
 
 .webpage-instructions {
