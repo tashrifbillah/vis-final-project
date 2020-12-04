@@ -84,3 +84,9 @@ select {
 .container-fluid {
     max-width: 1400px;
 }
+
+.circular img {
+    height: 250px;
+    width: 250px;
+    border: solid lightgray;
+}
