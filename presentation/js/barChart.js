@@ -93,7 +93,7 @@ class BarChart {
               let header = `<h1>${d.name}</h1>`
               let message = ''
               for (var key in d.seasonalVisits) {
-                  message +=  `</br>${key}: ${d.seasonalVisits[key]}`
+                  message +=  `</br>${key}: ${d.seasonalVisits[key].toLocaleString()}`
               }
               return header  + message;
           });
@@ -141,12 +141,17 @@ class BarChart {
             .merge(rectangles)
             .attr("class", "bar")
             .on("mouseover", function(event, d) {
-                console.log(d);
-                console.log(d.seasonalVisits)
-                console.log(event);
                 vis.toolTip.show(d, this);
+                d3.select(this)
+                  .style("stroke", sharedYellow)
+                  .style("stroke-width", 3);
             })
-            .on("mouseout", function() {vis.toolTip.hide()})
+            .on("mouseout", function() {
+                vis.toolTip.hide()
+                d3.select(this)
+                  .style("stroke", "black")
+                  .style("stroke-width", 1);
+            })
             .attr("x", 0)
             .attr("height", vis.y.bandwidth())
             .transition()
