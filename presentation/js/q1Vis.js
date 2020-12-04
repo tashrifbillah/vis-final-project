@@ -20,7 +20,7 @@ class MapVis {
         const width = 1150
         const height = 600
 
-        vis.margin = {top: 20, right: 20, bottom: 20, left: 20};
+        vis.margin = {top: 0, right: 0, bottom: 0, left: 0};
         vis.width = width - vis.margin.left - vis.margin.right;
         vis.height = height - vis.margin.top - vis.margin.bottom;
 
@@ -69,7 +69,12 @@ class MapVis {
                         case 'California':
                         case 'Hawaii':
                         case 'United States Virgin Islands':
+                        case 'Commonwealth of the Northern Mariana Islands':
+                        case 'Guam':
+                        case 'American Samoa':
                             return tmp[0]-15
+                        case 'Florida':
+                            return tmp[0]+15
                         default:
                             return tmp[0]
                     }
@@ -86,7 +91,10 @@ class MapVis {
                         case 'Maryland':
                         case 'South Carolina':
                         case 'United States Virgin Islands':
+                        case 'Puerto Rico':
                             return tmp[1]-10
+                        case 'Hawaii':
+                            return tmp[1]+10
                         default:
                             return tmp[1]
                     }
