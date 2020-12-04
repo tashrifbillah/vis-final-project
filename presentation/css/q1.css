@@ -23,21 +23,8 @@ body {
     stroke: black;
 }
 
-/*#q1 h3 {*/
-/*    margin: 10px;*/
-/*    border: thin solid grey;*/
-/*    padding-top: 5px;*/
-/*    padding-bottom: 5px;*/
-/*    padding-right: 10px;*/
-/*    padding-left: 10px;*/
-/*    border-radius: 5px;*/
-/*    background: rgba(64,64,64,0.4);*/
-/*}*/
 
 #q1 .map-row > * {
-    /*border: thin solid grey;*/
-    /*margin: 5px;*/
-    /*border-radius: 5px;*/
     margin-top: 5px;
     background: white;
 }
@@ -86,9 +73,3 @@ body {
     margin-top: 5px;
 }
 
-/*#q1 h6 {*/
-/*    background: azure;*/
-/*    border: thin solid black;*/
-/*    border-radius: 5px;*/
-/*    padding: 10px;*/
-/*}*/
