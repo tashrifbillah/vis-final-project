@@ -234,15 +234,12 @@ class LineVis {
                     .style("left", event.pageX + 20 + "px")
                     .style("top", event.pageY + "px")
                     .html(`
-                 <div style="border: thin solid grey; border-radius: 5px; background: lightgrey; padding: 10px">
-                     <h5>${d.group} ${year}</h5>
-                     <h6>Visits: ${d3.format(',')(d.visit)}</h6>
+                 <div style="background: rgba(0, 0, 0, 0.8); color: #fff; border-radius: 2px; padding: 12px">
+                     <h6>${d.group} ${year}</h6>
+                     Visits: ${d3.format(',')(d.visit)}
                  </div>`);
 
 
-                // TODO Update table
-                // Table will be in the right column
-                // top10Visits(d.group)
 
             })
             .on('mouseout', function (event, d) {

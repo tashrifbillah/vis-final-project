@@ -182,11 +182,11 @@ class MapVis {
                     .style("left", event.pageX + 20 + "px")
                     .style("top", event.pageY + "px")
                     .html(`
-                 <div style="border: thin solid grey; border-radius: 5px; background: lightgrey; padding: 20px">
-                     <h5>${d.name}</h5>                
-                     <h6>Location: ${d.location}</h6>
-                     <h6>Established: ${d.date_established}</h6>
-                     <h6>Area: ${d.area}</h6>
+                 <div style="background: rgba(0, 0, 0, 0.8); color: #fff; border-radius: 2px; padding: 12px">
+                     <h6>${d.name}</h6>
+                     Location: ${d.location}<br>
+                     Established: ${d.date_established}<br>
+                     Area: ${d.area}<br>
                  </div>`);
 
                 // Update table
