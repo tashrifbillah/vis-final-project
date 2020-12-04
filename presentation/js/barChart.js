@@ -64,12 +64,31 @@ class BarChart {
         vis.wrangleData();
 
 
-
         vis.toolTip = d3.tip()
           .attr("class", "d3-tip")
           .attr("height", 500)
-          .offset([0, 50])
-          .direction("e")
+          .offset(function(d) {
+              if (vis.x(d.seasonalVisits[selectedSeason]) > vis.width - 100) {
+                  if (vis.y(`${d.name}, ${nameConverter.getAbbreviation(d.location)}`) < vis.height / 2) {
+                      return [10, 0];
+                  } else {
+                      return [-10, 0];
+                  }
+              } else {
+                  return [0, 50];
+              }
+          })
+          .direction(function(d) {
+              if (vis.x(d.seasonalVisits[selectedSeason]) > vis.width - 100) {
+                  if (vis.y(`${d.name}, ${nameConverter.getAbbreviation(d.location)}`) < vis.height / 2) {
+                      return 's';
+                  } else {
+                      return 'n';
+                  }
+              } else {
+                  return 'e';
+              }
+          })
           .html(function(d) {
               let header = `<h1>${d.name}</h1>`
               let message = ''
