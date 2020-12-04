@@ -184,11 +184,11 @@ function setScore(set, activities) {
 
 $(document).ready(function() {
   setTimeout(function() {
-    // $('#read-instructions').show()
-    // $('.all-content').hide()
+    $('#read-instructions').show()
+    $('.all-content').hide()
   }, 2000)
-  // $('#read-instructions').click(function() {
-  //   $(this).hide()
-  //   $('.all-content').show()
-  // })
+  $('#read-instructions').click(function() {
+    $(this).hide()
+    $('.all-content').show()
+  })
 })
