@@ -7,22 +7,32 @@
 #timeline {
     width: 100%;
     height: 130px;
+    margin-top: 10px;
 }
 
 .timeline-item {
     cursor: pointer;
     z-index: 9;
+    transition: all 0.3s;
 }
 
 .timeline-item--park {
     fill: var(--shared-blue);
 }
 
+.timeline-item--park:hover {
+    fill: var(--shared-blue-hover)
+}
+
 .timeline-item--law {
     fill: var(--shared-yellow);
 }
 
-.timeline-item:hover, .timeline-item.active {
+.timeline-item--law:hover {
+    fill: var(--shared-yellow-hover)
+}
+
+.timeline-item.active {
     fill: var(--shared-red);
     z-index: 10;
 }
@@ -55,10 +65,10 @@
     max-width: 500px;
     margin: 50px auto;
     padding: 30px;
-    background: #fff;
+    background: rgba(250, 250, 250, 0.8);
     position: relative;
     max-height: 300px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 @media only screen and (min-width: 800px) {

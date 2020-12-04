@@ -5,6 +5,8 @@
     --shared-red: #AE0000;
     --shared-grey: #D3D3D3;
     --shared-light-blue: #6150D8;
+    --shared-blue-hover: #161635;
+    --shared-yellow-hover: #ddaf01;
 }
 
 body .btn.btn-primary {
@@ -13,5 +15,5 @@ body .btn.btn-primary {
 }
 
 body .btn.btn-primary:hover {
-    background: #20204a;
+    background: var(--shared-blue-hover);
 }
