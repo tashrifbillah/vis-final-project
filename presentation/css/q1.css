@@ -9,7 +9,7 @@ body {
 }
 
 #map {
-    width: 100%;
+
 }
 
 .location {
@@ -35,10 +35,16 @@ body {
 /*}*/
 
 #q1 .map-row > * {
-    border: thin solid grey;
-    margin: 5px;
-    border-radius: 5px;
+    /*border: thin solid grey;*/
+    /*margin: 5px;*/
+    /*border-radius: 5px;*/
+    margin-top: 5px;
     background: white;
+}
+
+#q1 svg {
+    border: thin solid grey;
+    border-radius: 5px;
 }
 
 #q1 img {
