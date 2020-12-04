@@ -38,6 +38,17 @@
     left: 0;
 }
 
+
+/* Style eastward tooltips differently */
+.d3-tip.e:after {
+    margin: -4px 0 0 0;
+    top: 50%;
+    left: -8px;
+    content: "\25C0";
+    text-align: left;
+}
+
+
 .d3-tip h1 {
     font-size: 20px;
 }

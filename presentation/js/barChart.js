@@ -62,6 +62,23 @@ class BarChart {
 
         // (Filter, aggregate, modify data)
         vis.wrangleData();
+
+
+
+        vis.toolTip = d3.tip()
+          .attr("class", "d3-tip")
+          .attr("height", 500)
+          .offset([0, 50])
+          .direction("e")
+          .html(function(d) {
+              let header = `<h1>${d.name}</h1>`
+              let message = ''
+              for (var key in d.seasonalVisits) {
+                  message +=  `</br>${key}: ${d.seasonalVisits[key]}`
+              }
+              return header  + message;
+          });
+        vis.svg.call(vis.toolTip);
     }
 
 
@@ -104,6 +121,13 @@ class BarChart {
             .append("rect")
             .merge(rectangles)
             .attr("class", "bar")
+            .on("mouseover", function(event, d) {
+                console.log(d);
+                console.log(d.seasonalVisits)
+                console.log(event);
+                vis.toolTip.show(d, this);
+            })
+            .on("mouseout", function() {vis.toolTip.hide()})
             .attr("x", 0)
             .attr("height", vis.y.bandwidth())
             .transition()
