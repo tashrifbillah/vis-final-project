@@ -211,6 +211,8 @@ class MapVis {
 
 
         vis.svg.call(vis.zoom)
+            // Prevent annoying webpage scroll upon reaching scaleExtent()
+            .on("wheel", event => event.preventDefault());
         
 
     }
