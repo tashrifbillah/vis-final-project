@@ -185,5 +185,5 @@ function getParksInState(all_data, state) {
 }
 
 function getStateFromPark(all_data, parkName) {
-    return all_data.filter(d => d.name == parkName).map(d => d.states);
+    return all_data.filter(d => d.name == parkName).map(d => d.states.replace(/,/g, ', '));
 }

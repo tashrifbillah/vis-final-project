@@ -69,7 +69,7 @@ class BarChart {
           .attr("height", 500)
           .offset(function(d) {
               if (vis.x(d.seasonalVisits[selectedSeason]) > vis.width - 100) {
-                  if (vis.y(`${d.name}, ${nameConverter.getAbbreviation(d.location)}`) < vis.height / 2) {
+                  if (vis.y(`${d.name}, ${getStateFromPark(allData, d.name)}`) < vis.height / 2) {
                       return [10, 0];
                   } else {
                       return [-10, 0];
@@ -80,7 +80,7 @@ class BarChart {
           })
           .direction(function(d) {
               if (vis.x(d.seasonalVisits[selectedSeason]) > vis.width - 100) {
-                  if (vis.y(`${d.name}, ${nameConverter.getAbbreviation(d.location)}`) < vis.height / 2) {
+                  if (vis.y(`${d.name}, ${getStateFromPark(allData, d.name)}`) < vis.height / 2) {
                       return 's';
                   } else {
                       return 'n';
@@ -93,7 +93,9 @@ class BarChart {
               let header = `<h1>${d.name}</h1>`
               let message = ''
               for (var key in d.seasonalVisits) {
-                  message +=  `</br>${key}: ${d.seasonalVisits[key].toLocaleString()}`
+                  if (key != 'All') {
+                      message += `</br>${key}: ${d.seasonalVisits[key].toLocaleString()}`;
+                  }
               }
               return header  + message;
           });
@@ -126,7 +128,7 @@ class BarChart {
         let vis = this;
         let trans_time = 1500
 
-        vis.y.domain(vis.displayData.map(d => `${d.name}, ${nameConverter.getAbbreviation(d.location)}`))
+        vis.y.domain(vis.displayData.map(d => `${d.name}, ${getStateFromPark(allData, d.name)}`))
 
         // Inner loop computes maximum over all seasons for each park
         // Outer loop computer maximum over all parks
@@ -156,7 +158,7 @@ class BarChart {
             .attr("height", vis.y.bandwidth())
             .transition()
             .duration(trans_time)
-            .attr("y", d => vis.y(`${d.name}, ${nameConverter.getAbbreviation(d.location)}`))
+            .attr("y", d => vis.y(`${d.name}, ${getStateFromPark(allData, d.name)}`))
             .attr("width", d => vis.x(d.seasonalVisits[selectedSeason]))
 
 
@@ -175,7 +177,7 @@ class BarChart {
             .transition()
             .duration(trans_time)
             .text((d) => d3.format(',')(d.seasonalVisits[selectedSeason]))
-            .attr("y", d => vis.y(`${d.name}, ${nameConverter.getAbbreviation(d.location)}`)+vis.y.bandwidth()/2)
+            .attr("y", d => vis.y(`${d.name}, ${getStateFromPark(allData, d.name)}`)+vis.y.bandwidth()/2)
             .attr("x", d => vis.x(d.seasonalVisits[selectedSeason])+5)
 
 
