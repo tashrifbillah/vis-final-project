@@ -77,6 +77,8 @@ class LineVis {
     wrangleData() {
         let vis = this;
 
+        document.getElementsByClassName("s2m_details")[0].style.display="none"
+
         let monthly= vis.parkData.map(d=>d["monthly visit"])
 
         vis.y2019 = []
@@ -124,6 +126,9 @@ class LineVis {
             vis.groups= seasons
             vis.svg.select(".y-title")
                 .text("Monthly average visits")
+
+            document.getElementsByClassName("s2m_details")[0].style.display="block"
+
         }
 
         vis.updateVis()
