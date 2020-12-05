@@ -244,16 +244,30 @@
     <main class="section__visualizations">
         <div class="vis">
             <h3 class="vis__title">Different parks excel in different areas. Which parks are the best match for your interests?</h3>
-            <p class="vis__description">The National Parks offer over 100 different activities. Here, we can see the
-                result of categorizing each activity and summarizing each park’s unique offerings by rating it on the
-                number of activities available in each category. The specific parks displayed are determined by your
-                selected preferences regarding activity and region. </p>
+            <p class="vis__description">The National Parks offer over 100 different activities.
+                They can be broadly categorized into six categories. In the radar chart below, each area represents a park.
+                The greater is an area's intersection along a category axis, the greater is the number of activities of that category
+                available at that park. The specific parks displayed are determined by your selected preferences
+                regarding activities and region.</p>
+
+            <details><summary><i>Learn more about six categories and activities</i></summary>
+                There will be a table with category-->activities mapping.
+            </details>
+            <br>
             <p class="vis__description">The large visualization contains an overlaid plot of the top three parks
             matching your preferences. The smaller plots below this contain the individual data for each of these parks.</p>
-            <p class="vis__description"><strong>Metric: </strong> The metric displayed corresponds to the percentage of possible activities
-                offered by each park in each category. For example, if 10 total activities are offered in the "Snow"
-                category and a park offers 6 of these, the park will receive a score of 60% on this axis.
-            </p>
+
+            <details><summary><i>Learn more about area and intersection</i></summary>
+            <p class="vis__description">The metric displayed corresponds to the percentage of possible activities offered
+                by each park in each category. For example, if 10 total activities are offered in the "Snow" category
+                and a park offers 6 of these, the park will receive a score of 60% on this axis.
+                Joining the scores along all axes gives an area.</p>
+            </details>
+            <br>
+            <p class="vis__description">Bottom line&mdash;if you are picky, visit the park that spans most along your
+                preferred activity category. Otherwise, you might want to visit the park that has the largest combined area
+                to experience multiple categories of activities.</p>
+
             <div class="vis__wrapper">
                 <div id="radarDiv">
                     <div class="row justify-content-center">
