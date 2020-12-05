@@ -66,6 +66,7 @@ class BarChart {
 
         vis.toolTip = d3.tip()
           .attr("class", "d3-tip")
+          .attr("style", "padding: 5px")
           .attr("height", 500)
           .offset(function(d) {
               if (vis.x(d.seasonalVisits[selectedSeason]) > vis.width - 100) {
