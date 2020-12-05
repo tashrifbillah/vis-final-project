@@ -1,7 +1,6 @@
-
 /* * * * * * * * * * * * * *
-*      NameConverter       *
-* * * * * * * * * * * * * */
+ *      NameConverter       *
+ * * * * * * * * * * * * * */
 
 class NameConverter {
     constructor() {
@@ -64,46 +63,47 @@ class NameConverter {
             ['Wyoming', 'WY', 'West'],
             // VI occurs in two forms across geoData and parkData, so support both :(
             ['U.S. Virgin Islands', 'VI', 'South'],
-        ]
+        ];
     }
 
-    getAbbreviation(input){
-        let that = this
+    getAbbreviation(input) {
+        let that = this;
         let output = '';
-        that.states.forEach( state => {
-            if (state[0] === input){
-            output = state[1]
-        }})
-        return output
+        that.states.forEach((state) => {
+            if (state[0] === input) {
+                output = state[1];
+            }
+        });
+        return output;
     }
 
-    getFullName(input){
-        let that = this
+    getFullName(input) {
+        let that = this;
         let output = '';
-        that.states.forEach( state => {
-            if (state[1] === input){
-                output = state[0]
-            }})
-        return output
+        that.states.forEach((state) => {
+            if (state[1] === input) {
+                output = state[0];
+            }
+        });
+        return output;
     }
 
-    getRegion(input){
-        let that = this
+    getRegion(input) {
+        let that = this;
         let output = '';
-        that.states.forEach( state => {
-            if (state[0] === input){
-                output = state[2]
-            }})
-        return output
+        that.states.forEach((state) => {
+            if (state[0] === input) {
+                output = state[2];
+            }
+        });
+        return output;
     }
 }
 
-let nameConverter = new NameConverter()
-
+let nameConverter = new NameConverter();
 
 class MonthSeason {
     constructor() {
-
         /*
         Given a month, obtain season:
             month="January"
@@ -119,71 +119,71 @@ class MonthSeason {
 
         this.month2season = {
             // Spring
-            "March": "Spring",
-            "April": "Spring",
-            "May": "Spring",
+            March: 'Spring',
+            April: 'Spring',
+            May: 'Spring',
 
             // Summer
-            "June": "Summer",
-            "July": "Summer",
-            "August": "Summer",
+            June: 'Summer',
+            July: 'Summer',
+            August: 'Summer',
 
             // Fall
-            "September": "Fall",
-            "October": "Fall",
-            "November": "Fall",
+            September: 'Fall',
+            October: 'Fall',
+            November: 'Fall',
 
             // Winter
-            "December": "Winter",
-            "January": "Winter",
-            "February": "Winter"
-        }
+            December: 'Winter',
+            January: 'Winter',
+            February: 'Winter',
+        };
     }
 
     getSeason(month) {
-        let obj=this
-        return this.month2season[month]
+        let obj = this;
+        return this.month2season[month];
     }
 
     getMonths(season) {
-        let obj=this
-        return Object.keys(obj.month2season).filter(key => obj.month2season[key] == season)
+        let obj = this;
+        return Object.keys(obj.month2season).filter((key) => obj.month2season[key] == season);
     }
 }
 
-let monthSeason = new MonthSeason()
+let monthSeason = new MonthSeason();
 
 // Given an array of available activities, this function uses the global selectedActivities
 // to sort the available activities with user matches appearing at the beginning.
 function activityMatch(activities) {
-    let selectedActivityNames = selectedActivities.map(d => d.name);
-    let availableActivityNames = activities.map(d => d.name);
+    let selectedActivityNames = selectedActivities.map((d) => d.name);
+    let availableActivityNames = activities.map((d) => d.name);
     // Randomize the array before starting to avoid alphabetical bias
     randomize(availableActivityNames);
 
-    availableActivityNames.sort( function(a,b) {
+    availableActivityNames.sort(function (a, b) {
         return selectedActivityNames.indexOf(b) - selectedActivityNames.indexOf(a);
-    })
+    });
     return availableActivityNames;
 }
 
 // Array shuffling based on the Fisher-Yates Algorithm, as described by Nitin Patel
 // Source: https://medium.com/@nitinpatel_20236/how-to-shuffle-correctly-shuffle-an-array-in-javascript-15ea3f84bfb
 function randomize(array) {
-    for(let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * i)
-        const temp = array[i]
-        array[i] = array[j]
-        array[j] = temp
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * i);
+        const temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
     }
 }
 
 function getParksInState(all_data, state) {
-    let exclusive = all_data.filter(d => d.states == state).map(d => d.name);
-    let shared = all_data.filter(d => d.states.includes(state) && d.states != state).map(d => d.name);
-    return {'exclusive': exclusive, 'shared': shared};
+    let exclusive = all_data.filter((d) => d.states == state).map((d) => d.name);
+    let shared = all_data.filter((d) => d.states.includes(state) && d.states != state).map((d) => d.name);
+    return { exclusive: exclusive, shared: shared };
 }
 
 function getStateFromPark(all_data, parkName) {
-    return all_data.filter(d => d.name == parkName).map(d => d.states.replace(/,/g, ', '));
+    return all_data.filter((d) => d.name == parkName).map((d) => d.states.replace(/,/g, ', '));
 }

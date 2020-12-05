@@ -25,10 +25,13 @@
     margin-left: 10px;
 }
 
-.slide-top-list-enter-active, .slide-top-list-leave-active, .slide-top-list-move {
+.slide-top-list-enter-active,
+.slide-top-list-leave-active,
+.slide-top-list-move {
     transition: all 0.3s;
 }
-.slide-top-list-enter, .slide-top-list-leave-to {
+.slide-top-list-enter,
+.slide-top-list-leave-to {
     opacity: 0;
 }
 .slide-top-list-enter {
@@ -37,4 +40,3 @@
 .slide-top-list-leave-to {
     transform: translateY(-100%);
 }
- 

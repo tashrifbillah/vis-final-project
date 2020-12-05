@@ -1,17 +1,17 @@
 :root {
-    --shared-green: #28794C;
+    --shared-green: #28794c;
     --shared-blue: #2c2d67;
-    --shared-yellow: #FFC900;
-    --shared-red: #AE0000;
-    --shared-grey: #D3D3D3;
-    --shared-light-blue: #6150D8;
+    --shared-yellow: #ffc900;
+    --shared-red: #ae0000;
+    --shared-grey: #d3d3d3;
+    --shared-light-blue: #6150d8;
     --shared-blue-hover: #161635;
     --shared-yellow-hover: #ddaf01;
 }
 
 body .btn.btn-primary {
     background: var(--shared-blue);
-    border-color: #2C2D67;
+    border-color: #2c2d67;
 }
 
 body .btn.btn-primary:hover {

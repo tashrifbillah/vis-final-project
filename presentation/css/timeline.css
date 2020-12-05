@@ -21,7 +21,7 @@
 }
 
 .timeline-item--park:hover {
-    fill: var(--shared-blue-hover)
+    fill: var(--shared-blue-hover);
 }
 
 .timeline-item--law {
@@ -29,7 +29,7 @@
 }
 
 .timeline-item--law:hover {
-    fill: var(--shared-yellow-hover)
+    fill: var(--shared-yellow-hover);
 }
 
 .timeline-item.active {
@@ -58,7 +58,6 @@
 }
 
 .carousel-item__title {
-
 }
 
 .carousel-item__content {
@@ -72,7 +71,9 @@
 }
 
 @media only screen and (min-width: 800px) {
-    .carousel-item__content { max-height: 550px; }
+    .carousel-item__content {
+        max-height: 550px;
+    }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -125,7 +126,8 @@ dt.law {
     margin: 0 auto;
 }
 
-.carousel-control-prev-icon, .carousel-control-next-icon {
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
     z-index: 3;
     position: relative;
     border-radius: 100%;
