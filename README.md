@@ -53,6 +53,9 @@ We do also include `d3-tip.js`, a borrowed piece of code that is credited to Jus
 Constantin Gavrilete and David Gotz. Additionally, other libraries were imported directly for use. Among these is 
 `d3-hexbin`, which was instrumental in construction of the hexagonal map representation of the United States.
 
+For DOM manipulation, we relied on d3 for visualizations, jQuery for basic functionality, and VueJS for a couple areas
+requiring advanced DOM manipulation and/or lots of templating.
+
 #### Interface
 We aimed for the interface and user experience to be self-explanatory, but it is worth a brief summary as well. The 
 project begins with a series of standalone visualizations. Each of these visualizations provides context or insight on a 

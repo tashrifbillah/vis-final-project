@@ -100,3 +100,7 @@ hr {
 #references li {
     margin-bottom: 10px;
 }
+
+#references {
+    padding-bottom: 10vh;
+}
