@@ -1,7 +1,3 @@
-/* * * * * * * * * * * * * *
-*           MAIN           *
-* * * * * * * * * * * * * */
-
 // init global variables & switches
 let myMapVis,
     myLineVis,

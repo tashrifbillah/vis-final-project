@@ -191,8 +191,6 @@ class MapVis {
                      Area: ${d.area}<br>
                  </div>`);
 
-                // Update table
-                tabularSummary(d)
 
             })
             .on('mouseout', function (event, d) {
@@ -206,6 +204,8 @@ class MapVis {
                     .style("top", 0)
                     .html(``);
             })
+        // Update table
+            .on("click", (event, d) => tabularSummary(d))
 
         tmp.exit().remove()
 
