@@ -86,8 +86,17 @@ select {
     max-width: 1400px;
 }
 
-.circular img {
+#about-us img {
     height: 250px;
     width: 250px;
     border: solid lightgray;
+}
+
+hr {
+    margin-top: 50px;
+    border-top: 5px solid lightgray;
+}
+
+#references li {
+    margin-bottom: 10px;
 }
