@@ -269,7 +269,7 @@ class RadarChartClass {
       .attr('class', 'radarArea')
       .on('mouseover', function(event, d) {
         // Update tooltip
-        vis.radarToolTip.show(d, 'PARK', this);
+        vis.radarToolTip.show(d, 'PARK', event, this);
 
         //Dim all blobs
         d3.selectAll('.radarArea')
@@ -402,9 +402,7 @@ class RadarChartClass {
       .style('pointer-events', 'all')
       .on('mouseover', function(event, d) {
         // Update tooltip
-        console.log(d)
-        vis.radarToolTip.show(d, 'CIRCLE', this);
-        console.log(d);
+        vis.radarToolTip.show(d, 'CIRCLE', event, this);
       })
       .on('mouseout', function() {
         vis.radarToolTip.hide();
@@ -442,8 +440,45 @@ class RadarChartClass {
     // Radar Tooltip
     vis.radarToolTip = d3.tip(vis)
       .attr('class', 'd3-tip')
-      .offset([-10, 0])
-      .html(function(d, t) {
+      .direction(function(d, t, event) {
+        if (event.screenX < window.innerWidth / 3) {
+          if (event.screenY < window.innerHeight / 2) {
+            return 'se';
+          } else {
+            return 'ne';
+          }
+        } else if (event.screenX > window.innerWidth / 2) {
+          if (event.screenY < window.innerHeight / 2) {
+            return 'sw';
+          } else {
+            return 'nw';
+          }
+        } else if (event.screenY < window.innerHeight / 2) {
+          return 's';
+        } else {
+          return  'n';
+        }
+      })
+      .offset(function(d, t, event) {
+        if (event.screenX < window.innerWidth / 3) {
+          if (event.screenY < window.innerHeight / 2) {
+            return [10, 0];
+          } else {
+            return [-10, 0];
+          }
+        } else if (event.screenX > window.innerWidth / 2) {
+          if (event.screenY < window.innerHeight / 2) {
+            return [10, 0];
+          } else {
+            return [-10, 0];
+          }
+        } else if (event.screenY < window.innerHeight / 2) {
+          return [10, 0];
+        } else {
+          return [-10, 0];
+        }
+      })
+      .html(function(d, t, event) {
         let parkLocation = getStateFromPark(allData, d.parkName);
         let message = '';
         let header = '<h1>' + d.parkName + ', ' + parkLocation + '</h1>';
