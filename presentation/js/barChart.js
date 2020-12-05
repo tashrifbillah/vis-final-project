@@ -96,8 +96,8 @@ class BarChart {
 
               seasons.forEach(s=> message+=
                   `<tr>
-                      <td style="padding: 0.5rem;">${s}</td>
-                      <td style="padding: 0.5rem;">${d3.format(",")(d.seasonalVisits[s])}</td>
+                      <td style="padding: 0.30rem;">${s}</td>
+                      <td style="padding: 0.30rem;">${d3.format(",")(d.seasonalVisits[s])}</td>
                   </tr>`
               )
 
