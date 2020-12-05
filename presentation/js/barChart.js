@@ -93,7 +93,9 @@ class BarChart {
               let header = `<h1>${d.name}</h1>`
               let message = ''
               for (var key in d.seasonalVisits) {
-                  message +=  `</br>${key}: ${d.seasonalVisits[key].toLocaleString()}`
+                  if (key != 'All') {
+                      message += `</br>${key}: ${d.seasonalVisits[key].toLocaleString()}`;
+                  }
               }
               return header  + message;
           });
