@@ -61,7 +61,7 @@ class HexMap {
             } else {
               return 'ne';
             }
-          } else if (event.screenX > window.innerWidth / 2) {
+          } else if (event.screenX > window.innerWidth * 2 / 3) {
             if (event.screenY < window.innerHeight / 2) {
               return 'sw';
             } else {
