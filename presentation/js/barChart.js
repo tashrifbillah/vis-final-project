@@ -66,6 +66,7 @@ class BarChart {
 
         vis.toolTip = d3.tip()
           .attr("class", "d3-tip")
+          .attr("style", "padding: 5px")
           .attr("height", 500)
           .offset(function(d) {
               if (vis.x(d.seasonalVisits[selectedSeason]) > vis.width - 100) {
@@ -91,12 +92,16 @@ class BarChart {
           })
           .html(function(d) {
               let header = `<h1>${d.name}</h1>`
-              let message = ''
-              for (var key in d.seasonalVisits) {
-                  if (key != 'All') {
-                      message += `</br>${key}: ${d.seasonalVisits[key].toLocaleString()}`;
-                  }
-              }
+              let message = `<table class="table" style="margin-bottom: 0; font-family: Monospace;"><tbody>`
+
+              seasons.forEach(s=> message+=
+                  `<tr>
+                      <td style="padding: 0.30rem;">${s}</td>
+                      <td style="padding: 0.30rem;">${d3.format(",")(d.seasonalVisits[s])}</td>
+                  </tr>`
+              )
+
+              message+="</tbody></table>"
               return header  + message;
           });
         vis.svg.call(vis.toolTip);

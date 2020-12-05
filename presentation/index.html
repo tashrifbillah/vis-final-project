@@ -19,9 +19,11 @@
     <link rel="stylesheet" href="css/results.css">
     <link rel="stylesheet" href="css/barchart.css">
     <link rel="stylesheet" href="css/radar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
+<!-- Introduction section-->
 <header class="intro">
     <div class="intro__content">
         <h1>United States National Parks</h1>
@@ -32,10 +34,11 @@
     </div>
 </header>
 
+<!-- Line graph -->
 <div class="container">
     <div class="vis" id="q5">
-        <h3 class="vis__title">How has COVID-19 affected park utilization in 2020?</h3>
-        <p class="vis__description">Although outdoor activities are recommended as some of the safest recreational options, there has been a marked decline in visitors during 2020. This decline is most visible during March 2020, when many states first enacted precautionary legislation.</p>
+        <h3 class="vis__title">Has COVID-19 affected park visits?</h3>
+        <p class="vis__description">There has been a marked decline in visitors to the National Parks during the ongoing pandemic. This decline is most visible during April 2020 when many states first enacted precautionary social distancing legislation. Although outdoor activities are recommended as some of the safest recreational options, park utilization remained lower than 2019 for the rest of 2020.</p>
         <div class="row">
             <div class="col-sm-3">
                 <div class="row" style="justify-content: center">
@@ -61,23 +64,29 @@
                 </div>
             </div>
         </div>
+
+        <details class="s2m_details" style="display: none"><summary>Seasons</summary><br></details>
+
         <div class="vis__wrapper" style="height: 40vh">
             <div class="align-self-center" id="line-graph" style="width: 90%; height: 100%"></div>
         </div>
     </div>
 </div>
 
+<!-- Section 1 -->
 <div class="instruction">
-    <h4>1. Learn about the history of National Parks.</h4>
+    <h4>1. Learn about the history and location of National Parks</h4>
 </div>
 
+<!-- Timeline and hex map -->
 <div class="container-fluid">
     <div class="vis">
         <h3 class="vis__title">How did National Parks come to be?</h3>
-        <p class="vis__description">Yellowstone was officially established as the first National Park in 1872. 34 years later, Theodore Roosevelt passed the Antiquities Act of 1906, creating presidential authority to designate national monuments from federal lands to protect significant natural, cultural, or scientific features. The national monument designation has served as a precursor to the National Park designation for many parks.</p>
+        <p class="vis__description">Yellowstone National Park, spanning across three contiguous states&mdash;Montana, Idaho, and Wyoming, was officially established as the first National Park in 1872. Some thirty years later, President Theodore Roosevelt passed the Antiquities Act of 1906, creating presidential authority to designate historic landmarks on federal lands as national monuments. The act served as a precursor to the designation of many National Parks. Over the next century, around 60 national parks have been founded. The most recent ones are&mdash;Indiana Dunes, Indiana and White Sands, New Mexico&mdash;founded last year.
+        </p>
 
-        <p>Historical events can be classified into two broad categories--<i>Park Related Law Passed</i>
-            and <i>Park Founded</i>. They are shown in different colors in the timeline below.</i>
+        <p>Historical events can be classified into two broad categories&mdash;<i>Park Related Law Passed</i>
+            and <i>Park Founded</i>. They are shown in different colors <b>in the timeline below the slideshow.</b></i>
         </p>
 
         <div class="vis__wrapper vis__wrapper--carousel">
@@ -108,25 +117,25 @@
     </div>
 
     <div class="vis">
-        <h3 class="vis__title">Not all regions are created equal. Which areas have the most access to National Parks, and how can this help guide your plans?</h3>
-        <p class="vis__description">This representation of the United States shows how each region is represented by using one hexagon for each National Park in that region. Depending on you location, this may be able to help inform your plans.</p>
+        <h3 class="vis__title">Which regions have the most access to National Parks?</h3>
+        <p class="vis__description">Most National Parks are located in the West, some in mid-east and south. In this visualization of the United States, each hexagon represents a National Park in that region. Some parks are shared among multiple states and hence they are represented by half hexagons in those states. While a native Bostonian is bereft of access to most National Parks, if you want to visit many of them, you might want to take a flight to Denver, Colorado and then drive around the natural beauties.</p>
         <div class="vis__wrapper">
             <div class="hex-map" id="hex-map" style="height: 100%; width:100%;"></div>
         </div>
     </div>
 </div>
 
+<!-- Webpage instruction -->
 <section class="container-fluid section webpage-instructions">
     <main class="section__visualizations">
         <h2 style="margin-top: 200px;">What to expect</h2>
-
-        <p>As you progress through the rest of this webpage, you will be presented with filters on the right pane.</p>
-        <p>Each section is intended to help you pick your preferences of region, activities, and season.</p>
-        <p>
-            At the end of the experience, your top 5 parks will be calculated based on your input.
-            <strong>For the best experience, please select at least one value for each prompt.</strong>
-        </p>
-
+        <p>As you progress through the rest of this webpage:</p>
+            <ul>
+                <li>You will be presented with filters on the right pane.</li>
+                <li>Pick your preferences of region, activities, and season.</li>
+                <li>For the best experience, please select <b>at least one value for each prompt.</b></li>
+            </ul>
+        <p>At the end of the experience, your top 5 parks will be calculated based on your input.</p>
         <button id="read-instructions" class="btn btn-primary btn-lg btn-block" style="display: none;">I understand.</button>
     </main>
 
@@ -142,11 +151,13 @@
 
 <div class="all-content">
 
+<!-- Section 2 -->
 <div class="instruction">
-    <h4>2. Explore the various regions.</h4>
-    <p>Please select one to help guide your decision</p>
+    <h4>2. Explore the various regions</h4>
+    <p>Please select one region to help guide your decision</p>
 </div>
 
+<!-- Geo map section -->
 <section class="container-fluid section">
     <main class="section__visualizations">
         <div class="vis" id="q1">
@@ -226,25 +237,50 @@
     </aside>
 </section>
 
+<!-- Section 3 -->
 <div class="instruction">
     <h4>3. Find the parks that will best support you in pursuing your favorite activities</h4>
     <p>Let us know what types of activities you are most interested in. This information is used to find great parks for you to explore.</p>
 </div>
 
+<!-- Radar chart -->
 <section class="container-fluid section">
     <main class="section__visualizations">
         <div class="vis">
             <h3 class="vis__title">Different parks excel in different areas. Which parks are the best match for your interests?</h3>
-            <p class="vis__description">The National Parks offer over 100 different activities. Here, we can see the
-                result of categorizing each activity and summarizing each park’s unique offerings by rating it on the
-                number of activities available in each category. The specific parks displayed are determined by your
-                selected preferences regarding activity and region. </p>
+            <p class="vis__description">The National Parks offer over 100 different activities.
+                They can be broadly categorized into six categories. In the radar chart below, each area represents a park.
+                The greater is an area's intersection along a category axis, the greater is the number of activities of that category
+                available at that park. The specific parks displayed are determined by your selected preferences
+                regarding activities and region.</p>
+
+            <details><summary><i>Learn more about six categories and activities</i></summary>
+                <div class="row justify-content-center">
+                <table class="table" id="category-activities" style="width: fit-content">
+                    <thead>
+                        <th>Category</th>
+                        <th>Activities</th>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                </div>
+            </details>
+            <br>
             <p class="vis__description">The large visualization contains an overlaid plot of the top three parks
             matching your preferences. The smaller plots below this contain the individual data for each of these parks.</p>
-            <p class="vis__description"><strong>Metric: </strong> The metric displayed corresponds to the percentage of possible activities
-                offered by each park in each category. For example, if 10 total activities are offered in the "Snow"
-                category and a park offers 6 of these, the park will receive a score of 60% on this axis.
-            </p>
+
+            <details><summary><i>Learn more about area and intersection</i></summary>
+            <p class="vis__description">The metric displayed corresponds to the percentage of possible activities offered
+                by each park in each category. For example, if 10 total activities are offered in the "Snow" category
+                and a park offers 6 of these, the park will receive a score of 60% on this axis.
+                Joining the scores along all axes gives an area.</p>
+            </details>
+            <br>
+            <p class="vis__description">Bottom line&mdash;if you are picky, visit the park that spans most along your
+                preferred activity category. Otherwise, you might want to visit the park that has the largest combined area
+                to experience multiple categories of activities.</p>
+
             <div class="vis__wrapper">
                 <div id="radarDiv">
                     <div class="row justify-content-center">
@@ -281,16 +317,20 @@
     </aside>
 </section>
 
-    <div class="instruction">
+<!-- Section 4 -->
+<div class="instruction">
         <h4>4. Make a decision based on the popularity of each park and your comfort level with crowds</h4>
         <p>Which season will work best for your trip?</p>
-    </div>
+</div>
 
+<!-- Bar chart -->
 <section class="container-fluid section">
     <main class="section__visualizations">
         <div class="vis">
             <h3 class="vis__title">Which of your matching parks are the most popular?</h3>
-            <p class="vis__description">Based on your tolerance for crowd size, it may be helpful to take park popularity into account when planning your trip. Visitation varies drastically between parks, and even between seasons within the same park. Some of the most beautiful and secluded experiences may be found during the “off-season”.</p>
+            <p class="vis__description">Based on your tolerance for crowd size, it may be helpful to take park popularity into account when planning your trip. Visitation varies drastically among parks, and even among seasons within the same park. Some of the most beautiful and secluded experiences may be found during the “off-season”.</p>
+
+            <details class="s2m_details"><summary>Seasons</summary><br></details>
 
             <div class="vis__wrapper">
                 <div id="bar"></div>
@@ -317,16 +357,18 @@
     </aside>
 </section>
 
+<!-- Section 5 -->
 <div class="instruction">
     <h4>5. Evaluate results</h4>
     <p>See the best parks, calculated just for you.</p>
 </div>
 
+<!-- Results API -->
 <footer class="container-fluid" id="results">
     <h3>Top Parks</h3>
 
-    <p>Based on your preferences, here are the top parks we recommend</p>
-    <p><b>Click on a park from the left to know more</b></p>
+    <p>Based on your preferences, here are the top parks we recommend.</p>
+    <p><b>Click on a park below to know more about it:</b></p>
 
     <div class="results">
         <div class="row">
@@ -388,6 +430,82 @@
     </div>
 </footer>
 </div>
+
+
+<hr>
+<!-- Identity section -->
+<div class="container" id="about-us">
+    <h3 class="text-center">The Team</h3>
+    <br>
+    <div class="row">
+
+            <div class="col-md-4 text-center">
+                <div class="circular">
+                    <img src="images/gw.jpg" />
+                </div><br>
+                <p><strong>Gordon Wade</strong><br>
+                Software Engineer<br>
+                Broad Institute of MIT and Harvard<br>
+                Cambridge, Massachusetts
+                </p>
+                <p>
+                <a href="mailto:gordonvwade@gmail.com" ><i class="fa fa-envelope fa-2x" aria-hidden="true"></i></a>   
+                <a href="http://github.com/gordonwade" target="_blank" > <i class="fa fa-github fa-2x" aria-hidden="true"></i></a>   
+                <a href="http://www.linkedin.com/in/gordonwade/" target="_blank" > <i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>
+                </p>
+            </div>
+
+            <div class="col-md-4 text-center">
+                <div class="circular">
+                    <img src="images/nm.jpg" />
+                </div><br>
+                <p><strong>Nate Mortensen</strong><br>
+                Senior Software Engineer<br>
+                ClearVoice<br>
+                Phoenix, Arizona
+                </p>
+                <p>
+                <a href="mailto:nmortensen2@gmail.com" ><i class="fa fa-envelope fa-2x" aria-hidden="true"></i></a>   
+                <a href="http://github.com/natemortensen" target="_blank" > <i class="fa fa-github fa-2x" aria-hidden="true"></i></a>   
+                <a href="https://www.linkedin.com/in/natemortensen/" target="_blank" > <i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>
+                </p>
+            </div>
+
+            <div class="col-md-4 text-center">
+                <div class="circular">
+                    <img src="images/tb.jpg" />
+                </div><br>
+                <p><strong>Tashrif Billah</strong><br>
+                Research Engineer<br>
+                Brigham and Women's Hospital<br>
+                Boston, Massachusetts
+                </p>
+                <p>
+                <a href="mailto:tashrif.billah@columbia.edu" ><i class="fa fa-envelope fa-2x" aria-hidden="true"></i></a>   
+                <a href="http://github.com/tashrifbillah" target="_blank" > <i class="fa fa-github fa-2x" aria-hidden="true"></i></a>   
+                <a href="http://www.linkedin.com/in/tashrif-billah/" target="_blank" > <i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>
+                </p>
+            </div>
+
+        </div>
+</div>
+
+<hr>
+<!-- Reference section -->
+<div class="container" id="references">
+    <h3 class="text-center">References</h3>
+    <br>
+    Data for different visualizations were obtained from:
+    <br>
+    <br>
+    <ul>
+        <li>Timeline<br>National Park System Timeline, <a href="https://www.nps.gov/parkhistory/hisnps/NPSHistory/timeline_annotated.htmhttps://www.nps.gov/parkhistory/hisnps/NPSHistory/timeline_annotated.htm">National Park Service History</a></li>
+        <li>Line and bar charts<br>National Park Service Visitor Use Statistics, <a href="https://irma.nps.gov/STATS/Reports/National" target="_blank">NPS Stats</a></li>
+        <li>Geographic and hex maps<br>List of national parks of the United States, <a href="https://en.wikipedia.org/wiki/List_of_national_parks_of_the_United_States" target="_blank">Wikipedia</a></li>
+        <li>Radar chart and results<br>Developer Resources, <a href="https://www.nps.gov/subjects/developer/index.htm" target="_blank">The National Park Service API</a></li>
+    </ul>
+</div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js" integrity="sha512-90vH1Z83AJY9DmlWa8WkjkV79yfS2n2Oxhsi2dZbIv0nC4E6m5AbH8Nh156kkM7JePmqD6tcZsfad1ueoaovww==" crossorigin="anonymous"></script>

@@ -34,6 +34,8 @@ function initMainPage(dataArray) {
     // init line-graph
     myLineVis = new LineVis('line-graph', dataArray[1]);
 
+    document.getElementsByClassName('s2m_details')[0].innerHTML+= s2m_table
+    document.getElementsByClassName('s2m_details')[1].innerHTML+= s2m_table
 
 }
 
@@ -81,3 +83,18 @@ function _groupBy() {
     myLineVis.wrangleData()
 }
 
+let s2m_table=`<table class="table table-striped" style="width: fit-content">
+<tbody>
+<tr>
+  <th>Name</th>
+  <th>Months</th>
+</tr>`
+seasons.forEach(s=> {
+        s2m_table+=`<tr>
+              <td>${s}</td>
+              <td>${monthSeason.getMonths(s).join(', ')}</td>
+            </tr>`
+    }
+)
+
+s2m_table+=`</tbody></table>`

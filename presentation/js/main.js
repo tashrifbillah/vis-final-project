@@ -140,7 +140,7 @@ function prepareData() {
 
 function initRadar() {
   let displayParks;
-  // // console.log(topTenParks.slice(0,3).map(d => d.name));
+  // console.log(topTenParks.slice(0,3).map(d => d.name));
   if (topTenParks.length != 0) {
     displayParks = parkActivityScores.filter(d => {
       return topTenParks.slice(0,3).map(d => d.name).indexOf(d.parkName) != -1;
@@ -158,6 +158,19 @@ function initRadar() {
       .range([palette[i]]);
     miniRadarCharts.push(new RadarChartClass(".radarChart" + (i+1),  displayParks, customOptions, i, i + 1));
   }
+
+  // Populate category-->activities hidden table
+  table= document.getElementById("category-activities")
+  activitySets.forEach(c=> {
+    let row= table.insertRow(-1)
+    row.insertCell(0).innerHTML = c.name
+
+    let category_list="";
+    c.activities.forEach(a=>category_list+=`${a}<br>`)
+
+    row.insertCell(1).innerHTML = `<details><summary>See list</summary>${category_list}</details>`
+  })
+
 }
 
 function updateRadar() {
