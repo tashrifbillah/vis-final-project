@@ -54,7 +54,44 @@ class HexMap {
       vis.toolTip = d3.tip()
         .attr("class", "d3-tip")
         .attr("height", 500)
-        .offset([-10, 0])
+        .direction(function(d, event) {
+          if (event.screenX < window.innerWidth / 3) {
+            if (event.screenY < window.innerHeight / 2) {
+              return 'se';
+            } else {
+              return 'ne';
+            }
+          } else if (event.screenX > window.innerWidth / 2) {
+            if (event.screenY < window.innerHeight / 2) {
+              return 'sw';
+            } else {
+              return 'nw';
+            }
+          } else if (event.screenY < window.innerHeight / 2) {
+            return 's';
+          } else {
+            return  'n';
+          }
+        })
+        .offset(function(d, event) {
+          if (event.screenX < window.innerWidth / 3) {
+            if (event.screenY < window.innerHeight / 2) {
+              return [10, 0];
+            } else {
+              return [-10, 0];
+            }
+          } else if (event.screenX > window.innerWidth / 2) {
+            if (event.screenY < window.innerHeight / 2) {
+              return [10, 0];
+            } else {
+              return [-10, 0];
+            }
+          } else if (event.screenY < window.innerHeight / 2) {
+            return [10, 0];
+          } else {
+            return [-10, 0];
+          }
+        })
         .html(function(d) {
           let message;
           let exclusive_message = '';
@@ -240,7 +277,7 @@ class HexMap {
           }
         })
         .on("mouseover", function(event, d) {
-          vis.toolTip.show(d, this);
+          vis.toolTip.show(d, event, this);
           vis.svg.selectAll(`.state-hexagon-${d.name}`)
             .style("opacity", 1);
         })
@@ -269,7 +306,7 @@ class HexMap {
         .attr("class", "state-label")
         .text(d => d.name)
         .on("mouseover", function(event, d) {
-          vis.toolTip.show(d, this);
+          vis.toolTip.show(d, event, this);
         })
         .on("mouseout", vis.toolTip.hide);
 
