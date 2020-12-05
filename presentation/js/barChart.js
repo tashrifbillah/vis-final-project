@@ -91,24 +91,16 @@ class BarChart {
           })
           .html(function(d) {
               let header = `<h1>${d.name}</h1>`
-              let message = `
-              <table class="table" style="margin-bottom: 0; font-family: Monospace">
-                  <tbody>
-                      <tr>
-                          <td>${seasons[0]}</td>
-                          <td>${d3.format(",")(d.seasonalVisits[seasons[0]])}</td>
-                      </tr>
-                      <tr>
-                          <td>${seasons[1]}</td>
-                          <td>${d3.format(",")(d.seasonalVisits[seasons[1]])}</td>
-                      </tr>
-                      <tr>
-                          <td>${seasons[2]}</td>
-                          <td>${d3.format(",")(d.seasonalVisits[seasons[2]])}</td>
-                      </tr>
-                  </tbody>
-              </table>
-              `
+              let message = `<table class="table" style="margin-bottom: 0; font-family: Monospace;"><tbody>`
+
+              seasons.forEach(s=> message+=
+                  `<tr>
+                      <td style="padding: 0.5rem;">${s}</td>
+                      <td style="padding: 0.5rem;">${d3.format(",")(d.seasonalVisits[s])}</td>
+                  </tr>`
+              )
+
+              message+="</tbody></table>"
               return header  + message;
           });
         vis.svg.call(vis.toolTip);
