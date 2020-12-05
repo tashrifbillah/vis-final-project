@@ -91,10 +91,24 @@ class BarChart {
           })
           .html(function(d) {
               let header = `<h1>${d.name}</h1>`
-              let message = ''
-              for (var key in d.seasonalVisits) {
-                  message +=  `</br>${key}: ${d.seasonalVisits[key].toLocaleString()}`
-              }
+              let message = `
+              <table class="table" style="margin-bottom: 0; font-family: Monospace">
+                  <tbody>
+                      <tr>
+                          <td>${seasons[0]}</td>
+                          <td>${d3.format(",")(d.seasonalVisits[seasons[0]])}</td>
+                      </tr>
+                      <tr>
+                          <td>${seasons[1]}</td>
+                          <td>${d3.format(",")(d.seasonalVisits[seasons[1]])}</td>
+                      </tr>
+                      <tr>
+                          <td>${seasons[2]}</td>
+                          <td>${d3.format(",")(d.seasonalVisits[seasons[2]])}</td>
+                      </tr>
+                  </tbody>
+              </table>
+              `
               return header  + message;
           });
         vis.svg.call(vis.toolTip);
