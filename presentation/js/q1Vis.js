@@ -114,7 +114,7 @@ class MapVis {
             .scaleExtent([0.8,3])
             .on("zoom", event => vis.gmap.attr("transform", event.transform))
 
-        d3.select("#zoom_reset").on("click", event => vis.zoom.scaleTo(vis.svg.transition().duration(500), 1))
+        d3.select("#zoom_reset").on("click", event => vis.svg.transition().duration(500).call(vis.zoom.transform, d3.zoomIdentity))
         d3.select("#zoom_in").on("click", event => vis.zoom.scaleBy(vis.svg.transition().duration(500), 1.2))
         d3.select("#zoom_out").on("click", event => vis.zoom.scaleBy(vis.svg.transition().duration(500), 0.8))
 
