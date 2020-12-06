@@ -39,7 +39,7 @@
 
 #carousel {
     width: 100%;
-    margin: 50px auto 5px;
+    margin: 0 auto;
 }
 
 .carousel-item {
@@ -70,6 +70,12 @@
     overflow-y: auto;
 }
 
+.carousel-wrapper {
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+}
+
 @media only screen and (min-width: 800px) {
     .carousel-item__content {
         max-height: 550px;
@@ -81,8 +87,8 @@
         right: 200px;
     }
 
-    #carousel {
-        max-width: 80vw;
+    .carousel-wrapper {
+        max-width: 70vw;
     }
 }
 
