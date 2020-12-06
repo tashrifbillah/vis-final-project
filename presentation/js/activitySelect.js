@@ -3,6 +3,7 @@ let selectedActivities = [];
 let topTenParks = [];
 let activityFilter;
 
+const applySort = (activities) => _.orderBy(activities, ['count', 'name'], ['desc', 'asc']);
 function initActivitySelect() {
     activityFilter = new Vue({
         data() {
@@ -15,12 +16,14 @@ function initActivitySelect() {
         methods: {
             setParks() {
                 this.parks = filteredParks;
-                // this.selectedActivities = this.selectedActivities.filter(({ id }) => this.activitiesById[id]);
+                this.selectedActivities = _.compact(this.selectedActivities.map(({ id }) => this.activitiesById[id]));
             },
         },
         computed: {
             relations() {
-                return _.flatten(_.shuffle(this.parks).map((r) => r.activities.map((a) => ({ activity: a.id, park: r.id }))));
+                return _.flatten(
+                    _.shuffle(this.parks).map((r) => r.activities.map((a) => ({ activity: a.id, park: r.id }))),
+                );
             },
             grouped() {
                 return _.groupBy(this.relations, 'activity');
@@ -33,14 +36,11 @@ function initActivitySelect() {
                 );
             },
             allActivities() {
-                return _.orderBy(
-                    _.uniqBy(_.flatten(this.parks.map((r) => r.activities)), 'id').map((a) => ({
-                        ...a,
-                        count: this.activityCounts[a.id],
-                    })),
-                    'count',
-                    'desc',
-                );
+                const records = _.uniqBy(_.flatten(this.parks.map((r) => r.activities)), 'id').map((a) => ({
+                    ...a,
+                    count: this.activityCounts[a.id],
+                }));
+                return applySort(records);
             },
             activitiesById() {
                 return _.fromPairs(this.allActivities.map((a) => [a.id, a]));
@@ -53,17 +53,17 @@ function initActivitySelect() {
                 const filtered = lower.length
                     ? this.allActivities.filter((a) => a.name.toLowerCase().includes(lower))
                     : this.allActivities;
-                return _.uniqBy(this.selectedActivities.concat(filtered), 'id');
+                return _.uniqBy(applySort(this.selectedActivities).concat(filtered), 'id');
             },
             topTenParks() {
-                if(!this.selectedActivityIds.length) {
-                    topTenParks = _.shuffle(this.parks).slice(0, 10)
-                    return topTenParks
+                if (!this.selectedActivityIds.length) {
+                    topTenParks = _.shuffle(this.parks).slice(0, 10);
+                    return topTenParks;
                 }
 
                 const parks = _.flatten(this.selectedActivityIds.map((id) => this.grouped[id]));
                 const counts = _.orderBy(Object.entries(_.countBy(parks, 'park')), (d) => d[1], 'desc');
-                return topTenParks = _.compact(counts.slice(0, 10).map(([park]) => this.parksById[park]));
+                return (topTenParks = _.compact(counts.slice(0, 10).map(([park]) => this.parksById[park])));
             },
             selectedActivityIds: {
                 get() {

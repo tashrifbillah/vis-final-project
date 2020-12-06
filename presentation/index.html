@@ -392,7 +392,10 @@
                                         :value="a.id"
                                         v-model="selectedActivityIds"
                                     />
-                                    <label :for="a.id">{{ a.name }} ({{ a.count }})</label>
+                                    <label :for="a.id">
+                                        {{ a.name }}
+                                        <small>({{ a.count }} {{ a.count > 1 ? 'parks' : 'park'}})</small>
+                                    </label>
                                 </div>
                             </transition-group>
 
