@@ -60,7 +60,8 @@ class LineVis {
             .y((d) => vis.y(d.visit));
 
         // Append tooltip
-        vis.tooltip = d3.select('body').append('div').attr('class', 'tooltip');
+        vis.tooltip = d3.select('body').append('div').attr('class', 'tooltip')
+            .attr('style', "text-transform: capitalize;");
 
         vis.wrangleData();
     }

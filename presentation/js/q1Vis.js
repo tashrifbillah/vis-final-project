@@ -168,7 +168,7 @@ class MapVis {
                      <h6>${d.name}</h6>
                      Location: ${d.location}<br>
                      Established: ${d.date_established}<br>
-                     Area: ${d.area}<br>
+                     Area: ${d.area.split(' (')[0]}<br>
                  </div>`);
             })
             .on('mouseout', function (event, d) {
@@ -197,10 +197,12 @@ function tabularSummary(d) {
     document.getElementById('picture').src = d.image;
     document.getElementById('caption').innerHTML = `<h6>${d.fullName}</h6>`;
 
-    table.rows[0].cells[1].innerHTML = d.location + ` (${nameConverter.getAbbreviation(d.location)})`;
+    table.rows[0].cells[1].innerHTML = d.location;
     table.rows[1].cells[1].innerHTML = d.date_established;
-    let tmp = d.area.split('acres ');
-    table.rows[2].cells[1].innerHTML = `${tmp[0]} acres <br>${tmp[1]}</br>`;
+    let tmp = d.area.split(' (');
+    table.rows[2].cells[1].innerHTML = `${tmp[0]}
+                                        <br>
+                                        (${tmp[1].split('km2')[0]}km<sup>2</sup>)`;
     table.rows[3].cells[1].innerHTML = d.visitors;
 
     document.getElementById('wiki').href =
