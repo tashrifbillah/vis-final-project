@@ -336,10 +336,16 @@ class RadarChartClass {
 
         vis.circleWrapper.enter().append('g').attr('class', 'radarCircleWrapperVisible');
 
+        console.log("DisplayParks", vis.displayParks)
         vis.circleWrapper = vis.g.selectAll('.radarCircleWrapperVisible').data(vis.displayParks);
 
         //Append a set of circles for each data point
+        // First clear any existing circles
+        if (vis.blobCircles) {
+            vis.blobCircles.remove();
+        }
         vis.blobCircles = vis.circleWrapper.selectAll('.radarCircle').data(function (d, i) {
+            console.log(i, d.activityScores)
             return d.activityScores;
         });
 
@@ -364,8 +370,6 @@ class RadarChartClass {
                 return vis.cfg.color(Math.floor(j / vis.data[0].activityScores.length));
             }) // Hacky solution for missing group index
             .style('fill-opacity', 0.8);
-
-        vis.blobCircles.exit().remove();
 
         /////////////////////////////////////////////////////////
         //////// Append invisible circles for tooltip ///////////
@@ -451,6 +455,14 @@ class RadarChartClass {
                         Math.floor(i / vis.cfg.legendColumns) * vis.cfg.legendSquareSize * 1.25,
                 )
                 .text((d) => `${d.parkName}, ${getStateFromPark(allData, d.parkName)}`);
+        }
+
+        // Remove unneeded legend entries
+        if (vis.legendSquares && vis.legendSquares.exit()) {
+            vis.legendSquares.exit().remove();
+        }
+        if (vis.legendLabels && vis.legendLabels.exit()) {
+            vis.legendLabels.exit().remove();
         }
 
         // Radar Tooltip
