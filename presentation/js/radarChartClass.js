@@ -338,11 +338,12 @@ class RadarChartClass {
 
         vis.circleWrapper = vis.g.selectAll('.radarCircleWrapperVisible').data(vis.displayParks);
 
-        //Append a set of circles for each data point
-        // First clear any existing circles
-        if (vis.blobCircles) {
-            vis.blobCircles.remove();
+        // First clear any existing circles if necessary
+        if (!vis.displayParks.length || vis.displayParks.length < (vis.endSlice - vis.startSlice)) {
+            vis.g.selectAll('.radarCircle').remove();
         }
+
+        // Append a set of circles for each data point
         vis.blobCircles = vis.circleWrapper.selectAll('.radarCircle').data(function (d, i) {
             return d.activityScores;
         });
