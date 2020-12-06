@@ -97,11 +97,11 @@ d3.json('data/cleaned_data.json').then(async (data) => {
         new Timeline('timeline', _.orderBy(timelineData.concat(formattedParks), 'year'));
     });
 
-    barVis = new BarChart('bar', allData);
     initActivitySelect();
-    initResults();
     activitySets = await d3.json('data/activity_sets.json');
     prepareData();
+    barVis = new BarChart('bar', allData);
+    initResults();
 });
 
 d3.json('data/hex_cartogram_data.json').then((data) => {
