@@ -168,7 +168,7 @@ class MapVis {
                      <h6>${d.name}</h6>
                      Location: ${d.location}<br>
                      Established: ${d.date_established}<br>
-                     Area: ${d.area}<br>
+                     Area: ${d.area.split(' (')[0]}<br>
                  </div>`);
             })
             .on('mouseout', function (event, d) {
