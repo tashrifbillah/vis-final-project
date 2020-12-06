@@ -105,100 +105,102 @@
         </div>
 
         <div>
-        <!-- Section 1 -->
-        <div class="instruction">
-            <h4>1. Learn about the history and location of National Parks</h4>
-        </div>
+            <!-- Section 1 -->
+            <div class="instruction">
+                <h4>1. Learn about the history and location of National Parks</h4>
+            </div>
 
-        <!-- Timeline and hex map -->
-        <div class="container-fluid">
-            <div class="vis">
-                <h3 class="vis__title">How did National Parks come to be?</h3>
-                <p class="vis__description">
-                    Yellowstone National Park, spanning across three contiguous states&mdash;Montana, Idaho, and
-                    Wyoming, was officially established as the first National Park in 1872. Some thirty years later,
-                    President Theodore Roosevelt passed the Antiquities Act of 1906, creating presidential authority to
-                    designate historic landmarks on federal lands as national monuments. The act served as a precursor
-                    to the designation of many National Parks. Over the next century, around 60 national parks have been
-                    founded. The most recent ones are&mdash;Indiana Dunes, Indiana and White Sands, New
-                    Mexico&mdash;founded last year.
-                </p>
+            <!-- Timeline and hex map -->
+            <div class="container-fluid">
+                <div class="vis">
+                    <h3 class="vis__title">How did National Parks come to be?</h3>
+                    <p class="vis__description">
+                        Yellowstone National Park, spanning across three contiguous states&mdash;Montana, Idaho, and
+                        Wyoming, was officially established as the first National Park in 1872. Some thirty years later,
+                        President Theodore Roosevelt passed the Antiquities Act of 1906, creating presidential authority
+                        to designate historic landmarks on federal lands as national monuments. The act served as a
+                        precursor to the designation of many National Parks. Over the next century, around 60 national
+                        parks have been founded. The most recent ones are&mdash;Indiana Dunes, Indiana and White Sands,
+                        New Mexico&mdash;founded last year.
+                    </p>
 
-                <p>
-                    Historical events can be classified into two broad categories&mdash;<i>Park Related Law Passed</i>
-                    and <i>Park Founded</i>. They are shown in different colors
-                    <b>in the timeline below the slideshow.</b>
-                </p>
+                    <p>
+                        Historical events can be classified into two broad categories&mdash;<i
+                            >Park Related Law Passed</i
+                        >
+                        and <i>Park Founded</i>. They are shown in different colors
+                        <b>in the timeline below the slideshow.</b>
+                    </p>
 
-                <div class="vis__wrapper vis__wrapper--carousel">
-                    <div id="carousel" class="carousel slide">
-                        <div class="carousel-inner"></div>
-                        <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true">&larr;</span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true">&rarr;</span>
-                            <span class="sr-only">Next</span>
-                        </a>
+                    <div class="vis__wrapper vis__wrapper--carousel">
+                        <div id="carousel" class="carousel slide">
+                            <div class="carousel-inner"></div>
+                            <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true">&larr;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true">&rarr;</span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+
+                        <div id="timeline"></div>
+                        <dl class="timeline-key">
+                            <dt class="current"></dt>
+                            <dd>Event on Display</dd>
+
+                            <dt class="law"></dt>
+                            <dd>Park Related Law Passed</dd>
+
+                            <dt class="park"></dt>
+                            <dd>Park Founded</dd>
+                        </dl>
                     </div>
+                </div>
 
-                    <div id="timeline"></div>
-                    <dl class="timeline-key">
-                        <dt class="current"></dt>
-                        <dd>Event on Display</dd>
-
-                        <dt class="law"></dt>
-                        <dd>Park Related Law Passed</dd>
-
-                        <dt class="park"></dt>
-                        <dd>Park Founded</dd>
-                    </dl>
+                <div class="vis">
+                    <h3 class="vis__title">Which regions have the most access to National Parks?</h3>
+                    <p class="vis__description">
+                        Most National Parks are located in the West, some in Midwest and South. In this visualization of
+                        the United States, each hexagon represents a National Park in that region. Some parks are shared
+                        among multiple states and hence they are represented by half hexagons in those states. While a
+                        native Bostonian is bereft of access to most National Parks, if you want to visit many of them,
+                        you might want to take a flight to Denver, Colorado and then drive around the natural beauties.
+                    </p>
+                    <div class="vis__wrapper">
+                        <div class="hex-map" id="hex-map" style="height: 100%; width: 100%"></div>
+                    </div>
                 </div>
             </div>
 
-            <div class="vis">
-                <h3 class="vis__title">Which regions have the most access to National Parks?</h3>
-                <p class="vis__description">
-                    Most National Parks are located in the West, some in Midwest and South. In this visualization of
-                    the United States, each hexagon represents a National Park in that region. Some parks are shared
-                    among multiple states and hence they are represented by half hexagons in those states. While a
-                    native Bostonian is bereft of access to most National Parks, if you want to visit many of them, you
-                    might want to take a flight to Denver, Colorado and then drive around the natural beauties.
-                </p>
-                <div class="vis__wrapper">
-                    <div class="hex-map" id="hex-map" style="height: 100%; width: 100%"></div>
-                </div>
-            </div>
+            <!-- Webpage instruction -->
+            <section class="container-fluid section webpage-instructions">
+                <main class="section__visualizations">
+                    <h2 style="margin-top: 200px">What to expect</h2>
+                    <p>As you progress through the rest of this webpage:</p>
+                    <ul>
+                        <li>You will be presented with filters on the right pane.</li>
+                        <li>Pick your preferences of region, activities, and season.</li>
+                        <li>For the best experience, please select <b>at least one value for each prompt.</b></li>
+                    </ul>
+                    <p>At the end of the experience, your top 5 parks will be calculated based on your input.</p>
+                    <button id="read-instructions" class="btn btn-primary btn-lg btn-block" style="display: none">
+                        I understand.
+                    </button>
+                </main>
+
+                <aside class="section__filter region-filter">
+                    <div class="filter">
+                        <h5>Example Filter</h5>
+                        <select class="form-control">
+                            <option value="">--</option>
+                            <option value="1">Great job!</option>
+                        </select>
+                    </div>
+                </aside>
+            </section>
         </div>
-
-        <!-- Webpage instruction -->
-        <section class="container-fluid section webpage-instructions">
-            <main class="section__visualizations">
-                <h2 style="margin-top: 200px">What to expect</h2>
-                <p>As you progress through the rest of this webpage:</p>
-                <ul>
-                    <li>You will be presented with filters on the right pane.</li>
-                    <li>Pick your preferences of region, activities, and season.</li>
-                    <li>For the best experience, please select <b>at least one value for each prompt.</b></li>
-                </ul>
-                <p>At the end of the experience, your top 5 parks will be calculated based on your input.</p>
-                <button id="read-instructions" class="btn btn-primary btn-lg btn-block" style="display: none">
-                    I understand.
-                </button>
-            </main>
-
-            <aside class="section__filter region-filter">
-                <div class="filter">
-                    <h5>Example Filter</h5>
-                    <select class="form-control">
-                        <option value="">--</option>
-                        <option value="1">Great job!</option>
-                    </select>
-                </div>
-            </aside>
-        </section>
-</div>
         <div class="all-content">
             <!-- Section 2 -->
             <div class="instruction">
@@ -542,126 +544,128 @@
                     </div>
                 </div>
             </footer>
-        </div>
 
-        <!-- Section 6 -->
-        <div class="instruction">
-            <h4>6. Hope you enjoyed our project!</h4>
-        </div>
+            <!-- Section 6 -->
+            <div class="instruction">
+                <h4>6. Hope you enjoyed our project!</h4>
+            </div>
 
-        <hr />
-        <!-- Identity section -->
-        <div class="container" id="about-us">
-            <h3 class="text-center">The Team</h3>
-            <br />
-            <div class="row">
-                <div class="col-md-4 text-center">
-                    <div class="circular">
-                        <img src="images/gw.jpg" />
+            <hr />
+            <!-- Identity section -->
+            <div class="container" id="about-us">
+                <h3 class="text-center">The Team</h3>
+                <br />
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <div class="circular">
+                            <img src="images/gw.jpg" />
+                        </div>
+                        <br />
+                        <p>
+                            <strong>Gordon Wade</strong><br />
+                            Software Engineer<br />
+                            Broad Institute of MIT and Harvard<br />
+                            Cambridge, Massachusetts
+                        </p>
+                        <p>
+                            <a href="mailto:gordonvwade@gmail.com"
+                                ><i class="fa fa-envelope fa-2x" aria-hidden="true"></i></a
+                            >   
+                            <a href="http://github.com/gordonwade" target="_blank">
+                                <i class="fa fa-github fa-2x" aria-hidden="true"></i></a
+                            >   
+                            <a href="http://www.linkedin.com/in/gordonwade/" target="_blank">
+                                <i class="fa fa-linkedin fa-2x" aria-hidden="true"></i
+                            ></a>
+                        </p>
                     </div>
-                    <br />
-                    <p>
-                        <strong>Gordon Wade</strong><br />
-                        Software Engineer<br />
-                        Broad Institute of MIT and Harvard<br />
-                        Cambridge, Massachusetts
-                    </p>
-                    <p>
-                        <a href="mailto:gordonvwade@gmail.com"
-                            ><i class="fa fa-envelope fa-2x" aria-hidden="true"></i></a
-                        >   
-                        <a href="http://github.com/gordonwade" target="_blank">
-                            <i class="fa fa-github fa-2x" aria-hidden="true"></i></a
-                        >   
-                        <a href="http://www.linkedin.com/in/gordonwade/" target="_blank">
-                            <i class="fa fa-linkedin fa-2x" aria-hidden="true"></i
-                        ></a>
-                    </p>
-                </div>
 
-                <div class="col-md-4 text-center">
-                    <div class="circular">
-                        <img src="images/nm.jpg" />
+                    <div class="col-md-4 text-center">
+                        <div class="circular">
+                            <img src="images/nm.jpg" />
+                        </div>
+                        <br />
+                        <p>
+                            <strong>Nate Mortensen</strong><br />
+                            Senior Software Engineer<br />
+                            ClearVoice<br />
+                            Phoenix, Arizona
+                        </p>
+                        <p>
+                            <a href="mailto:nmortensen2@gmail.com"
+                                ><i class="fa fa-envelope fa-2x" aria-hidden="true"></i></a
+                            >   
+                            <a href="http://github.com/natemortensen" target="_blank">
+                                <i class="fa fa-github fa-2x" aria-hidden="true"></i></a
+                            >   
+                            <a href="https://www.linkedin.com/in/natemortensen/" target="_blank">
+                                <i class="fa fa-linkedin fa-2x" aria-hidden="true"></i
+                            ></a>
+                        </p>
                     </div>
-                    <br />
-                    <p>
-                        <strong>Nate Mortensen</strong><br />
-                        Senior Software Engineer<br />
-                        ClearVoice<br />
-                        Phoenix, Arizona
-                    </p>
-                    <p>
-                        <a href="mailto:nmortensen2@gmail.com"
-                            ><i class="fa fa-envelope fa-2x" aria-hidden="true"></i></a
-                        >   
-                        <a href="http://github.com/natemortensen" target="_blank">
-                            <i class="fa fa-github fa-2x" aria-hidden="true"></i></a
-                        >   
-                        <a href="https://www.linkedin.com/in/natemortensen/" target="_blank">
-                            <i class="fa fa-linkedin fa-2x" aria-hidden="true"></i
-                        ></a>
-                    </p>
-                </div>
 
-                <div class="col-md-4 text-center">
-                    <div class="circular">
-                        <img src="images/tb.jpg" />
+                    <div class="col-md-4 text-center">
+                        <div class="circular">
+                            <img src="images/tb.jpg" />
+                        </div>
+                        <br />
+                        <p>
+                            <strong>Tashrif Billah</strong><br />
+                            Research Engineer<br />
+                            Brigham and Women's Hospital<br />
+                            Boston, Massachusetts
+                        </p>
+                        <p>
+                            <a href="mailto:tashrif.billah@columbia.edu"
+                                ><i class="fa fa-envelope fa-2x" aria-hidden="true"></i></a
+                            >   
+                            <a href="http://github.com/tashrifbillah" target="_blank">
+                                <i class="fa fa-github fa-2x" aria-hidden="true"></i></a
+                            >   
+                            <a href="http://www.linkedin.com/in/tashrif-billah/" target="_blank">
+                                <i class="fa fa-linkedin fa-2x" aria-hidden="true"></i
+                            ></a>
+                        </p>
                     </div>
-                    <br />
-                    <p>
-                        <strong>Tashrif Billah</strong><br />
-                        Research Engineer<br />
-                        Brigham and Women's Hospital<br />
-                        Boston, Massachusetts
-                    </p>
-                    <p>
-                        <a href="mailto:tashrif.billah@columbia.edu"
-                            ><i class="fa fa-envelope fa-2x" aria-hidden="true"></i></a
-                        >   
-                        <a href="http://github.com/tashrifbillah" target="_blank">
-                            <i class="fa fa-github fa-2x" aria-hidden="true"></i></a
-                        >   
-                        <a href="http://www.linkedin.com/in/tashrif-billah/" target="_blank">
-                            <i class="fa fa-linkedin fa-2x" aria-hidden="true"></i
-                        ></a>
-                    </p>
                 </div>
             </div>
-        </div>
 
-        <hr />
-        <!-- Reference section -->
-        <div class="container" id="references">
-            <h3 class="text-center">References</h3>
-            <br />
-            Data for different visualizations were obtained from:
-            <br />
-            <br />
-            <ul>
-                <li>
-                    Timeline<br />National Park System Timeline,
-                    <a
-                        href="https://www.nps.gov/parkhistory/hisnps/NPSHistory/timeline_annotated.htmhttps://www.nps.gov/parkhistory/hisnps/NPSHistory/timeline_annotated.htm"
-                        >National Park Service History</a
-                    >
-                </li>
-                <li>
-                    Line and bar charts<br />National Park Service Visitor Use Statistics,
-                    <a href="https://irma.nps.gov/STATS/Reports/National" target="_blank">NPS Stats</a>
-                </li>
-                <li>
-                    Geographic and hex maps<br />List of national parks of the United States,
-                    <a href="https://en.wikipedia.org/wiki/List_of_national_parks_of_the_United_States" target="_blank"
-                        >Wikipedia</a
-                    >
-                </li>
-                <li>
-                    Radar chart and results<br />Developer Resources,
-                    <a href="https://www.nps.gov/subjects/developer/index.htm" target="_blank"
-                        >The National Park Service API</a
-                    >
-                </li>
-            </ul>
+            <hr />
+            <!-- Reference section -->
+            <div class="container" id="references">
+                <h3 class="text-center">References</h3>
+                <br />
+                Data for different visualizations were obtained from:
+                <br />
+                <br />
+                <ul>
+                    <li>
+                        Timeline<br />National Park System Timeline,
+                        <a
+                            href="https://www.nps.gov/parkhistory/hisnps/NPSHistory/timeline_annotated.htmhttps://www.nps.gov/parkhistory/hisnps/NPSHistory/timeline_annotated.htm"
+                            >National Park Service History</a
+                        >
+                    </li>
+                    <li>
+                        Line and bar charts<br />National Park Service Visitor Use Statistics,
+                        <a href="https://irma.nps.gov/STATS/Reports/National" target="_blank">NPS Stats</a>
+                    </li>
+                    <li>
+                        Geographic and hex maps<br />List of national parks of the United States,
+                        <a
+                            href="https://en.wikipedia.org/wiki/List_of_national_parks_of_the_United_States"
+                            target="_blank"
+                            >Wikipedia</a
+                        >
+                    </li>
+                    <li>
+                        Radar chart and results<br />Developer Resources,
+                        <a href="https://www.nps.gov/subjects/developer/index.htm" target="_blank"
+                            >The National Park Service API</a
+                        >
+                    </li>
+                </ul>
+            </div>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
