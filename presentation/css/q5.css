@@ -9,6 +9,10 @@
     font-size: 14px;
 }
 
+#q5 .x-axis {
+    text-transform: capitalize;
+}
+
 #q5 .point {
     r: 8px;
     stroke: black;
