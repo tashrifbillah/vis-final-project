@@ -197,7 +197,7 @@ function tabularSummary(d) {
     document.getElementById('picture').src = d.image;
     document.getElementById('caption').innerHTML = `<h6>${d.fullName}</h6>`;
 
-    table.rows[0].cells[1].innerHTML = d.location + ` (${nameConverter.getAbbreviation(d.location)})`;
+    table.rows[0].cells[1].innerHTML = d.location;
     table.rows[1].cells[1].innerHTML = d.date_established;
     let tmp = d.area.split('acres ');
     table.rows[2].cells[1].innerHTML = `${tmp[0]} acres <br>${tmp[1]}</br>`;
