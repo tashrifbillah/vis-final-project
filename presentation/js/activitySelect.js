@@ -20,7 +20,7 @@ function initActivitySelect() {
         },
         computed: {
             relations() {
-                return _.flatten(this.parks.map((r) => r.activities.map((a) => ({ activity: a.id, park: r.id }))));
+                return _.flatten(_.shuffle(this.parks).map((r) => r.activities.map((a) => ({ activity: a.id, park: r.id }))));
             },
             grouped() {
                 return _.groupBy(this.relations, 'activity');
@@ -56,6 +56,7 @@ function initActivitySelect() {
                 return _.uniqBy(this.selectedActivities.concat(filtered), 'id');
             },
             topTenParks() {
+                if(!this.selectedActivityIds.length) return _.sample(this.parks, 10)
                 const parks = _.flatten(this.selectedActivityIds.map((id) => this.grouped[id]));
                 const counts = _.orderBy(Object.entries(_.countBy(parks, 'park')), (d) => d[1], 'desc');
                 return topTenParks = _.compact(counts.slice(0, 10).map(([park]) => this.parksById[park]));
