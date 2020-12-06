@@ -336,7 +336,6 @@ class RadarChartClass {
 
         vis.circleWrapper.enter().append('g').attr('class', 'radarCircleWrapperVisible');
 
-        console.log("DisplayParks", vis.displayParks)
         vis.circleWrapper = vis.g.selectAll('.radarCircleWrapperVisible').data(vis.displayParks);
 
         //Append a set of circles for each data point
@@ -345,7 +344,6 @@ class RadarChartClass {
             vis.blobCircles.remove();
         }
         vis.blobCircles = vis.circleWrapper.selectAll('.radarCircle').data(function (d, i) {
-            console.log(i, d.activityScores)
             return d.activityScores;
         });
 
