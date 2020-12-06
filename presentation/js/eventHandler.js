@@ -10,14 +10,14 @@ function filterRegions() {
 function setTopTen() {
     filterRegions();
     activityFilter.setParks();
-    barVis.wrangleData();
-    setTimeout(() => resultsApp.setRows(topTenParks), 500);
+    setTimeout(function() {
+        barVis.wrangleData();
+        updateRadar();
+        resultsApp.setRows(topTenParks)
+    }, 500);
 }
 
-$(eventEmitter).bind('activitiesChanged', function () {
-    updateRadar();
-    setTopTen();
-});
+$(eventEmitter).bind('activitiesChanged', setTopTen);
 
 $(eventEmitter).bind('seasonChanged', function () {
     selectedSeason = $('#season-select').val();

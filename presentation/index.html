@@ -395,6 +395,9 @@
                                     <label :for="a.id">{{ a.name }} ({{ a.count }})</label>
                                 </div>
                             </transition-group>
+
+                            <!-- Always recalculate parks-->
+                            <span v-show="false" v-text="topTenParks" />
                         </div>
                     </div>
                 </aside>

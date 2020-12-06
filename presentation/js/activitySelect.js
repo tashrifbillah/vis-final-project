@@ -4,8 +4,6 @@ let topTenParks = [];
 let activityFilter;
 
 function initActivitySelect() {
-    topTenParks = filteredParks.slice(0, 10);
-
     activityFilter = new Vue({
         data() {
             return {
@@ -17,12 +15,12 @@ function initActivitySelect() {
         methods: {
             setParks() {
                 this.parks = filteredParks;
-                this.selectedActivities = this.selectedActivities.filter(({ id }) => this.activitiesById[id]);
+                // this.selectedActivities = this.selectedActivities.filter(({ id }) => this.activitiesById[id]);
             },
         },
         computed: {
             relations() {
-                return _.flatten(this.parks.map((r) => r.activities.map((a) => ({ activity: a.id, park: r.id }))));
+                return _.flatten(_.shuffle(this.parks).map((r) => r.activities.map((a) => ({ activity: a.id, park: r.id }))));
             },
             grouped() {
                 return _.groupBy(this.relations, 'activity');
@@ -57,18 +55,22 @@ function initActivitySelect() {
                     : this.allActivities;
                 return _.uniqBy(this.selectedActivities.concat(filtered), 'id');
             },
+            topTenParks() {
+                if(!this.selectedActivityIds.length) {
+                    topTenParks = _.shuffle(this.parks).slice(0, 10)
+                    return topTenParks
+                }
+
+                const parks = _.flatten(this.selectedActivityIds.map((id) => this.grouped[id]));
+                const counts = _.orderBy(Object.entries(_.countBy(parks, 'park')), (d) => d[1], 'desc');
+                return topTenParks = _.compact(counts.slice(0, 10).map(([park]) => this.parksById[park]));
+            },
             selectedActivityIds: {
                 get() {
                     return this.selectedActivities.map((a) => a.id);
                 },
                 set(arr) {
                     this.selectedActivities = selectedActivities = _.compact(arr.map((id) => this.activitiesById[id]));
-
-                    // Set topTenParks
-                    const parks = _.flatten(arr.map((id) => this.grouped[id]));
-                    const counts = _.orderBy(Object.entries(_.countBy(parks, 'park')), (d) => d[1], 'desc');
-                    topTenParks = counts.slice(0, 10).map(([park]) => this.parksById[park]);
-
                     $(eventEmitter).trigger('activitiesChanged');
                 },
             },
