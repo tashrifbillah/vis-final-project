@@ -32,15 +32,7 @@
     height: 50px;
 }
 
-/*#q5 select {*/
-/*    padding: 5px;*/
-/*    border: thin solid black;*/
-/*    border-radius: 5px;*/
-/*}*/
 
-.tooltip {
-    text-transform: capitalize;
-}
 
 #q5 #legend svg {
     width: 100px;
