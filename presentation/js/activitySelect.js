@@ -15,7 +15,7 @@ function initActivitySelect() {
         methods: {
             setParks() {
                 this.parks = filteredParks;
-                this.selectedActivities = this.selectedActivities.filter(({ id }) => this.activitiesById[id]);
+                // this.selectedActivities = this.selectedActivities.filter(({ id }) => this.activitiesById[id]);
             },
         },
         computed: {
@@ -56,7 +56,11 @@ function initActivitySelect() {
                 return _.uniqBy(this.selectedActivities.concat(filtered), 'id');
             },
             topTenParks() {
-                if(!this.selectedActivityIds.length) return _.sample(this.parks, 10)
+                if(!this.selectedActivityIds.length) {
+                    topTenParks = _.shuffle(this.parks).slice(0, 10)
+                    return topTenParks
+                }
+
                 const parks = _.flatten(this.selectedActivityIds.map((id) => this.grouped[id]));
                 const counts = _.orderBy(Object.entries(_.countBy(parks, 'park')), (d) => d[1], 'desc');
                 return topTenParks = _.compact(counts.slice(0, 10).map(([park]) => this.parksById[park]));
