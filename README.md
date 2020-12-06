@@ -10,7 +10,7 @@ Please view our project materials at the following locations.
 
 Website: [https://tashrifbillah.github.io/vis-final-project/presentation/](https://tashrifbillah.github.io/vis-final-project/presentation/)
 
-Video:
+Video: [https://youtu.be/oAY_QPBDq_0](https://youtu.be/oAY_QPBDq_0)
 
 By Gordon Wade, Nate Mortensen, and Tashrif Billah
 
