@@ -199,8 +199,10 @@ function tabularSummary(d) {
 
     table.rows[0].cells[1].innerHTML = d.location;
     table.rows[1].cells[1].innerHTML = d.date_established;
-    let tmp = d.area.split('acres ');
-    table.rows[2].cells[1].innerHTML = `${tmp[0]} acres <br>${tmp[1]}</br>`;
+    let tmp = d.area.split(' (');
+    table.rows[2].cells[1].innerHTML = `${tmp[0]}
+                                        <br>
+                                        (${tmp[1].split('km2')[0]}km<sup>2</sup>)`;
     table.rows[3].cells[1].innerHTML = d.visitors;
 
     document.getElementById('wiki').href =
