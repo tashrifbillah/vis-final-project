@@ -20,7 +20,7 @@ Promise.all(promises)
 // initMainPage
 function initMainPage(dataArray) {
     // log data
-    console.log('Check out the data', dataArray);
+    // console.log('Check out the data', dataArray);
 
     // init map
     myMapVis = new MapVis('map', dataArray[0], dataArray[1]);
