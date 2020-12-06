@@ -491,15 +491,16 @@
 
                         <div v-if="selectedId" class="col-lg-9">
                             <div class="results__tabs">
-                                <button
+                                <a
                                     type="button"
                                     class="btn"
+                                    href="#results"
                                     v-for="opt in dataTypes"
                                     @click="dataType = opt.value"
                                     v-bind:class="`btn${dataType === opt.value ? '' : '-outline'}-dark`"
                                 >
                                     {{ opt.name }}
-                                </button>
+                                </a>
                             </div>
 
                             <div class="results__response">

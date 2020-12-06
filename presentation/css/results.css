@@ -21,9 +21,15 @@
     border: 3px var(--shared-yellow) solid !important;
 }
 
-.results__list {
+.results__list, .results__tabs {
     position: sticky;
     top: 100px;
+    background: #fff;
+}
+
+.results__tabs {
+    padding: 10px;
+    top: 80px;
 }
 
 .results__list li {
