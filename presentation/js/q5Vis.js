@@ -14,16 +14,19 @@ class LineVis {
     initVis() {
         let vis = this;
 
-        vis.margin = { top: 20, right: 20, bottom: 20, left: 90 };
-        vis.width = $('#' + vis.parentElement).width() - vis.margin.left - vis.margin.right;
-        vis.height = $('#' + vis.parentElement).height() - vis.margin.top - vis.margin.bottom;
+        const width = 1000;
+        const height = 275;
+
+        vis.margin = { top: 20, right: 20, bottom: 40, left: 90 };
+        vis.width = width - vis.margin.left - vis.margin.right;
+        vis.height = height - vis.margin.top - vis.margin.bottom;
 
         // init drawing area
         vis.svg = d3
             .select('#' + vis.parentElement)
             .append('svg')
-            .attr('width', vis.width + vis.margin.left + vis.margin.right)
-            .attr('height', vis.height + vis.margin.top + vis.margin.bottom)
+            .attr('viewBox', `0 0 ${width} ${height}`)
+            .append('g')
             .attr('transform', `translate(${vis.margin.left}, ${vis.margin.top})`);
 
         // Scales and Axes
@@ -41,7 +44,7 @@ class LineVis {
         vis.gy = vis.svg
             .append('g')
             .attr('class', 'axis y-axis')
-            .attr('transform', 'translate(' + vis.margin.left + ',' + '10)');
+            .attr('transform', 'translate(' + vis.margin.left + ',' + '0)');
 
         vis.gy.append('text').attr('y', 5).attr('class', 'title y-title');
 
