@@ -471,38 +471,38 @@ class RadarChartClass {
             .tip(vis)
             .attr('class', 'd3-tip')
             .direction(function (d, t, event) {
-                if (event.screenX < window.innerWidth / 3) {
-                    if (event.screenY < window.innerHeight / 2) {
+                if (event.clientX < window.innerWidth / 3) {
+                    if (event.clientY < window.innerHeight / 2) {
                         return 'se';
                     } else {
                         return 'ne';
                     }
-                } else if (event.screenX > window.innerWidth / 2) {
-                    if (event.screenY < window.innerHeight / 2) {
+                } else if (event.clientX > window.innerWidth / 2) {
+                    if (event.clientY < window.innerHeight / 2) {
                         return 'sw';
                     } else {
                         return 'nw';
                     }
-                } else if (event.screenY < window.innerHeight / 2) {
+                } else if (event.clientY < window.innerHeight / 2) {
                     return 's';
                 } else {
                     return 'n';
                 }
             })
             .offset(function (d, t, event) {
-                if (event.screenX < window.innerWidth / 3) {
-                    if (event.screenY < window.innerHeight / 2) {
+                if (event.clientX < window.innerWidth / 3) {
+                    if (event.clientY < window.innerHeight / 2) {
                         return [10, 0];
                     } else {
                         return [-10, 0];
                     }
-                } else if (event.screenX > window.innerWidth / 2) {
-                    if (event.screenY < window.innerHeight / 2) {
+                } else if (event.clientX > window.innerWidth / 2) {
+                    if (event.clientY < window.innerHeight / 2) {
                         return [10, 0];
                     } else {
                         return [-10, 0];
                     }
-                } else if (event.screenY < window.innerHeight / 2) {
+                } else if (event.clientY < window.innerHeight / 2) {
                     return [10, 0];
                 } else {
                     return [-10, 0];
