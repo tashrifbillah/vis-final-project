@@ -17,7 +17,7 @@ class LineVis {
         const width = 1000;
         const height = 275;
 
-        vis.margin = { top: 20, right: 20, bottom: 40, left: 90 };
+        vis.margin = { top: 30, right: 20, bottom: 40, left: 90 };
         vis.width = width - vis.margin.left - vis.margin.right;
         vis.height = height - vis.margin.top - vis.margin.bottom;
 
@@ -27,26 +27,26 @@ class LineVis {
             .append('svg')
             .attr('viewBox', `0 0 ${width} ${height}`)
             .append('g')
-            .attr('transform', `translate(${vis.margin.left}, ${vis.margin.top})`);
+            .attr('transform', `translate(0, ${vis.margin.top})`);
 
         // Scales and Axes
         vis.x = d3.scaleBand().range([vis.margin.left, vis.width]);
         vis.xAxis = d3.axisBottom();
 
-        vis.y = d3.scaleLinear().range([vis.height, vis.margin.top]);
+        vis.y = d3.scaleLinear().range([vis.height, 0]);
         vis.yAxis = d3.axisLeft().ticks(8);
 
         vis.gx = vis.svg
             .append('g')
             .attr('class', 'axis x-axis')
-            .attr('transform', 'translate(' + 0 + ',' + `${vis.height + 15}` + ')');
+            .attr('transform', `translate(0, ${vis.height + 15})`);
 
         vis.gy = vis.svg
             .append('g')
             .attr('class', 'axis y-axis')
-            .attr('transform', 'translate(' + vis.margin.left + ',' + '0)');
+            .attr('transform', `translate(${vis.margin.left}, 0)`);
 
-        vis.gy.append('text').attr('y', 5).attr('class', 'title y-title');
+        vis.gy.append('text').attr('y', -15).attr('class', 'title y-title');
 
         // Group of pattern elements
         vis.patterng = vis.svg.append('g');
@@ -142,7 +142,7 @@ class LineVis {
 
         vis.trend.x((d, i) => vis.x(vis.groups[i]));
 
-        vis.patterng.attr('transform', `translate(${vis.x.bandwidth() / 2},10)`);
+        vis.patterng.attr('transform', `translate(${vis.x.bandwidth() / 2},0)`);
 
         let tmp = vis.patterng.selectAll('.numVisit').data(vis.y2019, (d) => d.group);
 
