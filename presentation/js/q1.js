@@ -77,15 +77,6 @@ function displayDetails() {
         .attr('r', '10');
 }
 
-window.addEventListener('resize', function () {
-    // Delete previous svg layout
-    $('#map').empty();
-    $('#line-graph').empty();
-
-    // Render new svg layout
-    myMapVis.initVis();
-    myLineVis.initVis();
-});
 
 groupBy = $('#group-by').val();
 function _groupBy() {
